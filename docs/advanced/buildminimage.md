@@ -13,6 +13,8 @@ It is important to be aware that this guide is only up to date for the version o
 ## Raspbian Version
 This guide is currently up to data for Raspbian Buster Lite July 2019. The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
 
+
+
 ## Base Raspbian Install
 - Download the Raspbian Buser Lite July 2019 Image from [here](https://www.raspberrypi.org/downloads/raspbian/). If the correct version is no longer available it is likely OK to use a newer version, but older images can be found [here](https://downloads.raspberrypi.org/raspbian/images/).
 - Download and install [balenaEtcher](https://www.balena.io/etcher/)
@@ -23,7 +25,9 @@ This guide is currently up to data for Raspbian Buster Lite July 2019. The resul
 - Select the destination SD Card
 - Click flash and wait for it to finish
 
-### Initial Raspbian Setup
+
+
+## Initial Raspbian Setup
 It is recommended to just connect the pi to a monitor and connect a keyboard and mouse until the final Wireless configuration has been completed. It is possible to perform a headless install, however if something goes wrong with the network configuration later on it will be hard or impossible to recover from it without a keyboard, mouse, and monitor. If performing a headless install it would be a good idea to rely on ethernet for network access and to enable serial console access first thing.
 
 Remove the SD Card from your PC and insert it in the Raspberry Pi. Connect the power cable and wait for the pi to boot. The first boot may take a minute or two.
@@ -36,9 +40,17 @@ sudo raspi-config
 
 To change the user password select "Change User Password" and enter "arpirobot" without the quotes when prompted.
 
-To change the hostname select "Network Options" then choose "Hostname". Change the hostname to ArPiRobot-Robot when prompted.
+To change the hostname select "Network Options" then choose "Hostname". Change the hostname to "ArPiRobot-Robot" when prompted. *Note: if using a different hostname make sure to change it in the dnsmasq config file later and make sure the case matches.*
+
+Under "Localization Options" change disable en_GB.UTF8 and enable en_US.UTF8. Make en_US.UTF8 the default locale. Optinally also change the timezone under "Localization Options". The default used for ArPiRobot images is United States Eastern Time (New York time).
 
 After changing the hostname and password select Finish and choose "Yes" when asked to reboot.
+
+After rebooting change the keyboard layout (still under "Localization Options") to "Generic 105 Key" > "Other" > "English (US)" > "English (US)". Keep all other settings default.
+
+Next goto "Advanced Configuration" and change the default resolution to 1024x768 (helps to prevent HDMI flickering issues).
+
+
 
 ## Upgrade software
 
@@ -50,39 +62,139 @@ sudo apt update && sudo apt upgrade
 ```
 
 
+
 ## Remote Login (SSH)
 To enable the SSH server for remote login access (if not already done by the file on the boot partition) run `sudo raspi-config` again and select "Interfacing Options" then select "SSH" and choose "Yes" to enable. Then, select "Finish" and reboot when prompted.
 
 
 ## Wireless Setup
-WARNING: If setting the image up over a network (SSH) make sure not to reboot until all the following configuration is completed and verified!!!
 
-#### Install Required Software
+*WARNING: If setting the image up over a network (SSH) make sure not to reboot until all the following configuration is completed and verified!!!*
+
+### Install ArPiRobot Helper Scripts
+Some of the helper scripts are used to create (on boot) and manage the robot-hosted access point so these need to be added to the image before network configuration can be finished.
+
+```
+cd ~
+sudo apt install git
+git clone git@bitbucket.org:MB3hel/arpirobot-robotscripts.git
+sudo ln arpirobot-robotscripts/*.sh /usr/local/bin/
+sudo chmod +x /usr/local/bin/*.sh
+```
+
+
+
+### Install Other Required Software
 
 ```
 sudo apt install hostapd dnsmasq
 ```
 
-#### Configuration
-Create a virtual adapter to host the access point on boot. Create `/etc/udev/rules.d/70-persistent-net.rules` with the following contents. Replace the mac address (MACADDRESSHERE) with the Mac Address of the Raspberry Pi's WiFi adapter which can be found by running the command `iw dev` . Look for the addr field under the wlan0 interface section. The AP Mac address (APMACADDRESS) can usually be the same.
+Hostapd is used to host the access point and dnsmasq is a DNS forwarder and DHCP server.
+
+
+
+### Configuration
+
+#### Setup Virtual Adapter on Boot
+Edit `/etc/rc.local` and add the following before `exit 0`
 
 ```
-		SUBSYSTEM=="ieee80211", ACTION=="add|change", ATTR{macaddress}=="MACADDRESSHERE", KERNEL=="phy0", \
-	      RUN+="/sbin/iw phy phy0 interface add ap0 type __ap", \
-		  RUN+="/bin/ip link set ap0 address APMACADDRESS"
+/usr/local/bin/wirelessadd.sh
+/usr/local/bin/wirelessinit.sh
 ```
 
-Now that all the networking configuration is done it is OK to complete the rest of the configuration over SSH and/or VNC instead of using a keyboard, mouse, and monitor.
+The first script creates the device and the second re-initiaizes both the access point and the client interface (because they don't both work otherwise) and bridges the networks so that the internet can be accessed from the Pi's hosted network if the Pi can also connect to the network supplied in the wpa_supplicant config file.
+
+
+
+#### Setup Dnsmasq and Hostapd
+Edit `/etc/dnsmasq.conf`. Replace the contents with the following
+
+```
+interface=lo,ap0
+no-dhcp-interface=lo,wlan0
+bind-interfaces
+server=8.8.8.8
+domain-needed
+bogus-priv
+dhcp-range=192.168.10.50,192.168.10.150,12h
+address=/ArPiRobot-Robot.lan/192.168.10.1
+```
+
+Create `/etc/hostapd/hostapd.conf` with the following contents
+
+```
+ctrl_interface=/var/run/hostapd
+ctrl_interface_group=0
+interface=ap0
+driver=nl80211
+ssid=ArPiRobot-RobotAP
+hw_mode=g
+channel=11
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+wpa=2
+wpa_passphrase=arpirobot123
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP CCMP
+rsn_pairwise=CCMP
+```
+
+Finally edit ` /etc/default/hostapd` and change the `DAEMON_CONF` line to
+
+```
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+
+
+#### Setup Client network
+For now use a real network here. Once the setup is completed change this to a dummy network so real wifi credentials are not being distributed.
+
+Edit `/etc/wpa_supplicant/wpa_supplicant.conf`. Replace its contents with the following
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+        ssid="YOUR_SSID_HERE"
+        psk="YOUR_PASS_HERE"
+		id_str="AP1"
+}
+```
+
+#### Configure the Interfaces
+Edit `/etc/network/interfaces` and add the following after the `source-directory` line.
+
+```
+auto lo
+auto ap0
+auto wlan0
+iface lo inet loopback
+
+allow-hotplug ap0
+iface ap0 inet static
+	address 192.168.10.1
+	netmask 255.255.255.0
+	hostapd /etc/hostapd/hostapd.conf
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+	wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface AP1 inet dhcp
+```
+
+Reboot and make sure both interfaces come up.
+
+If both interfaces come up successfully it should be safe to work remotely after this point. No more network configuration will be done.
 
 ## Readonly Filesystem
 
-RAMDISK FOR LOGS???
-MOVE PROGRAM LAUNCH LOG TO RAMDISK OR ONLY LOG IF TESTED WRITABLE???
-DISABLE LOGGING
-READONLY
-DISABLE FS CHECKING AT BOOT
 
-#### Make Filesystem Readonly and disable FS Checking on boot
+Reboot. After rebooting you will need to go back into read/write mode using the `rw.sh` script that was already installed with the ArPiRobot helper scripts.
 
 ## Installing Software
 
@@ -91,9 +203,9 @@ DISABLE FS CHECKING AT BOOT
 ### Python libraries (install with pip)
 apscheduler, ansicolors, adafruit, arpirobot
 
-### ArPiRobot Helper Scripts
-
 ### Arduino firmware
 
 ## Setting up directory structure for arpirobot programs
 
+## Cleanup
+CHANGE NETWORK NAME TO DUMMY_SSID AND PASS TO DUMMY_PASS
