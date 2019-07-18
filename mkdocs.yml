@@ -1,5 +1,7 @@
 site_name: ArPiRobot
 nav:
     - Home: index.md
+    - Setup:
+        - Image Comparison: imagedif.md
     - Advanced:
-        - Building a Raspberry Pi Image: advanced/buildimage.md
+        - Building a Minimal ArPiRobot Image: advanced/buildminimage.md
