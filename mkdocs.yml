@@ -1,0 +1,5 @@
+site_name: ArPiRobot
+nav:
+    - Home: index.md
+    - Advanced:
+        - Building a Raspberry Pi Image: advanced/buildimage.md
