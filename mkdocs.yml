@@ -1,9 +1,20 @@
 site_name: ArPiRobot
 nav:
     - Home: index.md
+    - Downloads:
+            - ArPiRobot Images: imagedownloads.md
+            - Other: otherdownloads.md
     - Setup:
+        - Getting Started: gettingstarted.md
         - Image Comparison: imagedif.md
         - Using the Minimal Image: usingminimage.md
+        - Using the Complete Image: usingcompleteimage.md
+    - Guide:
+        - Programming The Robot: guide/intro.md
+        - Using Motors: guide/motors.md
+        - Using Sensors: guide/sensors.md
+        - Using an Arduino Co-processor: guide/arduino.md
     - Advanced:
         - Building a Minimal ArPiRobot Image: advanced/buildminimage.md
+        - Building a Complete ArPiRobot Image: advanced/buildcompleteimage.md
         - Image to/from SD Card: advanced/imagefromsd.md
