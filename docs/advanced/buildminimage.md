@@ -11,12 +11,12 @@ There are few reasons to ever need a custom image. Most users do not need to spe
 It is important to be aware that this guide is only up to date for the version of Raspbian that was used to make the prebuilt image. There will likely be slight differences if using another version of Raspbian or another Linux OS.
 
 ## Raspbian Version
-This guide is currently up to data for Raspbian Buster Lite July 2019. The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
+This guide is currently up to data for Raspbian Lite version 2019-04-09. The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
 
 
 
 ## Base Raspbian Install
-- Download the Raspbian Buser Lite July 2019 Image from [here](https://www.raspberrypi.org/downloads/raspbian/). If the correct version is no longer available it is likely OK to use a newer version, but older images can be found [here](https://downloads.raspberrypi.org/raspbian/images/).
+- Download the Raspbian Image from [here](https://www.raspberrypi.org/downloads/raspbian/). If the correct version is no longer available it is likely OK to use a newer version, but older images can be found [here](http://downloads.raspberrypi.org/raspbian_lite/images/).
 - Download and install [balenaEtcher](https://www.balena.io/etcher/)
 - Install balenaEtcher
 - Insert the SD Card into an SD Card slot on your PC or connect it using a USB adapter.
@@ -24,11 +24,40 @@ This guide is currently up to data for Raspbian Buster Lite July 2019. The resul
 - Select the downloaded raspbian image
 - Select the destination SD Card
 - Click flash and wait for it to finish
+- Once it finishes move the SD Card into the Pi, connect keyboard, mouse, monitor and power on the pi.
 
+## Readonly Filesystem
+*Tested using commit 1b596c2ced2a6ad87347cbb8faa675f20ec7af52*
+
+The readonly filesystem should be configured on a clean install of Raspbian Lite. Login with username `pi` and password `raspberry`.
+
+To setup a temporary WiFi configuration (this is not necessary if using an ethernet cable to access the internet is an option) run `sudo raspi-config` and select "Network Options" then "Wi-fi". Select the region, enter an SSID and password for the network to connect to.
+
+After connecting to a network (either ethernet or wifi) run the following commands.
+
+```
+sudo apt install git
+git clone https://gitlab.com/larsfp/rpi-readonly.git
+cd rpi-readonly
+sudo ./setup.sh
+```
+
+Do an apt update when prompted. When the script completes reboot. After rebooting you will need to go back into read/write mode. Run the following command to do so the continue with the reset of the setup. Remember that after every reboot during the setup root will need to be remounted read/write. The script will add an alias for this
+
+To remount read/write run
+
+```
+rw
+```
+
+To make readonly again run
+
+```
+ro
+```
 
 
 ## Initial Raspbian Setup
-It is recommended to just connect the pi to a monitor and connect a keyboard and mouse until the final Wireless configuration has been completed. It is possible to perform a headless install, however if something goes wrong with the network configuration later on it will be hard or impossible to recover from it without a keyboard, mouse, and monitor. If performing a headless install it would be a good idea to rely on ethernet for network access and to enable serial console access first thing.
 
 Remove the SD Card from your PC and insert it in the Raspberry Pi. Connect the power cable and wait for the pi to boot. The first boot may take a minute or two.
 
@@ -44,28 +73,29 @@ To change the hostname select "Network Options" then choose "Hostname". Change t
 
 Under "Localization Options" change disable en_GB.UTF8 and enable en_US.UTF8. Make en_US.UTF8 the default locale. Optinally also change the timezone under "Localization Options". The default used for ArPiRobot images is United States Eastern Time (New York time).
 
-After changing the hostname and password select Finish and choose "Yes" when asked to reboot.
+After changing the hostname, password, locale, and timezone select Finish and choose "Yes" when asked to reboot.
 
-After rebooting change the keyboard layout (still under "Localization Options") to "Generic 105 Key" > "Other" > "English (US)" > "English (US)". Keep all other settings default.
+After rebooting change the keyboard layout (still under "Localization Options") to "Generic 105 Key" > "Other" > "English (US)" > "English (US)". Keep all other settings default. *Remember to make the pi writable first!*
 
-Next goto "Advanced Configuration" and change the default resolution to 1024x768 (helps to prevent HDMI flickering issues).
+Next goto "Advanced Configuration" and change the default resolution to 1280x720 (helps to prevent HDMI flickering issues).
 
 
 
 ## Upgrade software
-
-To setup a temporary WiFi configuration (this is not necessary if using an ethernet cable to access the internet is an option) run `sudo raspi-config` and select "Network Options" then "Wi-fi". Select the region, enter an SSID and password for the network to connect to.
-
-After connecting to a network (either ethernet or wifi) run the following command to upgrade packages
+Make sure you are still connected to a network and run
 ```
 sudo apt update && sudo apt upgrade
 ```
 
+Then reboot
+
+```
+sudo reboot
+```
 
 
 ## Remote Login (SSH)
-To enable the SSH server for remote login access (if not already done by the file on the boot partition) run `sudo raspi-config` again and select "Interfacing Options" then select "SSH" and choose "Yes" to enable. Then, select "Finish" and reboot when prompted.
-
+To enable the SSH server for remote login access (if not already done by the file on the boot partition) run `sudo raspi-config` again and select "Interfacing Options" then select "SSH" and choose "Yes" to enable. Then, select "Finish".
 
 ## Wireless Setup
 
@@ -76,12 +106,10 @@ Some of the helper scripts are used to create (on boot) and manage the robot-hos
 
 ```
 cd ~
-sudo apt install git
 git clone git@bitbucket.org:MB3hel/arpirobot-robotscripts.git
 sudo ln arpirobot-robotscripts/*.sh /usr/local/bin/
 sudo chmod +x /usr/local/bin/*.sh
 ```
-
 
 
 ### Install Other Required Software
@@ -142,15 +170,21 @@ wpa_pairwise=TKIP CCMP
 rsn_pairwise=CCMP
 ```
 
-Finally edit ` /etc/default/hostapd` and change the `DAEMON_CONF` line to
+Edit ` /etc/default/hostapd` and change the `DAEMON_CONF` line to
 
 ```
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 
+Finally to fix dnsmasq on readonly file system add the following line to `/etc/fstab`
+
+```
+  tmpfs /var/lib/misc tmpfs nosuid,nodev 0 0
+```
+
 
 #### Setup Client network
-For now use a real network here. Once the setup is completed change this to a dummy network so real wifi credentials are not being distributed.
+For now, use a real network here. Once the setup is completed change this to a dummy network so real wifi credentials are not being distributed.
 
 Edit `/etc/wpa_supplicant/wpa_supplicant.conf`. Replace its contents with the following
 
@@ -190,11 +224,6 @@ iface AP1 inet dhcp
 Reboot and make sure both interfaces come up.
 
 If both interfaces come up successfully it should be safe to work remotely after this point. No more network configuration will be done.
-
-## Readonly Filesystem
-
-
-Reboot. After rebooting you will need to go back into read/write mode using the `rw.sh` script that was already installed with the ArPiRobot helper scripts.
 
 ## Installing Software
 
