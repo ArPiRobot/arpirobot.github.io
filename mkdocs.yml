@@ -3,5 +3,7 @@ nav:
     - Home: index.md
     - Setup:
         - Image Comparison: imagedif.md
+        - Using the Minimal Image: usingminimage.md
     - Advanced:
         - Building a Minimal ArPiRobot Image: advanced/buildminimage.md
+        - Image to/from SD Card: advanced/imagefromsd.md

@@ -227,14 +227,46 @@ If both interfaces come up successfully it should be safe to work remotely after
 
 ## Installing Software
 
-### Python and IDEL and and Arduino IDE and other utilities (text editor, chromium, archive manager)
+### Python and Python Libraries
 
-### Python libraries (install with pip)
-apscheduler, ansicolors, adafruit, arpirobot
+Run the following command to install Python 3 (arpirobot does not support python2).
 
-### Arduino firmware
+```
+sudo apt install python3 python3-pip python3-setuptools python3-wheel
+```
+
+To install required python libraries run
+
+```
+sudo pip3 install apscheduler ansicolors adafruit-circuitpython-motorkit
+```
+
+### Install the ArPiRobot Python Library
+
+```
+git clone git@bitbucket.org:MB3hel/arpirobot-pythonlib.git
+cd arpirobot-pythonlib
+sudo python3 setup.py install
+```
 
 ## Setting up directory structure for arpirobot programs
 
+```
+mkdir ~/arpirobot
+```
+
 ## Cleanup
-CHANGE NETWORK NAME TO DUMMY_SSID AND PASS TO DUMMY_PASS
+Remove any git keys that were added to the system or any passwords that were saved with a credential manager.
+
+Remove the real wifi settings from `/etc/wpa_supplicant/wpa_supplicant.conf`
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+        ssid="DUMMY_NETWORK"
+        psk="DUMMY_PASSWORD"
+        id_str="AP1"
+}
+```
