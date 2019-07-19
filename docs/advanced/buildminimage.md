@@ -8,7 +8,7 @@ There are few reasons to ever need a custom image. Most users do not need to spe
 2. If you want to use a different Linux OS (not Raspbian).
 3. If you want to understand more about how all the components of this project fit together.
 
-It is important to be aware that this guide is only up to date for the version of Raspbian that was used to make the prebuilt image. There will likely be slight differences if using another version of Raspbian or another Linux OS. Some important things to remember if using another Linux OS: there must be a `pi` user and the `pi` user must be able to use `sudo` with no password.
+It is important to be aware that this guide is only up to date for the version of Raspbian that was used to make the prebuilt image. There will likely be slight differences if using another version of Raspbian or another Linux OS. Some important things to remember if using another Linux OS: there must be a `pi` user (or systemd services must be edited) and the `pi` user (or whatever user is used with the deploy tool) must be able to use `sudo` with no password.
 
 ## Raspbian Version
 This guide is currently up to data for Raspbian Lite version 2019-04-09. The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
@@ -108,7 +108,7 @@ To enable the SSH server for remote login access (if not already done by the fil
 
 *WARNING: If setting the image up over a network (SSH) make sure not to reboot until all the following configuration is completed and verified!!!*
 
-### Install ArPiRobot Helper Scripts
+### Install ArPiRobot Raspbian Tools
 Some of the helper scripts are used to create (on boot) and manage the robot-hosted access point so these need to be added to the image before network configuration can be finished.
 
 ```
