@@ -8,7 +8,7 @@ There are few reasons to ever need a custom image. Most users do not need to spe
 2. If you want to use a different Linux OS (not Raspbian).
 3. If you want to understand more about how all the components of this project fit together.
 
-It is important to be aware that this guide is only up to date for the version of Raspbian that was used to make the prebuilt image. There will likely be slight differences if using another version of Raspbian or another Linux OS.
+It is important to be aware that this guide is only up to date for the version of Raspbian that was used to make the prebuilt image. There will likely be slight differences if using another version of Raspbian or another Linux OS. Some important things to remember if using another Linux OS: there must be a `pi` user and the `pi` user must be able to use `sudo` with no password.
 
 ## Raspbian Version
 This guide is currently up to data for Raspbian Lite version 2019-04-09. The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
@@ -79,7 +79,14 @@ After rebooting change the keyboard layout (still under "Localization Options") 
 
 Next goto "Advanced Configuration" and change the default resolution to 1280x720 (helps to prevent HDMI flickering issues).
 
+## Enable Interfaces
 
+Run
+```
+sudo raspi-config
+```
+
+Under "Interfacing Options" enable SPI and I2C.
 
 ## Upgrade software
 Make sure you are still connected to a network and run
@@ -107,8 +114,9 @@ Some of the helper scripts are used to create (on boot) and manage the robot-hos
 ```
 cd ~
 git clone git@bitbucket.org:MB3hel/arpirobot-robotscripts.git
-sudo ln arpirobot-robotscripts/*.sh /usr/local/bin/
-sudo chmod +x /usr/local/bin/*.sh
+cd arpirobot-robotscripts
+chmod +x install.sh
+sudo ./install.sh
 ```
 
 
@@ -238,7 +246,7 @@ sudo apt install python3 python3-pip python3-setuptools python3-wheel
 To install required python libraries run
 
 ```
-sudo pip3 install apscheduler ansicolors adafruit-circuitpython-motorkit
+sudo pip3 install apscheduler ansicolors pyserial adafruit-circuitpython-motorkit
 ```
 
 ### Install the ArPiRobot Python Library
@@ -255,6 +263,10 @@ sudo python3 setup.py install
 mkdir ~/arpirobot
 ```
 
+## Test the Image
+Put the simple test program from the pythonlib samples into the `arpirobot` folder and set the filename in `main.txt`. Reboot, then connect with DS and make sure it is working correctly.
+
+
 ## Cleanup
 Remove any git keys that were added to the system or any passwords that were saved with a credential manager.
 
@@ -269,4 +281,11 @@ network={
         psk="DUMMY_PASSWORD"
         id_str="AP1"
 }
+```
+
+Clear bash history
+
+```
+history -c
+sudo history -c
 ```
