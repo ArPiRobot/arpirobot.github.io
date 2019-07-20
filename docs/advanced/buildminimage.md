@@ -26,6 +26,11 @@ This guide is currently up to data for Raspbian Lite version 2019-04-09. The res
 - Click flash and wait for it to finish
 - Once it finishes move the SD Card into the Pi, connect keyboard, mouse, monitor and power on the pi.
 
+## Automatic process
+Instead of following the instructions below, the work-in-progress [configuration scripts](https://github.com/MB3hel/ArPiRobot-IamageScripts) can be used, but make sure to double check them!
+
+Everything that follows is the manual setup instructions.
+
 ## Readonly Filesystem
 *Tested using commit 1b596c2ced2a6ad87347cbb8faa675f20ec7af52*
 
