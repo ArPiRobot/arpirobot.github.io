@@ -29,6 +29,8 @@ This guide is currently up to data for Raspbian Lite version 2019-04-09. The res
 ## Automatic process
 Instead of following the instructions below, the work-in-progress [configuration scripts](https://github.com/MB3hel/ArPiRobot-IamageScripts) can be used, but make sure to double check them! Once done with the scripts be sure to delete the downloaded/cloned repo. Also make sure to run each and every script *and in order*. If something goes wrong you will likely have to start over.
 
+After running the scripts it is recommeded to delete the github repo for the scripts (from `/home/pi`) and to delete the log files from `/root/`. After doing so clear bash history again.
+
 To view the script log (live)
 
 ```
@@ -120,12 +122,12 @@ To enable the SSH server for remote login access (if not already done by the fil
 *WARNING: If setting the image up over a network (SSH) make sure not to reboot until all the following configuration is completed and verified!!!*
 
 ### Install ArPiRobot Raspbian Tools
-Some of the helper scripts are used to create (on boot) and manage the robot-hosted access point so these need to be added to the image before network configuration can be finished.
+The Raspiban Tools contains a service to manage networking as well as several helper scripts that the service uses. Install the raspbian tools before proceding.
 
 ```
 cd ~
-git clone git@bitbucket.org:MB3hel/arpirobot-robotscripts.git
-cd arpirobot-robotscripts
+git clone git@github.com:MB3hel/ArPiRobot-RaspbianTools.git
+cd ArPiRobot-RaspbianTools
 chmod +x install.sh
 sudo ./install.sh
 ```
@@ -137,22 +139,13 @@ sudo ./install.sh
 sudo apt install hostapd dnsmasq
 ```
 
-Hostapd is used to host the access point and dnsmasq is a DNS forwarder and DHCP server.
+Hostapd is used to host the access point and dnsmasq is a DNS and DHCP server.
 
 
 
 ### Configuration
 
-#### Setup Virtual Adapter on Boot
-Edit `/etc/rc.local` and add the following before `exit 0`
-
-```
-/usr/local/bin/wirelessadd.sh
-/usr/local/bin/wirelessinit.sh
-```
-
-The first script creates the device and the second re-initiaizes both the access point and the client interface (because they don't both work otherwise) and bridges the networks so that the internet can be accessed from the Pi's hosted network if the Pi can also connect to the network supplied in the wpa_supplicant config file.
-
+The virtual adapter and all networking services will be created/started in the correct order by the `arpirobot-networking` service installed with the Raspbian tools.
 
 
 #### Setup Dnsmasq and Hostapd
@@ -160,39 +153,41 @@ Edit `/etc/dnsmasq.conf`. Replace the contents with the following
 
 ```
 interface=lo,ap0
-no-dhcp-interface=lo,wlan0
-bind-interfaces
 server=8.8.8.8
 domain-needed
 bogus-priv
-dhcp-range=192.168.10.50,192.168.10.150,12h
-address=/ArPiRobot-Robot.lan/192.168.10.1
+dhcp-range=192.168.10.2,192.168.10.10,255.255.255.0,24h
 ```
 
 Create `/etc/hostapd/hostapd.conf` with the following contents
 
 ```
-ctrl_interface=/var/run/hostapd
-ctrl_interface_group=0
-interface=ap0
-driver=nl80211
-ssid=ArPiRobot-RobotAP
-hw_mode=g
 channel=11
-wmm_enabled=0
+ssid=AP_SSID
+wpa_passphrase=AP_PASSWORD
+interface=ap0
+hw_mode=g
 macaddr_acl=0
 auth_algs=1
 wpa=2
-wpa_passphrase=arpirobot123
 wpa_key_mgmt=WPA-PSK
-wpa_pairwise=TKIP CCMP
+wpa_pairwise=TKIP
 rsn_pairwise=CCMP
+driver=nl80211
 ```
 
 Edit ` /etc/default/hostapd` and change the `DAEMON_CONF` line to
 
 ```
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+
+Edit `/etc/dhcpcd.conf`. Add the following to the end of the file
+
+```
+interface ap0
+static ip_address=192.168.10.1
+nohook wpa_supplicant
 ```
 
 Finally to fix dnsmasq on readonly file system add the following line to `/etc/fstab`
@@ -215,29 +210,20 @@ country=US
 network={
         ssid="YOUR_SSID_HERE"
         psk="YOUR_PASS_HERE"
-		id_str="AP1"
 }
 ```
 
-#### Configure the Interfaces
-Edit `/etc/network/interfaces` and add the following after the `source-directory` line.
+#### Configure Services
 
+Disable networking services at boot as the custom `arpirobot-networking` service will handle starting them in the correct order
 ```
-auto lo
-auto ap0
-auto wlan0
-iface lo inet loopback
-
-allow-hotplug ap0
-iface ap0 inet static
-	address 192.168.10.1
-	netmask 255.255.255.0
-	hostapd /etc/hostapd/hostapd.conf
-
-allow-hotplug wlan0
-iface wlan0 inet manual
-	wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-iface AP1 inet dhcp
+sudo systemctl stop hostapd
+sudo systemctl stop dnsmasq
+sudo systemctl stop dhcpcd
+sudo systemctl disable hostapd
+sudo systemctl disable dnsmasq
+sudo systemctl disable dhcpcd
+sudo systemctl unmask hostapd
 ```
 
 Reboot and make sure both interfaces come up.

@@ -1,6 +1,5 @@
 site_name: ArPiRobot
 nav:
-    - Home: index.md
     - Downloads:
             - ArPiRobot Images: imagedownloads.md
             - Other: otherdownloads.md
