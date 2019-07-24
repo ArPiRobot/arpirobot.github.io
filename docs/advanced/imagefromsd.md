@@ -47,6 +47,12 @@ To backup image from card
 sudo dd bs=4M if=/dev/mmcblk0 of=/mnt/Files/rpi-image.img count=3973 status=progress
 ```
 
+To backup and gzip at the same time
+
+```
+sudo dd bs=4M if=/dev/mmcblk0 count=3973 | gzip > /mnt/Files/rpi-image.img.gz
+```
+
 To restore to card
 
 ```
