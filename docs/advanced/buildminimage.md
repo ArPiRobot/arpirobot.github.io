@@ -24,7 +24,13 @@ This guide is currently up to data for Raspbian Lite version 2019-04-09. The res
 - Select the downloaded raspbian image
 - Select the destination SD Card
 - Click flash and wait for it to finish
-- Once it finishes move the SD Card into the Pi, connect keyboard, mouse, monitor and power on the pi.
+- Once it finishes remove and re-insert the card to mount the boot partition. Edit the `config.txt` file and add the following line at the end. This will enable the serial console which can help with setup of the image and with debugging robot code or network issues while in use on a robot.
+
+```
+enable_uart=1
+```
+
+- Finally, move the SD Card into the Pi, connect keyboard, mouse, monitor and power on the pi.
 
 ## Automatic process
 Instead of following the instructions below, the work-in-progress [configuration scripts](https://github.com/MB3hel/ArPiRobot-IamageScripts) can be used, but make sure to double check them! Once done with the scripts be sure to delete the downloaded/cloned repo. Also make sure to run each and every script *and in order*. If something goes wrong you will likely have to start over.
@@ -40,7 +46,7 @@ sudo tail -f /root/setup_log.txt
 Everything that follows is the manual setup instructions.
 
 ## Readonly Filesystem
-*Tested using commit 1b596c2ced2a6ad87347cbb8faa675f20ec7af52*
+*Tested using commit 1b596c2ced2a6ad87347cbb8faa675f20ec7af52* of `rpi-readonly` project.
 
 The readonly filesystem should be configured on a clean install of Raspbian Lite. Login with username `pi` and password `raspberry`.
 
@@ -122,7 +128,7 @@ To enable the SSH server for remote login access (if not already done by the fil
 *WARNING: If setting the image up over a network (SSH) make sure not to reboot until all the following configuration is completed and verified!!!*
 
 ### Install ArPiRobot Raspbian Tools
-The Raspiban Tools contains a service to manage networking as well as several helper scripts that the service uses. Install the raspbian tools before proceding.
+The Raspiban Tools contains several helper scripts that manage networking. Install the raspbian tools before proceding.
 
 ```
 cd ~
@@ -130,6 +136,13 @@ git clone git@github.com:MB3hel/ArPiRobot-RaspbianTools.git
 cd ArPiRobot-RaspbianTools
 chmod +x install.sh
 sudo ./install.sh
+```
+
+### Run the start script on boot
+
+Edit `/etc/rc.local` and add the following line before `exit 0`
+```
+/usr/local/bin/wifistart.sh
 ```
 
 
@@ -276,7 +289,6 @@ country=US
 network={
         ssid="DUMMY_NETWORK"
         psk="DUMMY_PASSWORD"
-        id_str="AP1"
 }
 ```
 
