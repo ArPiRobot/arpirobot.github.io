@@ -253,10 +253,10 @@ Run the following command to install Python 3 (arpirobot does not support python
 sudo apt install python3 python3-pip python3-setuptools python3-wheel
 ```
 
-To install required python libraries run
+To install required python libraries run the following command. A list of all required libraries is kept up to date [here](../pythonlibraries.md)
 
 ```
-sudo pip3 install apscheduler ansicolors pyserial adafruit-circuitpython-motorkit
+sudo pip3 install [SPACE SEPARATED LIST OF LIBRARIES HERE]
 ```
 
 ### Install the ArPiRobot Python Library
