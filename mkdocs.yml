@@ -5,9 +5,7 @@ nav:
             - Other: otherdownloads.md
     - Setup:
         - Getting Started: gettingstarted.md
-        - Image Comparison: imagedif.md
-        - Using the Minimal Image: usingminimage.md
-        - Using the Complete Image: usingcompleteimage.md
+        - Setup for Development: pycharmsetup.md
         - Supported Motor Controllers: supportedmotors.md
         - Supported Sensors: supportedsensors.md
         - Complete List of Python Libraries: pythonlibraries.md
@@ -19,5 +17,4 @@ nav:
         - Using Profiles: guid/profiles.md
     - Advanced:
         - Building a Minimal ArPiRobot Image: advanced/buildminimage.md
-        - Building a Complete ArPiRobot Image: advanced/buildcompleteimage.md
         - Image to/from SD Card: advanced/imagefromsd.md

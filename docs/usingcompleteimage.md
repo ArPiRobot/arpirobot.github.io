@@ -1,3 +1,0 @@
-# Using the Complete Image
-
-coming soon...
