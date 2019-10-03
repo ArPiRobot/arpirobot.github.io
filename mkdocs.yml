@@ -1,20 +1,16 @@
 site_name: ArPiRobot
 nav:
-    - Downloads:
-            - ArPiRobot Images: imagedownloads.md
-            - Other: otherdownloads.md
+    - Downloads: downloads.md
     - Setup:
-        - Getting Started: gettingstarted.md
-        - Setup for Development: pycharmsetup.md
-        - Supported Motor Controllers: supportedmotors.md
-        - Supported Sensors: supportedsensors.md
-        - Complete List of Python Libraries: pythonlibraries.md
+        - Raspberry Pi Setup: setup/pisetup.md
+        - Setup for Development: setup/devsetup.md
+        - Basic Walkthrough: setup/basicwalkthrough.md
     - Guide:
         - Programming The Robot: guide/intro.md
         - Using Motors: guide/motors.md
         - Using Sensors: guide/sensors.md
         - Using an Arduino Co-processor: guide/arduino.md
-        - Using Profiles: guid/profiles.md
+        - Supported Sensors: guide/supportedsensors.md
     - Advanced:
         - Building a Minimal ArPiRobot Image: advanced/buildminimage.md
         - Image to/from SD Card: advanced/imagefromsd.md

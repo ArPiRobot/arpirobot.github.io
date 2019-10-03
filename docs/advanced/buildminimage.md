@@ -1,4 +1,4 @@
-# Building a Minimal ArPiRobot Image
+# Building an ArPiRobot Image
 This guide details how the prebuilt minimal Raspbian image is created for ArPiRobot robots. This guide exists mostly to document the image creation process, but can be followed to create a custom Raspbian image or an image with another Linux OS. The minimal image configured should be used when development will not be done on the robot or when the robot may be powered off unexpectedly.
 
 ## Why a Custom Image?
@@ -253,7 +253,7 @@ Run the following command to install Python 3 (arpirobot does not support python
 sudo apt install python3 python3-pip python3-setuptools python3-wheel
 ```
 
-To install required python libraries run the following command. A list of all required libraries is kept up to date [here](../pythonlibraries.md)
+To install required python libraries run the following command. A list of all required libraries is kept up to date in the requirements.txt file in the PythonLib repository.
 
 ```
 sudo pip3 install [SPACE SEPARATED LIST OF LIBRARIES HERE]
