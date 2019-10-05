@@ -1,3 +1,0 @@
-# Using Sensors
-
-Coming soon...

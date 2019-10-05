@@ -1,3 +1,0 @@
-# Using an Arduino Co-processor
-
-Coming soon...

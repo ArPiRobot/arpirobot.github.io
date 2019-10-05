@@ -1,3 +1,0 @@
-# Supported Sensors
-
-Coming soon...

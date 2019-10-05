@@ -5,12 +5,14 @@ nav:
         - Raspberry Pi Setup: setup/pisetup.md
         - Setup for Development: setup/devsetup.md
         - Basic Walkthrough: setup/basicwalkthrough.md
-    - Guide:
-        - Programming The Robot: guide/intro.md
-        - Using Motors: guide/motors.md
-        - Using Sensors: guide/sensors.md
-        - Using an Arduino Co-processor: guide/arduino.md
-        - Supported Sensors: guide/supportedsensors.md
+    - Reference:
+        - Robot Classes: reference/robotclasses.md
+        - Motors: reference/motors.md
+        - Raspberry Pi Sensors: reference/sensors.md
+        - Arduino Coprocessor and Sensors: reference/arduinosensors.md
+        - Media on Robots: reference/media.md
+        - Network Table: reference/nettable.md
+        - Supported Hardware: reference/hardware.md
     - Advanced:
         - Building a Minimal ArPiRobot Image: advanced/buildminimage.md
         - Image to/from SD Card: advanced/imagefromsd.md
