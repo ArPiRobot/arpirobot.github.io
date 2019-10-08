@@ -1,30 +1,29 @@
 # Downloads
 
-## ArPiRobot Image Downloads
-Below are the download links for the Raspberry Pi ArPiRobot OS Images (customized Raspbian install).
+#### **ArPiRobot Images**
+| Release Date | Image Version | Python Version | Download |
+| ------------ | ------------- | -------------- | -------- |
+| 8-10-19 | Beta1 | 3.5 | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xg7RJJkTmLCj5crQlBg?e=r78qN6) |
 
-| ArPiRobot Image version | Python Version | Raspbian Version | Download |
-| ----------------------- | -------------- | ---------------- | -------- |
-| BETA IMAGE              | 3.5            | Stretch          | No download |
-
-## Basic Development Environment
-
-**Python 3.5 Environments**
-
-| Operating System | Environment Revision | Download |
-| ---------------- | -------------------- | -------- |
-| Windows 64-bit   | BETA 1               | [https://1drv.ms/u/s!AhjgTI1qxX9xg7Q5NYsZ_OLm5xfuzA?e=mlnywt](https://1drv.ms/u/s!AhjgTI1qxX9xg7Q5NYsZ_OLm5xfuzA?e=mlnywt) |
+When downloading updates, the Drive Station, the Deploy Tool, and the Arduino Firmware, make sure the versions you download are compatible with the image you are using. The release notes for each component (visible with the download) will list compatible image versions.
 
 
-## ArPiRobot Update Packages
-Download update zip files from the [Releases on GitHub](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases). These updates can be applied to the robot by using the deploy tool or to a development environment by using the included script.
+#### **ArPiRobot Updates**
+Updates can be downloaded from [GitHub](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases). 
 
+There are two update zips for each update: A robot update zip (to be installed on the robot with the Deploy Tool) and a development update (to be installed on the development computer using the containd installer scripts).
 
-## ArPiRobot Drive Station
-Download [Releases](https://github.com/MB3hel/ArPiRobot-DriveStation/releases) or [Source Code](https://github.com/MB3hel/ArPiRobot-DriveStation) from GitHub.
+#### **Drive Station**
+The Drive Station can be downloaded form [GitHub](https://github.com/MB3hel/ArPiRobot-DriveStation/releases).
 
-## ArPiRobot Deploy Tool
-Download [Releases](https://github.com/MB3hel/ArPiRobot-DeployTool/releases) or [Source Code](https://github.com/MB3hel/ArPiRobot-DeployTool/) from GitHub.
+Each release has three files: A windows installer (.exe), a macOS package (.zip), and a universal Java archive (.jar). The Windows installers and macOS packages install Java with the Drive Station, however if you are using the JAR (usually on Linux or *BSD), it is necessary to also install Java (11 or newer). It is recommended to use distribution packages for Linux and BSDs. If using the JAR on macOS or Windows, it is recommended to use [AdoptOpenJDK](https://adoptopenjdk.net/) packages.
 
-## ArPiRobot Arduino Firmware
-Download the latest [Release](https://github.com/MB3hel/ArPiRobot-ArduinoFirmware/releases) from GitHub.
+#### **Deploy Tool**
+The Deploy Tool can be downloaded form [GitHub](https://github.com/MB3hel/ArPiRobot-DeployTool/releases).
+
+Each release has three files: A windows installer (.exe), a macOS package (.zip), and a universal Java archive (.jar). The Windows installers and macOS packages install Java with the Deploy Tool, however if you are using the JAR (usually on Linux or *BSD), it is necessary to also install Java (11 or newer). It is recommended to use distribution packages for Linux and BSDs. If using the JAR on macOS or Windows, it is recommended to use [AdoptOpenJDK](https://adoptopenjdk.net/) packages.
+
+#### **Arduino Firmware**
+The ArPiRobot Arduino firmware can be downloaded from [GitHub]().
+
+It is necessary to install the [Arduino IDE](https://www.arduino.cc/en/Main/Software) (Not the online version) to build and upload the project to an Arduino compatible board. If using a Teensy board it is also necessary to install [Teensyduino](https://www.pjrc.com/teensy/teensyduino.html).

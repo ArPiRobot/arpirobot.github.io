@@ -1,30 +1,24 @@
 # Setup for Development
 
-This guide documents how to install all required software and libraries to develop ArPiRobot code your computer.
+There are several tools used to write ArPiRobot on your computer, deploy code to and configure the robot, and control the robot.
 
-## Install the Basic Development Environment
-The basic development environment can be downloaded from the [downloads page](../downloads.md). The development environment includes a python install and workspace folder to contain Visual Studio Code projects, as well as a script to update ArPiRobot libraries for the development environment. Once the package has been downloaded extract the zip file. There will be a folder called `arpirobot-dev`. This folder contains the development environment. The development environment will contain several folders and files.
+## Writing ArPiRobot Code
 
-`python##` - This is the ArPiRobot-specific python distribution used by ArPiRobot projects. The version will be a two digit number without decimal point (for example python 3.5.4 would be `python35`).
+ArPiRobot code is written in python using the ArPiRobot python library. There are several tools for writing python code, but the one we will focus on is Visual Studio Code (VSCode).
 
-`workspace` - This folder should contain project folders for each ArPiRobot project in the workspace.
+First, a specific python version must be installed. Multiple versoins of python can be installed on a system, but it is important to make sure that the same version as the robot is using is installed on your computer. The versoin of python used on the robot depends on the Raspberry Pi image. This can be found in the information table for each ArPiRobot Version on the [versions page](../versions.md).
 
-`update.bat or update.sh` - A windows batch or unix bash script to update the python library version installed in the ArPiRobot python distribution.
+Download the correct version of python from [python.org](https://www.python.org/downloads/). Run the installer. Make sure to add python to the path and to install pip.
 
+Next download and install [Visual Studio Code](https://code.visualstudio.com/). After installing it run it and open the extensions panel (icon on the left side panel). Search for and install the python extension.
 
-## Install and Configure Visual Studio Code
-Download [Visual Studio Code](https://code.visualstudio.com/) and install it. Launch Visual Studio Code (VSCode). On the left side bar select the extensions icon (5th from the top). Search for "python" (without the quotes). Select Microsoft's Python extension and install it.
+Next install the ArPiRobot VSCode Extension. Download the latest version from [GitHub](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases). Open a terminal or command prompt in the folder where you downloaded the `.vsix` file for the extension and run 
 
-
-## Install the Drive Station
-Download the ArPiRobot Drive Station from the [downloads page](../downloads.md). For windows download and run the `.exe` installer. For macOS extract the `.zip` file and move the `.app` file to `/Applications`. For Linux (or *BSD or other systems where Java 11+ is installed) download the `.jar`.
-
-
-## Install the Deploy Tool
-Download the ArPiRobot Deploy Tool from the [downloads page](../downloads.md). For windows download and run the `.exe` installer. For macOS extract the `.zip` file and move the `.app` file to `/Applications`. For Linux (or *BSD or other systems where Java 11+ is installed) download the `.jar`.
+```
+code --install-extension .\arpirobot-0.0.1.vsix
+```
 
 
+## Creating an ArPiRobot project
 
-## Next Steps
-
-It is recommended to complete the [Basic Walkthrough](basicwalkthrough.md). At the very least make sure to download the latest ArPiRobot update package and apply it to the robot and to the development environment.
+Open VSCode. Type Ctrl+Shift+P and search for "Create ArPiRobot Project". Run the command. First select the folder to create the project in (the project will be in its own subfolde in the selected folder). Then enter a name for the Project. VSCode will create and open the project folder. The project will consist of one file called `robot.py`. This file contains a simple robot program. Open it so we can make sure the python settings get configured properly.

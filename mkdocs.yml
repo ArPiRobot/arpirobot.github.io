@@ -2,10 +2,11 @@ site_name: ArPiRobot
 nav:
     - Downloads: downloads.md
     - Setup:
-        - Raspberry Pi Setup: setup/pisetup.md
+        - Getting Started: setup/gettingstarted.md
         - Setup for Development: setup/devsetup.md
-        - Basic Walkthrough: setup/basicwalkthrough.md
+        - Update the Development Environment: setup/basicwalkthrough.md
     - Reference:
+        - ArPiRobot Components: reference/components.md
         - Robot Classes: reference/robotclasses.md
         - Motors: reference/motors.md
         - Raspberry Pi Sensors: reference/sensors.md
