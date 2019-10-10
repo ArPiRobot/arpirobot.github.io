@@ -40,6 +40,8 @@ The [Update Packager](https://github.com/MB3hel/ArPiRobot-UpdatePackager) reposi
 
 An update to ArPiRobot Raspbian Tools, ArPiRobot Pythonlib, and python libraries for the Raspberry Pi.
 
+Corresponding updates are also provided for the development computer (ArPiRobot Pythonlib only).
+
 #### **ArPiRobot Visual Studio Code Extension**
 
 Source code available on [GitHub](https://github.com/MB3hel/ArPiRobot-VSCodeExtension)
