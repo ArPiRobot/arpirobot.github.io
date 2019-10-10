@@ -5,6 +5,7 @@ nav:
         - Setup the Raspberry Pi: setup/setuppi.md
         - Setup your Computer: setup/devsetup.md
         - Installing Updates: setup/updating.md
+        - Create a Simple Robot Project: setup/createproject.md
     - Reference:
         - ArPiRobot Components: reference/components.md
         - Robot Classes: reference/robotclasses.md
@@ -15,5 +16,5 @@ nav:
         - Network Table: reference/nettable.md
         - Supported Hardware: reference/hardware.md
     - Advanced:
-        - Building a Minimal ArPiRobot Image: advanced/buildminimage.md
+        - Building an ArPiRobot Image: advanced/buildminimage.md
         - Image to/from SD Card: advanced/imagefromsd.md
