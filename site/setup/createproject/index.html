@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Create a Simple Robot Project - ArPiRobot</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">ArPiRobot</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../downloads/">Downloads</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../setuppi/">Setup the Raspberry Pi</a>
+</li>
+                                    
+<li >
+    <a href="../devsetup/">Setup your Computer</a>
+</li>
+                                    
+<li >
+    <a href="../updating/">Installing Updates</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Create a Simple Robot Project</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../reference/components/">ArPiRobot Components</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/robotclasses/">Robot Classes</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/motors/">Motors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/sensors/">Raspberry Pi Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/arduinosensors/">Arduino Coprocessor and Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/media/">Media on Robots</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/nettable/">Network Table</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/hardware/">Supported Hardware</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../advanced/buildminimage/">Building an ArPiRobot Image</a>
+</li>
+                                    
+<li >
+    <a href="../../advanced/imagefromsd/">Image to/from SD Card</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../updating/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../../reference/components/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#create-a-simple-robot-project">Create a Simple Robot Project</a></li>
+            <li><a href="#using-visual-studio-code">Using Visual Studio Code</a></li>
+            <li><a href="#not-using-visual-studio-code">Not Using Visual Studio Code</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="create-a-simple-robot-project">Create a Simple Robot Project</h1>
+<h2 id="using-visual-studio-code">Using Visual Studio Code</h2>
+<p>If the ArPiRobot Visual Studio Code extension is installed it is easy to create an ArPiRobot project. Open the command pallete (the default shortcut for this is <code>Ctrl+Shift+P</code> on a PC or <code>Command+Shift+P</code> on a mac). Search for ArPiRobot. Choose "Create ArPiRobot Project". In the first dialog that shows up choose the folder to create the project in (it will have its own subfolder). Then you will be prompted to enter the name of the project. VSCode will then create the project and open it. By default there will be one python file called <code>robot.py</code>. Open it.</p>
+<p>Once opened VSCode will (if the python extension is installed) have a few options along the bottom bar, one of which allows selecting a python installation. Click it and choose the python install that was setup for ArPiRobot. You may be prompted (by a message in the bottom right corner) to install pylint. Do so as it allows error detection in VSCode.</p>
+<p>To deploy the code to the robot the Deploy Tool is used. First, connect your computer to the Robot's WiFi network. Open the Deploy Tool and connect to the robot. Under the Robot Code tab there are two file selectors. First you must select a project folder (this is the folder created by VSCode that has <code>robot.py</code> in it). Then, you need to select a main script. The main script is the python file that is run on the robot. In this case, there is only one python file: <code>robot.py</code> so choose it. Note that the main script must be located in the selected project folder. Once everything is selected click Deploy to Robot and wait for the deploy operation to finish (the Deploy Tool will show a dialog when complete).</p>
+<p>To make sure code is running select the Other tab and load the launch log. You should see something in the text box. If nothing is visible try again after about 30 seconds (sometimes, especially on the Pi Zero, starting the robot program takes some time). There should either be log info indicating that the robot code is running, or if it failed there will be a description of the error. If the default project does not run it is likely that you did not install any ArPiRobot update on the robot.</p>
+<p>Once the code is running open the drive station and connect it to the robot. </p>
+<h2 id="not-using-visual-studio-code">Not Using Visual Studio Code</h2>
+<p>If you are using another IDE (or no IDE), there is nothing special about the project. You must have a root project folder containing one or more python files (optionally in subfolders).</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Setup your Computer - ArPiRobot</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">ArPiRobot</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../downloads/">Downloads</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../setuppi/">Setup the Raspberry Pi</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Setup your Computer</a>
+</li>
+                                    
+<li >
+    <a href="../updating/">Installing Updates</a>
+</li>
+                                    
+<li >
+    <a href="../createproject/">Create a Simple Robot Project</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../reference/components/">ArPiRobot Components</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/robotclasses/">Robot Classes</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/motors/">Motors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/sensors/">Raspberry Pi Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/arduinosensors/">Arduino Coprocessor and Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/media/">Media on Robots</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/nettable/">Network Table</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/hardware/">Supported Hardware</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../advanced/buildminimage/">Building an ArPiRobot Image</a>
+</li>
+                                    
+<li >
+    <a href="../../advanced/imagefromsd/">Image to/from SD Card</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../setuppi/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../updating/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#setup-your-computer">Setup your Computer</a></li>
+            <li><a href="#installing-python">Installing Python</a></li>
+            <li><a href="#installing-visual-studio-code">Installing Visual Studio Code</a></li>
+            <li><a href="#installing-the-drive-station-and-deploy-tool">Installing the Drive Station and Deploy Tool</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="setup-your-computer">Setup your Computer</h1>
+<p>There are several tools used to write ArPiRobot code on your computer, deploy code to and configure the robot, and control the robot.</p>
+<h2 id="installing-python">Installing Python</h2>
+<p>ArPiRobot code is written in python using the ArPiRobot python library, so we must first install python.</p>
+<h3 id="windows">Windows</h3>
+<p>The easiest way to install a specific python version on windows (along with pip and configuring your path) is by using a command line package manager called <a href="https://scoop.sh/">Scoop</a>. This will allow programs to be installed on windows as packages (much as is done on most Linux systems).</p>
+<p>Follow the instructions on <a href="https://scoop.sh/">Scoop's Website</a> to install scoop. Then run the commands below in  a powershell window.</p>
+<pre><code>scoop install git
+scoop bucket add versions
+</code></pre>
+
+<p>To install python for only the current user</p>
+<pre><code>scoop install python35
+</code></pre>
+
+<p>To install python for all users</p>
+<pre><code>scoop install -g python35
+</code></pre>
+
+<p><strong> <em>Note: In the above examples python 3.5 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).</em> </strong></p>
+<h3 id="macos">macOS</h3>
+<p>The easiest way to install a specific python version on macos (and ensure that all required libraries are available and up to date) is by using a tool called pyenv, which can be installed with <a href="https://brew.sh/">Homebrew</a> (a command line package manager for macOS). Follow the instructions on Homebrew's page to install homebrew. Then follow the process below to install pyenv and use it to build and install a specific python version.</p>
+<p>First install required libraries</p>
+<pre><code>brew install openssl readline sqlite3 xz zlib
+</code></pre>
+
+<p>Then install pyenv</p>
+<pre><code>brew install pyenv
+</code></pre>
+
+<p>Then build and install a specific python version</p>
+<pre><code>pyenv install -v 3.5
+</code></pre>
+
+<p><strong> <em>Note: In the above example python 3.5 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).</em> </strong></p>
+<h3 id="linux-bsd">Linux / *BSD</h3>
+<p>The process of installing a specific python version will vary with Linux distributions (or BSD OSes). Pyenv should be able to be used. Just google instructions.</p>
+<p><strong>Ubuntu</strong></p>
+<p>Ubuntu users can use a ppa repo providing many python versions.</p>
+<pre><code>sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.5
+</code></pre>
+
+<p>This will install python35 and pip35 executables.</p>
+<p><strong> <em>Note: In the above example python 3.5 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).</em> </strong></p>
+<h2 id="installing-visual-studio-code">Installing Visual Studio Code</h2>
+<p>There are many development environments for writing python code, but for ArPiRobot we will focus on Visual Studio Code (VSCode). It provides intelligent code suggestions and error detection, and there is an ArPiRobot extension for VSCode that can help create projects.</p>
+<p>Download and install VSCode from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>.</p>
+<p>After installing it, open VSCode. A few extensions will be required/helpful. First, install Microsoft's Python extension. Then download the ArPiRobot VSCode Extension (see the <a href="../../downloads/">downloads page</a>). Once you've downloaded the <code>vsix</code> file open VSCode's extensions pane (left side). Click the three dots menu button in the top right of the extensions pane. Choose install form VSIX and choose the downloaded VSIX file.</p>
+<h2 id="installing-the-drive-station-and-deploy-tool">Installing the Drive Station and Deploy Tool</h2>
+<h3 id="windows_1">Windows</h3>
+<p>Download the exe installers for both (see <a href="../../downloads/">downloads page</a>). Run the installer. A Java runtime will be installed with each program. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.</p>
+<h3 id="macos_1">macOS</h3>
+<p>Download the <code>.zip</code> macOS packages (see <a href="../../downloads/">downloads page</a>). Extract the zip files and move the resulting <code>.app</code> files to the <code>Applications</code> folder. Each app comes with its own Java runtime.</p>
+<h3 id="other">Other</h3>
+<p>This method will work on any platform where Java is available (Linux, *BSD, Windows, macOS, etc). First install Java 11+. Then download the <code>.jar</code> files (see <a href="../../downloads/">downloads page</a>). Most of the time, if Java is installed, double clicking the <code>.jar</code> file will run the program. If not, the command below can be used</p>
+<pre><code>java -jar /full/path/to/jar/file.jar
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

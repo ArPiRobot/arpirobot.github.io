@@ -66,7 +66,8 @@ Most sensors require an arduino either due to timing, sensor communication requi
 
 #### **Motors**
 | Item | Description/Notes | Link(s) |
-| TT Motor | TMost common motor option. It is cheap and well-tested. Gear ratio is 1:48. Many kits come with these. | [Adafruit](https://www.adafruit.com/product/3777) |
+| ---- | ----------------- | ------- |
+| TT Motor | Most common motor option. It is cheap and well-tested. Gear ratio is 1:48. Many kits come with these. | [Adafruit](https://www.adafruit.com/product/3777) |
 | Angled TT Motor | These are not often used, but some kits do use them. Gear ratio is 1:120 | [RobotShop](https://www.robotshop.com/en/dfrobot-6v-180-rpm-micro-dc-geared-motor-with-back-shaft.html), [DFRobot](https://www.dfrobot.com/product-100.html?search=tt%20motor&description=true) |
 | High Torque TT Motor | Same shape as standard TT Motor, but 1:120 gear ratio. These are hard to find. | [Banggood](https://www.banggood.com/DC-3V-6V-DC-1120-Gear-Motor-TT-Motor-for-Arduino-Smart-Car-Robot-DIY-p-1260117.html?cur_warehouse=CN) |
 | High Torque TT Motor w/ Quad Encoder | Same as high torque TT motor (1:120 gear ratio), but with builtin quadrature encoder. | [RobotShop](https://www.robotshop.com/en/micro-6v-160rpm-1201-dc-geared-motor-encoder.html), [DFRobot](https://www.dfrobot.com/product-1457.html?search=tt%20motor&description=true) |
@@ -79,7 +80,7 @@ Most sensors require an arduino either due to timing, sensor communication requi
 | Acrylic 4WD | Acrylic 4 wheel drive robot. Dual layer. | [Amazon](https://www.amazon.com/perseids-Chassis-Encoder-Wheels-Battery/dp/B07DNYQ3PX/ref=pd_cp_21_1/138-3529356-0891926?_encoding=UTF8&pd_rd_i=B07DNYQ3PX&pd_rd_r=8b0a7497-1d72-4db6-8f00-c6f1602b9361&pd_rd_w=hmEkz&pd_rd_wg=PsJER&pf_rd_p=0e5324e1-c848-4872-bbd5-5be6baedf80e&pf_rd_r=37Y12BY5QSY2Z2GBVRCX&psc=1&refRID=37Y12BY5QSY2Z2GBVRCX) |
 | DFRobot Pirate 4WD | Aluminum, high quality, dual layer, 4-wheel drive robot chasis. | [RobotShop](https://www.robotshop.com/en/dfrobot-4wd-arduino-mobile-platform.html),  [DFRobot](https://www.dfrobot.com/product-97.html?search=pirate&description=true) |
 
-#### **Other Components and Tools***
+#### **Other Components and Tools**
 
 | Item | Purpose | Description/Notes | Link(s) |
 | ---- | ------- | ----------------- | ------- |
@@ -99,5 +100,5 @@ Most sensors require an arduino either due to timing, sensor communication requi
 | 5x AA holder | Hold batteries | These are hard to find | [Amazon (not prime)](https://www.amazon.com/TOOGOO-1-5V-Battery-Holder-Black/dp/B00L316FNQ/ref=sr_1_6?keywords=5x+aa+holder&qid=1570914964&s=electronics&sr=1-6), [Amazon (5 pack)](https://www.amazon.com/Vanki-Battery-Holder-Case-Leads/dp/B073XC52BG/ref=sr_1_1?keywords=5x+aa+holder&qid=1570914964&s=electronics&sr=1-1), [Adafruit (Connector on end)](https://www.adafruit.com/product/3456) |
 | 6x AA holder | Hold batteries | These use a 9V style header | [Amazon (2 pack)](https://www.amazon.com/gp/product/B019P0VDRO?pf_rd_p=183f5289-9dc0-416f-942e-e8f213ef368b&pf_rd_r=YQ9STZ6D446A2YX411RA)
 | Manel Mount Switch | Main power switch | These can be mounted with hot glue. | [Adafruit](https://www.adafruit.com/product/3221) |
-| Breadboard compatible switch | These sit in a breadboard | [Adafruit](https://www.adafruit.com/product/805) |
+| Breadboard compatible switch | Main power switch  | These sit in a breadboard | [Adafruit](https://www.adafruit.com/product/805) |
 | Hot glue gun | Mount some (non-PCB) components. | | [Amazon](https://www.amazon.com/ccbetter-Upgraded-Removable-Anti-hot-Flexible/dp/B01178RVI2/ref=sr_1_4?keywords=hot+glue+gun&qid=1570915241&sr=8-4) |

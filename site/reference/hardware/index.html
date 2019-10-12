@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Supported Hardware - ArPiRobot</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">ArPiRobot</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../downloads/">Downloads</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../setup/setuppi/">Setup the Raspberry Pi</a>
+</li>
+                                    
+<li >
+    <a href="../../setup/devsetup/">Setup your Computer</a>
+</li>
+                                    
+<li >
+    <a href="../../setup/updating/">Installing Updates</a>
+</li>
+                                    
+<li >
+    <a href="../../setup/createproject/">Create a Simple Robot Project</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../components/">ArPiRobot Components</a>
+</li>
+                                    
+<li >
+    <a href="../robotclasses/">Robot Classes</a>
+</li>
+                                    
+<li >
+    <a href="../motors/">Motors</a>
+</li>
+                                    
+<li >
+    <a href="../sensors/">Raspberry Pi Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../arduinosensors/">Arduino Coprocessor and Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../media/">Media on Robots</a>
+</li>
+                                    
+<li >
+    <a href="../nettable/">Network Table</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Supported Hardware</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../advanced/buildminimage/">Building an ArPiRobot Image</a>
+</li>
+                                    
+<li >
+    <a href="../../advanced/imagefromsd/">Image to/from SD Card</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../nettable/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../../advanced/buildminimage/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#supported-hardware">Supported Hardware</a></li>
+            <li><a href="#about-vendors">About Vendors</a></li>
+            <li><a href="#supported-raspberry-pis">Supported Raspberry Pi's</a></li>
+            <li><a href="#supported-arduino-coprocessors">Supported Arduino Coprocessors</a></li>
+            <li><a href="#supported-motor-drivers">Supported Motor Drivers</a></li>
+            <li><a href="#supported-raspberry-pi-sensors">Supported Raspberry Pi Sensors</a></li>
+            <li><a href="#supported-arduino-sensors">Supported Arduino Sensors</a></li>
+            <li><a href="#motors">Motors</a></li>
+            <li><a href="#kit-baseschasis">Kit bases/chasis</a></li>
+            <li><a href="#other-components-and-tools">Other Components and Tools</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="supported-hardware">Supported Hardware</h1>
+<h4 id="about-vendors"><strong>About Vendors</strong></h4>
+<p>Most of the time we provide links to components that can be bought from <a href="https://www.adafruit.com/">Adafruit</a> or are easily found on <a href="https://www.amazon.com/">Amazon</a>. Occasionalyy, parts may not be available from these sites (or may be hard to find or not competitivly priced) so there are sometimes other sites used.</p>
+<p><a href="https://www.banggood.com/">Banggood</a> - Stocks many items to be purchased online. Similar to Amazon, but slow shipping from China. If you are after cheap for many of the items on the "Other" list, look here.</p>
+<p><a href="https://www.dfrobot.com/">DFRobot</a> - Provide good kits and selection of components, but shipping costs are high. </p>
+<p><a href="https://www.robotshop.com/">Robotshop</a> - Stock many components, including many DFRobot motors with cheaper shipping.</p>
+<p><a href="https://store.arduino.cc/usa/">Arduino Store</a> - This is sometimes the only place to easily find some boards.</p>
+<h4 id="supported-raspberry-pis"><strong>Supported Raspberry Pi's</strong></h4>
+<p>Any raspberry Pi with a WiFi adapter should work. While it is theoretically possible to use a USB WiFi adapter it would likely involve making changes to the WiFi configuration scripts and is not recommended.</p>
+<table>
+<thead>
+<tr>
+<th>Raspberry Pi Model</th>
+<th>Image Version Tested</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi Zero W</td>
+<td>Beta1</td>
+</tr>
+<tr>
+<td>Raspberry Pi 3 Model A+</td>
+<td>Beta1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="supported-arduino-coprocessors"><strong>Supported Arduino Coprocessors</strong></h4>
+<p>Any Arduino compatible board, that can be interfaced with the Raspberry Pi via UART (be it by pins or by USB) should work. Be aware that some Arduinos are 5V devices and some are 3.3V devices (if USB is used to supply power it will always be 5V so there will be 5V power available, but the arduino itself won't use 5V logic levels). Some sensors require 5V power, but can use a 3.3V logic level; and some sensors only support a 5V logic level. Some 3.3V devices have I/O pins that are 5V tolerant (such as the Teensy 3.2) so they can work with most 5V devices. A logic level shifter could also be used. </p>
+<p>There are also many Arduino clone boards available, and often times they are not obviously clones on listings online (such as on Amazon). Some clones (the ones that are obviously not Arduino brand products) are good quality, but others are not. Be careful where you buy things from.</p>
+<p>The table below is just the boards that have been tested and are known to work.</p>
+<table>
+<thead>
+<tr>
+<th>Arduino</th>
+<th>Board Voltage</th>
+<th>Description</th>
+<th>Product Link (Can find other sellers)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arduino Nano</td>
+<td>5V</td>
+<td>Small footprint, same features as Arduino Uno</td>
+<td><a href="https://store.arduino.cc/usa/arduino-nano">Arduino Store</a></td>
+</tr>
+<tr>
+<td>Arduino Nano Every</td>
+<td>5V</td>
+<td>Same size and footprint as Arduino Nano, but newer and cheaper. For use on a breadboard make sure to get the variant with headers.</td>
+<td><a href="https://store.arduino.cc/usa/nano-every-with-headers">Arduino Store</a></td>
+</tr>
+<tr>
+<td>Sainsmart Nano v3</td>
+<td>5V</td>
+<td>Sainsmart Arduino Nano clone. Cheaper, uses different FTDI chip, but usually works as intended. There were reports of devices with "counterfit" FTDI chips being bricked by a windows driver in 2014, but the driver no longer does this. There are also two versions of this board: a blue one and a black one. I linked the blue one here because the black ones seem to becoming harder to find.</td>
+<td><a href="https://www.sainsmart.com/products/nano-v3-atmega328-au-arduino-compatible">Sainsmart Store</a>, <a href="https://www.amazon.com/SainSmart-Nano-v3-0-Compatible-Arduino/dp/B00761NDHI/ref=sr_1_4?keywords=sainsmart+nano&amp;qid=1570720152&amp;sr=8-4">Amazon</a></td>
+</tr>
+<tr>
+<td>Teensy 3.2</td>
+<td>3.3V, I/O Pins 5V Tolerant</td>
+<td>Powerful microcontroller with a small form factor. More powerful than many other Arduino compatible boards with a similar form-factor.</td>
+<td><a href="https://www.adafruit.com/product/2756">Adafruit</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="supported-motor-drivers"><strong>Supported Motor Drivers</strong></h4>
+<p>Currrently motor drivers are all connected to the Raspberry Pi. The arduino is not currently used as a motor driver.</p>
+<table>
+<thead>
+<tr>
+<th>Motor Driver</th>
+<th>Connection Type</th>
+<th>Number of Motors</th>
+<th>Logic Voltage</th>
+<th>Motor Voltage</th>
+<th>Max Current per Motor</th>
+<th>Notes</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adafruit DRV8833 Module</td>
+<td>GPIO/PWM with jumper wires</td>
+<td>2</td>
+<td>2.7V min, motor voltage max</td>
+<td>2.7V - 10.8V</td>
+<td>1.2A</td>
+<td></td>
+<td><a href="https://www.adafruit.com/product/3297">Adafruit Store</a></td>
+</tr>
+<tr>
+<td>Adafruit TB6612 Module</td>
+<td>GPIO/PWM with jumper wires</td>
+<td>2</td>
+<td>2.7V-5V</td>
+<td>4.5V - 13.5V</td>
+<td>1.2A</td>
+<td>Does not come with terminal block power input header.</td>
+<td><a href="https://www.adafruit.com/product/2448">Adafruit Store</a></td>
+</tr>
+<tr>
+<td>L298N Module</td>
+<td>GPIO/PWM with jumper wires</td>
+<td>2</td>
+<td>2.7-7V</td>
+<td>5V-12V</td>
+<td>2A</td>
+<td>Motor voltage can be up to 35V, but onboard 5V regulator cannot be used (remove jumper). An external 5V supply will be required. There is a ~1V drop between motor battery voltage and voltage applied to motors with this module.</td>
+<td><a href="https://www.amazon.com/Qunqi-2Packs-Controller-Stepper-Arduino/dp/B01M29YK5U/ref=sr_1_7?keywords=l298n&amp;qid=1570723739&amp;sr=8-7">Amazon</a></td>
+</tr>
+<tr>
+<td>Adafruit Motor Hat</td>
+<td>Pi GPIO Header (hat) I<sup>2</sup>C</td>
+<td>4</td>
+<td>3.3V I<sup>2</sup>C</td>
+<td>4.5V-13.5V</td>
+<td>1.2A</td>
+<td>Uses TB6612 chips, but communicates with Pi via I<sup>2</sup>C, so there is no need for software PWM. It comes with a standard header, but it is recommended to buy and use Adafruit's stacking header so other I/O pins are accessible.</td>
+<td><a href="https://www.adafruit.com/product/2348">Adafruit Store</a></td>
+</tr>
+<tr>
+<td>Geekworm Motor Hat</td>
+<td>Pi GPIO Header (hat) I<sup>2</sup>C</td>
+<td>4</td>
+<td>3.3V I<sup>2</sup>C</td>
+<td>4.5V-13.5V</td>
+<td>1.2A</td>
+<td>Claims to use TB6612, but mine did not. Used different driver with current limiting issues that lead to hat thermal shutoff happening easily for larger robots. Seems to be lower quality "copy" of Adafruit's Hat.</td>
+<td><a href="https://www.amazon.com/Raspberry-Function-Expansion-Support-Stepper/dp/B0721MTJ3P/ref=sr_1_6?keywords=raspberry+pi+motor+hat&amp;qid=1570724085&amp;sr=8-6">Amazon</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="supported-raspberry-pi-sensors"><strong>Supported Raspberry Pi Sensors</strong></h4>
+<p>Most sensors require an arduino either due to timing, sensor communication requirements, or voltage requirements. Some however, work well with a Raspberry Pi and are easier to use without involving the Arduino.</p>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adafruit INA260 Voltage, Current Sensor</td>
+<td>Measures motor battery voltage and current consumption of motors. Communicates with Pi via I<sup>2</sup>C. Provides more acurate voltage readings than a voltage divider does with the arduino and provides current readings.</td>
+<td><a href="https://www.adafruit.com/product/4226">Adafruit Store</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="supported-arduino-sensors"><strong>Supported Arduino Sensors</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Sensor Type</th>
+<th>Sensor Description</th>
+<th>Link(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rotary Encoders</td>
+<td>Any encoder with a single data line (single channel encoders). Can be used to determine distance traveled or speed, but cannot distinguish between directions. Commonly made with slotted disks and photo interrupters.</td>
+<td><a href="https://www.adafruit.com/product/3782">TT Motor Disk</a>, <a href="https://www.adafruit.com/product/3986">Photo Interrupter</a></td>
+</tr>
+<tr>
+<td>Old Adafruit 9DOF IMU</td>
+<td>No longer sold. Legacy component. Gyro, accelerometer, and magnetometer combo board.</td>
+<td><a href="https://www.adafruit.com/product/1714">Adafruit Store</a></td>
+</tr>
+<tr>
+<td>Adafruit NXP 9DOF IMU</td>
+<td>Support coming soon. Newer gyro, accelerometer, and magnetometer combo board.</td>
+<td><a href="https://www.adafruit.com/product/3463">Adafruit Store</a></td>
+</tr>
+<tr>
+<td>4-Pin Ultrasonic Sensors</td>
+<td>Ultrasonic sensors with trigger and echo pins. Most common is HC-SR04, which is 5V only. There are other compatible devices that work at 3.3V though.</td>
+<td><a href="https://www.adafruit.com/product/3942">Standard HC-SR04</a>, <a href="https://www.adafruit.com/product/4007">5V/3V Compatible Device</a></td>
+</tr>
+<tr>
+<td>Analog Input Voltage Monitor</td>
+<td>Using an analog input to measure motor battery voltage, usually through a votage divider. Can assemble on breadboard with through hole resistors or buy pre-assembled voltage divider.</td>
+<td><a href="https://www.amazon.com/Diymall-Voltage-Sensor-Dc0-25v-Arduino/dp/B00NK4L97Q/ref=pd_cp_328_1/138-3529356-0891926?_encoding=UTF8&amp;pd_rd_i=B00NK4L97Q&amp;pd_rd_r=3f261697-5124-4ab3-80e7-11f26fb46372&amp;pd_rd_w=ai8HI&amp;pd_rd_wg=mZRsC&amp;pf_rd_p=0e5324e1-c848-4872-bbd5-5be6baedf80e&amp;pf_rd_r=FWXE8A9E4VHS9Q24H9MN&amp;psc=1&amp;refRID=FWXE8A9E4VHS9Q24H9MN">Voltage Divider Module</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="motors"><strong>Motors</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description/Notes</th>
+<th>Link(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TT Motor</td>
+<td>Most common motor option. It is cheap and well-tested. Gear ratio is 1:48. Many kits come with these.</td>
+<td><a href="https://www.adafruit.com/product/3777">Adafruit</a></td>
+</tr>
+<tr>
+<td>Angled TT Motor</td>
+<td>These are not often used, but some kits do use them. Gear ratio is 1:120</td>
+<td><a href="https://www.robotshop.com/en/dfrobot-6v-180-rpm-micro-dc-geared-motor-with-back-shaft.html">RobotShop</a>, <a href="https://www.dfrobot.com/product-100.html?search=tt%20motor&amp;description=true">DFRobot</a></td>
+</tr>
+<tr>
+<td>High Torque TT Motor</td>
+<td>Same shape as standard TT Motor, but 1:120 gear ratio. These are hard to find.</td>
+<td><a href="https://www.banggood.com/DC-3V-6V-DC-1120-Gear-Motor-TT-Motor-for-Arduino-Smart-Car-Robot-DIY-p-1260117.html?cur_warehouse=CN">Banggood</a></td>
+</tr>
+<tr>
+<td>High Torque TT Motor w/ Quad Encoder</td>
+<td>Same as high torque TT motor (1:120 gear ratio), but with builtin quadrature encoder.</td>
+<td><a href="https://www.robotshop.com/en/micro-6v-160rpm-1201-dc-geared-motor-encoder.html">RobotShop</a>, <a href="https://www.dfrobot.com/product-1457.html?search=tt%20motor&amp;description=true">DFRobot</a></td>
+</tr>
+<tr>
+<td>Angled TT Motor w/ Quad Encoder</td>
+<td>Same as angled TT Motor (1:120 gear ratio), but had builtin quadrature encoder.</td>
+<td><a href="https://www.robotshop.com/en/6v-1201-160rpm-micro-dc-geared-motor-encoder.html">RobotShop</a>, <a href="https://www.dfrobot.com/product-1458.html?search=tt%20motor&amp;description=true">DFRobot</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kit-baseschasis"><strong>Kit bases/chasis</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description/Notes</th>
+<th>Link(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acrylic 2WD</td>
+<td>Acrylic 2 wheel drive robot, with caster wheel.</td>
+<td><a href="https://www.amazon.com/perseids-Chassis-Encoder-Wheels-Battery/dp/B07DNYQ3PX/ref=pd_cp_21_1/138-3529356-0891926?_encoding=UTF8&amp;pd_rd_i=B07DNYQ3PX&amp;pd_rd_r=8b0a7497-1d72-4db6-8f00-c6f1602b9361&amp;pd_rd_w=hmEkz&amp;pd_rd_wg=PsJER&amp;pf_rd_p=0e5324e1-c848-4872-bbd5-5be6baedf80e&amp;pf_rd_r=37Y12BY5QSY2Z2GBVRCX&amp;psc=1&amp;refRID=37Y12BY5QSY2Z2GBVRCX">Amazon</a></td>
+</tr>
+<tr>
+<td>Acrylic 4WD</td>
+<td>Acrylic 4 wheel drive robot. Dual layer.</td>
+<td><a href="https://www.amazon.com/perseids-Chassis-Encoder-Wheels-Battery/dp/B07DNYQ3PX/ref=pd_cp_21_1/138-3529356-0891926?_encoding=UTF8&amp;pd_rd_i=B07DNYQ3PX&amp;pd_rd_r=8b0a7497-1d72-4db6-8f00-c6f1602b9361&amp;pd_rd_w=hmEkz&amp;pd_rd_wg=PsJER&amp;pf_rd_p=0e5324e1-c848-4872-bbd5-5be6baedf80e&amp;pf_rd_r=37Y12BY5QSY2Z2GBVRCX&amp;psc=1&amp;refRID=37Y12BY5QSY2Z2GBVRCX">Amazon</a></td>
+</tr>
+<tr>
+<td>DFRobot Pirate 4WD</td>
+<td>Aluminum, high quality, dual layer, 4-wheel drive robot chasis.</td>
+<td><a href="https://www.robotshop.com/en/dfrobot-4wd-arduino-mobile-platform.html">RobotShop</a>,  <a href="https://www.dfrobot.com/product-97.html?search=pirate&amp;description=true">DFRobot</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="other-components-and-tools"><strong>Other Components and Tools</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Purpose</th>
+<th>Description/Notes</th>
+<th>Link(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Velcro</td>
+<td>Attach components to robot</td>
+<td>Can be used to mount Raspberry Pi, breadboards, motor drivers, etc.</td>
+<td><a href="https://www.amazon.com/Strenco-Inch-Self-Adhesive-Hook/dp/B00FQ937NM/ref=sr_1_7?keywords=velcro&amp;qid=1570911969&amp;sr=8-7">Amazon</a></td>
+</tr>
+<tr>
+<td>Twist Ties</td>
+<td>Cable Management</td>
+<td>Plastic ones hold up better than paper ones.</td>
+<td><a href="https://www.amazon.com/Easytle-Plastic-Black-Twist-Cable/dp/B00ZV42X1Y/ref=sr_1_4?keywords=twist+ties&amp;qid=1570912236&amp;sr=8-4">Amazon</a></td>
+</tr>
+<tr>
+<td>Solder Iron Kit</td>
+<td>Attach leads to motors, mount header pins, repair work, etc.</td>
+<td>The linked product is a simple soldering kit. Better irons do exist, but this should be good enough for many simple tasks.</td>
+<td><a href="https://www.amazon.com/ANBES-Soldering-Iron-Kit-Electronics/dp/B06XZ31W3M/ref=sr_1_4?keywords=solder+iron&amp;qid=1570912527&amp;sr=8-4">Amazon</a></td>
+</tr>
+<tr>
+<td>Multimeter</td>
+<td>Measurement and debugging</td>
+<td>The linked product is a simple multimeter, but will work for simple tasks.</td>
+<td><a href="https://www.amazon.com/Etekcity-Multimeter-MSR-R500-Electronic-Multimeters/dp/B01N9QW620/ref=sr_1_5?keywords=multimeter&amp;qid=1570912789&amp;sr=8-5">Amazon</a></td>
+</tr>
+<tr>
+<td>Wire Stripper</td>
+<td>Removing insulation from wires</td>
+<td>Linked item on amazon also works as a crimper for some connectors.</td>
+<td><a href="https://www.amazon.com/dp/B000JNNWQ2/ref=twister_B01E3QOEZI?_encoding=UTF8&amp;psc=1">Amazon</a></td>
+</tr>
+<tr>
+<td>Jumper Wires (Preassembled)</td>
+<td>Connections to header pins and breadboard</td>
+<td>Assorted pack</td>
+<td>[Amazon] (https://www.amazon.com/diymore-120Pcs-Dupont-40-Pin-Female/dp/B01K4K3WKK/ref=sr_1_20?keywords=dupont+jumper+wire&amp;qid=1570914352&amp;s=toys-and-games&amp;sr=1-20)</td>
+</tr>
+<tr>
+<td>Wire</td>
+<td>Motor leads, make jumpers</td>
+<td>24AWG is a good size for jumper wires</td>
+<td><a href="https://www.amazon.com/Stranded-Nano-Flexible-Insulated-Electrical/dp/B07DCV7BDD/ref=sxbs_sp_mra?keywords=stranded+wire&amp;pd_rd_i=B07DCV7BDD&amp;pd_rd_r=cbc209fd-bc69-454f-b4e2-b81a483ad1ea&amp;pd_rd_w=Dj393&amp;pd_rd_wg=jectf&amp;pf_rd_p=2e675d27-2176-48bd-bab7-a89e5b36d9de&amp;pf_rd_r=NZCQ5W3CMJZWHT8XJV26&amp;qid=1570914425&amp;s=toys-and-games">Amazon</a></td>
+</tr>
+<tr>
+<td>Mini Breadboard</td>
+<td>Hold arduino and sensors. Wiring.</td>
+<td>Mini breadboard does not leave much room for anythin but arduino.</td>
+<td><a href="https://www.adafruit.com/product/65">Adafruit</a></td>
+</tr>
+<tr>
+<td>Half Size Breadboard</td>
+<td>Hold arduino and sensors. Wiring.</td>
+<td>Half sized breadboard will fit on larger robots.</td>
+<td><a href="https://www.adafruit.com/product/64">Adafruit</a></td>
+</tr>
+<tr>
+<td>Male .1" Header Pins</td>
+<td>Use on arduino or sensor. Often come with parts, but sometimes more are necessary.</td>
+<td><a href="https://www.adafruit.com/product/392">Adafruit</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Logic Level Shifter</td>
+<td>Convert between logic levels (ex 3.3V and 5V)</td>
+<td>Can find similar cheaper in packs of 5-10 on amazon if you need multiple.</td>
+<td><a href="https://www.adafruit.com/product/757">Adafruit</a></td>
+</tr>
+<tr>
+<td>Dupont Kit</td>
+<td>Making jumper wires</td>
+<td>This kit comes with many housings, male and female, pins.</td>
+<td><a href="https://www.amazon.com/QLOUNI-Housing-Connector-Adaptor-Assortment/dp/B0774NMT1S/ref=sr_1_7?keywords=dupont+pin+kit&amp;qid=1570914779&amp;sr=8-7">Amazon</a></td>
+</tr>
+<tr>
+<td>Dupont Crimper</td>
+<td>Crimp dupont connectors (ex. for jumper wire)</td>
+<td>There are cheaper crimpers, but not all work very well.</td>
+<td><a href="https://www.amazon.com/IWISS-Professional-Compression-Ratcheting-Wire-electrode/dp/B00OMM4YUY/ref=sr_1_4?keywords=dupont+crimper&amp;qid=1570914838&amp;sr=8-4">Amazon</a></td>
+</tr>
+<tr>
+<td>5x AA holder</td>
+<td>Hold batteries</td>
+<td>These are hard to find</td>
+<td><a href="https://www.amazon.com/TOOGOO-1-5V-Battery-Holder-Black/dp/B00L316FNQ/ref=sr_1_6?keywords=5x+aa+holder&amp;qid=1570914964&amp;s=electronics&amp;sr=1-6">Amazon (not prime)</a>, <a href="https://www.amazon.com/Vanki-Battery-Holder-Case-Leads/dp/B073XC52BG/ref=sr_1_1?keywords=5x+aa+holder&amp;qid=1570914964&amp;s=electronics&amp;sr=1-1">Amazon (5 pack)</a>, <a href="https://www.adafruit.com/product/3456">Adafruit (Connector on end)</a></td>
+</tr>
+<tr>
+<td>6x AA holder</td>
+<td>Hold batteries</td>
+<td>These use a 9V style header</td>
+<td><a href="https://www.amazon.com/gp/product/B019P0VDRO?pf_rd_p=183f5289-9dc0-416f-942e-e8f213ef368b&amp;pf_rd_r=YQ9STZ6D446A2YX411RA">Amazon (2 pack)</a></td>
+</tr>
+<tr>
+<td>Manel Mount Switch</td>
+<td>Main power switch</td>
+<td>These can be mounted with hot glue.</td>
+<td><a href="https://www.adafruit.com/product/3221">Adafruit</a></td>
+</tr>
+<tr>
+<td>Breadboard compatible switch</td>
+<td>Main power switch</td>
+<td>These sit in a breadboard</td>
+<td><a href="https://www.adafruit.com/product/805">Adafruit</a></td>
+</tr>
+<tr>
+<td>Hot glue gun</td>
+<td>Mount some (non-PCB) components.</td>
+<td></td>
+<td><a href="https://www.amazon.com/ccbetter-Upgraded-Removable-Anti-hot-Flexible/dp/B01178RVI2/ref=sr_1_4?keywords=hot+glue+gun&amp;qid=1570915241&amp;sr=8-4">Amazon</a></td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

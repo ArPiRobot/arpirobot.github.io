@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Building an ArPiRobot Image - ArPiRobot</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">ArPiRobot</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../downloads/">Downloads</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../setup/setuppi/">Setup the Raspberry Pi</a>
+</li>
+                                    
+<li >
+    <a href="../../setup/devsetup/">Setup your Computer</a>
+</li>
+                                    
+<li >
+    <a href="../../setup/updating/">Installing Updates</a>
+</li>
+                                    
+<li >
+    <a href="../../setup/createproject/">Create a Simple Robot Project</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../reference/components/">ArPiRobot Components</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/robotclasses/">Robot Classes</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/motors/">Motors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/sensors/">Raspberry Pi Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/arduinosensors/">Arduino Coprocessor and Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/media/">Media on Robots</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/nettable/">Network Table</a>
+</li>
+                                    
+<li >
+    <a href="../../reference/hardware/">Supported Hardware</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li class="active">
+    <a href="./">Building an ArPiRobot Image</a>
+</li>
+                                    
+<li >
+    <a href="../imagefromsd/">Image to/from SD Card</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../../reference/hardware/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../imagefromsd/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#building-an-arpirobot-image">Building an ArPiRobot Image</a></li>
+            <li><a href="#why-a-custom-image">Why a Custom Image?</a></li>
+            <li><a href="#raspbian-version">Raspbian Version</a></li>
+            <li><a href="#base-raspbian-install">Base Raspbian Install</a></li>
+            <li><a href="#automatic-process">Automatic process</a></li>
+            <li><a href="#readonly-filesystem">Readonly Filesystem</a></li>
+            <li><a href="#initial-raspbian-setup">Initial Raspbian Setup</a></li>
+            <li><a href="#enable-interfaces">Enable Interfaces</a></li>
+            <li><a href="#upgrade-software">Upgrade software</a></li>
+            <li><a href="#remote-login-ssh">Remote Login (SSH)</a></li>
+            <li><a href="#wireless-setup">Wireless Setup</a></li>
+            <li><a href="#installing-software">Installing Software</a></li>
+            <li><a href="#setting-up-directory-structure-for-arpirobot-programs">Setting up directory structure for arpirobot programs</a></li>
+            <li><a href="#test-the-image">Test the Image</a></li>
+            <li><a href="#cleanup">Cleanup</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="building-an-arpirobot-image">Building an ArPiRobot Image</h1>
+<p>This guide details how the prebuilt minimal Raspbian image is created for ArPiRobot robots. This guide exists mostly to document the image creation process, but can be followed to create a custom Raspbian image or an image with another Linux OS. The minimal image configured should be used when development will not be done on the robot or when the robot may be powered off unexpectedly.</p>
+<h2 id="why-a-custom-image">Why a Custom Image?</h2>
+<p>There are few reasons to ever need a custom image. Most users do not need to spend the time creating their own image. The most common reasons for wanting to build a custom image are:</p>
+<ol>
+<li>If you want to use or test a newer version of Raspbian that the prebuilt image uses.</li>
+<li>If you want to use a different Linux OS (not Raspbian).</li>
+<li>If you want to understand more about how all the components of this project fit together.</li>
+</ol>
+<p>It is important to be aware that this guide is only up to date for the version of Raspbian that was used to make the prebuilt image. There will likely be slight differences if using another version of Raspbian or another Linux OS. Some important things to remember if using another Linux OS: there must be a <code>pi</code> user (or systemd services must be edited) and the <code>pi</code> user (or whatever user is used with the deploy tool) must be able to use <code>sudo</code> with no password.</p>
+<h2 id="raspbian-version">Raspbian Version</h2>
+<p>This guide is currently up to data for Raspbian Lite version 2019-04-09. The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.</p>
+<h2 id="base-raspbian-install">Base Raspbian Install</h2>
+<ul>
+<li>Download the Raspbian Image from <a href="https://www.raspberrypi.org/downloads/raspbian/">here</a>. If the correct version is no longer available it is likely OK to use a newer version, but older images can be found <a href="http://downloads.raspberrypi.org/raspbian_lite/images/">here</a>.</li>
+<li>Download and install <a href="https://www.balena.io/etcher/">balenaEtcher</a></li>
+<li>Install balenaEtcher</li>
+<li>Insert the SD Card into an SD Card slot on your PC or connect it using a USB adapter.</li>
+<li>Run balenaEtcher</li>
+<li>Select the downloaded raspbian image</li>
+<li>Select the destination SD Card</li>
+<li>Click flash and wait for it to finish</li>
+<li>Once it finishes remove and re-insert the card to mount the boot partition. Edit the <code>config.txt</code> file and add the following line at the end. This will enable the serial console which can help with setup of the image and with debugging robot code or network issues while in use on a robot.</li>
+</ul>
+<pre><code>enable_uart=1
+</code></pre>
+
+<ul>
+<li>Finally, move the SD Card into the Pi, connect keyboard, mouse, monitor and power on the pi.</li>
+</ul>
+<h2 id="automatic-process">Automatic process</h2>
+<p>Instead of following the instructions below, the work-in-progress <a href="https://github.com/MB3hel/ArPiRobot-IamageScripts">configuration scripts</a> can be used, but make sure to double check them! Once done with the scripts be sure to delete the downloaded/cloned repo. Also make sure to run each and every script <em>and in order</em>. If something goes wrong you will likely have to start over.</p>
+<p>After running the scripts it is recommeded to delete the github repo for the scripts (from <code>/home/pi</code>) and to delete the log files from <code>/root/</code>. After doing so clear bash history again.</p>
+<p>To view the script log (live)</p>
+<pre><code>sudo tail -f /root/setup_log.txt
+</code></pre>
+
+<p>Everything that follows is the manual setup instructions.</p>
+<h2 id="readonly-filesystem">Readonly Filesystem</h2>
+<p><em>Tested using commit 1b596c2ced2a6ad87347cbb8faa675f20ec7af52</em> of <code>rpi-readonly</code> project.</p>
+<p>The readonly filesystem should be configured on a clean install of Raspbian Lite. Login with username <code>pi</code> and password <code>raspberry</code>.</p>
+<p>To setup a temporary WiFi configuration (this is not necessary if using an ethernet cable to access the internet is an option) run <code>sudo raspi-config</code> and select "Network Options" then "Wi-fi". Select the region, enter an SSID and password for the network to connect to.</p>
+<p>After connecting to a network (either ethernet or wifi) run the following commands.</p>
+<pre><code>sudo apt install git
+git clone https://gitlab.com/larsfp/rpi-readonly.git
+cd rpi-readonly
+sudo ./setup.sh
+</code></pre>
+
+<p>Do an apt update when prompted. When the script completes reboot. After rebooting you will need to go back into read/write mode. Run the following command to do so the continue with the reset of the setup. Remember that after every reboot during the setup root will need to be remounted read/write. The script will add an alias for this</p>
+<p>To remount read/write run</p>
+<pre><code>rw
+</code></pre>
+
+<p>To make readonly again run</p>
+<pre><code>ro
+</code></pre>
+
+<h2 id="initial-raspbian-setup">Initial Raspbian Setup</h2>
+<p>Remove the SD Card from your PC and insert it in the Raspberry Pi. Connect the power cable and wait for the pi to boot. The first boot may take a minute or two.</p>
+<p>To change the hostname and password for the pi user run the following command.</p>
+<pre><code>sudo raspi-config
+</code></pre>
+
+<p>To change the user password select "Change User Password" and enter "arpirobot" without the quotes when prompted.</p>
+<p>To change the hostname select "Network Options" then choose "Hostname". Change the hostname to "ArPiRobot-Robot" when prompted. <em>Note: if using a different hostname make sure to change it in the dnsmasq config file later and make sure the case matches.</em></p>
+<p>Under "Localization Options" change disable en_GB.UTF8 and enable en_US.UTF8. Make en_US.UTF8 the default locale. Optinally also change the timezone under "Localization Options". The default used for ArPiRobot images is United States Eastern Time (New York time).</p>
+<p>After changing the hostname, password, locale, and timezone select Finish and choose "Yes" when asked to reboot.</p>
+<p>After rebooting change the keyboard layout (still under "Localization Options") to "Generic 105 Key" &gt; "Other" &gt; "English (US)" &gt; "English (US)". Keep all other settings default. <em>Remember to make the pi writable first!</em></p>
+<p>Next goto "Advanced Configuration" and change the default resolution to 1280x720 (helps to prevent HDMI flickering issues).</p>
+<h2 id="enable-interfaces">Enable Interfaces</h2>
+<p>Run</p>
+<pre><code>sudo raspi-config
+</code></pre>
+
+<p>Under "Interfacing Options" enable SPI and I2C.</p>
+<h2 id="upgrade-software">Upgrade software</h2>
+<p>Make sure you are still connected to a network and run</p>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+
+<p>Then reboot</p>
+<pre><code>sudo reboot
+</code></pre>
+
+<h2 id="remote-login-ssh">Remote Login (SSH)</h2>
+<p>To enable the SSH server for remote login access (if not already done by the file on the boot partition) run <code>sudo raspi-config</code> again and select "Interfacing Options" then select "SSH" and choose "Yes" to enable. Then, select "Finish".</p>
+<h2 id="wireless-setup">Wireless Setup</h2>
+<p><em>WARNING: If setting the image up over a network (SSH) make sure not to reboot until all the following configuration is completed and verified!!!</em></p>
+<h3 id="install-arpirobot-raspbian-tools">Install ArPiRobot Raspbian Tools</h3>
+<p>The Raspiban Tools contains several helper scripts that manage networking. Install the raspbian tools before proceding.</p>
+<pre><code>cd ~
+git clone git@github.com:MB3hel/ArPiRobot-RaspbianTools.git
+cd ArPiRobot-RaspbianTools
+chmod +x install.sh
+sudo ./install.sh
+</code></pre>
+
+<h3 id="run-the-start-script-on-boot">Run the start script on boot</h3>
+<p>Edit <code>/etc/rc.local</code> and add the following line before <code>exit 0</code></p>
+<pre><code>/usr/local/bin/wifistart.sh
+</code></pre>
+
+<h3 id="install-other-required-software">Install Other Required Software</h3>
+<pre><code>sudo apt install hostapd dnsmasq
+</code></pre>
+
+<p>Hostapd is used to host the access point and dnsmasq is a DNS and DHCP server.</p>
+<h3 id="configuration">Configuration</h3>
+<p>The virtual adapter and all networking services will be created/started in the correct order by the <code>arpirobot-networking</code> service installed with the Raspbian tools.</p>
+<h4 id="setup-dnsmasq-and-hostapd">Setup Dnsmasq and Hostapd</h4>
+<p>Edit <code>/etc/dnsmasq.conf</code>. Replace the contents with the following</p>
+<pre><code>interface=lo,ap0
+server=8.8.8.8
+domain-needed
+bogus-priv
+dhcp-range=192.168.10.2,192.168.10.10,255.255.255.0,24h
+</code></pre>
+
+<p>Create <code>/etc/hostapd/hostapd.conf</code> with the following contents</p>
+<pre><code>channel=11
+ssid=AP_SSID
+wpa_passphrase=AP_PASSWORD
+interface=ap0
+hw_mode=g
+macaddr_acl=0
+auth_algs=1
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+driver=nl80211
+</code></pre>
+
+<p>Edit <code>/etc/default/hostapd</code> and change the <code>DAEMON_CONF</code> line to</p>
+<pre><code>DAEMON_CONF=&quot;/etc/hostapd/hostapd.conf&quot;
+</code></pre>
+
+<p>Edit <code>/etc/dhcpcd.conf</code>. Add the following to the end of the file</p>
+<pre><code>interface ap0
+static ip_address=192.168.10.1
+nohook wpa_supplicant
+</code></pre>
+
+<p>Finally to fix dnsmasq on readonly file system add the following line to <code>/etc/fstab</code></p>
+<pre><code>  tmpfs /var/lib/misc tmpfs nosuid,nodev 0 0
+</code></pre>
+
+<h4 id="setup-client-network">Setup Client network</h4>
+<p>For now, use a real network here. Once the setup is completed change this to a dummy network so real wifi credentials are not being distributed.</p>
+<p>Edit <code>/etc/wpa_supplicant/wpa_supplicant.conf</code>. Replace its contents with the following</p>
+<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+        ssid=&quot;YOUR_SSID_HERE&quot;
+        psk=&quot;YOUR_PASS_HERE&quot;
+}
+</code></pre>
+
+<h4 id="configure-services">Configure Services</h4>
+<p>Disable networking services at boot as the custom <code>arpirobot-networking</code> service will handle starting them in the correct order</p>
+<pre><code>sudo systemctl stop hostapd
+sudo systemctl stop dnsmasq
+sudo systemctl stop dhcpcd
+sudo systemctl disable hostapd
+sudo systemctl disable dnsmasq
+sudo systemctl disable dhcpcd
+sudo systemctl unmask hostapd
+</code></pre>
+
+<p>Reboot and make sure both interfaces come up.</p>
+<p>If both interfaces come up successfully it should be safe to work remotely after this point. No more network configuration will be done.</p>
+<h2 id="installing-software">Installing Software</h2>
+<h3 id="python-and-python-libraries">Python and Python Libraries</h3>
+<p>Run the following command to install Python 3 (arpirobot does not support python2).</p>
+<pre><code>sudo apt install python3 python3-pip python3-setuptools python3-wheel
+</code></pre>
+
+<p>To install required python libraries run the following command. A list of all required libraries is kept up to date in the requirements.txt file in the PythonLib repository.</p>
+<pre><code>sudo pip3 install [SPACE SEPARATED LIST OF LIBRARIES HERE]
+</code></pre>
+
+<h3 id="install-the-arpirobot-python-library">Install the ArPiRobot Python Library</h3>
+<pre><code>git clone git@bitbucket.org:MB3hel/arpirobot-pythonlib.git
+cd arpirobot-pythonlib
+sudo python3 setup.py install
+</code></pre>
+
+<h2 id="setting-up-directory-structure-for-arpirobot-programs">Setting up directory structure for arpirobot programs</h2>
+<pre><code>mkdir ~/arpirobot
+</code></pre>
+
+<h2 id="test-the-image">Test the Image</h2>
+<p>Put the simple test program from the pythonlib samples into the <code>arpirobot</code> folder and set the filename in <code>main.txt</code>. Reboot, then connect with DS and make sure it is working correctly.</p>
+<h2 id="cleanup">Cleanup</h2>
+<p>Remove any git keys that were added to the system or any passwords that were saved with a credential manager.</p>
+<p>Remove the real wifi settings from <code>/etc/wpa_supplicant/wpa_supplicant.conf</code></p>
+<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+        ssid=&quot;DUMMY_NETWORK&quot;
+        psk=&quot;DUMMY_PASSWORD&quot;
+}
+</code></pre>
+
+<p>Clear bash history</p>
+<pre><code>history -c
+sudo history -c
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
