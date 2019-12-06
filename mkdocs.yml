@@ -18,3 +18,4 @@ nav:
     - Advanced:
         - Building an ArPiRobot Image: advanced/buildminimage.md
         - Image to/from SD Card: advanced/imagefromsd.md
+    - For Developers: devs.md
