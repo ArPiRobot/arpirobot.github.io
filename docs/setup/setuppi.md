@@ -22,6 +22,6 @@ The Raspberry Pi loads the OS form a micro SD Card, so the image must be written
 
 Choose select image and choose the ArPiRobot image file (`.img`) from the uncompressed folder. Then connect your micro SD card to your computer. Choose select target and choose the micro SD Card. Click flash and wait until it completes.
 
-Put the SD Card in the Raspbery Pi and power it on. The activity light (green) should start blinking, indicating that the Pi is booting. Wait for it to finish booting (about 30-60 seconds). 
+Put the SD Card in the Raspbery Pi and power it on. The activity light (green) should start blinking, indicating that the Pi is booting. Wait for it to finish booting (about 30-60 seconds). The first boot will take longer than most as it will expand the root partition to fill the SD card then reboot. 
 
 Once the Pi boots it will be generating a WiFi network called "ArPiRobot-Robot" with a password of "arpirobot123". This network is how we will interface with the Raspberry Pi later.
