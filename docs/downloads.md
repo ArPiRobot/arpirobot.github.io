@@ -2,7 +2,7 @@
 
 
 #### **About**
-There are a lot of things listed below, and there are even more components that go into making the robots work, so the following is just a basic description. More in-depth descriptions can be found on the [Components Page](../reference/components.md).
+There are a lot of things listed below, and there are even more components that go into making the robots work, so the following is just a basic description. More in-depth descriptions can be found on the [Components Page](reference/components.md).
 
 Modified versions of [Raspbian](https://www.raspberrypi.org/documentation/raspbian/) are released that are pre-configured to work with ArPiRobot robots and have some components pre-installed. Each version of the images listed below will have several updates created for it. The update packages will update or install the components (Python Library, Raspbian tools, etc) that are used to make robot programs work.
 
