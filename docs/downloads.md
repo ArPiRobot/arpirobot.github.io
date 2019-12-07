@@ -36,6 +36,7 @@ v1.0.0-Update2
 
 
 #### **ArPiRobot Images**
+
 | Release Date | Image Version | Python Version | Download |
 | ------------ | ------------- | -------------- | -------- |
 | 8-10-19 | Beta1 | 3.5 | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xg7RJJkTmLCj5crQlBg?e=r78qN6) |
@@ -47,12 +48,14 @@ When downloading updates, the Drive Station, the Deploy Tool, and the Arduino Fi
 #### **Compatibility Tables**:
 
 **Drive Station and Python Library Compatibiltiy**
+
 | Drive Station Versions | Supported Python Libray Versions |
 | ---------------------- | -------------------------------- |
 | v0.2.0 to Current      | v0.0.4 to current |
 | Before v0.2.0          | Before v0.0.4 (new controller data encoding) |
 
 **Deploy Tool and Raspbian Tool Compatilility**
+
 | Deploy Tool Versions | Raspbian Tool Versions |
 | -------------------- | ---------------------- |
 | Until Current        | Until Current          |
