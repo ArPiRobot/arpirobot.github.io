@@ -15,6 +15,7 @@ nav:
         - Media on Robots: reference/media.md
         - Network Table: reference/nettable.md
         - Supported Hardware: reference/hardware.md
+        - Default Settings: reference/defaultsettings.md
     - Advanced:
         - Building an ArPiRobot Image: advanced/buildminimage.md
         - Image to/from SD Card: advanced/imagefromsd.md
