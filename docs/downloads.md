@@ -14,6 +14,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 | Compatible Image Version | Update Number | Python Library Version | Raspbian Tools Version | Link |
 | ------------------ | ------------- | ---------------------- | ---------------------- | ---- |
+| Beta 3             | Update 2      | v0.0.7                 | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta3Update2)
 | Beta 3             | Update 1      | v0.0.7                 | v0.1.0                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta3Update1) |
 | Beta 2             | Update 3      | v0.0.7                 | v0.0.3                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/beta2) |
 | Beta 2             | Update 2      | v0.0.6                 | v0.0.3                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/beta2) |
@@ -29,5 +30,11 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 ## Deploy Tool
 | Deploy Tool Versions | Compatible Images and Updates | Latest Download |
 | -------------------- | ----------------------------- | --------------- |
-| v0.1.x               | Beta 3 Update 1               | [v0.1.1](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.1) |
+| v0.1.2 - v0.1.x x>1  | Beta 3 Update 2               | [v0.1.3](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
+| v0.1.0 - v0.1.1      | Beta 3 Update 1               | [v0.1.1](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.1) |
 | v0.0.x               | Beta 2 Updates 1 through 3    | [v0.0.10](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.0.10) |
+
+## Visual Studio Code Extension
+| Extension Version | Changes                                                               | Link |
+| ----------------- | --------------------------------------------------------------------- | ---- |
+| v0.0.3            | Support for updating dev environment from extension                   | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.3) |

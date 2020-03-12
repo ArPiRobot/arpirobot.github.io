@@ -61,7 +61,7 @@ sudo apt update
 sudo apt install python3.5
 ```
 
-This will install python35 and pip35 executables.
+This will install a `python3.5` executable.
 
 ** *Note: In the above example python 3.5 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
 
@@ -86,3 +86,5 @@ This method will work on any platform where Java is available (Linux, *BSD, Wind
 ```
 java -jar /full/path/to/jar/file.jar
 ```
+
+Note: For *BSD users the drive station does not include a build of the required native library. You will have to build it yourself.
