@@ -20,6 +20,7 @@ Note: You will need internet access on your computer to update the development e
 After [downloading](../downloads.md) the Update zip to your computer, open VSCode and open a python file. Select the python version to update (bottom bar). Press `Ctrl+Shift+P` search ArPiRobot and select `Install ArPiRobot Update...`. Confirm the python version (prompt in lower right corner) then select the update in the open file dialog. Wait for the update to finish installing the reload the window when prompted.
 
 **Manual Updates (Only if not using VSCode extension)**
+
 - Extract the update zip
 - Extract the pythonlib zip
 - In the extracted pythonlib directory run the following where `python` is the correct python interpreter (version) you are using for robot program development (you will need internet access)
