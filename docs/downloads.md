@@ -6,7 +6,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 ## Images
 | Image Version | Raspbian Version | Python Version | Link |
 | ------------- | ---------------- | -------------- | ---- |
-| Beta 3        | 2020-02-13-raspbian-buster-lite |  3.7           | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhJ5G8tK8ZHvYQgeh6g?e=wwg2GG) |
+| Beta3         | 2020-02-13-raspbian-buster-lite |  3.7           | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhJ5G8tK8ZHvYQgeh6g?e=wwg2GG) |
 | Beta2         |                  |  3.7           | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xg9QQMEcYP5wnOJGr2g?e=c5RYlK) |
 
 
@@ -25,15 +25,15 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 | Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ---------------------- | ----------------------------- | --------------- |
-| v0.3.x                 | Beta 3 Update 1 <br / > Beta 2 Update 3               | [v0.3.1](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.3.1)      |
+| v0.3.x                 | Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.1](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.3.1)      |
 | v0.2.x                 | Beta 2 Updates 1 and 2        | [v0.2.2](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.2.2)      |
 
 ## Deploy Tool
 | Deploy Tool Versions | Compatible Images and Updates | Latest Download |
 | -------------------- | ----------------------------- | --------------- |
-| v0.1.2 - v0.1.x x>1  | Beta 3 Update 2               | [v0.1.3](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
+| v0.1.2 - v0.1.x x>1  | Beta 3 Updates 2-3         | [v0.1.3](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
 | v0.1.0 - v0.1.1      | Beta 3 Update 1               | [v0.1.1](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.1) |
-| v0.0.x               | Beta 2 Updates 1 through 3    | [v0.0.10](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.0.10) |
+| v0.0.x               | Beta 2 Updates 1-3    | [v0.0.10](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.0.10) |
 
 ## Visual Studio Code Extension
 | Extension Version | Changes                                                               | Link |
@@ -46,4 +46,4 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
-| v0.0.2                    |  Beta3 Update 3               |
+| v0.0.2                    |  Beta 3 Update 3              |
