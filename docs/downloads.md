@@ -41,6 +41,9 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 | v0.0.3            | Support for updating dev environment from extension                   | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.3) |
 
 ## Arduino Firmware
+
+[DOwnloads](https://github.com/MB3hel/ArPiRobot-ArduinoFirmware/releases)
+
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
 | v0.0.2                    |  Beta3 Update 3               |
