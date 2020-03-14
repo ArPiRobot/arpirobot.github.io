@@ -14,6 +14,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 | Compatible Image Version | Update Number | Python Library Version | Raspbian Tools Version | Link |
 | ------------------ | ------------- | ---------------------- | ---------------------- | ---- |
+| Beta 3             | Update 3      | v0.0.8                 | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta3Update3) |
 | Beta 3             | Update 2      | v0.0.7                 | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta3Update2)
 | Beta 3             | Update 1      | v0.0.7                 | v0.1.0                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta3Update1) |
 | Beta 2             | Update 3      | v0.0.7                 | v0.0.3                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/beta2) |
@@ -42,4 +43,4 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 ## Arduino Firmware
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
-| TODO                      |  TODO                         |
+| v0.0.2                    |  Beta3 Update 3               |
