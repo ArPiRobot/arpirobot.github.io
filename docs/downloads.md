@@ -42,7 +42,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 ## Arduino Firmware
 
-[DOwnloads](https://github.com/MB3hel/ArPiRobot-ArduinoFirmware/releases)
+[Downloads](https://github.com/MB3hel/ArPiRobot-ArduinoFirmware/releases)
 
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
