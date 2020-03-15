@@ -18,15 +18,15 @@ scoop bucket add versions
 
 To install python for only the current user
 ```
-scoop install python35
+scoop install python37
 ```
 
-To install python for all users
+To install python for all users (may need to run this from admin command prompt or powershell window)
 ```
-scoop install -g python35
+scoop install -g python37
 ```
 
-** *Note: In the above examples python 3.5 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
+** *Note: In the above examples python 3.7 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
 
 ### macOS
 The easiest way to install a specific python version on macos (and ensure that all required libraries are available and up to date) is by using a tool called pyenv, which can be installed with [Homebrew](https://brew.sh/) (a command line package manager for macOS). Follow the instructions on Homebrew's page to install homebrew. Then follow the process below to install pyenv and use it to build and install a specific python version.
@@ -43,10 +43,10 @@ brew install pyenv
 
 Then build and install a specific python version
 ```
-pyenv install -v 3.5
+pyenv install -v 3.7
 ```
 
-** *Note: In the above example python 3.5 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
+** *Note: In the above example python 3.7 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
 
 ### Linux / *BSD
 The process of installing a specific python version will vary with Linux distributions (or BSD OSes). Pyenv should be able to be used. Just google instructions.
@@ -58,12 +58,12 @@ Ubuntu users can use a ppa repo providing many python versions.
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
-sudo apt install python3.5
+sudo apt install python3.7 libpython3.7-dev
 ```
 
-This will install a `python3.5` executable.
+This will install a `python3.7` executable.
 
-** *Note: In the above example python 3.5 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
+** *Note: In the above example python 3.7 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
 
 ## Installing Visual Studio Code
 There are many development environments for writing python code, but for ArPiRobot we will focus on Visual Studio Code (VSCode). It provides intelligent code suggestions and error detection, and there is an ArPiRobot extension for VSCode that can help create projects.
@@ -80,11 +80,14 @@ Download the exe installers for both (see [downloads page](../downloads.md)). Ru
 ### macOS
 Download the `.zip` macOS packages (see [downloads page](../downloads.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app comes with its own Java runtime.
 
+### Ubuntu Linux
+A `.deb` package has been provided for Ubuntu. It has been tested on the latest LTS release. While not gaurenteed it should still work on other ubuntu releases or other distros that use deb packages.
+
 ### Other
-This method will work on any platform where Java is available (Linux, *BSD, Windows, macOS, etc). First install Java 11+. Then download the `.jar` files (see [downloads page](../downloads.md)). Most of the time, if Java is installed, double clicking the `.jar` file will run the program. If not, the command below can be used
+This method will work on any platform where Java is available (Linux, *BSD, Windows, macOS, etc). First install Java 11 (or newer). Then download the `.jar` files (see [downloads page](../downloads.md)). Most of the time, if Java is installed, double clicking the `.jar` file will run the program. If not, the command below can be used
 
 ```
 java -jar /full/path/to/jar/file.jar
 ```
 
-Note: For *BSD users the drive station does not include a build of the required native library. You will have to build it yourself.
+Note: For *BSD users the drive station does not include a build of the required native library. You will have to build it yourself. The only platforms that have builtin support are: Windows (32-bit), Windows (64-bit), Linux (64-bit), macOS (64-bit).
