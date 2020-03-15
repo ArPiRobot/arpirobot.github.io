@@ -6,6 +6,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 ## Images
 | Image Version | Raspbian Version | Python Version | Link |
 | ------------- | ---------------- | -------------- | ---- |
+| Beta4         | 2020-02-13-raspbian-buster-lite | 3.7            | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhJ5M1LIuNIKzWqGRVg?e=8TU5BN) |
 | Beta3         | 2020-02-13-raspbian-buster-lite |  3.7           | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhJ5G8tK8ZHvYQgeh6g?e=wwg2GG) |
 | Beta2         |                  |  3.7           | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xg9QQMEcYP5wnOJGr2g?e=c5RYlK) |
 
