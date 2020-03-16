@@ -1,17 +1,19 @@
 # Building an ArPiRobot Image
-This guide details how the prebuilt minimal Raspbian image is created for ArPiRobot robots. This guide exists mostly to document the image creation process, but can be followed to create a custom Raspbian image or an image with another Linux OS. The minimal image configured should be used when development will not be done on the robot or when the robot may be powered off unexpectedly.
+This guide details how the prebuilt Raspbian image is created for ArPiRobot robots. This guide exists mostly to document the image creation process, but can be followed to create a custom Raspbian image or an image with another Linux OS. 
 
-## Why a Custom Image?
+## Why Would I need to build an Image?
 There are few reasons to ever need a custom image. Most users do not need to spend the time creating their own image. The most common reasons for wanting to build a custom image are:
 
 1. If you want to use or test a newer version of Raspbian that the prebuilt image uses.
 2. If you want to use a different Linux OS (not Raspbian).
 3. If you want to understand more about how all the components of this project fit together.
 
-It is important to be aware that this guide is only up to date for the version of Raspbian that was used to make the prebuilt image. There will likely be slight differences if using another version of Raspbian or another Linux OS. Some important things to remember if using another Linux OS: there must be a `pi` user (or systemd services must be edited) and the `pi` user (or whatever user is used with the deploy tool) must be able to use `sudo` with no password.
+It is important to be aware that this guide is not always kept up to date. It is mostly intended as a reference. 
+
+There will likely be slight differences if using another version of Raspbian or another Linux OS. Some important things to remember if using another Linux OS: there must be a `pi` user (or systemd services and `dt-` script must be edited) and the `pi` user (or whatever user is used with the deploy tool) must be able to use `sudo` with no password.
 
 ## Raspbian Version
-This guide is currently up to data for Raspbian Lite version 2019-04-09. The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
+This guide is currently up to data for the Beta4 image (2020-02-13-raspbian-buster-lite). The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
 
 
 
@@ -24,18 +26,10 @@ This guide is currently up to data for Raspbian Lite version 2019-04-09. The res
 - Select the downloaded raspbian image
 - Select the destination SD Card
 - Click flash and wait for it to finish
-- Once it finishes remove and re-insert the card to mount the boot partition. Edit the `config.txt` file and add the following line at the end. This will enable the serial console which can help with setup of the image and with debugging robot code or network issues while in use on a robot.
-
-```
-enable_uart=1
-```
-
 - Finally, move the SD Card into the Pi, connect keyboard, mouse, monitor and power on the pi.
 
 ## Automatic process
-Instead of following the instructions below, the work-in-progress [configuration scripts](https://github.com/MB3hel/ArPiRobot-IamageScripts) can be used, but make sure to double check them! Once done with the scripts be sure to delete the downloaded/cloned repo. Also make sure to run each and every script *and in order*. If something goes wrong you will likely have to start over.
-
-After running the scripts it is recommeded to delete the github repo for the scripts (from `/home/pi`) and to delete the log files from `/root/`. After doing so clear bash history again.
+Instead of following the instructions below, the [configuration scripts](https://github.com/MB3hel/ArPiRobot-IamageScripts) can be used. These scripts are used to generate the images and are usually more up to date than this guide, but there is no gaurentee they will work correctly for different Linux OSes or different versions of raspbian that the latest image released.
 
 To view the script log (live)
 
@@ -45,256 +39,302 @@ sudo tail -f /root/setup_log.txt
 
 Everything that follows is the manual setup instructions.
 
-## Readonly Filesystem
-*Tested using commit 1b596c2ced2a6ad87347cbb8faa675f20ec7af52* of `rpi-readonly` project.
+## Manual process
 
-The readonly filesystem should be configured on a clean install of Raspbian Lite. Login with username `pi` and password `raspberry`.
+Note: Unless otherwise stated all commands are run as root in the pi user's home directory
 
-To setup a temporary WiFi configuration (this is not necessary if using an ethernet cable to access the internet is an option) run `sudo raspi-config` and select "Network Options" then "Wi-fi". Select the region, enter an SSID and password for the network to connect to.
+#### Stage 1
+- Create the text file indicating the image version name
 
-After connecting to a network (either ethernet or wifi) run the following commands.
+            echo "VERSION_NAME" > /usr/local/arpirobot-image-version.txt
 
-```
-sudo apt install git
-git clone https://gitlab.com/larsfp/rpi-readonly.git
-cd rpi-readonly
-sudo ./setup.sh
-```
+- Set a constant resulution for HDMI (optional)
+    - Edit `/boot/config.txt` and find the following lines
 
-Do an apt update when prompted. When the script completes reboot. After rebooting you will need to go back into read/write mode. Run the following command to do so the continue with the reset of the setup. Remember that after every reboot during the setup root will need to be remounted read/write. The script will add an alias for this
+            
+            #hdmi_group=1
+            #hdmi_mode=1
+            
+    
+    - Change them to 
 
-To remount read/write run
+            hdmi_group=1
+            hdmi_mode=4
 
-```
-rw
-```
+- Update apt repos and upgrade packages to their latest versions
 
-To make readonly again run
+        apt update
+        apt upgrade
 
-```
-ro
-```
+- Once finished reboot
 
+        reboot
 
-## Initial Raspbian Setup
+#### Stage 2
+- Make sure dpkg had nothing left to do after upgrading packages
+        
+        dpkg --configure -a
 
-Remove the SD Card from your PC and insert it in the Raspberry Pi. Connect the power cable and wait for the pi to boot. The first boot may take a minute or two.
+- Install git
 
-To change the hostname and password for the pi user run the following command.
+        apt install git
 
-```
-sudo raspi-config
-```
+- Clone the rpi-readonly repo
 
-To change the user password select "Change User Password" and enter "arpirobot" without the quotes when prompted.
+        cd /home/pi
+        git clone https://gitlab.com/larsfp/rpi-readonly.git
 
-To change the hostname select "Network Options" then choose "Hostname". Change the hostname to "ArPiRobot-Robot" when prompted. *Note: if using a different hostname make sure to change it in the dnsmasq config file later and make sure the case matches.*
+- Run the readonly script (note: there are different scripts for different raspbian versions. Make sure to use the right one!)
 
-Under "Localization Options" change disable en_GB.UTF8 and enable en_US.UTF8. Make en_US.UTF8 the default locale. Optinally also change the timezone under "Localization Options". The default used for ArPiRobot images is United States Eastern Time (New York time).
+        cd /home/pi/rpi-readonly
+        ./setup.sh
 
-After changing the hostname, password, locale, and timezone select Finish and choose "Yes" when asked to reboot.
+- Reboot
 
-After rebooting change the keyboard layout (still under "Localization Options") to "Generic 105 Key" > "Other" > "English (US)" > "English (US)". Keep all other settings default. *Remember to make the pi writable first!*
+        reboot
 
-Next goto "Advanced Configuration" and change the default resolution to 1280x720 (helps to prevent HDMI flickering issues).
+#### Stage 3
+- Remount read/write
 
-## Enable Interfaces
+        mount -o rw,remount /
+        mount -o rw,remount /boot
 
-Run
-```
-sudo raspi-config
-```
+- Change the Pi user's password
+    - Run
 
-Under "Interfacing Options" enable SPI and I2C.
+            passwd pi
+    
+    - Enter the new password (default is `arpirobot`) when prompted
 
-## Upgrade software
-Make sure you are still connected to a network and run
-```
-sudo apt update && sudo apt upgrade
-```
+- Change the system hostname to the default (`ArPiRobot-Robot`)
+    - Edit `/etc/hostname`
+    - Replace the contents with the new hostname
+    - Edit /etc/hosts
+    - Replace instances of `raspberrypi` with the new hostname
 
-Then reboot
+- Change to US locale
+    - Edit `/etc/locale.gen`
+    - Comment out the default `en_GB.UTF-8` locale
+    - Uncomment the `en_US.UTF-8` locale
+    - Run
 
-```
-sudo reboot
-```
+            locale-gen en_US.UTF-8
+            localectl set-locale LANG=en_US.UTF-8
+            localectl set-locale LC_CTYPE=en_US.UTF-8
+            localectl set-locale LC_NUMERIC=en_US.UTF-8
+            localectl set-locale LC_TIME=en_US.UTF-8
+            localectl set-locale LC_COLLATE=en_US.UTF-8 
+            localectl set-locale LC_MONETARY=en_US.UTF-8
+            localectl set-locale LC_MESSAGES=en_US.UTF-8 
+            localectl set-locale LC_PAPER=en_US.UTF-8
+            localectl set-locale LC_NAME=en_US.UTF-8
+            localectl set-locale LC_ADDRESS=en_US.UTF-8
+            localectl set-locale LC_TELEPHONE=en_US.UTF-8
+            localectl set-locale LC_MEASUREMENT=en_US.UTF-8
+            localectl set-locale LC_IDENTIFICATION=en_US.UTF-8
 
+- Change the keyboard layout
+    - Use `raspi-config` and select the correct layout in the UI
+    - **OR** run the following command
 
-## Remote Login (SSH)
-To enable the SSH server for remote login access (if not already done by the file on the boot partition) run `sudo raspi-config` again and select "Interfacing Options" then select "SSH" and choose "Yes" to enable. Then, select "Finish".
+            raspi-config nonint do_configure_keyboard us
 
-## Wireless Setup
+- Enable interfaces (SSH, SPI, I2C, Camera)
+    - Use `raspi-config`'s interactive menues
+    - **OR** run the following commands
 
-*WARNING: If setting the image up over a network (SSH) make sure not to reboot until all the following configuration is completed and verified!!!*
+            raspi-config nonint do_spi 0 
+            raspi-config nonint do_i2c 0
+            raspi-config nonint do_ssh 0
+            raspi-config nonint do_camera 0
 
-### Install ArPiRobot Raspbian Tools
-The Raspiban Tools contains several helper scripts that manage networking. Install the raspbian tools before proceding.
+- Enable console UART
+    - Edit `/boot/config.txt` add the following at the end
 
-```
-cd ~
-git clone git@github.com:MB3hel/ArPiRobot-RaspbianTools.git
-cd ArPiRobot-RaspbianTools
-chmod +x install.sh
-sudo ./install.sh
-```
+            enable_uart=1
 
-### Run the start script on boot
+- Disable the systemd-rfkill service (the service fails to start with a readonly filesystem so all this does is speed up the boot process)
+    
+        systemctl disable systemd-rfkill.service
+        systemctl mask systemd-rfkill.service
+        systemctl disable systemd-rfkill.socket
+        systemctl mask systemd-rfkill.socket
 
-Edit `/etc/rc.local` and add the following line before `exit 0`
-```
-/usr/local/bin/wifistart.sh
-```
+- Disable daily apt update and upgrade services
 
+        systemctl disable apt-daily.service
+        systemctl disable apt-daily-upgrade.service
 
-### Install Other Required Software
+- Install sysstat (used by ArPiRobot-RaspbianTools scripts to get CPU usage)
 
-```
-sudo apt install hostapd dnsmasq
-```
+        apt install sysstat
 
-Hostapd is used to host the access point and dnsmasq is a DNS and DHCP server.
+- Install ArPiRobot-RaspbianTools (Raspbian Tools)
 
+        cd /home/pi
+        git clone https://github.com/MB3hel/ArPiRobot-RaspbianTools.git
+        cd ArPiRobot-RaspbianTools
+        chmod +x ./install.sh
+        ./install.sh
 
+- Install hostapd (Access point) and dnsmasq (DHCP server) for robot's WiFi AP
 
-### Configuration
+        apt install hostapd dnsmasq
 
-The virtual adapter and all networking services will be created/started in the correct order by the `arpirobot-networking` service installed with the Raspbian tools.
+- Replace the contents of `/etc/dnsmasq.conf` with the following (create the file if it does not exits)
 
+        interface=lo,ap0
+        server=8.8.8.8
+        domain-needed
+        bogus-priv
+        dhcp-range=192.168.10.2,192.168.10.10,255.255.255.0,24h
 
-#### Setup Dnsmasq and Hostapd
-Edit `/etc/dnsmasq.conf`. Replace the contents with the following
+- Replace the contents of `/etc/hostapd/hostapd.conf` with the following (create the file if it does not exits)
 
-```
-interface=lo,ap0
-server=8.8.8.8
-domain-needed
-bogus-priv
-dhcp-range=192.168.10.2,192.168.10.10,255.255.255.0,24h
-```
+        channel=11
+        country_code=US
+        ssid=ArPiRobot-RobotAP
+        wpa_passphrase=arpirobot123
+        interface=ap0
+        hw_mode=g
+        macaddr_acl=0
+        auth_algs=1
+        wpa=2
+        wpa_key_mgmt=WPA-PSK
+        wpa_pairwise=TKIP
+        rsn_pairwise=CCMP
+        driver=nl80211
 
-Create `/etc/hostapd/hostapd.conf` with the following contents
+- Add the following to `/etc/default/hostapd`
 
-```
-channel=11
-ssid=AP_SSID
-wpa_passphrase=AP_PASSWORD
-interface=ap0
-hw_mode=g
-macaddr_acl=0
-auth_algs=1
-wpa=2
-wpa_key_mgmt=WPA-PSK
-wpa_pairwise=TKIP
-rsn_pairwise=CCMP
-driver=nl80211
-```
+        DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
-Edit ` /etc/default/hostapd` and change the `DAEMON_CONF` line to
+- Make /var/lib/misc use a ramdisk (fix dnsmasq on readonly filesystem)
 
-```
-DAEMON_CONF="/etc/hostapd/hostapd.conf"
-```
-
-Edit `/etc/dhcpcd.conf`. Add the following to the end of the file
-
-```
-interface ap0
-static ip_address=192.168.10.1
-nohook wpa_supplicant
-```
-
-Finally to fix dnsmasq on readonly file system add the following line to `/etc/fstab`
-
-```
-  tmpfs /var/lib/misc tmpfs nosuid,nodev 0 0
-```
-
-
-#### Setup Client network
-For now, use a real network here. Once the setup is completed change this to a dummy network so real wifi credentials are not being distributed.
-
-Edit `/etc/wpa_supplicant/wpa_supplicant.conf`. Replace its contents with the following
-
-```
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=US
-
-network={
-        ssid="YOUR_SSID_HERE"
-        psk="YOUR_PASS_HERE"
-}
-```
-
-#### Configure Services
-
-Disable networking services at boot as the custom `arpirobot-networking` service will handle starting them in the correct order
-```
-sudo systemctl stop hostapd
-sudo systemctl stop dnsmasq
-sudo systemctl stop dhcpcd
-sudo systemctl disable hostapd
-sudo systemctl disable dnsmasq
-sudo systemctl disable dhcpcd
-sudo systemctl unmask hostapd
-```
-
-Reboot and make sure both interfaces come up.
-
-If both interfaces come up successfully it should be safe to work remotely after this point. No more network configuration will be done.
-
-## Installing Software
-
-### Python and Python Libraries
-
-Run the following command to install Python 3 (arpirobot does not support python2).
-
-```
-sudo apt install python3 python3-pip python3-setuptools python3-wheel
-```
-
-To install required python libraries run the following command. A list of all required libraries is kept up to date in the requirements.txt file in the PythonLib repository.
-
-```
-sudo pip3 install [SPACE SEPARATED LIST OF LIBRARIES HERE]
-```
-
-### Install the ArPiRobot Python Library
-
-```
-git clone git@bitbucket.org:MB3hel/arpirobot-pythonlib.git
-cd arpirobot-pythonlib
-sudo python3 setup.py install
-```
-
-## Setting up directory structure for arpirobot programs
-
-```
-mkdir ~/arpirobot
-```
-
-## Test the Image
-Put the simple test program from the pythonlib samples into the `arpirobot` folder and set the filename in `main.txt`. Reboot, then connect with DS and make sure it is working correctly.
-
-
-## Cleanup
-Remove any git keys that were added to the system or any passwords that were saved with a credential manager.
-
-Remove the real wifi settings from `/etc/wpa_supplicant/wpa_supplicant.conf`
-```
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=US
-
-network={
-        ssid="DUMMY_NETWORK"
-        psk="DUMMY_PASSWORD"
-}
-```
-
-Clear bash history
-
-```
-history -c
-sudo history -c
-```
+    - Edit `/etc/fstab` and add the following
+
+            tmpfs /var/lib/misc tmpfs nosuid,nodev 0 0
+    
+- Configure dhcpcd
+    - Edit `/etc/dhcpcd.conf` and add the following
+
+            interface ap0
+            static ip_address=192.168.10.1
+            nohook wpa_supplicant
+
+- Disable networking services on boot (this fails with the AP and client mode setup. They must be started in proper order using the Raspbian Tools script)
+
+        systemctl stop hostapd
+        systemctl stop dnsmasq 
+        systemctl stop dhcpcd
+        systemctl disable hostapd 
+        systemctl disable dnsmasq 
+        systemctl disable dhcpcd
+        systemctl unmask hostapd
+
+- Configure the Raspbian Tools wifi start script to run on boot
+    - Edit `/etc/rc.local` and add the following above `exit 0`
+
+            /usr/local/bin/wifistart.sh
+
+- Reboot
+
+#### Stage 4
+- Remount RW
+
+        mount -o rw,remount /
+        mount -o rw,remount /boot
+
+- Run console-setup once with read/write (only necessary after keyboard layout is changed)
+
+        systemctl restart console-setup
+
+- Install python3
+
+        apt install python3 python3-pip python3-setuptools python3-setuptools-scm python3-wheel
+
+- Install gstreamer (for camera streams)
+
+        apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-pulseaudio
+
+- Create the robot program directory
+
+        mkdir /home/pi/arpirobot
+        chown pi:pi /home/pi/arpirobot
+
+- Cleanup
+    - If you connected the pi to wifi for setup clear the wifi settings from `/etc/wpa_supplicant/wpa_supplicant.conf`
+    - Delete any ssh keys used from `/home/pi/.ssh` and/or `/root/.ssh`
+
+#### Final Stages
+- Test everything to make sure it works now
+- Delete SSH host keys (these should regenerate on each pi so they cannot be in the image)
+- Patch the ssh-regenerate-host-keys service to work with the readonly filesystem
+    - Edit `/lib/systemd/system/regenerate_ssh_host_keys.service`
+    - Add the following two lines to the [Service] Section
+
+            ExecStartPre=/bin/mount -o rw,remount /
+            ExecStartPost=/bin/mount -o ro,remount /
+    
+    - Enable the patched service
+
+            systemctl daemon-reload
+            systemctl enable regenerate_ssh_host_keys
+    
+- Setup to expand the filesystem to fill the SD card on next boot (so the image can be dumped as small as possible)
+    - Append the following to the end of the first line in `/boot/cmdline.txt`
+
+            quiet init=/usr/lib/raspi-config/init_resize.sh
+    
+    - Patch the script to work with readonly filesystem
+        - Edit `/usr/lib/raspi-config/init_resize.sh` and add the following lines to the beginning
+    
+    - Write the resize filesystem service
+        - Edit (create new file) `/etc/init.d/resize2fs_once` with the following contents
+
+                #!/bin/sh
+                ### BEGIN INIT INFO
+                # Provides:          resize2fs_once
+                # Required-Start:
+                # Required-Stop:
+                # Default-Start: 3
+                # Default-Stop:
+                # Short-Description: Resize the root filesystem to fill partition
+                # Description:
+                ### END INIT INFO
+                . /lib/lsb/init-functions
+                case "\$1" in
+                start)
+                    log_daemon_msg "Starting resize2fs_once"
+                    mount -o rw,remount / &&
+                    ROOT_DEV=\$(findmnt / -o source -n) &&
+                    resize2fs \$ROOT_DEV &&
+                    update-rc.d resize2fs_once remove &&
+                    rm /etc/init.d/resize2fs_once &&
+                    mount -o ro,remount / &&
+                    log_end_msg $?
+                    ;;
+                *)
+                    echo "Usage: $0 start" >&2
+                    exit 3
+                    ;;
+                esac
+    
+    - Enable the new service at next boot
+
+            chmod +x /etc/init.d/resize2fs_once
+            update-rc.d resize2fs_once defaults
+
+- Cleanup
+
+        rm -rf /home/pi/ArPiRobot-ImageScripts
+        rm -rf /home/pi/ArPiRobot-RaspbianTools
+        rm -rf /home/pi/rpi-readonly
+
+        rm /root/.bash_history
+        history -c
+        rm /home/pi/.bash_history
+
+- Poweroff
+
+        poweroff

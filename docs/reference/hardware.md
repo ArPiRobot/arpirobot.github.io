@@ -14,10 +14,10 @@ Most of the time we provide links to components that can be bought from [Adafrui
 #### **Supported Raspberry Pi's**
 Any raspberry Pi with a WiFi adapter should work. While it is theoretically possible to use a USB WiFi adapter it would likely involve making changes to the WiFi configuration scripts and is not recommended.
 
-| Raspberry Pi Model | Image Version Tested |
-| ------------------ | -------------------- |
-| Raspberry Pi Zero W | Beta1 |
-| Raspberry Pi 3 Model A+ | Beta1 |
+| Raspberry Pi Model      | Link |
+| ----------------------- | ---- |
+| Raspberry Pi Zero W     | [Adafruit](https://www.adafruit.com/product/3708) |
+| Raspberry Pi 3 Model A+ | [Adafruit](https://www.adafruit.com/product/4027) |
 
 
 #### **Supported Arduino Coprocessors**
