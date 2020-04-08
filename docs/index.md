@@ -22,3 +22,6 @@ It really boils down to three main goals for the project:
 ## License
 All the source code for all components of ArPiRobot is currently not released, however will soon be released, likely under the GNU General Public License v3.0. Until then, no part of this work is to be used or distributed in any way, shape, or form except by the author (Marcus Behel).
 
+## Where Does the Name Come From?
+I got tired of typing `ArduinoAndPiRobot` so I decided to shorten it into `ArPiRobot`. Really creative right?
+
