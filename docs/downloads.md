@@ -15,7 +15,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 | Compatible Image Version | Update Number | Python Library Version | Raspbian Tools Version | Link |
 | ------------------ | ------------- | ---------------------- | ---------------------- | ---- |
-| Beta 4             | Update 5      | v0.0.13                | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta4Update6) |
+| Beta 4             | Update 6      | v0.0.13                | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta4Update6) |
 | Beta 4             | Update 5      | v0.0.12                | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta4Update5) |
 | Beta 4             | Update 4      | v0.0.11                | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta4Update4) |
 | Beta 4             | Update 3      | v0.0.10                | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta4Update3) |
