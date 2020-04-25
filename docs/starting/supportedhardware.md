@@ -1,5 +1,16 @@
 # Supported Hardware
 
+#### **What Does Supported Mean**
+In this context supported can mean a few different things. In the case of motor drivers and sensors it means that they have been tested and that there is code in the python library and/or the arduino firmware to work with them. 
+
+In the case of Arduinos supported means that the firmware has been tested running on a supported Arduino. 
+
+It will likely work on any Arduino. In the case of raspberry pi's it means that the modified Raspbian images have been tested on that model of Pi. Likely any Pi (with builtin WiFi adapter) will work.
+
+In the case of other devices such as battery packs it simply means that it should be (by specs) compatible and *may* have been tested.
+
+Other tools and supplies listed may or may not have been tested, but should be compatible with whatever purpose is described for them.
+
 #### **About Vendors**
 Most of the time we provide links to components that can be bought from [Adafruit](https://www.adafruit.com/) or are easily found on [Amazon](https://www.amazon.com/). Occasionalyy, parts may not be available from these sites (or may be hard to find or not competitivly priced) so there are sometimes other sites used.
 
@@ -20,6 +31,16 @@ Any raspberry Pi with a WiFi adapter should work. While it is theoretically poss
 | Raspberry Pi 3 Model A+ | [Adafruit](https://www.adafruit.com/product/4027) |
 
 
+#### **Supported USB Battery Packs (for Raspberry Pi Power)**
+
+Note: you can also use a 5V regulator to power the Pi from the motor batteries (AA's or rechargeable battery pack), but rapidly changing motor speed/direction can result in voltage drops rebooting the Pi so it is recommended to use a separate power source (USB battery pack).
+
+| Availability  | USB Battery Pack | Output Current | Works For Pi 3A/3B | Works For Pi Zero W | Notes                        | Link |
+| ------------- | ---------------- | -------------- | ------------------ | ------------------- | ------                       |      |
+| Discontinued? | RavPower 6700 mAh | 2.4 A         | Yes                | Yes                 | Metal case. Little on the heavy side. | [Amazon])(https://www.amazon.com/Portable-Charger-RAVPower-6700mAh-External/dp/B00Y2PX4YI/) |
+| Available     | GETIHU 5200 mAh | 2.4A            | Yes                | Yes                 | Plastic case. Good weight for use on smaller robots as well. | [Amazon](https://www.amazon.com/GETIHU-High-Speed-Pocket-Size-Powerbank-Flashlight/dp/B07CYNBNVW/) |
+| Available, NOT TESTED | Anker Astro E1 5200 mAh | 2.0A | Maybe? Headless so should be OK | Yes | Looks similar to GETIHU battery pack, but lower output current. Should still be OK. | [Amazon](https://www.amazon.com/Anker-bar-Sized-Portable-High-Speed-Technology/dp/B00P7N0320/) |
+
 #### **Supported Arduino Coprocessors**
 Any Arduino compatible board, that can be interfaced with the Raspberry Pi via UART (be it by pins or by USB) should work. Be aware that some Arduinos are 5V devices and some are 3.3V devices (if USB is used to supply power it will always be 5V so there will be 5V power available, but the arduino itself won't use 5V logic levels). Some sensors require 5V power, but can use a 3.3V logic level; and some sensors only support a 5V logic level. Some 3.3V devices have I/O pins that are 5V tolerant (such as the Teensy 3.2) so they can work with most 5V devices. A logic level shifter could also be used. 
 
@@ -35,7 +56,7 @@ The table below is just the boards that have been tested and are known to work.
 | Teensy 3.2 | 3.3V, I/O Pins 5V Tolerant | Powerful microcontroller with a small form factor. More powerful than many other Arduino compatible boards with a similar form-factor. | [Adafruit](https://www.adafruit.com/product/2756) |
 
 #### **Supported Motor Drivers**
-Currrently motor drivers are all connected to the Raspberry Pi. The arduino is not currently used as a motor driver.
+Currently motor drivers are all connected to the Raspberry Pi. The arduino is not currently used as a motor driver.
 
 | Motor Driver | Connection Type | Number of Motors | Logic Voltage | Motor Voltage | Max Current per Motor | Notes | Link |
 | --- | --- | --- | --- | --- | --- | --- | --- |
