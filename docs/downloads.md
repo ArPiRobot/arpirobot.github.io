@@ -6,6 +6,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 ## Images
 | Image Version | Raspbian Version | Python Version | Link |
 | ------------- | ---------------- | -------------- | ---- |
+| Beta5         | 2020-02-13-raspbian-buster-lite | 3.7            | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhLRlYCPrZHG2G31ZYw?e=m2Hotl) |
 | Beta4         | 2020-02-13-raspbian-buster-lite | 3.7            | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhJ5M1LIuNIKzWqGRVg?e=8TU5BN) |
 | Beta3         | 2020-02-13-raspbian-buster-lite |  3.7           | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhJ5G8tK8ZHvYQgeh6g?e=wwg2GG) |
 | Beta2         |                  |  3.7           | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xg9QQMEcYP5wnOJGr2g?e=c5RYlK) |
@@ -15,6 +16,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 | Compatible Image Version | Update Number | Python Library Version | Raspbian Tools Version | Link |
 | ------------------ | ------------- | ---------------------- | ---------------------- | ---- |
+| Beta 5             | Update 1      | v0.0.15                | v0.2.0                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta5Update1) |
 | Beta 4             | Update 7      | v0.0.14                | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta4Update7) |
 | Beta 4             | Update 6      | v0.0.13                | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta4Update6) |
 | Beta 4             | Update 5      | v0.0.12                | v0.1.1                 | [Download](https://github.com/MB3hel/ArPiRobot-UpdatePackager/releases/tag/Beta4Update5) |
@@ -32,13 +34,14 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 | Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ---------------------- | ----------------------------- | --------------- |
-| v0.3.x                 | Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.2](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.3.2)      |
+| v0.3.x                 | Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.2](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.3.2)      |
 | v0.2.x                 | Beta 2 Updates 1 and 2        | [v0.2.2](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.2.2)      |
 
 ## Deploy Tool
 | Deploy Tool Versions | Compatible Images and Updates | Latest Download |
 | -------------------- | ----------------------------- | --------------- |
-| v0.1.2 - v0.1.x  (x > 2)  | Beta 4 Updates 1-7 <br /> Beta 3 Updates 2-3         | [v0.1.3](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
+| v0.2.0               | Beta 5 Update 1               | [v0.2.0](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.2.0) |
+| v0.1.2 - v0.1.3      | Beta 4 Updates 1-7 <br /> Beta 3 Updates 2-3         | [v0.1.3](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
 | v0.1.0 - v0.1.1      | Beta 3 Update 1               | [v0.1.1](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.1) |
 | v0.0.x               | Beta 2 Updates 1-3    | [v0.0.10](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.0.10) |
 
@@ -54,7 +57,7 @@ The image contains the OS preconfigured to work with ArPiRobot software. Each im
 
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
-| v0.0.5                    | Beta 4 Updates 6-7            |
+| v0.0.5                    | Beta5 Update 1 <br /> Beta 4 Updates 6-7            |
 | v0.0.4                    | Beta 4 Update 5               |
 | v0.0.3                    | Beta 4 Update 4               |
 | v0.0.2                    |  Beta 4 Updates 1-3 <br /> Beta 3 Update 3              |
