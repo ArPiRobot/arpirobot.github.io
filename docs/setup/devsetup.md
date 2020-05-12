@@ -4,49 +4,12 @@ There are several tools used to write ArPiRobot code on your computer, deploy co
 
 ## Installing Python
 
-ArPiRobot code is written in python using the ArPiRobot python library, so we must first install python.
+ArPiRobot code is written in python using the ArPiRobot python library, so we must first install python. You will want to make sure you are using the same version of python on your PC as is in use on the robot (you can see which version is in use on the robot on the [Downloads Page]() in the table with information about the robot images.) Only the first two numbers need to match (for example if the robot uses python 3.7 it is OK to use 3.7.x where x is any number on your computer.)
 
-### Windows
-The easiest way to install a specific python version on windows (along with pip and configuring your path) is by using a command line package manager called [Scoop](https://scoop.sh/). This will allow programs to be installed on windows as packages (much as is done on most Linux systems).
+### Windows or macOS
+On windows or macOS installers for specific versions of python can be found at [Python.org](https://www.python.org/downloads/). Download the latest version where the first two numbers match the version of python in use on the raspberry pi. In some cases an installer may not be provided for the latest version (only the Sources can be downloaded). In this case look at the next newest version and download the installer for it (for example if 3.7.7 did not have an installer available for download I would look at 3.7.6 then 3.7.5 and so on).
 
-Follow the instructions on [Scoop's Website](https://scoop.sh/) to install scoop. Then run the commands below in  a powershell window.
-
-```
-scoop install git
-scoop bucket add versions
-```
-
-To install python for only the current user
-```
-scoop install python37
-```
-
-To install python for all users (may need to run this from admin command prompt or powershell window)
-```
-scoop install -g python37
-```
-
-** *Note: In the above examples python 3.7 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
-
-### macOS
-The easiest way to install a specific python version on macos (and ensure that all required libraries are available and up to date) is by using a tool called pyenv, which can be installed with [Homebrew](https://brew.sh/) (a command line package manager for macOS). Follow the instructions on Homebrew's page to install homebrew. Then follow the process below to install pyenv and use it to build and install a specific python version.
-
-First install required libraries
-```
-brew install openssl readline sqlite3 xz zlib
-```
-
-Then install pyenv
-```
-brew install pyenv
-```
-
-Then build and install a specific python version
-```
-pyenv install -v 3.7
-```
-
-** *Note: In the above example python 3.7 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
+Download and run the installer. Follow the on-screen instructions. On macOS make sure to read the section about Certificate Verification and SSL and follow the instructions. You will also need to make sure your mac allows installation of apps that are not form the app store.
 
 ### Linux / *BSD
 The process of installing a specific python version will vary with Linux distributions (or BSD OSes). Pyenv should be able to be used. Just google instructions.
@@ -81,7 +44,7 @@ Download the exe installers for both (see [downloads page](../downloads.md)). Ru
 Download the `.zip` macOS packages (see [downloads page](../downloads.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app comes with its own Java runtime.
 
 ### Ubuntu Linux
-A `.deb` package has been provided for Ubuntu. It has been tested on the latest LTS release. While not gaurenteed it should still work on other ubuntu releases or other distros that use deb packages.
+A `.deb` package has been provided for Ubuntu. It has generally been tested on the latest LTS release. While not guaranteed it should still work on other ubuntu releases or other distributions that use deb packages. If you have trouble with the deb package just install java and use the `.jar` file.
 
 ### Other
 This method will work on any platform where Java is available (Linux, *BSD, Windows, macOS, etc). First install Java 11 (or newer). Then download the `.jar` files (see [downloads page](../downloads.md)). Most of the time, if Java is installed, double clicking the `.jar` file will run the program. If not, the command below can be used
@@ -90,4 +53,4 @@ This method will work on any platform where Java is available (Linux, *BSD, Wind
 java -jar /full/path/to/jar/file.jar
 ```
 
-Note: For *BSD users the drive station does not include a build of the required native library. You will have to build it yourself. The only platforms that have builtin support are: Windows (32-bit), Windows (64-bit), Linux (64-bit), macOS (64-bit).
+Note: For *BSD users the drive station does not include a build of the required native library. You will have to build it yourself. You can find instructions on doing so in the Drive Station's GitHub repository. The only platforms that have builtin support are: Windows (32-bit), Windows (64-bit), Linux (64-bit), macOS (64-bit).

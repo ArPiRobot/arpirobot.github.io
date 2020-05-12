@@ -12,6 +12,7 @@ nav:
         - Create a Simple Robot Project: setup/createproject.md
     - Reference:
         - ArPiRobot Components: reference/components.md
+        - Programming Models: reference/programming_models.md
         - Robot Classes: reference/robotclasses.md
         - Motors: reference/motors.md
         - Raspberry Pi Sensors: reference/sensors.md
