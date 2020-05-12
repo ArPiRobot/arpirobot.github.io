@@ -2,7 +2,7 @@
 This guide details how the prebuilt Raspbian image is created for ArPiRobot robots. This guide exists mostly to document the image creation process, but can be followed to create a custom Raspbian image or an image with another Linux OS. 
 
 ## Why Would I need to build an Image?
-There are few reasons to ever need a custom image. Most users do not need to spend the time creating their own image. The most common reasons for wanting to build a custom image are:
+There are few reasons to ever need a custom image. Most users do not need to spend the time creating their own image. Some reasons for wanting to build a custom image are:
 
 1. If you want to use or test a newer version of Raspbian that the prebuilt image uses.
 2. If you want to use a different Linux OS (not Raspbian).
@@ -13,9 +13,7 @@ It is important to be aware that this guide is not always kept up to date. It is
 There will likely be slight differences if using another version of Raspbian or another Linux OS. Some important things to remember if using another Linux OS: there must be a `pi` user (or systemd services and `dt-` script must be edited) and the `pi` user (or whatever user is used with the deploy tool) must be able to use `sudo` with no password.
 
 ## Raspbian Version
-This guide is currently up to data for the Beta4 image (2020-02-13-raspbian-buster-lite). The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
-
-
+This guide is currently up to data for the Beta6 image (2020-02-13-raspbian-buster-lite). The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
 
 ## Base Raspbian Install
 - Download the Raspbian Image from [here](https://www.raspberrypi.org/downloads/raspbian/). If the correct version is no longer available it is likely OK to use a newer version, but older images can be found [here](http://downloads.raspberrypi.org/raspbian_lite/images/).
@@ -48,7 +46,7 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
 
             echo "VERSION_NAME" > /usr/local/arpirobot-image-version.txt
 
-- Set a constant resulution for HDMI (optional)
+- Set a constant resolution for HDMI (optional)
     - Edit `/boot/config.txt` and find the following lines
 
             
@@ -101,9 +99,9 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
 
 - Change the Pi user's password
     - Run
-
-            passwd pi
-    
+        ```
+        passwd pi
+        ```
     - Enter the new password (default is `arpirobot`) when prompted
 
 - Change the system hostname to the default (`ArPiRobot-Robot`)
@@ -177,37 +175,49 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
         chmod +x ./install.sh
         ./install.sh
 
+- Install required software before disconnecting from internet (WiFi AP setup will do this)
+
+        apt-get -y install python3 python3-pip python3-setuptools python3-setuptools-scm python3-wheel
+        apt-get -y install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-pulseaudio
+
 - Install hostapd (Access point) and dnsmasq (DHCP server) for robot's WiFi AP
 
         apt install hostapd dnsmasq
 
 - Replace the contents of `/etc/dnsmasq.conf` with the following (create the file if it does not exits)
 
-        interface=lo,ap0
-        server=8.8.8.8
-        domain-needed
-        bogus-priv
-        dhcp-range=192.168.10.2,192.168.10.10,255.255.255.0,24h
+        interface=wlan0
+        dhcp-range=192.168.10.2,192.168.10.20,255.255.255.0,24h
+        domain=local
+        address=/ArPiRobot-Robot.local/192.168.10.1
 
 - Replace the contents of `/etc/hostapd/hostapd.conf` with the following (create the file if it does not exits)
 
-        channel=11
         country_code=US
+        interface=wlan0
         ssid=ArPiRobot-RobotAP
-        wpa_passphrase=arpirobot123
-        interface=ap0
         hw_mode=g
+        channel=6
         macaddr_acl=0
         auth_algs=1
+        ignore_broadcast_ssid=0
         wpa=2
+        wpa_passphrase=arpirobot123
         wpa_key_mgmt=WPA-PSK
         wpa_pairwise=TKIP
         rsn_pairwise=CCMP
-        driver=nl80211
+        wmm_enabled=1
+
 
 - Add the following to `/etc/default/hostapd`
 
         DAEMON_CONF="/etc/hostapd/hostapd.conf"
+
+- Unblock wifi
+
+        sudo rfkill unblock wlan
+
+
 
 - Make /var/lib/misc use a ramdisk (fix dnsmasq on readonly filesystem)
 
@@ -218,24 +228,14 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
 - Configure dhcpcd
     - Edit `/etc/dhcpcd.conf` and add the following
 
-            interface ap0
-            static ip_address=192.168.10.1
-            nohook wpa_supplicant
+            interface wlan0
+                static ip_address=192.168.10.1/24
+                nohook wpa_supplicant
 
-- Disable networking services on boot (this fails with the AP and client mode setup. They must be started in proper order using the Raspbian Tools script)
+- Enable hostapd on boot
 
-        systemctl stop hostapd
-        systemctl stop dnsmasq 
-        systemctl stop dhcpcd
-        systemctl disable hostapd 
-        systemctl disable dnsmasq 
-        systemctl disable dhcpcd
         systemctl unmask hostapd
-
-- Configure the Raspbian Tools wifi start script to run on boot
-    - Edit `/etc/rc.local` and add the following above `exit 0`
-
-            /usr/local/bin/wifistart.sh
+        systemctl enable hostapd
 
 - Reboot
 
@@ -248,14 +248,6 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
 - Run console-setup once with read/write (only necessary after keyboard layout is changed)
 
         systemctl restart console-setup
-
-- Install python3
-
-        apt install python3 python3-pip python3-setuptools python3-setuptools-scm python3-wheel
-
-- Install gstreamer (for camera streams)
-
-        apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-pulseaudio
 
 - Create the robot program directory
 

@@ -20,7 +20,8 @@ nav:
         - Media on Robots: reference/media.md
         - Network Table: reference/nettable.md
         - Default Settings: reference/defaultsettings.md
-    - Advanced:
-        - Building an ArPiRobot Image: advanced/buildminimage.md
-        - Image to/from SD Card: advanced/imagefromsd.md
-    - For Developers: devs.md
+    - For Developers: 
+        - Development Resources: devs/resources.md
+        - Network Testing: devs/nettest.md
+        - Building an ArPiRobot Image: devs/buildminimage.md
+        - Image to/from SD Card: devs/imagefromsd.md

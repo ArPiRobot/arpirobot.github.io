@@ -30,6 +30,10 @@ Any raspberry Pi with a WiFi adapter should work. While it is theoretically poss
 | Raspberry Pi Zero W     | [Adafruit](https://www.adafruit.com/product/3708) |
 | Raspberry Pi 3 Model A+ | [Adafruit](https://www.adafruit.com/product/4027) |
 
+It is generally recommended to avoid the Pi Zero W except for very basic projects that will not involve processing sensor data. The multi-core Pi 3A+ is much better at performing concurrent tasks (such as running robot networking, controlling motors, processing sensor data, etc).
+
+The Pi 3B+ should also work (as it uses the same CPU as the Pi 3A+), but has not been tested.
+
 
 #### **Supported USB Battery Packs (for Raspberry Pi Power)**
 
@@ -39,7 +43,7 @@ Note: you can also use a 5V regulator to power the Pi from the motor batteries (
 | ------------- | ---------------- | -------------- | ------------------ | ------------------- | ------                       |      |
 | Discontinued? | RavPower 6700 mAh | 2.4 A         | Yes                | Yes                 | Metal case. Little on the heavy side. | [Amazon])(https://www.amazon.com/Portable-Charger-RAVPower-6700mAh-External/dp/B00Y2PX4YI/) |
 | Available     | GETIHU 5200 mAh | 2.4A            | Yes                | Yes                 | Plastic case. Good weight for use on smaller robots as well. | [Amazon](https://www.amazon.com/GETIHU-High-Speed-Pocket-Size-Powerbank-Flashlight/dp/B07CYNBNVW/) |
-| Available, NOT TESTED | Anker Astro E1 5200 mAh | 2.0A | Maybe? Headless so should be OK | Yes | Looks similar to GETIHU battery pack, but lower output current. Should still be OK. | [Amazon](https://www.amazon.com/Anker-bar-Sized-Portable-High-Speed-Technology/dp/B00P7N0320/) |
+| Available, NOT TESTED | Anker Astro E1 5200 mAh | 2.0A | Yes | Yes | Similar in size and weight to GETIHU option. Feels like slightly higher build quality. | [Amazon](https://www.amazon.com/Anker-bar-Sized-Portable-High-Speed-Technology/dp/B00P7N0320/) |
 
 #### **Supported Arduino Coprocessors**
 Any Arduino compatible board, that can be interfaced with the Raspberry Pi via UART (be it by pins or by USB) should work. Be aware that some Arduinos are 5V devices and some are 3.3V devices (if USB is used to supply power it will always be 5V so there will be 5V power available, but the arduino itself won't use 5V logic levels). Some sensors require 5V power, but can use a 3.3V logic level; and some sensors only support a 5V logic level. Some 3.3V devices have I/O pins that are 5V tolerant (such as the Teensy 3.2) so they can work with most 5V devices. A logic level shifter could also be used. 
