@@ -22,6 +22,6 @@ nav:
         - Default Settings: reference/defaultsettings.md
     - For Developers: 
         - Development Resources: devs/resources.md
-        - Network Testing: devs/nettest.md
+        - WiFi Debugging: devs/wifidebug.md
         - Building an ArPiRobot Image: devs/buildminimage.md
         - Image to/from SD Card: devs/imagefromsd.md
