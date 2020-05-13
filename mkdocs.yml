@@ -1,4 +1,9 @@
 site_name: ArPiRobot
+theme:
+  name: null
+  custom_dir: cinder
+  colorscheme: github
+  highlightjs: true
 nav:
     - Downloads: downloads.md
     - Getting Started:

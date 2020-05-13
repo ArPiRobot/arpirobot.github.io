@@ -130,7 +130,7 @@ ActionManager.start_action(routine)
 ```
 
 ## Event-Based Model
-*This model is a work in progress and may be drastically changed and/or removed at any point in time. It is also currently disable by default and must be enabled before use.*
+*This model is a work in progress and may be drastically changed and/or removed at any point in time. It is also currently disabled by default and must be enabled before use.*
 
 The event based model relies on running a function when something occurs or some value changes. For example a function can be run when a gamepad axis is moved or when a button's state changes. 
 
@@ -199,7 +199,9 @@ It is possible to mix proramming models and it is often useful to do so. For exa
 The biggest thing to be careful of is that you never have two sections of code using a device (eg. a motor) at the same time. For example, if an action is started to control the motors you need to make sure that periodic or event based code does not also attempt to control the motors while an action is running.
 
 ## Project Structure and Conventions
+
 The structure of a typical ArPiRobot project consists of three files:
+
 - `robot_objects.py`
 - `robot_actions.py`
 - `robot.py`
