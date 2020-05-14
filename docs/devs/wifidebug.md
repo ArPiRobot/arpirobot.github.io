@@ -28,7 +28,7 @@ While there are other problems that can cause these issues WiFi is a common one.
 ## Steps to Debug
 
 ### Physical Location
-WiFi has a limited range and you will likely get the best results if the PC controlling your robot is within 100 feet of the robot. Also make sure there are no walls or other objects between the robot and your PC.
+WiFi has a limited range and you will likely get the best results if the PC controlling your robot is within 50 feet of the robot. Also make sure there are no walls or other objects between the robot and your PC.
 
 ### Check the Channel
 

@@ -1,10 +1,12 @@
 # Setup your Computer
 
-There are several tools used to write ArPiRobot code on your computer, deploy code to and configure the robot, and control the robot.
+As mentioned in the previous section there are two ArPiRobot tools that run on your PC that allow you to control/drive the robot (Drive Station) and configure the robot (Deploy Tool).
+
+In addition this guide will cover setting up Visual Studio Code to write python code. There is also an ArPiRobot extension available for VSCode that allows creating projects and installing the PythonLib on your PC (more about updates in the next section).
 
 ## Installing Python
 
-ArPiRobot code is written in python using the ArPiRobot python library, so we must first install python. You will want to make sure you are using the same version of python on your PC as is in use on the robot (you can see which version is in use on the robot on the [Downloads Page]() in the table with information about the robot images.) Only the first two numbers need to match (for example if the robot uses python 3.7 it is OK to use 3.7.x where x is any number on your computer.)
+ArPiRobot code is written in python using the ArPiRobot python library, so we must first install python. You will want to make sure you are using the same version of python on your PC as is in use on the robot (you can see which version is in use on the robot on the [Downloads Page](../downloads.md) in the table with information about the robot images.) Only the first two numbers need to match (for example if the robot uses python 3.7 it is OK to use 3.7.x where x is any number on your computer.)
 
 ### Windows or macOS
 On windows or macOS installers for specific versions of python can be found at [Python.org](https://www.python.org/downloads/). Download the latest version where the first two numbers match the version of python in use on the raspberry pi. In some cases an installer may not be provided for the latest version (only the Sources can be downloaded). In this case look at the next newest version and download the installer for it (for example if 3.7.7 did not have an installer available for download I would look at 3.7.6 then 3.7.5 and so on).
@@ -29,7 +31,7 @@ This will install a `python3.7` executable.
 ** *Note: In the above example python 3.7 is installed. Make sure to install the same version of python which is used on the robot (this is based on the Raspberry Pi Image used).* **
 
 ## Installing Visual Studio Code
-There are many development environments for writing python code, but for ArPiRobot we will focus on Visual Studio Code (VSCode). It provides intelligent code suggestions and error detection, and there is an ArPiRobot extension for VSCode that can help create projects.
+There are many development environments for writing python code, but for ArPiRobot we will focus on Visual Studio Code (VSCode). It provides intelligent code suggestions and error detection, and there is an ArPiRobot extension for VSCode that can help create projects and install ArPiRobot updates on the development PC.
 
 Download and install VSCode from [https://code.visualstudio.com/](https://code.visualstudio.com/).
 
@@ -53,4 +55,4 @@ This method will work on any platform where Java is available (Linux, *BSD, Wind
 java -jar /full/path/to/jar/file.jar
 ```
 
-Note: For *BSD users the drive station does not include a build of the required native library. You will have to build it yourself. You can find instructions on doing so in the Drive Station's GitHub repository. The only platforms that have builtin support are: Windows (32-bit), Windows (64-bit), Linux (64-bit), macOS (64-bit).
+Note: For &ast;BSD users the drive station does not include a build of the required native library. You will have to build it yourself. You can find instructions on doing so in the Drive Station's GitHub repository. The only platforms that have builtin support are: Windows (32-bit), Windows (64-bit), Linux (64-bit), macOS (64-bit).

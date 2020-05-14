@@ -1,13 +1,13 @@
 # Installing Updates
 
 ## About Updates
-It is *always* necessary to install an ArPiRobot Robot update after flashing the image to the SD Card to ensure that the latest version of the ArPiRobot Python Library is installed on the robot. When [downloading updates](../downloads.md) make sure to download an update that supports the version of the ArPiRobot image you are using (the latest update should always support the latest image).
+It is *always* necessary to install an ArPiRobot Robot update after flashing the image to the SD Card to ensure that the latest version of the ArPiRobot Python Library is installed on the robot. When [downloading updates](../downloads.md) make sure to download an update for the image you are using. Each update only supports one image. For example if you are using the "Beta6" image download the latest Beta6 update.
 
-The python installation on the PC you are using to write the robot code also needs to be updated. This can be done through the vscode extension.
+The python installation on the PC you are using to write the robot code also needs to be updated. This can be done through the VSCode extension.
 
 *For each update you should make sure to install the robot update to the robot and the development environment update on your development computer(s). If the same update version is not used on both there may be false errors detected on your computer, or errors on the robot that your computer did not know about.*
 
-*It is also not necessary to go through installing each update for an image in order. It is fine to jump from update 1 to 4 for example. The updates are all standalone.*
+*It is **not** necessary to go through installing each update for an image in order. It is fine to jump from update 1 to 4 for example. The updates are all standalone.*
 
 ## Robot Updates
 Note: You do not need internet access on the robot to update the robot.

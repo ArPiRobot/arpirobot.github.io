@@ -1,27 +1,39 @@
 # Example Robot Builds
 
-## 2WD Acrylic Robot
+### 4WD Cardboard / Clipboard Robot
 
-### Features & Limitations
+#### Features & Limitations
 
-### Robot Hardware
+#### Robot Hardware
 
-### Variations
+#### Variations
 
+--------------------------------------------------------------------------------
 
-## 4WD Acrylic Robot
+### 2WD Acrylic Robot
 
-### Features & Limitations
+#### Features & Limitations
 
-### Robot Hardware
+#### Robot Hardware
 
-### Variations
+#### Variations
 
+--------------------------------------------------------------------------------
 
-## 4WD Aluminum Robot
+### 4WD Acrylic Robot
 
-### Features & Limitations
+#### Features & Limitations
 
-### Robot Hardware
+#### Robot Hardware
 
-### Variations
+#### Variations
+
+--------------------------------------------------------------------------------
+
+### 4WD Aluminum Robot
+
+#### Features & Limitations
+
+#### Robot Hardware
+
+#### Variations

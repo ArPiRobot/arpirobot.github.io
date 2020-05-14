@@ -1,27 +1,42 @@
 # Setup the Raspberry Pi
-ArPiRobot robots are made functional with a variety of components. The collection of these components is refered to as an ArPiRobot version. Certain versions of each component below must be used with each ArPiRobot version. 
+ArPiRobot robots are made functional with a variety of components.
+
+- A PC program to drive / control the robot (ArPiRobot Drive Station)
+- A PC program to configure the robot (ArPiRobot Deploy Tool)
+- An Operating System (OS) on the raspberry pi with custom modifications (Customized Raspbian Image or ArPiRobot Image).
+- A python library to enable use of motors and other devices in robot code (ArPiRobot-PythonLib)
+- A set of scripts and services to configure/control the Pi on the robot (ArPiRobot-RaspbianTools)
+
+The RaspbianTools and PythonLib are packaged as an update zip for a specific ArPiRobot image and can be sent to and installed on the robot using the Deploy Tool. So the components you'll need to worry about are:
+
+**On the Pi**
+
+- An OS Image
+- An Update (which includes the PythonLib and Raspbian Tools)
+
+**On the PC**
+
+- The Drive Station to control the robot
+- The Deploy Tool to configure the robot and send code to the robot
+
+First you need to setup the Raspberry Pi with the custom ArPiRobot image (which is just a modified version of Raspbian).
 
 ## Requirements
-Before starting you will need a computer with a WiFi adapter, a [supported Raspberry Pi](../reference/hardware.md), a power supply for the Raspberry Pi (this can be a 2A or greater USB power adapter, a 2A or greater battery pack, etc), a micro SD card (at least 8GB), and a way to connect the micro SD card to your computer.
+Before starting you will need a computer<sup>&ast;</sup>, a [supported Raspberry Pi](../starting/supportedhardware.md), a power supply for the Raspberry Pi (this can be a 2A or greater USB power adapter, a 2A or greater battery pack, etc), a micro SD card (at least 8GB), and a way to connect the micro SD card to your computer.
 
+<sup>&ast;</sup>The software used in this section (balenaEtcher) is available for Windows, macOS, and Linux computers. If using another OS you will need to find another program to write the image file to the SD Card.
 
 ## Choosing an Image
-It is always recommended to use the latest ArPiRobot image, a list of which is availbe on the [downloads](../downloads.md).
+It is always recommended to use the latest ArPiRobot image, a list of which is available on the [downloads page](../downloads.md).
 
 
 ## Flash the Image
-To start, [download](../downloads.md) the newest Raspberry Pi image.. This image contains a modified versoin of Raspbian, the official Raspberry Pi OS. It has tools, libraries, and programs pre-installed to allow it to work with ArPiRobot robot code. 
-
-After downloading the image (which will be a `.zip` file) it needs to be extracted from the compressed (zipped) folder before other programs can use it. The compressed folder (`.zip` file) will look similar to the image below in Windows explorer.
-
-
-To extract the image right click it and select "Extract all..." and click "Extract" on the dialog that pops up. After extracting there will be a normal (uncompressed) folder. The one that does not end in `.zip` is the normal folder. Inside this folder there is the image file (`.img`).
-
+To start, download the newest Raspberry Pi image. This image contains a modified version of Raspbian, the official Raspberry Pi OS. It has tools, libraries, and programs pre-installed to allow it to work with ArPiRobot robot code. 
 
 The Raspberry Pi loads the OS form a micro SD Card, so the image must be written to a micro SD Card. To do so, we will use [balenaEtcher](https://www.balena.io/etcher/). Download and run it. You should see a screen like the one below.
 
-Choose select image and choose the ArPiRobot image file (`.img`) from the uncompressed folder. Then connect your micro SD card to your computer. Choose select target and choose the micro SD Card. Click flash and wait until it completes.
+Choose select image and choose the ArPiRobot image file (`ArPiRobot-VERSION.img.gz`) that you downloaded. Then connect your micro SD card to your computer. Choose select target and choose the micro SD Card. Click flash and wait until it completes.
 
-Put the SD Card in the Raspbery Pi and power it on. The activity light (green) should start blinking, indicating that the Pi is booting. Wait for it to finish booting (about 30-60 seconds). The first boot will take longer than most as it will expand the root partition to fill the SD card then reboot. 
+Put the SD Card in the Raspbery Pi and power it on. The activity light (green) should start blinking, indicating that the Pi is booting. Wait for it to finish booting (about 30-60 seconds). The first boot will take longer than most as it will expand the root partition to fill the SD card then reboot.
 
 Once the Pi boots it will be generating a WiFi network called "ArPiRobot-Robot" with a password of "arpirobot123". This network is how we will interface with the Raspberry Pi later.

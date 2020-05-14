@@ -5,6 +5,7 @@ theme:
   colorscheme: github
   highlightjs: true
 nav:
+    - Home: index.md
     - Downloads: downloads.md
     - Getting Started:
         - What Hardware Do I Need: starting/requiredhardware.md
@@ -16,7 +17,6 @@ nav:
         - Installing Updates: setup/updating.md
         - Create a Simple Robot Project: setup/createproject.md
     - Reference:
-        - ArPiRobot Components: reference/components.md
         - Programming Models: reference/programming_models.md
         - Robot Classes: reference/robotclasses.md
         - Motors: reference/motors.md
@@ -26,7 +26,9 @@ nav:
         - Network Table: reference/nettable.md
         - Default Settings: reference/defaultsettings.md
     - For Developers: 
+        - ArPiRobot Components: devs/components.md
         - Development Resources: devs/resources.md
         - WiFi Debugging: devs/wifidebug.md
-        - Building an ArPiRobot Image: devs/buildminimage.md
+        - Building an ArPiRobot Image: devs/buildimage.md
         - Image to/from SD Card: devs/imagefromsd.md
+        - Technical Documentation: devs/technical.md
