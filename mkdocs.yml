@@ -29,6 +29,7 @@ nav:
         - ArPiRobot Components: devs/components.md
         - Development Resources: devs/resources.md
         - WiFi Debugging: devs/wifidebug.md
+        - PythonLib Development: devs/developing_pylib.md
         - Building an ArPiRobot Image: devs/buildimage.md
         - Image to/from SD Card: devs/imagefromsd.md
         - Technical Documentation: devs/technical.md
