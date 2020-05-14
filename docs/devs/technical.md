@@ -86,6 +86,10 @@ Things controlled by the arduino that provide data to the Pi.
 ## How Updates Work
 - On the robot
 - On the development PC
+- Creating updates 
+    - Using generate_package.sh
+    - Manually
+    - Custom updates (to change things, install deb packages, etc)
 
 ## VSCode Extension Functionality
 - Create Projects (using template hard-coded in extension)
