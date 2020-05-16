@@ -4,6 +4,8 @@ theme:
   custom_dir: cinder
   colorscheme: github
   highlightjs: true
+markdown_extensions:
+  - attr_list
 nav:
     - Home: index.md
     - Downloads: downloads.md
@@ -17,13 +19,18 @@ nav:
         - Installing Updates: setup/updating.md
         - Create a Simple Robot Project: setup/createproject.md
     - Reference:
-        - Programming Models: reference/programming_models.md
-        - Robot Classes: reference/robotclasses.md
-        - Motors: reference/motors.md
-        - Raspberry Pi Sensors: reference/sensors.md
-        - Arduino Coprocessor and Sensors: reference/arduinosensors.md
-        - Media on Robots: reference/media.md
-        - Network Table: reference/nettable.md
+        - Programming:
+            - Programming Models: reference/programming_models.md
+            - Robot Classes: reference/robotclasses.md
+            - Motors: reference/motors.md
+            - Raspberry Pi Sensors: reference/sensors.md
+            - Arduino Coprocessor and Sensors: reference/arduinosensors.md
+            - Media on Robots: reference/media.md
+            - Network Table: reference/nettable.md
+        - Guides / Manuals:
+            - Drive Station Manual: reference/drive_station.md
+            - Deploy Tool Manual: reference/deploy_tool.md
+            - Mobile Drive Station Manual: reference/android_drive_station.md
         - Default Settings: reference/defaultsettings.md
     - For Developers: 
         - ArPiRobot Components: devs/components.md

@@ -12,7 +12,9 @@ The python installation on the PC you are using to write the robot code also nee
 ## Robot Updates
 Note: You do not need internet access on the robot to update the robot.
 
-After [downloading](../downloads.md) the Update zip file to your computer, open the Deploy Tool. Connect your computer to the Robot's WiFi then click connect in the Deploy Tool. Once connected, select the updates tab, choose the downloaded update zip file, and apply the update to the robot using the deploy tool.
+After [downloading](../downloads.md) the Update zip file to your computer, open the Deploy Tool. Connect your computer to the Robot's WiFi<sup>&ast;</sup> then click connect in the Deploy Tool. Once connected, select the updates tab, choose the downloaded update zip file, and apply the update to the robot using the deploy tool.
+
+<sup>&ast;</sup>Make sure to disconnect from other types of networks when you do this (including ethernet connections).
 
 ## Development Environment Updates
 Note: You will need internet access on your computer to update the development environment.

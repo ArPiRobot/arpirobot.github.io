@@ -39,4 +39,4 @@ Choose select image and choose the ArPiRobot image file (`ArPiRobot-VERSION.img.
 
 Put the SD Card in the Raspbery Pi and power it on. The activity light (green) should start blinking, indicating that the Pi is booting. Wait for it to finish booting (about 30-60 seconds). The first boot will take longer than most as it will expand the root partition to fill the SD card then reboot.
 
-Once the Pi boots it will be generating a WiFi network called "ArPiRobot-Robot" with a password of "arpirobot123". This network is how we will interface with the Raspberry Pi later.
+Once the Pi boots it will be generating a WiFi network called "ArPiRobot-Robot" with a password of "arpirobot123". This network is how we will interface with the Raspberry Pi later. When working with the robot, keep in mind that there will be no internet access via this network. If following these docs you will want to make sure you have the pages you need open before connecting to the robot's WiFi.

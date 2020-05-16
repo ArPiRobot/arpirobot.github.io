@@ -72,12 +72,28 @@ Things controlled by the arduino that provide data to the Pi.
 
 - Explain decision not to use arduino to handle motors
 
+## Connecting to the Robot
+- What order connections must be made in
+- Requirements (same source address)
+    - How the robot handles this if these requirements are not met
+
 ## Drive Station Network Protocol
 - 4 Ports
 - 3 TCP
     - Command Port (enable, disable, sync net table)
     - NetTable Data Port (send/receive key/value pairs)
     - Log Port (send log messages from robot to DS)
+- Network table sync
+
+## Drive Station Native Library for Gamepads
+- How it works
+- Gamepad mappings file
+- Required libraries
+- JNI bindings
+- Building
+- Using on non-supported OSes
+    - Where does it look for native library
+    - And in what order
 
 ## Deploy Tool Routines / Scripts
 - When and how the deploy tool uses the scripts
