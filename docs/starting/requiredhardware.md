@@ -2,7 +2,7 @@
 
 ## Computer
 
-You need a computer that runs Windows, macOS, or Linux (64-bit x86_64). You will need a gamepad that can connect to the computer (Logitech F310 gamepad<sup>&ast;</sup> works well). Said computer must have a WiFi adapter (a USB one works).
+You need a computer that runs Windows, macOS, or Linux (64-bit x86_64). Chromebooks are not supported (except maybe by using the ability to run Linux programs). Said computer must have a WiFi adapter (a USB one works). You will also need a gamepad<sup>&ast;</sup> that can connect to the computer (Logitech F310 gamepad works well). 
 
 
 <sup>&ast;</sup>Instead of using a gamepad with the Drive Station software on your PC you could use the Android Drive Station app, which makes use of a virtual touchscreen gamepad.

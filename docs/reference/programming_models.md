@@ -206,6 +206,8 @@ The structure of a typical ArPiRobot project consists of three files:
 - `robot_actions.py`
 - `robot.py`
 
+The files that make up a robot project should be in their own "Project Folder" containing only robot program files and other files needed by the robot program.
+
 The `robot_objects.py` file is where devices and settings (such as constants) should be defined. 
 
 ```python3

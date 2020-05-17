@@ -31,6 +31,7 @@ nav:
             - Drive Station Manual: reference/drive_station.md
             - Deploy Tool Manual: reference/deploy_tool.md
             - Mobile Drive Station Manual: reference/android_drive_station.md
+            - Arduino IMU Calibration: reference/arduino_imu_calibration.md
         - Default Settings: reference/defaultsettings.md
     - For Developers: 
         - ArPiRobot Components: devs/components.md
