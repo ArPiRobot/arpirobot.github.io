@@ -61,6 +61,8 @@ The image contains the OS pre-configured to work with ArPiRobot software. Each i
 ## Visual Studio Code Extension
 | Extension Version | Changes                                                               | Link |
 | ----------------- | --------------------------------------------------------------------- | ---- |
+| v0.0.7            | Added new menu structure. Added python project settings file.         | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.7) |
+| v0.0.6            | Update project structure for Beta6Update7.                            | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.6) |
 | v0.0.5            | Fixed messages, updated project structure for Beta6Update1 and newer  | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.5) |
 | v0.0.4            | Fixed broken commands. Correct dependencies included.                 | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.4) |
 | v0.0.3            | Support for updating dev environment from extension                   | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.3) |
