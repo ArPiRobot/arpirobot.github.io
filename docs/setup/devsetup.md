@@ -35,7 +35,9 @@ There are many development environments for writing python code, but for ArPiRob
 
 Download and install VSCode from [https://code.visualstudio.com/](https://code.visualstudio.com/).
 
-After installing it, open VSCode. A few extensions will be required/helpful. First, install Microsoft's Python extension and Microsoft's "pyright" extension. Then download the ArPiRobot VSCode Extension (see the [downloads page](../downloads.md)). Once you've downloaded the `vsix` file open VSCode's extensions pane (left side). Click the three dots menu button in the top right of the extensions pane. Choose install form VSIX and choose the downloaded VSIX file.
+After installing it, open VSCode. A few extensions will be required/helpful. First, install Microsoft's Python extension. Then download the ArPiRobot VSCode Extension (see the [downloads page](../downloads.md)). Once you've downloaded the `vsix` file open VSCode's extensions pane (left side). Click the three dots menu button in the top right of the extensions pane. Choose install form VSIX and choose the downloaded VSIX file.
+
+*Note: The first time you open a Python file you may be asked to install Pylint. If asked, allow the installation. Pylint is used for error detection.*
 
 ## Installing the Drive Station and Deploy Tool
 

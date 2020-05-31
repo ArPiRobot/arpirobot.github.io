@@ -5,7 +5,7 @@ Development of the ArPiRobot-PythonLib can be done using VSCode with the same ba
 Type hints should be used whenever possible.
 
 ## Testing Setup
-A directory called `testrobot` in the ArPiRobot-PythonLib directory is excluded form the git repo. This is so that a test robot program can be created in this folder while making changes to the pythlonlib. It is often useful to open this folder in its own VSCode window or error detection may not work correctly.
+A directory called `testrobot` in the ArPiRobot-PythonLib directory is excluded form the git repo. This is so that a test robot program can be created in this folder while making changes to the pythlonlib.
 
 When ready to test you will need to be connected to a robot via its WiFi network (or have some network connection to the Robot's Pi).
 
