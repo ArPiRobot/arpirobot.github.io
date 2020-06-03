@@ -45,18 +45,18 @@ The image contains the OS pre-configured to work with ArPiRobot software. Each i
 
 | Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ---------------------- | ----------------------------- | --------------- |
-| v0.3.x                 | Beta 6 Updates 1-9 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.3](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.3.3)      |
+| v0.3.x                 | Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.3](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.3.3)      |
 | v0.2.x                 | Beta 2 Updates 1 and 2        | [v0.2.2](https://github.com/MB3hel/ArPiRobot-DriveStation/releases/tag/v0.2.2)      |
 
 ## Mobile (Android) Drive Station
 | Mobile Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ----------------------------- | ----------------------------- | --------------- |
-| v0.0.2                        | Beta 6 Updates 1-9            | [v0.0.2](https://github.com/MB3hel/ArPiRobot-MobileDriveStation/releases/tag/v0.0.2) |
+| v0.0.2                        | Beta 6 Updates 1-10           | [v0.0.2](https://github.com/MB3hel/ArPiRobot-MobileDriveStation/releases/tag/v0.0.2) |
 
 ## Deploy Tool
 | Deploy Tool Versions | Compatible Images and Updates | Latest Download |
 | -------------------- | ----------------------------- | --------------- |
-| v0.2.2               | Beta 6 Update 9               | [v0.2.2](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.2.2) |
+| v0.2.2               | Beta 6 Updates 9-10           | [v0.2.2](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.2.2) |
 | v0.2.0-v0.2.1        | Beta 6 Updates 1-8 <br /> Beta 5 Update 1               | [v0.2.1](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.2.1) |
 | v0.1.2 - v0.1.3      | Beta 4 Updates 1-7 <br /> Beta 3 Updates 2-3         | [v0.1.3](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
 | v0.1.0 - v0.1.1      | Beta 3 Update 1               | [v0.1.1](https://github.com/MB3hel/ArPiRobot-DeployTool/releases/tag/v0.1.1) |
@@ -79,7 +79,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. Each i
 
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
-| v0.0.7                    | Beta 6 Updates 4-9 |
+| v0.0.7                    | Beta 6 Updates 4-10 |
 | v0.0.6                    | Beta 6 Updates 1-3                |
 | v0.0.5                    | Beta 5 Update 1 <br /> Beta 4 Updates 6-7            |
 | v0.0.4                    | Beta 4 Update 5               |
