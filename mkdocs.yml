@@ -14,19 +14,22 @@ nav:
         - Supported Robot Hardware: starting/supportedhardware.md
         - Example Robot Builds: starting/examplebuilds.md
     - Setup:
+        - Programming Languages: setup/languages.md
+        - First Steps: setup/firststeps.md
         - Setup the Raspberry Pi: setup/setuppi.md
         - Setup your Computer: setup/devsetup.md
         - Installing Updates: setup/updating.md
         - Create a Simple Robot Project: setup/createproject.md
     - Reference:
-        - Programming:
-            - Programming Models: reference/programming_models.md
-            - Robot Classes: reference/robotclasses.md
-            - Motors: reference/motors.md
-            - Raspberry Pi Sensors: reference/sensors.md
-            - Arduino Coprocessor and Sensors: reference/arduinosensors.md
-            - Media on Robots: reference/media.md
-            - Network Table: reference/nettable.md
+        - Python Programming:
+            - Programming Models: reference/python/programming_models.md
+            - Robot Classes: reference/python/robotclasses.md
+            - Motors: reference/python/motors.md
+            - Raspberry Pi Sensors: reference/python/sensors.md
+            - Arduino Coprocessor and Sensors: reference/python/arduinosensors.md
+            - Media on Robots: reference/python/media.md
+            - Network Table: reference/python/nettable.md
+        - Java Programming: reference/java.md
         - Guides / Manuals:
             - Drive Station Manual: reference/drive_station.md
             - Deploy Tool Manual: reference/deploy_tool.md

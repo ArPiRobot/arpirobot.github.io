@@ -1,13 +1,28 @@
 # Installing Updates
 
 ## About Updates
-It is *always* necessary to install an ArPiRobot Robot update after flashing the image to the SD Card to ensure that the latest version of the ArPiRobot Python Library is installed on the robot. When [downloading updates](../downloads.md) make sure to download an update for the image you are using. Each update only supports one image. For example if you are using the "Beta6" image download the latest Beta6 update.
 
-The python installation on the PC you are using to write the robot code also needs to be updated. This can be done through the VSCode extension.
+Robot updates generally contain two things:
+
+- A version of the ArPiRobot-PythonLib
+- A version of the ArPiRobot-RaspbianTools
+
+The PythonLib is necessary to run python programs. The RaspbianTools are necessary to configure the robot and make sure everything works as intended.
+
+It is *always* necessary to install an ArPiRobot Robot update after flashing the image to the SD Card to ensure that the latest version of the ArPiRobot-RaspbianTools are installed on the robot. This is necessary even if you are not using Python.
+
+When [downloading updates](../downloads.md) make sure to download an update for the image you are using. Each update only supports one image. For example if you are using the "Beta6" image download the latest Beta6 update.
+
+If you are writing your robot code in Python you will also need to install the *same* update on your PC to make sure the same version of the PythonLib is available on the robot and your PC. This can be done through the VSCode extension.
 
 *For each update you should make sure to install the robot update to the robot and the development environment update on your development computer(s). If the same update version is not used on both there may be false errors detected on your computer, or errors on the robot that your computer did not know about.*
 
+If you are using Java you do **not** need to install the updates on the development PC, as the JavaLib is handled differently. The JavaLib is not installed on the computer nor on the robot. Instead, it is included with the Java program when it is deployed to the robot.
+
 *It is **not** necessary to go through installing each update for an image in order. It is fine to jump from update 1 to 4 for example. The updates are all standalone.*
+
+
+You should always make sure you are using the latest available update as updates include bug fixes as well as new features. Also make sure the tools on your PC (Drive Station and Deploy Tool) are compatible with the update you are using (this information is on the [Downloads](../downloads.md) page).
 
 ## Robot Updates
 Note: You do not need internet access on the robot to update the robot.

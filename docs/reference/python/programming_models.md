@@ -129,74 +129,10 @@ routine = ActionSeries([DriveForward(10), DriveReverse(10)], DriveAction())
 ActionManager.start_action(routine)
 ```
 
-## Event-Based Model
-*This model is a work in progress and may be drastically changed and/or removed at any point in time. It is also currently disabled by default and must be enabled before use.*
-
-The event based model relies on running a function when something occurs or some value changes. For example a function can be run when a gamepad axis is moved or when a button's state changes. 
-
-All event handler callback functions are run asynchronously to prevent user code from being able to slow down core functionality, however this means that this model does add significant overhead on single-core systems (such as the Raspberry Pi Zero).
-
-Event handler callbacks are added to specific device objects (such as Gamepads) by using `on_` functions. The event callback must be a function that takes one argument: the event object containing information about the event. Each event type has a different `Event` subclass with information about the specific type of event.
-
-**Events Information**
-
-| Event Type               | Object Type         | Callback Registration Function                  | Event Class                |
-| ------------------------ | ------------------- | ----------------------------------------------- | -------------------------- |
-| Gamepad Axis Moved       | Gamepad             | Gamepad.on_axis_moved(axis_num, callback)       | Gamepad.AxisMovedEvent     |
-| Gamepad Button Changed   | Gamepad             | Gamepad.on_button_changed(button_num, callback) | Gamepad.ButtonChangedEvent |
-| Gamepad Dpad Changed     | Gamepad             | Gamepad.on_dpad_changed(dpad_num, callback)     | Gamepad.DpadChangedEvent   |
-| Arduino Ready            | ArduinoInterface    | ArduinoInterface.on_arduino_ready(callback)     | ArduinoInterface.ArduinoReadyEvent |
-| Arduino Communication Lost | ArduinoInterface  | ArduinoInterface.on_communication_lost(callback) | ArduinoInterface.CommunicationLossEvent |
-
-
-**Example**
-
-```python3
-from arpirobot.core.logger_internal import log_info
-from arpirobot.core.robot import BaseRobot
-from arpirobot.core import event
-from arpirobot.devices.gamepad import Gamepad
-
-# Enable the event system
-event.enable_event_system = True
-
-class Robot(BaseRobot):
-    def __init__(self):
-        super().__init__()
-        self.gamepad = Gamepad(0)
-
-    def robot_started(self):
-        # Run the drive function when axis 0 moves on this gamepad
-        self.gamepad.on_axis_moved(0, self.drive)
-
-    def robot_enabled(self):
-        pass
-
-    def robot_disabled(self):
-        pass
-
-    def periodic(self):
-        self.feed_watchdog()
-
-    def enabled_periodic(self):
-        pass
-
-    def disabled_periodic(self):
-        pass 
-
-    def drive(self, event: Gamepad.AxisMovedEvent):
-        log_info("Axis moved!")
-
-if __name__ == "__main__":
-    robot = Robot()
-    robot.start()
-
-```
-
 ## Mixing of Programming Models
-It is possible to mix proramming models and it is often useful to do so. For example on may use an event based or periodic model to handle driving the robot and watch for gamepad button presses. When a button is pressed control may be handed over to an action.
+It is possible to mix proramming models and it is often useful to do so. For example on may use a periodic model to handle driving the robot and watch for gamepad button presses. When a button is pressed control may be handed over to an action.
 
-The biggest thing to be careful of is that you never have two sections of code using a device (eg. a motor) at the same time. For example, if an action is started to control the motors you need to make sure that periodic or event based code does not also attempt to control the motors while an action is running.
+The biggest thing to be careful of is that you never have two sections of code using a device (eg. a motor) at the same time. For example, if an action is started to control the motors you need to make sure that periodic code does not also attempt to control the motors while an action is running.
 
 ## Project Structure and Conventions
 
