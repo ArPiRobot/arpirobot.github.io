@@ -9,6 +9,7 @@ Resources for developers working on ArPiRobot components.
 | Component | Source Code | Issue Tracker |
 | --------- | ----------- | ------------- |
 | Python Library | [GitHub](https://github.com/MB3hel/ArPiRobot-PythonLib) | [GitHub](https://github.com/MB3hel/ArPiRobot-PythonLib/issues) |
+| Java Library   | [GitHub](https://github.com/MB3hel/ArPiRobot-JavaLib) | [GitHub](https://github.com/MB3hel/ArPiRobot-JavaLib/issues) |
 | Raspbian Tools |  [GitHub](https://github.com/MB3hel/ArPiRobot-RaspbianTools) | [GitHub](https://github.com/MB3hel/ArPiRobot-RaspbianTools/issues) |
 | Arduino Firmware | [GitHub](https://github.com/MB3hel/ArPiRobot-ArduinoFirmware) | [GitHub](https://github.com/MB3hel/ArPiRobot-ArduinoFirmware/issues) |
 | Documentation | [GitHub](https://github.com/MB3hel/ArPiRobot) | [GitHub](https://github.com/MB3hel/ArPiRobot) |

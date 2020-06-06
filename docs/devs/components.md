@@ -10,7 +10,12 @@ This is the modified version of Raspbian (the official Raspberry Pi OS) with req
 #### **ArPiRobot PythonLib**
 Source code available on [GitHub](https://github.com/MB3hel/ArPiRobot-PythonLib)
 
-The python library for ArPiRobot robot code.
+The Python library for ArPiRobot robot code.
+
+#### **ArPiRobot JavaLib**
+Source code available on [GitHub](https://github.com/MB3hel/ArPiRobot-JavaLib)
+
+The Java library for ArPiRobot robot code.
 
 #### **ArPiRobot RaspbianTools**
 Source code available on [GitHub](https://github.com/MB3hel/ArPiRobot-RaspbianTools)
