@@ -138,17 +138,17 @@ These options can be set either to 1 or 0. Try all of the following combinations
 wmm_enabled=0
 wme_enabled=0
 ```
-
+<!--Need a comment so this is not made into code tabs!-->
 ```
 wmm_enabled=1
 wme_enabled=0
 ```
-
+<!--Need a comment so this is not made into code tabs!-->
 ```
 wmm_enabled=0
 wme_enabled=1
 ```
-
+<!--Need a comment so this is not made into code tabs!-->
 ```
 wmm_enabled=1
 wme_enabled=1

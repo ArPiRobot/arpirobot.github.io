@@ -4,8 +4,14 @@ theme:
   custom_dir: cinder
   colorscheme: github
   highlightjs: true
+extra_css:
+    - css/codetabs.css
 markdown_extensions:
   - attr_list
+  - markdown_fenced_code_tabs:
+      single_block_as_tab: False
+      active_class: 'active'
+      template: 'default'
 nav:
     - Home: index.md
     - Downloads: downloads.md
@@ -21,15 +27,14 @@ nav:
         - Installing Updates: setup/updating.md
         - Create a Simple Robot Project: setup/createproject.md
     - Reference:
-        - Python Programming:
-            - Programming Models: reference/python/programming_models.md
-            - Robot Classes: reference/python/robotclasses.md
-            - Motors: reference/python/motors.md
-            - Raspberry Pi Sensors: reference/python/sensors.md
-            - Arduino Coprocessor and Sensors: reference/python/arduinosensors.md
-            - Media on Robots: reference/python/media.md
-            - Network Table: reference/python/nettable.md
-        - Java Programming: reference/java.md
+        - Programming:
+            - Programming Models: reference/programming_models.md
+            - Robot Classes: reference/robotclasses.md
+            - Motors: reference/motors.md
+            - Raspberry Pi Sensors: reference/sensors.md
+            - Arduino Coprocessor and Sensors: reference/arduinosensors.md
+            - Media on Robots: reference/media.md
+            - Network Table: reference/nettable.md
         - Guides / Manuals:
             - Drive Station Manual: reference/drive_station.md
             - Deploy Tool Manual: reference/deploy_tool.md
@@ -41,6 +46,7 @@ nav:
         - Development Resources: devs/resources.md
         - WiFi Debugging: devs/wifidebug.md
         - PythonLib Development: devs/developing_pylib.md
+        - JavaLib Development: devs/developing_javalib.md
         - Building an ArPiRobot Image: devs/buildimage.md
         - Image to/from SD Card: devs/imagefromsd.md
         - Technical Documentation: devs/technical.md

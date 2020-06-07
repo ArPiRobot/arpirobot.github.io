@@ -3,16 +3,18 @@
 #### **What Does Supported Mean**
 In this context supported can mean a few different things. In the case of motor drivers and sensors it means that they have been tested and that there is code in the python library and/or the arduino firmware to work with them. 
 
-In the case of Arduinos supported means that the firmware has been tested running on a supported Arduino. 
+In the case of Arduinos supported means that the firmware has been tested running on a supported Arduino. However, it will likely work on any Arduino. 
 
-It will likely work on any Arduino. In the case of raspberry pi's it means that the modified Raspbian images have been tested on that model of Pi. Likely any Pi (with builtin WiFi adapter) will work.
+In the case of Raspberry Pi's it means that the modified Raspbian images have been tested on that model of Pi. Likely any Pi (with builtin WiFi adapter) will work.
 
 In the case of other devices such as battery packs it simply means that it should be (by specs) compatible and *may* have been tested.
 
 Other tools and supplies listed may or may not have been tested, but should be compatible with whatever purpose is described for them.
 
 #### **About Vendors**
-Most of the time we provide links to components that can be bought from [Adafruit](https://www.adafruit.com/) or are easily found on [Amazon](https://www.amazon.com/). Occasionalyy, parts may not be available from these sites (or may be hard to find or not competitivly priced) so there are sometimes other sites used.
+Most of the time we provide links to components that can be bought from [Adafruit](https://www.adafruit.com/) or are easily found on [Amazon](https://www.amazon.com/). Occasionally, parts may not be available from these sites (or may be hard to find or not competitivly priced) so there are sometimes other sites used.
+
+It is also worth noting that [Digikey](https://www.digikey.com/) stocks most Adafruit parts and allows backordering.
 
 [Banggood](https://www.banggood.com/) - Stocks many items to be purchased online. Similar to Amazon, but slow shipping from China. If you are after cheap for many of the items on the "Other" list, look here.
 
@@ -41,7 +43,7 @@ Note: you can also use a 5V regulator to power the Pi from the motor batteries (
 
 | Availability  | USB Battery Pack | Output Current | Works For Pi 3A/3B | Works For Pi Zero W | Notes                        | Link |
 | ------------- | ---------------- | -------------- | ------------------ | ------------------- | ------                       |      |
-| Discontinued? | RavPower 6700 mAh | 2.4 A         | Yes                | Yes                 | Metal case. Little on the heavy side. | [Amazon])(https://www.amazon.com/Portable-Charger-RAVPower-6700mAh-External/dp/B00Y2PX4YI/) |
+| Discontinued? | RavPower 6700 mAh | 2.4 A         | Yes                | Yes                 | Metal case. Little on the heavy side. | [Amazon](https://www.amazon.com/Portable-Charger-RAVPower-6700mAh-External/dp/B00Y2PX4YI/) |
 | Available     | GETIHU 5200 mAh | 2.4A            | Yes                | Yes                 | Plastic case. Good weight for use on smaller robots as well. | [Amazon](https://www.amazon.com/GETIHU-High-Speed-Pocket-Size-Powerbank-Flashlight/dp/B07CYNBNVW/) |
 | Available, NOT TESTED | Anker Astro E1 5200 mAh | 2.0A | Yes | Yes | Similar in size and weight to GETIHU option. Feels like slightly higher build quality. | [Amazon](https://www.amazon.com/Anker-bar-Sized-Portable-High-Speed-Technology/dp/B00P7N0320/) |
 
@@ -68,7 +70,9 @@ Currently motor drivers are all connected to the Raspberry Pi. The arduino is no
 | Adafruit TB6612 Module | GPIO/PWM with jumper wires | 2 | 2.7V-5V | 4.5V - 13.5V | 1.2A |Does not come with terminal block power input header. | [Adafruit Store](https://www.adafruit.com/product/2448) |
 | L298N Module | GPIO/PWM with jumper wires | 2 | 2.7-7V | 5V-12V | 2A | Motor voltage can be up to 35V, but onboard 5V regulator cannot be used (remove jumper). An external 5V supply will be required. There is a ~1V drop between motor battery voltage and voltage applied to motors with this module. | [Amazon](https://www.amazon.com/Qunqi-2Packs-Controller-Stepper-Arduino/dp/B01M29YK5U/ref=sr_1_7?keywords=l298n&qid=1570723739&sr=8-7) |
 | Adafruit Motor Hat | Pi GPIO Header (hat) I<sup>2</sup>C | 4 | 3.3V I<sup>2</sup>C | 4.5V-13.5V | 1.2A | Uses TB6612 chips, but communicates with Pi via I<sup>2</sup>C, so there is no need for software PWM. It comes with a standard header, but it is recommended to buy and use Adafruit's stacking header so other I/O pins are accessible. | [Adafruit Store](https://www.adafruit.com/product/2348) |
-| Geekworm Motor Hat | Pi GPIO Header (hat) I<sup>2</sup>C | 4 | 3.3V I<sup>2</sup>C | 4.5V-13.5V | 1.2A | Claims to use TB6612, but mine did not. Used different driver with current limiting issues that lead to hat thermal shutoff happening easily for larger robots. Seems to be lower quality "copy" of Adafruit's Hat. | [Amazon](https://www.amazon.com/Raspberry-Function-Expansion-Support-Stepper/dp/B0721MTJ3P/ref=sr_1_6?keywords=raspberry+pi+motor+hat&qid=1570724085&sr=8-6) | 
+| Geekworm Motor Hat | Pi GPIO Header (hat) I<sup>2</sup>C | 4 | 3.3V I<sup>2</sup>C | 4.5V-13.5V | 1.2A | Seems to be lower quality "copy" of Adafruit's Hat. | [Amazon](https://www.amazon.com/Raspberry-Function-Expansion-Support-Stepper/dp/B0721MTJ3P/ref=sr_1_6?keywords=raspberry+pi+motor+hat&qid=1570724085&sr=8-6) | 
+
+TODO: UPDATE THIS LIST
 
 
 #### **Supported Raspberry Pi Sensors**
