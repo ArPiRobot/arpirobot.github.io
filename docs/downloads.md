@@ -65,6 +65,8 @@ The image contains the OS pre-configured to work with ArPiRobot software. Each i
 ## Visual Studio Code Extension
 | Extension Version | Changes                                                               | Link |
 | ----------------- | --------------------------------------------------------------------- | ---- |
+| v0.0.11           | Enabled pylint and mypy in python template project                    | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.11) |
+| v0.0.10           | Added initial JavaLib support                                         | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.10) |
 | v0.0.9            | Using new main.sh startup script model (Beta 6 Update 9).             | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.9) |
 | v0.0.8            | Updated logger imports for Beta6Update8.                              | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.8) |
 | v0.0.7            | Added new menu structure. Added python project settings file.         | [Download](https://github.com/MB3hel/ArPiRobot-VSCodeExtension/releases/tag/v0.0.7) |
