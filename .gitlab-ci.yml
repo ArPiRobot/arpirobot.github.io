@@ -1,7 +1,7 @@
 image: python:3.8-buster
 
 before_script:
-  - pip install mkdocs markdown-fenced-code-tabs
+  - pip install mkdocs markdown-fenced-code-tabs mkdocs-cinder markdown-include
 
 pages:
   script:

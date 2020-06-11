@@ -1,7 +1,7 @@
 # Descriptions of Components
 
 #### **Raspberry Pi Image**
-Downloads are available on the [downloads page](../downloads.md)
+Downloads are available on the [downloads page](../downloads/latest.md)
 
 Built using scripts available on [GitHub](https://github.com/MB3hel/ArPiRobot-ImageScripts)
 

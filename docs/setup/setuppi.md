@@ -27,7 +27,7 @@ Before starting you will need a computer<sup>&ast;</sup>, a [supported Raspberry
 <sup>&ast;</sup>The software used in this section (balenaEtcher) is available for Windows, macOS, and Linux computers. If using another OS you will need to find another program to write the image file to the SD Card.
 
 ## Choosing an Image
-It is always recommended to use the latest ArPiRobot image, a list of which is available on the [downloads page](../downloads.md).
+It is always recommended to use the latest ArPiRobot image, a list of which is available on the [downloads page](../downloads/latest.md).
 
 
 ## Flash the Image

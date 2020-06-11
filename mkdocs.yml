@@ -1,9 +1,6 @@
 site_name: ArPiRobot
-theme:
-  name: null
-  custom_dir: cinder
-  colorscheme: github
-  highlightjs: true
+site_url: https://arpirobot.gitlab.io/
+theme: cinder
 extra_css:
     - css/codetabs.css
 markdown_extensions:
@@ -12,9 +9,13 @@ markdown_extensions:
       single_block_as_tab: False
       active_class: 'active'
       template: 'default'
+  - markdown_include.include:
+        base_path: docs
 nav:
     - Home: index.md
-    - Downloads: downloads.md
+    - Downloads: 
+        - Latest: downloads/latest.md
+        - Beta Downloads: downloads/betas.md
     - Getting Started:
         - What Hardware Do I Need: starting/requiredhardware.md
         - Supported Robot Hardware: starting/supportedhardware.md
