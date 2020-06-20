@@ -94,7 +94,7 @@ This will send 10 packets of 32-bytes each to the raspberry pi and wait for it t
 #### Testing Bandwidth
 To test network bandwidth we will use a tool called iperf.
 
-*At this time iperf is not included in the image. You will have to build it from source on the pi.*
+*As of the Beta7 image iperf3 is included in the image. For older images you will need to  copy the sources to the Pi and build from source.*
 
 On the Pi login via SSH and run 
 
@@ -102,10 +102,10 @@ On the Pi login via SSH and run
 iperf3 -s
 ```
 
-Then on your PC download iperf and run (in the same directory as you extracted iperf)
+Then on your PC download iperf3 and run (in the same directory as you extracted iperf)
 
 ```
-iperf3 -c 192.168.10.1
+./iperf3 -c 192.168.10.1
 ```
 
 This will give useful information about bandwidth between the Pi and the PC. Generally if the speed is above 2Mbits/sec you should have no problem with the robot, however if the speed suddenly drops to 0 or close to 0 you may want to consider either rebooting the robot or your PC and trying again and/or changing the WiFi channel. If this does not seem to help see the PC WiFi adapter section below.

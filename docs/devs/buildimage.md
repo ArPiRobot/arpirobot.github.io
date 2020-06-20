@@ -46,10 +46,10 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
 
             echo "VERSION_NAME" > /usr/local/arpirobot-image-version.txt
 
-- Set a constant resolution for HDMI (optional)
+- Set a fixed resolution for HDMI (optional)
     - Edit `/boot/config.txt` and find the following lines
 
-            
+
             #hdmi_group=1
             #hdmi_mode=1
             
@@ -167,33 +167,52 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
 
         apt install sysstat
 
-- Install ArPiRobot-RaspbianTools (Raspbian Tools)
-
-        cd /home/pi
-        git clone https://github.com/MB3hel/ArPiRobot-RaspbianTools.git
-        cd ArPiRobot-RaspbianTools
-        chmod +x ./install.sh
-        ./install.sh
-
 - Install required software before disconnecting from internet (WiFi AP setup will do this)
 
-        apt-get -y install python3 python3-pip python3-setuptools python3-setuptools-scm python3-wheel
-        apt-get -y install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-pulseaudio
+```sh
+# Python for running robot programs
+apt-get -y install python3 python3-pip python3-setuptools python3-setuptools-scm python3-wheel
+
+# Java for running robot programs
+apt-get -y install openjdk-8-jdk-headless
+
+# GPIO libraries
+apt-get -y install pigpio pigpiod pigpio-tools wiringpi
+
+# For wifi bandwidth testing
+apt-get -y install iperf3
+
+# For camera streaming
+apt-get -y install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-pulseaudio
+```
+
+- Install ArPiRobot-RaspbianTools (Raspbian Tools)
+
+```sh
+cd /home/pi
+git clone https://github.com/MB3hel/ArPiRobot-RaspbianTools.git
+cd ArPiRobot-RaspbianTools
+chmod +x ./install.sh
+./install.sh
+```
 
 - Install hostapd (Access point) and dnsmasq (DHCP server) for robot's WiFi AP
 
         apt install hostapd dnsmasq
 
-- Replace the contents of `/etc/dnsmasq.conf` with the following (create the file if it does not exits)
+- Replace the contents of `/etc/dnsmasq.conf` with the following (create the file if it does not exits).
+
 
         interface=wlan0
         dhcp-range=192.168.10.2,192.168.10.20,255.255.255.0,24h
         domain=local
         address=/ArPiRobot-Robot.local/192.168.10.1
 
+
 - Replace the contents of `/etc/hostapd/hostapd.conf` with the following (create the file if it does not exits)
 
         country_code=US
+        ieee80211d=1
         interface=wlan0
         ssid=ArPiRobot-RobotAP
         hw_mode=g
@@ -279,7 +298,13 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
             quiet init=/usr/lib/raspi-config/init_resize.sh
     
     - Patch the script to work with readonly filesystem
-        - Edit `/usr/lib/raspi-config/init_resize.sh` and add the following lines to the beginning
+        - Edit `/usr/lib/raspi-config/init_resize.sh` and replace
+
+            mount /boot/
+
+        with
+
+            mount -o rw,remount /boot/
     
     - Write the resize filesystem service
         - Edit (create new file) `/etc/init.d/resize2fs_once` with the following contents
@@ -302,8 +327,8 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
                     ROOT_DEV=\$(findmnt / -o source -n) &&
                     resize2fs \$ROOT_DEV &&
                     update-rc.d resize2fs_once remove &&
+                    bash -c "sleep 5;mount -o ro,remount /" &
                     rm /etc/init.d/resize2fs_once &&
-                    mount -o ro,remount / &&
                     log_end_msg $?
                     ;;
                 *)
@@ -327,6 +352,6 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
         history -c
         rm /home/pi/.bash_history
 
-- Poweroff
+- Poweroff (do not reboot becasue the one-time filesystem expand will run on next boot)
 
         poweroff

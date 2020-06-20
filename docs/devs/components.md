@@ -22,6 +22,8 @@ Source code available on [GitHub](https://github.com/MB3hel/ArPiRobot-RaspbianTo
 
 Configuration and tools used on the Pi to run and configure robots and robot programs.
 
+These are not in any way associated with the [Raspbian Project](https://www.raspbian.org/). The name comes from the fact that all the scripts and services were designed to work on the Raspberry Pi OS (formerly called Raspbian).
+
 
 #### **ArPiRobot Drive Station**
 Source code available on [GitHub](https://github.com/MB3hel/ArPiRobot-DriveStation)
