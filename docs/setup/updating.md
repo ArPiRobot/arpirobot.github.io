@@ -5,11 +5,11 @@
 Robot updates generally contain two things:
 
 - A version of the ArPiRobot-PythonLib
-- A version of the ArPiRobot-RaspbianTools
+- A version of the ArPiRobot-Tools
 
-The PythonLib is necessary to run python programs. The RaspbianTools are necessary to configure the robot and make sure everything works as intended.
+The PythonLib is necessary to run python programs. The ArPiRobot-Tools are necessary to configure the robot and make sure everything works as intended.
 
-It is *always* necessary to install an ArPiRobot Robot update after flashing the image to the SD Card to ensure that the latest version of the ArPiRobot-RaspbianTools are installed on the robot. This is necessary even if you are not using Python.
+It is *always* necessary to install an ArPiRobot Robot update after flashing the image to the SD Card to ensure that the latest version of the ArPiRobot-Tools are installed on the robot. This is necessary even if you are not using Python.
 
 When [downloading updates](../downloads/latest.md) make sure to download an update for the image you are using. Each update only supports one image. For example if you are using the "Beta6" image download the latest Beta6 update.
 

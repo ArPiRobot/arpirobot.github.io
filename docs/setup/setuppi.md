@@ -5,14 +5,14 @@ ArPiRobot robots are made functional with a variety of components.
 - A PC program to configure the robot (ArPiRobot Deploy Tool)
 - An Operating System (OS) on the raspberry pi with custom modifications (Customized Raspbian Image or ArPiRobot Image).
 - A python library to enable use of motors and other devices in robot code (ArPiRobot-PythonLib)
-- A set of scripts and services to configure/control the Pi on the robot (ArPiRobot-RaspbianTools)
+- A set of scripts and services to configure/control the Pi on the robot (ArPiRobot-Tools)
 
-The RaspbianTools and PythonLib are packaged as an update zip for a specific ArPiRobot image and can be sent to and installed on the robot using the Deploy Tool. So the components you'll need to worry about are:
+The ArPiRobot-Tools and PythonLib are packaged as an update zip for a specific ArPiRobot image and can be sent to and installed on the robot using the Deploy Tool. So the components you'll need to worry about are:
 
 **On the Pi**
 
 - An OS Image
-- An Update (which includes the PythonLib and Raspbian Tools)
+- An Update (which includes the PythonLib and ArPiRobot-Tools)
 
 **On the PC**
 

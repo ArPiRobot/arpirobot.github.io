@@ -27,7 +27,7 @@ This guide is currently up to data for the Beta6 image (2020-02-13-raspbian-bust
 - Finally, move the SD Card into the Pi, connect keyboard, mouse, monitor and power on the pi.
 
 ## Automatic process
-Instead of following the instructions below, the [configuration scripts](https://github.com/MB3hel/ArPiRobot-IamageScripts) can be used. These scripts are used to generate the images and are usually more up to date than this guide, but there is no gaurentee they will work correctly for different Linux OSes or different versions of raspbian that the latest image released.
+Instead of following the instructions below, the [configuration scripts](https://github.com/ArPiRobot/ArPiRobot-IamageScripts) can be used. These scripts are used to generate the images and are usually more up to date than this guide, but there is no gaurentee they will work correctly for different Linux OSes or different versions of raspbian that the latest image released.
 
 To view the script log (live)
 
@@ -163,7 +163,7 @@ Note: Unless otherwise stated all commands are run as root in the pi user's home
         systemctl disable apt-daily.service
         systemctl disable apt-daily-upgrade.service
 
-- Install sysstat (used by ArPiRobot-RaspbianTools scripts to get CPU usage)
+- Install sysstat (used by ArPiRobot-Tools scripts to get CPU usage)
 
         apt install sysstat
 
@@ -186,12 +186,12 @@ apt-get -y install iperf3
 apt-get -y install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-pulseaudio
 ```
 
-- Install ArPiRobot-RaspbianTools (Raspbian Tools)
+- Install ArPiRobot-Tools
 
 ```sh
 cd /home/pi
-git clone https://github.com/MB3hel/ArPiRobot-RaspbianTools.git
-cd ArPiRobot-RaspbianTools
+git clone https://github.com/ArPiRobot/ArPiRobot-Tools.git
+cd ArPiRobot-Tools
 chmod +x ./install.sh
 ./install.sh
 ```
@@ -345,7 +345,7 @@ chmod +x ./install.sh
 - Cleanup
 
         rm -rf /home/pi/ArPiRobot-ImageScripts
-        rm -rf /home/pi/ArPiRobot-RaspbianTools
+        rm -rf /home/pi/ArPiRobot-Tools
         rm -rf /home/pi/rpi-readonly
 
         rm /root/.bash_history

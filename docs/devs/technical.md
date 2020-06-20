@@ -5,7 +5,7 @@
 ## WiFi Configuration on the Pi
 - Explain hostapd/dnsmasq/dhcpcd setup
 
-## RaspbianTools Scripts and Services
+## ArPiRobot-Tools Scripts and Services
 - What each script is for and what it does.
 - Same for each service
 
@@ -20,7 +20,7 @@
 - NetworkTable
 - Arduinos
 - Logging (and how it integrates with networking)
-    - Also prints to stdout so RaspbianTools arpirobot-program service can log to file
+    - Also prints to stdout so ArPiRobot-Tools arpirobot-program service can log to file
 
 ## PythonLib Dependencies
 - Why/how each library is used
