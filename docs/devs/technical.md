@@ -3,7 +3,19 @@
 *Note: This may not always be up to date and is intended as a reference.*
 
 ## WiFi Configuration on the Pi
-- Explain hostapd/dnsmasq/dhcpcd setup
+
+Currently, robots are configured to host a WiFi access point on the 2.4GHz band. 
+
+The WiFi AP is run by `hostapd` using `dnsmasq` as its DHCP server. In order for this to work a static IP was set in dhcpd and wpa supplicant was disabled for the builtin WiFi adapter. If you need to change this you will have to modify the `dhcpcd` config file.
+
+- dhcpcd config file : `/etc/dhcpcd.conf`
+- hostapd config file: `/etc/hostapd/hostapd.conf`
+- dnsmasq config file: `/etc/dnsmasq.conf`
+
+There is currently no support to change this to a 5GHz network through the Deploy Tool, however if you are using a Pi that supports 5GHz WiFi networks you should be able to modify `/etc/hostapd/hostapd.conf` to generate a 5GHz AP.
+
+Previously a dual AP and client mode setup was used, which allowed the robot to connect to a home WiFi network (and generally have internet access) in addition to generating its own network. This was useful for debugging, but not so useful for end users. Often, as the generated AP and client network had to be on the same channel, this made the Pi's AP unusable. It also caused some other problems with WiFi throughput. In addition, starting both on boot relied on a time-based workaround, so it was not the most reliable of things.
+
 
 ## ArPiRobot-Tools Scripts and Services
 - What each script is for and what it does.

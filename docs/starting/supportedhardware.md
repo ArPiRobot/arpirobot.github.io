@@ -122,7 +122,7 @@ Most sensors require an arduino either due to timing, sensor communication requi
 
 | Item | Purpose | Description/Notes | Link(s) |
 | ---- | ------- | ----------------- | ------- |
-| Velcro | Attach components to robot | Can be used to mount Raspberry Pi, breadboards, motor drivers, etc. | [Amazon](https://www.amazon.com/Strenco-Inch-Self-Adhesive-Hook/dp/B00FQ937NM/ref=sr_1_7?keywords=velcro&qid=1570911969&sr=8-7) |
+| Hook and Loop tape | Attach components to robot | Can be used to mount Raspberry Pi, breadboards, motor drivers, etc. | [Amazon](https://www.amazon.com/Strenco-Inch-Self-Adhesive-Hook/dp/B00FQ937NM/) |
 | Twist Ties | Cable Management | Plastic ones hold up better than paper ones. | [Amazon](https://www.amazon.com/Easytle-Plastic-Black-Twist-Cable/dp/B00ZV42X1Y/ref=sr_1_4?keywords=twist+ties&qid=1570912236&sr=8-4) |
 | Solder Iron Kit | Attach leads to motors, mount header pins, repair work, etc. | The linked product is a simple soldering kit. Better irons do exist, but this should be good enough for many simple tasks. | [Amazon](https://www.amazon.com/ANBES-Soldering-Iron-Kit-Electronics/dp/B06XZ31W3M/ref=sr_1_4?keywords=solder+iron&qid=1570912527&sr=8-4) |
 | Multimeter | Measurement and debugging | The linked product is a simple multimeter, but will work for simple tasks. | [Amazon](https://www.amazon.com/Etekcity-Multimeter-MSR-R500-Electronic-Multimeters/dp/B01N9QW620/ref=sr_1_5?keywords=multimeter&qid=1570912789&sr=8-5) |

@@ -1,6 +1,8 @@
 # Create a Simple Robot Project
 
-## Using Visual Studio Code
+## PythonLib Project
+
+### Using Visual Studio Code
 If the ArPiRobot Visual Studio Code extension is installed it is easy to create an ArPiRobot project. Open the command pallete (the default shortcut for this is `Ctrl+Shift+P` on a PC or `Command+Shift+P` on a mac). Search for ArPiRobot. Choose "Create ArPiRobot Project". In the first dialog that shows up choose the folder to create the project in (it will have its own subfolder). Then you will be prompted to enter the name of the project. VSCode will then create the project and open it. By default there will be one python file called `robot.py`. Open it.
 
 Once opened VSCode will (if the python extension is installed) have a few options along the bottom bar, one of which allows selecting a python installation. Click it and choose the python install that was setup for ArPiRobot. You may be prompted (by a message in the bottom right corner) to install pylint. Do so as it allows error detection in VSCode.
@@ -11,8 +13,13 @@ To make sure the program is running select the Log tab. You should see something
 
 Once the program is running open the drive station and connect it to the robot. 
 
-## Not Using Visual Studio Code
+### Not Using Visual Studio Code
 If you are using another IDE (or no IDE), there is nothing special about the project. You must have a root project folder containing one or more python files (optionally in subfolders).
 
-## Default Project Structure and Conventions
+### Default Project Structure and Conventions
 See the [programming models](../reference/programming_models.md#project-structure-and-conventions) page.
+
+
+## JavaLib Project
+
+TODO

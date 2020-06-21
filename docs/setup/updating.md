@@ -29,6 +29,8 @@ Note: You do not need internet access on the robot to update the robot.
 
 After [downloading](../downloads/latest.md) the Update zip file to your computer, open the Deploy Tool. Connect your computer to the Robot's WiFi<sup>&ast;</sup> then click connect in the Deploy Tool. Once connected, select the updates tab, choose the downloaded update zip file, and apply the update to the robot using the deploy tool.
 
+**It may take 2-3 minutes for an update to install. Usually, the first update (after flashing an image) takes the longest as all PythonLib dependencies are installed.**
+
 <sup>&ast;</sup>Make sure to disconnect from other types of networks when you do this (including ethernet connections).
 
 ## Development Environment Updates

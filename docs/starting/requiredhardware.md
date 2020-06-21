@@ -23,6 +23,6 @@ See the [Example Builds](./examplebuilds.md) section for a few tested configurat
 ## Other Supplies
 - Examples of some of these items can be found on the [Supported Robot Hardware](./supportedhardware.md) page.
 - Jumper wires
-- Velcro
+- Hook and Loop tape (often incorrectly referred to as "Velcro")
 - Electrical Tape
 - Twist ties

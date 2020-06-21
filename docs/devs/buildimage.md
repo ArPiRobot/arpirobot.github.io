@@ -179,6 +179,9 @@ apt-get -y install openjdk-8-jdk-headless
 # GPIO libraries
 apt-get -y install pigpio pigpiod pigpio-tools wiringpi
 
+# Required for simpleaudio python module
+apt-get -y install libasound2-dev
+
 # For wifi bandwidth testing
 apt-get -y install iperf3
 

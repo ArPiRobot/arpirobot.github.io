@@ -20,8 +20,7 @@ It really boils down to three main goals for the project:
     Not only does this make it more accessible (in line with the education use goal), but there's no reason you couldn't use it on a more powerful device. It just means that more power is left for demanding tasks such as camera streaming, vision processing, etc. The core functionality of the framework is designed to work even on the single-core Raspberry Pi Zero W and more advanced features are all designed for and tested on the Raspberry Pi 3A+.
 
 ## License
-All the source code for all components of ArPiRobot is currently not released, however will soon be released, likely under the GNU General Public License v3.0. Until then, no part of this work is to be used or distributed in any way, shape, or form except by the author (Marcus Behel).
+All the source code for all components of ArPiRobot is currently not released, however will soon be released, likely under the GNU Lesser General Public License v3.0. Until then, no part of this work is to be used or distributed in any way, shape, or form except by the author (Marcus Behel).
 
 ## Where Does the Name Come From?
 I got tired of typing `ArduinoAndPiRobot` so I decided to shorten it into `ArPiRobot`. Really creative right?
-

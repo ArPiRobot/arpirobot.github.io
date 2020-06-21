@@ -7,6 +7,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 ## Images
 | Image Version | RasPiOS Version | Python Version | Java Runtime Version | Link |
 | ------------- | ---------------- | -------------- | -------------------- | ---- |
+| Beta 8        | 2020-05-27-raspios-buster-lite  | 3.7            | 1.8                  | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhLsFo7YBzPe9_39wqQ?e=41VDPX) |
 | Beta7         | 2020-05-27-raspios-buster-lite  | 3.7            | 1.8                  | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhLsETEdX5M1RJ6C_Mg?e=cDtuTi) |
 | Beta6         | 2020-02-13-raspbian-buster-lite | 3.7            |      None            | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhLRsEtT5fgqGU9_-5A?e=FKjS3E) |
 | Beta5         | 2020-02-13-raspbian-buster-lite | 3.7            |      None            | [Download](https://1drv.ms/u/s!AhjgTI1qxX9xhLRlYCPrZHG2G31ZYw?e=m2Hotl) |
@@ -19,6 +20,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Compatible Image Version | Update Number | Python Library Version | ArPiRobot-Tools Version | Link |
 | ------------------ | ------------- | ---------------------- | ---------------------- | ---- |
+| Beta 8             | Update 1      | v0.0.25                | v0.2.2                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta8Update1) |
 | Beta 7             | Update 1      | v0.0.24                | v0.2.2                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta7Update1) |
 | Beta 6             | Update 10     | v0.0.24                | v0.2.2                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta6Update10) |
 | Beta 6             | Update 9      | v0.0.24                | v0.2.1                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta6Update9) |
@@ -48,18 +50,18 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ---------------------- | ----------------------------- | --------------- |
-| v0.3.x                 | Beta 7 Update 1 <br /> Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.3](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.3.3)      |
+| v0.3.x                 | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.3](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.3.3)      |
 | v0.2.x                 | Beta 2 Updates 1 and 2        | [v0.2.2](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.2.2)      |
 
 ## Mobile (Android) Drive Station
 | Mobile Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ----------------------------- | ----------------------------- | --------------- |
-| v0.0.2                        | Beta 7 Update 1 <br /> Beta 6 Updates 1-10           | [v0.0.2](https://github.com/ArPiRobot/ArPiRobot-MobileDriveStation/releases/tag/v0.0.2) |
+| v0.0.2                        | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10           | [v0.0.2](https://github.com/ArPiRobot/ArPiRobot-MobileDriveStation/releases/tag/v0.0.2) |
 
 ## Deploy Tool
 | Deploy Tool Versions | Compatible Images and Updates | Latest Download |
 | -------------------- | ----------------------------- | --------------- |
-| v0.2.2               | Beta 7 Update 1 <br /> Beta 6 Updates 9-10           | [v0.2.2](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.2) |
+| v0.2.2               | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 9-10           | [v0.2.2](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.2) |
 | v0.2.0-v0.2.1        | Beta 6 Updates 1-8 <br /> Beta 5 Update 1               | [v0.2.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.1) |
 | v0.1.2 - v0.1.3      | Beta 4 Updates 1-7 <br /> Beta 3 Updates 2-3         | [v0.1.3](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
 | v0.1.0 - v0.1.1      | Beta 3 Update 1               | [v0.1.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.1.1) |
@@ -84,7 +86,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
-| v0.0.7                    | Beta 7 Update 1 <br /> Beta 6 Updates 4-10 |
+| v0.0.7                    | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 4-10 |
 | v0.0.6                    | Beta 6 Updates 1-3                |
 | v0.0.5                    | Beta 5 Update 1 <br /> Beta 4 Updates 6-7            |
 | v0.0.4                    | Beta 4 Update 5               |
