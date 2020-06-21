@@ -50,7 +50,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ---------------------- | ----------------------------- | --------------- |
-| v0.3.x                 | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.3](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.3.3)      |
+| v0.3.x                 | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.4](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/untagged-5292ef66c5718eb7121b)      |
 | v0.2.x                 | Beta 2 Updates 1 and 2        | [v0.2.2](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.2.2)      |
 
 ## Mobile (Android) Drive Station
@@ -61,7 +61,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 ## Deploy Tool
 | Deploy Tool Versions | Compatible Images and Updates | Latest Download |
 | -------------------- | ----------------------------- | --------------- |
-| v0.2.2               | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 9-10           | [v0.2.2](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.2) |
+| v0.2.2-v0.2.3        | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 9-10           | [v0.2.3](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.3) |
 | v0.2.0-v0.2.1        | Beta 6 Updates 1-8 <br /> Beta 5 Update 1               | [v0.2.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.1) |
 | v0.1.2 - v0.1.3      | Beta 4 Updates 1-7 <br /> Beta 3 Updates 2-3         | [v0.1.3](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
 | v0.1.0 - v0.1.1      | Beta 3 Update 1               | [v0.1.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.1.1) |
@@ -70,6 +70,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 ## Visual Studio Code Extension
 | Extension Version | Changes                                                               | Link |
 | ----------------- | --------------------------------------------------------------------- | ---- |
+| v0.0.12           | Fixes to JavaLib project                                              | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.0.12) |
 | v0.0.11           | Enabled pylint and mypy in python template project                    | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.0.11) |
 | v0.0.10           | Added initial JavaLib support                                         | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.0.10) |
 | v0.0.9            | Using new main.sh startup script model (Beta 6 Update 9).             | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.0.9) |
