@@ -20,7 +20,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Compatible Image Version | Update Number | Python Library Version | ArPiRobot-Tools Version | Link |
 | ------------------ | ------------- | ---------------------- | ---------------------- | ---- |
-| Beta 8             | Update 1      | v0.0.25                | v0.2.2                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta8Update1) |
+| Beta 8             | Update 1      | v0.0.26                | v0.2.3                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta8Update1) |
 | Beta 7             | Update 1      | v0.0.24                | v0.2.2                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta7Update1) |
 | Beta 6             | Update 10     | v0.0.24                | v0.2.2                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta6Update10) |
 | Beta 6             | Update 9      | v0.0.24                | v0.2.1                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta6Update9) |
