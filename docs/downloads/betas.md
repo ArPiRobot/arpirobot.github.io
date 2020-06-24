@@ -50,7 +50,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ---------------------- | ----------------------------- | --------------- |
-| v0.3.x                 | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.4](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/untagged-5292ef66c5718eb7121b)      |
+| v0.3.x                 | Beta 8 Update 1 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.4](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.3.4)      |
 | v0.2.x                 | Beta 2 Updates 1 and 2        | [v0.2.2](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.2.2)      |
 
 ## Mobile (Android) Drive Station
