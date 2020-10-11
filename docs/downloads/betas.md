@@ -89,6 +89,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
+| v0.0.8                    | Beta 8 Updates 1-3 <br /> Beta 7 Upddate 1 <br /> Beta 6 Updates 4-10 |
 | v0.0.7                    | Beta 8 Updates 1-3 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 4-10 |
 | v0.0.6                    | Beta 6 Updates 1-3                |
 | v0.0.5                    | Beta 5 Update 1 <br /> Beta 4 Updates 6-7            |
