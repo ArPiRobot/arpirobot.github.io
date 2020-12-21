@@ -3,5 +3,5 @@
 ## Requirements
 
 ```
-pip install markdown-fenced-code-tabs mkdocs
+pip install markdown-fenced-code-tabs mkdocs markdown-include mkdocs-cinder
 ```
