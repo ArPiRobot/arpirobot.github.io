@@ -20,6 +20,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Compatible Image Version | Update Number | Python Library Version | ArPiRobot-Tools Version | Link |
 | ------------------ | ------------- | ---------------------- | ---------------------- | ---- |
+| Beta 8             | Update 7      | v0.0.32                | v0.2.4                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta8Update7) |
 | Beta 8             | Update 6      | v0.0.31                | v0.2.4                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta8Update6) |
 | Beta 8             | Update 5      | v0.0.31                | v0.2.3                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta8Update5) |
 | Beta 8             | Update 4      | v0.0.30                | v0.2.3                 | [Download](https://github.com/ArPiRobot/ArPiRobot-UpdatePackager/releases/tag/Beta8Update4) |
@@ -55,18 +56,18 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ---------------------- | ----------------------------- | --------------- |
-| v0.3.x                 | Beta 8 Updates 1-6 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.5](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.3.5)      |
+| v0.3.x                 | Beta 8 Updates 1-7 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10 <br /> Beta 5 Update 1 <br /> Beta 4 Updates 1-7 <br /> Beta 3 Updates 1-3 <br / > Beta 2 Update 3 | [v0.3.5](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.3.5)      |
 | v0.2.x                 | Beta 2 Updates 1 and 2        | [v0.2.2](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.2.2)      |
 
 ## Mobile (Android) Drive Station
 | Mobile Drive Station Versions | Compatible Images and Updates | Latest Download |
 | ----------------------------- | ----------------------------- | --------------- |
-| v0.0.2                        | Beta 8 Updates 1-6 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10           | [v0.0.2](https://github.com/ArPiRobot/ArPiRobot-MobileDriveStation/releases/tag/v0.0.2) |
+| v0.0.2                        | Beta 8 Updates 1-7 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 1-10           | [v0.0.2](https://github.com/ArPiRobot/ArPiRobot-MobileDriveStation/releases/tag/v0.0.2) |
 
 ## Deploy Tool
 | Deploy Tool Versions | Compatible Images and Updates | Latest Download |
 | -------------------- | ----------------------------- | --------------- |
-| v0.2.2-v0.2.4        | Beta 8 Updates 1-6 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 9-10           | [v0.2.4](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.4) |
+| v0.2.2-v0.2.4        | Beta 8 Updates 1-7 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 9-10           | [v0.2.4](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.4) |
 | v0.2.0-v0.2.1        | Beta 6 Updates 1-8 <br /> Beta 5 Update 1               | [v0.2.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.2.1) |
 | v0.1.2 - v0.1.3      | Beta 4 Updates 1-7 <br /> Beta 3 Updates 2-3         | [v0.1.3](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.1.3) |
 | v0.1.0 - v0.1.1      | Beta 3 Update 1               | [v0.1.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.1.1) |
@@ -92,7 +93,7 @@ The image contains the OS pre-configured to work with ArPiRobot software. The im
 
 | Arduino Firmware Versions | Compatible Images and Updates |
 | ------------------------- | ----------------------------- |
-| v0.0.9                    | Beta 8 Updates 1-6 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 4-10 |
+| v0.0.9                    | Beta 8 Updates 1-7 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 4-10 |
 | v0.0.8                    | Beta 8 Updates 1-6 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 4-10 |
 | v0.0.7                    | Beta 8 Updates 1-6 <br /> Beta 7 Update 1 <br /> Beta 6 Updates 4-10 |
 | v0.0.6                    | Beta 6 Updates 1-3                |
