@@ -4,6 +4,8 @@ As mentioned in the previous section there are two ArPiRobot tools that run on y
 
 In addition this guide will cover setting up Visual Studio Code to write python code. There is also an ArPiRobot extension available for VSCode that allows creating projects and installing the PythonLib on your PC (more about updates in the next section).
 
+## TODO: Document C++ Setup
+
 ## Installing Python (if you plan to use Python)
 
 ArPiRobot code can be written in python using the ArPiRobot python library, so we must first install python. You will want to make sure you are using the same version of python on your PC as is in use on the robot (you can see which version is in use on the robot on the [Downloads Page](../downloads/latest.md) in the table with information about the robot images.) Only the first two numbers need to match (for example if the robot uses python 3.7 it is OK to use 3.7.x where x is any number on your computer.)

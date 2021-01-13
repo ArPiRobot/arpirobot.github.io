@@ -21,7 +21,7 @@ Previously a dual AP and client mode setup was used, which allowed the robot to 
 - What each script is for and what it does.
 - Same for each service
 
-## PythonLib General Structure
+## CoreLib General Structure
 - Robot classes
 - Scheduler
 - Asyncio
@@ -34,10 +34,7 @@ Previously a dual AP and client mode setup was used, which allowed the robot to 
 - Logging (and how it integrates with networking)
     - Also prints to stdout so ArPiRobot-Tools arpirobot-program service can log to file
 
-## PythonLib Dependencies
-- Why/how each library is used
-
-## PythonLib Devices
+## CoreLib Devices
 
 **Devices**
 
@@ -61,7 +58,7 @@ Things controlled by the arduino that provide data to the Pi.
 - VoltageMonitor
 - IRReflectorModule
 
-## PythonLib Arduino Interface and Communication Protocol
+## CoreLib Arduino Interface and Communication Protocol
 - Document general communication protocol, start byte, escape byte, stop byte
 - CRC16, intent behind it, what happens if the Pi gets invalid data
 - Default settings for the firmware

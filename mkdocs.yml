@@ -16,6 +16,7 @@ nav:
     - Downloads: 
         - Latest: downloads/latest.md
         - Beta Downloads: downloads/betas.md
+        - Old Beta Downloads: downloads/betas-old.md
     - Getting Started:
         - What Hardware Do I Need: starting/requiredhardware.md
         - Supported Robot Hardware: starting/supportedhardware.md

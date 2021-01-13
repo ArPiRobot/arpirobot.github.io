@@ -1,5 +1,7 @@
 # Installing Updates
 
+## TODO: Rewrite
+
 ## About Updates
 
 Robot updates generally contain two things:
