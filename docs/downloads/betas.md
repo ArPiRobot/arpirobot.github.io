@@ -44,7 +44,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Deploy Tool Versions | Compatible Images | Latest Download |
 | -------------------- | ----------------- | --------------- |
-| v0.3.x               | Beta8B                   | [v0.3.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.3.0) |
+| v0.3.x               | Beta8B                   | [v0.3.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.3.1) |
 
 
 ## Visual Studio Code Extension
