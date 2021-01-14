@@ -44,13 +44,14 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Deploy Tool Versions | Compatible Images | Latest Download |
 | -------------------- | ----------------- | --------------- |
-| v0.3.0               | Beta8B                   | [v0.3.0](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.3.0) |
+| v0.3.x               | Beta8B                   | [v0.3.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.3.0) |
 
 
 ## Visual Studio Code Extension
 
 | Extension Version | Changes                                                               | Link |
 | ----------------- | --------------------------------------------------------------------- | ---- |
+| v0.1.2            | Python template uses system PYTHONPATH                                | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.2) |
 | v0.1.1            | Templates for C++ Library                                             | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.1) |
 
 ## Arduino Firmware
