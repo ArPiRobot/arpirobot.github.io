@@ -60,6 +60,13 @@ Finally, there are a few extensions you may want to install for different progra
 - Java Extension Pack (By Microsoft)
 
 
+## CoreLib Updates
+
+Before you can write programs for ArPiRobot robots, you will need to install an ArPiRobot-CoreLib update package on your computer. The ArPiRobot-CoreLib is a library that is used when writing robot programs to provide networking, support for different devices, sensors, etc. When you deploy your code using the deploy tool, whatever version of the CoreLib is on your computer will be deployed to the robot along with your code.
+
+For this reason, it is important to regularly install the corelib update packages using the deploy tool. To install a corelib update package (see [downloads page](../downloads/latest.md)) open the deploy tool, click the "This PC" tab, then click "Install update package" then choose the downloaded update package.
+
+
 ## Other Tools
 
 The rest of the tools are language-specific. You will only need the tools for the programming language you plan to use.

@@ -27,8 +27,9 @@ nav:
             - Setup your Computer: guide/starting/devsetup.md
             - Setup the Raspberry Pi: guide/starting/setuppi.md
         - Programming the Robot:
-            - Starting With Python: none
             - Starting With C++: none
+            - Starting With Python: none
+            - Starting With Java: none
         - Example Robot Code:
             - Intro: none
             - Arcade Drive: none
