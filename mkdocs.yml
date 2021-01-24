@@ -17,17 +17,28 @@ nav:
         - Latest: downloads/latest.md
         - Beta Downloads: downloads/betas.md
         - Old Beta Downloads: downloads/betas-old.md
-    - Getting Started:
-        - What Hardware Do I Need: starting/requiredhardware.md
-        - Supported Robot Hardware: starting/supportedhardware.md
-        - Example Robot Builds: starting/examplebuilds.md
-    - Setup:
-        - Programming Languages: setup/languages.md
-        - First Steps: setup/firststeps.md
-        - Setup the Raspberry Pi: setup/setuppi.md
-        - Setup your Computer: setup/devsetup.md
-        - Installing Updates: setup/updating.md
-        - Create a Simple Robot Project: setup/createproject.md
+    - Guide:
+        - Components & Hardware:
+            - What Hardware Do I Need: guide/hardware/requiredhardware.md
+            - Supported Robot Hardware: guide/hardware/supportedhardware.md
+            - Example Robot Builds: guide/hardware/examplebuilds.md
+        - Setup:
+            - Programming Languages: guide/starting/languages.md
+            - Setup your Computer: guide/starting/devsetup.md
+            - Setup the Raspberry Pi: guide/starting/setuppi.md
+        - Programming the Robot:
+            - Starting With Python: none
+            - Starting With C++: none
+        - Example Robot Code:
+            - Intro: none
+            - Arcade Drive: none
+            - Voltage Monitor: none
+            - Sensors: none
+            - Line Following Robot: none
+            - Automated Routines: none
+            - Mecanum Drive: none
+
+        
     - Reference:
         - Programming:
             - Programming Models: reference/programming_models.md
