@@ -27,43 +27,34 @@ nav:
             - Setup your Computer: guide/starting/devsetup.md
             - Setup the Raspberry Pi: guide/starting/setuppi.md
         - Programming the Robot:
-            - Starting With C++: none
-            - Starting With Python: none
-            - Starting With Java: none
+            - Starting With C++: none.md
+            - Starting With Python: none.md
+            - Starting With Java: none.md
+            - Project Structure and Programming Models: none.md
         - Example Robot Code:
-            - Intro: none
-            - Arcade Drive: none
-            - Voltage Monitor: none
-            - Sensors: none
-            - Line Following Robot: none
-            - Automated Routines: none
-            - Mecanum Drive: none
-
+            - Intro: none.md
+            - Arcade Drive: none.md
+            - Voltage Monitor: none.md
+            - Sensors & NetworkTable: none.md
+            - Line Following Robot: none.md
+            - Automated Routines: none.md
+            - Mecanum Drive: none.md
+        - Manuals:
+            - Drive Station Manual: guide/manuals/drive_station.md
+            - Deploy Tool Manual: guide/manuals/deploy_tool.md
+            - Mobile Drive Station Manual: guide/manuals/android_drive_station.md
         
-    - Reference:
-        - Programming:
-            - Programming Models: reference/programming_models.md
-            - Robot Classes: reference/robotclasses.md
-            - Motors: reference/motors.md
-            - Raspberry Pi Sensors: reference/sensors.md
-            - Arduino Coprocessor and Sensors: reference/arduinosensors.md
-            - Media on Robots: reference/media.md
-            - Network Table: reference/nettable.md
-        - Guides / Manuals:
-            - Drive Station Manual: reference/drive_station.md
-            - Deploy Tool Manual: reference/deploy_tool.md
-            - Mobile Drive Station Manual: reference/android_drive_station.md
-            - Arduino IMU Calibration: reference/arduino_imu_calibration.md
-        - Default Settings: reference/defaultsettings.md
     - Documentation:
-        - ArPiRobot-CoreLib C++ Library: doxygen-docs/cpp/html/index.html
-        - ArPiRobot-CoreLib Python Library: doxygen-docs/python/html/index.html
+        - ArPiRobot-CoreLib C++ Library API: doxygen-docs/cpp/html/index.html
+        - ArPiRobot-CoreLib Python Library API: doxygen-docs/python/html/index.html
+        - Arduino IMU Calibration: arduino_imu_calibration.md
+        - Default Settings: defaultsettings.md
+    
     - For Developers: 
         - ArPiRobot Components: devs/components.md
         - Development Resources: devs/resources.md
         - WiFi Debugging: devs/wifidebug.md
-        - PythonLib Development: devs/developing_pylib.md
-        - JavaLib Development: devs/developing_javalib.md
+        - CoreLib Development: devs/developing_corelib.md
         - Building an ArPiRobot Image: devs/buildimage.md
         - Image to/from SD Card: devs/imagefromsd.md
         - Technical Documentation: devs/technical.md

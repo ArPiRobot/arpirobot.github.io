@@ -1,3 +1,0 @@
-# JavaLib Development
-
-TODO

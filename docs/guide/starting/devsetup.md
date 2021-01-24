@@ -9,11 +9,11 @@ In addition this guide will cover setting up Visual Studio Code to write ArPiRob
 
 **Windows**
 
-Download the exe installers for both (see [downloads page](../downloads/latest.md)). Run the installer. A Java runtime will be installed with each program. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.
+Download the exe installers for both (see [downloads page](../../downloads/latest.md)). Run the installer. A Java runtime will be installed with each program. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.
 
 **macOS**
 
-Download the `.zip` macOS packages (see [downloads page](../downloads/latest.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app comes with its own Java runtime. Each app is also *unsigned*, so when you first run it you will have to approve the app in System Preferences > Security.
+Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app comes with its own Java runtime. Each app is also *unsigned*, so when you first run it you will have to approve the app in System Preferences > Security.
 
 **Ubuntu Linux**
 
@@ -25,7 +25,7 @@ A `.pkg.tar.zst` package for Arch Linux is provided and can be installed using p
 
 **Other**
 
-This method will work on any platform where Java is available (Linux, *BSD, Windows, macOS, etc). First install Java 11 (or newer). Then download the `.jar` files (see [downloads page](../downloads/latest.md)). Most of the time, if Java is installed, double clicking the `.jar` file will run the program. If not, the command below can be used
+This method will work on any platform where Java is available (Linux, *BSD, Windows, macOS, etc). First install Java 11 (or newer). Then download the `.jar` files (see [downloads page](../../downloads/latest.md)). Most of the time, if Java is installed, double clicking the `.jar` file will run the program. If not, the command below can be used
 
 ```
 java -jar /full/path/to/jar/file.jar
@@ -40,7 +40,7 @@ While there are many different development environments, using VSCode is recomme
 
 Download and install VSCode from [https://code.visualstudio.com/](https://code.visualstudio.com/).
 
-Then download the ArPiRobot VSCode Extension (see the [downloads page](../downloads/latest.md)). Once you've downloaded the `vsix` file open VSCode's extensions pane (left side). Click the three dots menu button in the top right of the extensions pane. Choose install form VSIX and choose the downloaded VSIX file.
+Then download the ArPiRobot VSCode Extension (see the [downloads page](../../downloads/latest.md)). Once you've downloaded the `vsix` file open VSCode's extensions pane (left side). Click the three dots menu button in the top right of the extensions pane. Choose install form VSIX and choose the downloaded VSIX file.
 
 Finally, there are a few extensions you may want to install for different programming languages. These extensions can be installed form VSCode's marketplace (by searching in the extensions panel in VSCode).
 
@@ -64,7 +64,7 @@ Finally, there are a few extensions you may want to install for different progra
 
 Before you can write programs for ArPiRobot robots, you will need to install an ArPiRobot-CoreLib update package on your computer. The ArPiRobot-CoreLib is a library that is used when writing robot programs to provide networking, support for different devices, sensors, etc. When you deploy your code using the deploy tool, whatever version of the CoreLib is on your computer will be deployed to the robot along with your code.
 
-For this reason, it is important to regularly install the corelib update packages using the deploy tool. To install a corelib update package (see [downloads page](../downloads/latest.md)) open the deploy tool, click the "This PC" tab, then click "Install update package" then choose the downloaded update package.
+For this reason, it is important to regularly install the corelib update packages using the deploy tool. To install a corelib update package (see [downloads page](../../downloads/latest.md)) open the deploy tool, click the "This PC" tab, then click "Install update package" then choose the downloaded update package.
 
 
 ## Other Tools

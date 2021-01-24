@@ -2,7 +2,7 @@
 
 The ArPiRobot Drive Station is the program for your computer (Windows, macOS, Linux) that is used to control the robot. Its primary function is to enable/disable the robot and send data from a gamepad connected to your computer to the robot via WiFi.
 
-![Drive Station Screenshot](../img/drive_station.png){: style="height:300px"}
+![Drive Station Screenshot](../../img/drive_station.png){: style="height:300px"}
 
 ## Uses / Features
 - Connect to a running robot program over the Raspberry Pi's WiFi network
