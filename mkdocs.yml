@@ -27,10 +27,10 @@ nav:
             - Setup your Computer: guide/starting/devsetup.md
             - Setup the Raspberry Pi: guide/starting/setuppi.md
         - Programming the Robot:
-            - Starting With C++: none.md
+            - Starting With C++: guide/programming/startingcpp.md
             - Starting With Python: none.md
             - Starting With Java: none.md
-            - Project Structure and Programming Models: none.md
+            - Programming Models: guide/programming/programming_models.md
         - Example Robot Code:
             - Intro: none.md
             - Arcade Drive: none.md
