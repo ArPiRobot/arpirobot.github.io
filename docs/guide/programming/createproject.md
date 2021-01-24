@@ -17,7 +17,7 @@ Once the program is running open the drive station and connect it to the robot.
 If you are using another IDE (or no IDE), there is nothing special about the project. You must have a root project folder containing one or more python files (optionally in subfolders).
 
 ### Default Project Structure and Conventions
-See the [programming models](../reference/programming_models.md#project-structure-and-conventions) page.
+See the [programming models](./programming_models.md#project-structure-and-conventions) page.
 
 
 ## JavaLib Project
