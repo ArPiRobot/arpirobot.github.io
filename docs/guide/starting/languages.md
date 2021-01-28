@@ -6,5 +6,7 @@ In general, it does not matter too much which language you use for robot code, a
 
 In addition to familiarity with the language you should consider the complexity of setting up to use the language. More details can be found in the [Setup your Computer](./devsetup.md#other-tools) section.
 
-In general, C++ will yield the best performance (if you have a lot of computationally demanding or multi-threaded user code), Python will be the easiest to setup and use, and Java provides a nice medium.
+In general, C++ will yield the best performance (if you have a lot of computationally demanding or multi-threaded user code), Python will be the easiest to setup and use, and Java provides a nice medium (though running the JVM does increase CPU usage slightly compared to python or C++).
+
+The difference, though will not often be noticeable as user code is not generally going to be performing computationally demanding tasks (this usually happens in the builtin library, which is the same for all languages). If your robot code will be running multiple computationally demanding threads, python may not be the best choice because of the [GIL](https://wiki.python.org/moin/GlobalInterpreterLock). In this case Java or C++ would work better, but in most cases there is not much difference.
 
