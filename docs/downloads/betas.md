@@ -23,6 +23,8 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Update Number      | Link |
 | ------------------ | ---- |
+| v0.0.10-alpha       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.10-alpha) |
+| v0.0.9-alpha       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.9-alpha) |
 | v0.0.8-alpha       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.8-alpha) |
 
 
@@ -51,6 +53,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Extension Version | Changes                                                               | Link |
 | ----------------- | --------------------------------------------------------------------- | ---- |
+| v0.1.3            | Added java project template                                           | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.3) |
 | v0.1.2            | Python template uses system PYTHONPATH                                | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.2) |
 | v0.1.1            | Templates for C++ Library                                             | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.1) |
 
