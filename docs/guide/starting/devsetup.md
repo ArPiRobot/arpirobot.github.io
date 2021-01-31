@@ -109,6 +109,8 @@ On Linux / BSD systems you should be able to install a recent version of python 
 
 ### Java
 
-You will need to install a Java Development Kit, or JDK, (version 8 or newer) installed on your development computer. The easiest way to install a JDK is by using the AdoptOpenJDK builds. Easy installers are provided for Windows and macOS. Go to [adoptopenjdk.net](https://adoptopenjdk.net/) to download Java for your computer. Download the installer for the correct version of Java (use the default "HotSpot" JVM). On Windows, this will be a `.msi` file. Run it and follow the directions to install Java. On macOS this will be a `.pkg` file. Run it and follow the directions to install Java.
+You will need to install a Java Development Kit, or JDK, (version 8 or newer) installed on your development computer. 
+
+The easiest way to install a JDK on Windows or macOS is by using the AdoptOpenJDK builds. Easy installers are provided for Windows and macOS. Go to [adoptopenjdk.net](https://adoptopenjdk.net/) to download Java for your computer. Download the installer for the correct version of Java (use the default "HotSpot" JVM). On Windows, this will be a `.msi` file. Run it and follow the directions to install Java. On macOS this will be a `.pkg` file. Run it and follow the directions to install Java.
 
 If using Linux or BSD, you should be able to install an openjdk build from the system repos.
