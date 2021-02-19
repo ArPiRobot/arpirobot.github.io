@@ -87,7 +87,7 @@ When downloading the toolchain you need one for the same version of Raspberry Pi
 
 When installing the toolchain you need to install it to `.arpirobot/toolchain` in your home directory. The `.arpirobot` directory will be created the first time you run the deploy tool or drive station.
 
-On windows, using the exe installer, set the install location to `%UserProfile%\.arpirobot\toolchain`.
+On windows, using the exe installer, set the install location to `C:\USERNAME\.arpirobot\toolchain`, where `USERNAME` is your windows username.
 
 On Linux, extract the downloaded archive to `~/.arpirobot`. Then rename the `cross-pi-...` folder to `toolchain`.
 
