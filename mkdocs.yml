@@ -47,6 +47,7 @@ nav:
     - Documentation:
         - ArPiRobot-CoreLib C++ Library API: doxygen-docs/cpp/html/index.html
         - ArPiRobot-CoreLib Python Library API: doxygen-docs/python/html/index.html
+        - ArPiRobot-CoreLib Java Library API: doxygen-docs/java/html/index.html
         - Arduino IMU Calibration: arduino_imu_calibration.md
         - Default Settings: defaultsettings.md
     
