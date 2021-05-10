@@ -55,10 +55,6 @@ Finally, there are a few extensions you may want to install for different progra
 - Python Extension (By Microsoft)
 - Pylance Extension (By Microsoft)
 
-**Java Programming:**
-
-- Java Extension Pack (By Microsoft)
-
 
 ## CoreLib Updates
 
@@ -107,10 +103,3 @@ You will need to install Python on your PC. You can download python installers f
 
 On Linux / BSD systems you should be able to install a recent version of python from the system repositories. You can use pyenv to build and install a specific version. On Ubuntu you can use the [deadsnakes PPA](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa).
 
-### Java
-
-You will need to install a Java Development Kit, or JDK, (version 8 or newer) installed on your development computer. 
-
-The easiest way to install a JDK on Windows or macOS is by using the AdoptOpenJDK builds. Easy installers are provided for Windows and macOS. Go to [adoptopenjdk.net](https://adoptopenjdk.net/) to download Java for your computer. Download the installer for the correct version of Java (use the default "HotSpot" JVM). On Windows, this will be a `.msi` file. Run it and follow the directions to install Java. On macOS this will be a `.pkg` file. Run it and follow the directions to install Java.
-
-If using Linux or BSD, you should be able to install an openjdk build from the system repos.

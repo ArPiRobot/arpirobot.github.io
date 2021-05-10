@@ -5,7 +5,7 @@ The periodic programming model uses certain functions that run every so often. F
 
 In these functions data from devices (such as gamepads) can be polled and used for various purposes such as driving the robot.
 
-| BaseRobot Function (Python) | BaseRobot Function (C++/Java)     | When it runs            | Default period |
+| BaseRobot Function (Python) | BaseRobot Function (C++)     | When it runs            | Default period |
 | --------------------------- | -----------------------------     | ----------------------- | -------------- |
 | periodic                    | periodic                          | Any robot state         | 50ms           |
 | enabled_periodic            | enabledPeriodic                   | When robot is enabled   | 50ms           |
@@ -102,51 +102,10 @@ class Robot(BaseRobot):
         pass 
 ```
 
-```java
-import arpirobot.core.robot.BaseRobot;
-import arpirobot.devices.gamepad.Gamepad;
-
-public class Robot extends BaseRobot {
-    public Gamepad gamepad = new Gamepad(0);
-
-    @Override
-    protected void robotStarted() {
-
-    }
-
-    @Override
-    protected void robotEnabled() {
-
-    }
-
-    @Override
-    protected void robotDisabled() {
-
-    }
-
-    @Override
-    protected void periodic() {
-        feedWatchdog();
-    }
-
-    @Override
-    protected void enabledPeriodic() {
-        double speed = gamepad.getAxis(1);
-        double rotation = gamepad.getAxis(2);
-        // Use speed and rotation to move motors
-    }
-
-    @Override
-    protected void disabledPeriodic() {
-
-    }
-}
-```
-
 ## Action-Based Model
 The action based model is similar to the periodic model in that it relies on functions that run once per a period of time. However, actions are self-contained objects that can be started and stopped independently of each other. Each action has four functions that must be implemented:
 
-| Function (Python) |  Function (C++/Java) | When it runs                      | Purpose                                    |
+| Function (Python) |  Function (C++) | When it runs                      | Purpose                                    |
 | ----------------- | -----------------| --------------------------------- | ------------------------------------------ |
 | begin()           | begin()          | When an action is first started   | Allow actions to lock devices (see below) and perform actions when they are first started |
 | process()         | process()        | Runs once every period (default is 50ms) | Allows the action to poll devices/sensors and use their devices (ex. driving motors) |
@@ -241,43 +200,6 @@ class DriveAction(Action):
         return True
 ```
 
-```java
-import arpirobot.core.action.Action;
-
-public class DriveAction extends Action{
-    @Override
-    protected void begin() {
-        // Lock any devices this action will use
-        lockDevice(Main.robot.flmotor);
-        lockDevice(Main.robot.rlmotor);
-        lockDevice(Main.robot.frmotor);
-        lockDevice(Main.robot.rrmotor);
-    }
-
-    @Override
-    protected void process() {
-        // Get the values from the gamepad using a deadband
-        double speed = -1 * Main.robot.gamepad.getAxis(1, 0.1);
-        double rotation = Main.robot.gamepad.getAxis(2, 0.1);
-
-        // Use the drive helper to set the motor speeds
-        Main.robot.driveHelper.update(speed, rotation);
-    }
-
-    @Override
-    protected void finish(boolean wasInterrupted) {
-        // Stop the motors when this action finishes
-        Main.robot.driveHelper.update(0, 0);
-    }
-
-    @Override
-    protected boolean shouldContinue() {
-        // This action should continue running until interrupted
-        return true;
-    }
-}
-```
-
 #### ActionManager
 
 The action manager is used to start and stop actions. Stopping an action this way is rarely necessary as actions can stop themselves when finished (by using the `should_continue` function) or will be stopped automatically if a newer action locks a device the action is using. Instances of an action class can be reused, meaning after starting then stopping `action` in the example below `action` could be restarted by using `ActionManager.start_action` again (in Java this is `ActionManager.startAction`). If you try to start an already running action nothing will change (the action does **not** restart).
@@ -302,16 +224,6 @@ action = MyAction()
 ActionManager.start_action(action)
 time.sleep(1)
 ActionManager.stop_action(action)
-```
-
-```java
-import arpirobot.core.action.ActionManager;
-
-// Somewhere in your code...
-MyAction action = new MyAction();
-ActionManager.startAction(action);
-try{ Thread.sleep(1000); }catch(InterruptedException ignored){}
-ActionManager.stopAction(action);
 ```
 
 #### ActionSeries
@@ -345,19 +257,7 @@ routine = ActionSeries([DriveForward(10), DriveReverse(10)], DriveAction())
 ActionManager.start_action(routine)
 ```
 
-```java
-// Will run a DriveForward(10) action then a DriveReverse(10) action. 
-// Then the action series is stopped.
-// After it is stopped a DriveAction is started.
-ActionSeries routine = new ActionSeries(
-    new Action[]{new DriveForward(10), new DriveReverse(10)},
-    new DriveAction()
-);
-
-ActionManager.startAction(routine);
-```
-
 ## Mixing of Programming Models
-It is possible to mix proramming models and it is often useful to do so. For example on may use a periodic model to handle driving the robot and watch for gamepad button presses. When a button is pressed control may be handed over to an action.
+It is possible to mix programming models and it is often useful to do so. For example on may use a periodic model to handle driving the robot and watch for gamepad button presses. When a button is pressed control may be handed over to an action.
 
 The biggest thing to be careful of is that you never have two sections of code using a device (eg. a motor) at the same time. For example, if an action is started to control the motors you need to make sure that periodic code does not also attempt to control the motors while an action is running.

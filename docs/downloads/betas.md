@@ -12,10 +12,10 @@ The deploy tool is used to manage the robot and deploy code to it.
 
 ## Images
 
-| Image Version | RasPiOS Version | ArPiRobot-Tools Version | Python Version | Java Runtime Version | Link |
-| ------------- | ---------------- | -------------- | -------------------- | ---- | ----- |
-| Beta 8C       | 2020-05-27-raspios-buster-lite  | v0.2.6 | 3.7           | 1.8                  | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta8c) |
-| Beta 8B       | 2020-05-27-raspios-buster-lite  | v0.2.5 | 3.7           | 1.8                  | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta8b) |
+| Image Version | RasPiOS Version | ArPiRobot-Tools Version | Python Version | Link |
+| ------------- | ---------------- | -------------- | -------------------- | ----- |
+| Beta 8C       | 2020-05-27-raspios-buster-lite  | v0.2.6 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta8c) |
+| Beta 8B       | 2020-05-27-raspios-buster-lite  | v0.2.5 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta8b) |
 
 
 ## ArPiRobot-CoreLib
@@ -24,7 +24,8 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Update Number      | Link |
 | ------------------ | ---- |
-| v0.0.10-alpha       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.10-alpha) |
+| v0.0.11-alpha      | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.11-alpha) |
+| v0.0.10-alpha      | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.10-alpha) |
 | v0.0.9-alpha       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.9-alpha) |
 | v0.0.8-alpha       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.8-alpha) |
 
@@ -52,11 +53,12 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 ## Visual Studio Code Extension
 
-| Extension Version | Changes                                                               | Link |
-| ----------------- | --------------------------------------------------------------------- | ---- |
-| v0.1.3            | Added java project template                                           | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.3) |
-| v0.1.2            | Python template uses system PYTHONPATH                                | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.2) |
-| v0.1.1            | Templates for C++ Library                                             | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.1) |
+| Extension Version | Link |
+| ----------------- | ---- |
+| v0.1.4            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.4) |
+| v0.1.3            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.3) |
+| v0.1.2            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.2) |
+| v0.1.1            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.1) |
 
 ## Arduino Firmware
 
@@ -64,4 +66,5 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Arduino Firmware Versions | Compatible CoreLib Versions |
 | ------------------------- | --------------------------- |
-| v0.0.9                    | v0.0.8-alpha                |
+| v0.0.10                   | v0.0.8-alpha+               |
+| v0.0.9                    | v0.0.8-alpha+               |
