@@ -55,6 +55,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Extension Version | Link |
 | ----------------- | ---- |
+| v0.1.5            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.5) |
 | v0.1.4            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.4) |
 | v0.1.3            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.3) |
 | v0.1.2            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.2) |
