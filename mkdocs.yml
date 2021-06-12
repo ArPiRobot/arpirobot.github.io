@@ -38,6 +38,7 @@ nav:
             - Line Following Robot: none.md
             - Automated Routines: none.md
             - Mecanum Drive: none.md
+            - Playing Audio: guide/examples/audio.md
         - Manuals:
             - Drive Station Manual: guide/manuals/drive_station.md
             - Deploy Tool Manual: guide/manuals/deploy_tool.md
