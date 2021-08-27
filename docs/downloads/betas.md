@@ -24,6 +24,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Update Number      | Link |
 | ------------------ | ---- |
+| v0.0.14-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.14-beta) |
 | v0.0.11-alpha      | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.11-alpha) |
 | v0.0.10-alpha      | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.10-alpha) |
 | v0.0.9-alpha       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.9-alpha) |

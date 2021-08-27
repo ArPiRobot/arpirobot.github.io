@@ -31,7 +31,50 @@ There are three changes that need to be made to this file.
 
 Put the SD card back into the Pi and power it on. The audio should then play through the I2S bus.
 
+TODO: Need edits to `/etc/asound.conf`, then reboot twice.
+
+```
+pcm.speakerbonnet {
+   type hw card 0
+}
+
+pcm.dmixer {
+   type dmix
+   ipc_key 1024
+   ipc_perm 0666
+
+
+   slave {
+     pcm "speakerbonnet"
+     period_time 0
+     period_size 1024
+     buffer_size 8192
+     rate 44100
+     channels 2
+   }
+}
+
+ctl.dmixer {
+    type hw card 0
+}
+
+pcm.softvol {
+    type softvol
+    slave.pcm "dmixer"
+    control.name "PCM"
+    control.card 0
+}
+
+ctl.softvol {
+    type hw card 0
+}
+
+pcm.!default {
+    type             plug
+    slave.pcm       "softvol"
+}
+```
 
 ## Playing Audio
 - The I2S bus will only support playing stereo audio files on the Pi.
-- The ArPiRobot framework only supports playing `.wav` files. More complex formats such as `.mp3` or `.acc` are not supported.
+- The ArPiRobot framework only supports playing `.wav` files. More complex formats such as `.mp3` or `.acc` are not supported. **TODO: UPDATE THIS. NOT CORRECT. OTHER FORMATS ARE SUPPORTED. NEED FULL LIST.**
