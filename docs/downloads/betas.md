@@ -13,7 +13,8 @@ The deploy tool is used to manage the robot and deploy code to it.
 ## Images
 
 | Image Version | RasPiOS Version | ArPiRobot-Tools Version | Python Version | Link |
-| ------------- | ---------------- | -------------- | -------------------- | ----- |
+| ------------- | ---------------- | -------------- | --------------------- | ----- |
+| Beta 9        | 2020-05-27-raspios-buster-lite  | v0.2.7 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta9) |
 | Beta 8C       | 2020-05-27-raspios-buster-lite  | v0.2.6 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta8c) |
 | Beta 8B       | 2020-05-27-raspios-buster-lite  | v0.2.5 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta8b) |
 
@@ -49,7 +50,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Deploy Tool Versions | Compatible Images | Latest Download |
 | -------------------- | ----------------- | --------------- |
-| v0.3.x               | Beta8B                   | [v0.3.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.3.1) |
+| v0.3.x               | Beta8B, Beta8C, Beta9               | [v0.3.1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.3.1) |
 
 
 ## Visual Studio Code Extension

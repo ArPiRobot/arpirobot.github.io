@@ -39,6 +39,7 @@ nav:
             - Automated Routines: none.md
             - Mecanum Drive: none.md
             - Playing Audio: guide/examples/audio.md
+            - Examples Repo: https://github.com/ArPiRobot/ArPiRobot-Examples
         - Manuals:
             - Drive Station Manual: guide/manuals/drive_station.md
             - Deploy Tool Manual: guide/manuals/deploy_tool.md

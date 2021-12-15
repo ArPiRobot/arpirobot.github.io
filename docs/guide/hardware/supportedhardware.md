@@ -45,6 +45,10 @@ Note: you can also use a 5V regulator to power the Pi from the motor batteries (
 | RavPower 6700 mAh | 2.4 A         | Yes                | Yes                 | Metal case. Little on the heavy side. | [Amazon](https://www.amazon.com/Portable-Charger-RAVPower-6700mAh-External/dp/B00Y2PX4YI/) |
 | GETIHU 5200 mAh | 2.4A            | Yes                | Yes                 | Plastic case. Good weight for use on smaller robots as well. | [Amazon](https://www.amazon.com/GETIHU-High-Speed-Pocket-Size-Powerbank-Flashlight/dp/B07CYNBNVW/) |
 | Anker Astro E1 5200 mAh | 2.0A | Yes | Yes | Similar in size and weight to GETIHU option. Feels like slightly higher build quality. | [Amazon](https://www.amazon.com/Anker-bar-Sized-Portable-High-Speed-Technology/dp/B00P7N0320/) |
+| Anker Astro E1 6700 mAh | 2.0A | Yes | Yes | Similar to 5200 mAh version | [Amazon](https://www.amazon.com/Anker-Upgraded-Candy-Bar-High-Speed-Technology/dp/B06XS9RMWS/) |
+| EnergyCell 10000 | 2.4A | Yes | Yes | NOT TESTED! SPECS AND CAPABILITIES BASED ON AMAZON LISTING | [Amazon](https://www.amazon.com/10000mAh-Ultra-Compact-High-Speed-Compatible-More-Black/dp/B09B3FSL1T) |
+| Miady 10000 mAh | 2.4A | Yes | Yes | NOT TESTED! SPECS AND CAPABILITIES BASED ON AMAZON LISTING | [Amazon](https://www.amazon.com/Miady-Portable-Charger-10000mAh-External/dp/B0842FCWGM) |
+| Miady 5000 mAh | 2.4A | Yes | Yes | NOT TESTED! SPECS AND CAPABILITIES BASED ON AMAZON LISTING | [Amazon](https://www.amazon.com/Miady-Portable-Charger-5000mAh-Lightweight/dp/B08GLYSTLZ) |
 
 #### **Supported Arduino Coprocessors**
 Any Arduino compatible board, that can be interfaced with the Raspberry Pi via UART (be it by pins or by USB) should work. Be aware that some Arduinos are 5V devices and some are 3.3V devices (if USB is used to supply power it will always be 5V so there will be 5V power available, but the arduino itself won't use 5V logic levels). Some sensors require 5V power, but can use a 3.3V logic level; and some sensors only support a 5V logic level. Some 3.3V devices have I/O pins that are 5V tolerant (such as the Teensy 3.2) so they can work with most 5V devices. A logic level shifter could also be used. 
@@ -69,9 +73,8 @@ Currently motor drivers are all connected to the Raspberry Pi. The arduino is no
 | Adafruit TB6612 Module | GPIO/PWM with jumper wires | 2 | 2.7V-5V | 4.5V - 13.5V | 1.2A |Does not come with terminal block power input header. | [Adafruit Store](https://www.adafruit.com/product/2448) |
 | L298N Module | GPIO/PWM with jumper wires | 2 | 2.7-7V | 5V-12V | 2A | Motor voltage can be up to 35V, but onboard 5V regulator cannot be used (remove jumper). An external 5V supply will be required. There is a ~1V drop between motor battery voltage and voltage applied to motors with this module. | [Amazon](https://www.amazon.com/Qunqi-2Packs-Controller-Stepper-Arduino/dp/B01M29YK5U/ref=sr_1_7?keywords=l298n&qid=1570723739&sr=8-7) |
 | Adafruit Motor Hat | Pi GPIO Header (hat) I<sup>2</sup>C | 4 | 3.3V I<sup>2</sup>C | 4.5V-13.5V | 1.2A | Uses TB6612 chips, but communicates with Pi via I<sup>2</sup>C, so there is no need for software PWM. It comes with a standard header, but it is recommended to buy and use Adafruit's stacking header so other I/O pins are accessible. | [Adafruit Store](https://www.adafruit.com/product/2348) |
+| Adafruit Motor Bonnet | Pi GPIO Header (hat) I<sup>2</sup>C | 4 | 3.3V I<sup>2</sup>C | 4.5V-13.5V | 1.2A | Uses TB6612 chips, but communicates with Pi via I<sup>2</sup>C, so there is no need for software PWM. It comes with a header soldered on. Other IO pins are not easily accessible. | [Adafruit Store](https://www.adafruit.com/product/4280) |
 | Geekworm Motor Hat | Pi GPIO Header (hat) I<sup>2</sup>C | 4 | 3.3V I<sup>2</sup>C | 4.5V-13.5V | 1.2A | Seems to be lower quality "copy" of Adafruit's Hat. | [Amazon](https://www.amazon.com/Raspberry-Function-Expansion-Support-Stepper/dp/B0721MTJ3P/ref=sr_1_6?keywords=raspberry+pi+motor+hat&qid=1570724085&sr=8-6) | 
-
-TODO: UPDATE THIS LIST
 
 
 #### **Supported Raspberry Pi Sensors**
@@ -128,7 +131,7 @@ Most sensors require an arduino either due to timing, sensor communication requi
 | Wire Stripper | Removing insulation from wires | Linked item on amazon also works as a crimper for some connectors. | [Amazon](https://www.amazon.com/dp/B000JNNWQ2/ref=twister_B01E3QOEZI?_encoding=UTF8&psc=1) |
 | Jumper Wires (Preassembled) | Connections to header pins and breadboard | Assorted pack | [Amazon](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/) |
 | Wire | Motor leads, make jumpers | 24AWG is a good size for jumper wires | [Amazon](https://www.amazon.com/Stranded-Nano-Flexible-Insulated-Electrical/dp/B07DCV7BDD/ref=sxbs_sp_mra?keywords=stranded+wire&pd_rd_i=B07DCV7BDD&pd_rd_r=cbc209fd-bc69-454f-b4e2-b81a483ad1ea&pd_rd_w=Dj393&pd_rd_wg=jectf&pf_rd_p=2e675d27-2176-48bd-bab7-a89e5b36d9de&pf_rd_r=NZCQ5W3CMJZWHT8XJV26&qid=1570914425&s=toys-and-games)
-| Mini Breadboard | Hold arduino and sensors. Wiring. | Mini breadboard does not leave much room for anythin but arduino. | [Adafruit](https://www.adafruit.com/product/65) |
+| Mini Breadboard | Hold arduino and sensors. Wiring. | Mini breadboard does not leave much room for anything but arduino. | [Adafruit](https://www.adafruit.com/product/65) |
 | Half Size Breadboard | Hold arduino and sensors. Wiring. | Half sized breadboard will fit on larger robots. | [Adafruit](https://www.adafruit.com/product/64) |
 | Male .1" Header Pins | Use on arduino or sensor. | Often come with parts, but sometimes more are necessary. | [Adafruit](https://www.adafruit.com/product/392) |
 | Logic Level Shifter | Convert between logic levels (ex 3.3V and 5V) | Can find similar cheaper in packs of 5-10 on amazon if you need multiple. | [Adafruit](https://www.adafruit.com/product/757) |
