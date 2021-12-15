@@ -56,4 +56,5 @@ nav:
         - CoreLib Development: devs/developing_corelib.md
         - Building an ArPiRobot Image: devs/buildimage.md
         - Image to/from SD Card: devs/imagefromsd.md
+        - Running Raspberry Pi OS Image in QEMU: devs/quemu_image.md
         - Technical Documentation: devs/technical.md
