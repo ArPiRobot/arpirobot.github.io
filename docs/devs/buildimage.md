@@ -27,7 +27,7 @@ This guide is currently up to data for the Beta6 image (2020-02-13-raspbian-bust
 - Finally, move the SD Card into the Pi, connect keyboard, mouse, monitor and power on the pi.
 
 ## Automatic process
-Instead of following the instructions below, the [configuration scripts](https://github.com/ArPiRobot/ArPiRobot-IamageScripts) can be used. These scripts are used to generate the images and are usually more up to date than this guide, but there is no gaurentee they will work correctly for different Linux OSes or different versions of raspbian that the latest image released.
+Instead of following the instructions below, the [configuration scripts](https://github.com/ArPiRobot/ArPiRobot-ImageScripts) can be used. These scripts are used to generate the images and are usually more up to date than this guide, but there is no gaurentee they will work correctly for different Linux OSes or different versions of raspbian that the latest image released.
 
 To view the script log (live)
 
