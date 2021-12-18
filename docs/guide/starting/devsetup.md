@@ -73,7 +73,7 @@ The rest of the tools are language-specific. You will only need the tools for th
 
 C++ development requires you have a compiler, linker, and necessary C libraries to build code for a different system (a Raspberry Pi). This collection of software is called a toolchain. Since software is being built for a different system than you are building it on, this is called cross compilation. 
 
-Prebuilt cross compiler toolchains for the Raspberry Pi are available to be downloaded from the [ArPiRobot-Toolchain Releases](https://github.com/ArPiRobot/ArPiRobot-Toolchain/releases) page. Prebuilt toolchains are currently provided for Windows (64-bit) and macOS (x86_64 = 64-bit Intel CPUs). For other systems, you can build a cross compiler toolchain yourself, but you might prefer to use Python to program robots instead. Building a cross compiler can be a complex task.
+Prebuilt cross compiler toolchains for the Raspberry Pi are available to be downloaded from the [ArPiRobot-Toolchain Releases](https://github.com/ArPiRobot/ArPiRobot-Toolchain/releases) page. Prebuilt toolchains are currently provided for Windows (64-bit), macOS (x86_64 = 64-bit Intel CPUs), and Linux (x86_64). For other systems, you can build a cross compiler toolchain yourself, but you might prefer to use Python to program robots instead. Building a cross compiler can be a complex task.
 
 A toolchain is intended to be used with a specific version of the Raspberry Pi OS (ArPiRobot images are modified versions of the Raspberry Pi OS). Each release of the Raspberry Pi OS is based on a version of debian, identified by the version's codename. For example, on the downloads page, if an image's RasPiOS version is listed as `2020-05-27-raspios-buster-lite`, the image is based on Raspberry Pi OS Buster. "Buster" is the codename. As such, you need a toolchain designed to target a Raspberry Pi OS Buster system. All prebuilt ArPiRobot toolchains are listed under a specific codename. While it may be possible to use an older toolchain (for example, using a RasPiOS 10 "buster" toolchain and running the program on RasPiOS 11 "bullseye"), it is generally not recommended.
 
@@ -84,6 +84,21 @@ Alternatively, prebuilt toolchains can be downloaded from other sources. These t
 - raspberry-pi-cross-compilers project (Linux Machine): [link](https://github.com/abhiTronix/raspberry-pi-cross-compilers)
     - There are multiple builds of each toolchain. Generally, use the same version of gcc as is installed on the Pi.
     - When you download the toolchain, you will be taken to a stackoverflow page with multipe folders. If you want the version with Pi zero support, choose that folder.
+
+Regardless of which toolchain you download, you need to extract / install it to a specific location. The prebuilt toolchains from the ArPiRobot-Toolchain repo are all distributed in an archive (`zip` or `tar.gz`). If you extract this archive you will have a folder called `armv6-rpi-linux-gnueabihf`. In your home folder create or open a folder called `.arpirobot`. The dot in front of the name makes this a hidden folder. As such, you may have to show hidden folders (View menu in Windows Explorer and Cmd+Shit+. in macOS Finder). Once coped, rename the `armv6-rpi-linux-gnueabihf` folder to `toolchain`. The file structure should look something like the following
+
+```
+- Home Folder
+    - .arpirobot
+        - toolchain
+            - armv6-rpi-linux-gnueabihf
+            - bin
+            - include
+            - lib
+            - libexec
+            - share
+        - Other files and folders
+```
 
 **CMake**
 
