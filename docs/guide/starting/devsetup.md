@@ -71,35 +71,33 @@ The rest of the tools are language-specific. You will only need the tools for th
 
 **Cross Compiler Toolchain:**
 
-The setup for programming with C++ can be relatively complex, but is much easier if you can find a pre-built cross compiler toolchain for compiling programs for the Raspberry Pi. The only time you will not need a cross compiler toolchain is if you are using an Arm (v6) linux system (such as another raspberry pi). In that case, you can use the native compiler for your system.
+C++ development requires you have a compiler, linker, and necessary C libraries to build code for a different system (a Raspberry Pi). This collection of software is called a toolchain. Since software is being built for a different system than you are building it on, this is called cross compilation. 
 
-For Windows, you can download an installer for a prebuilt toolchain from [here](https://gnutoolchains.com/raspberry/)
+Prebuilt cross compiler toolchains for the Raspberry Pi are available to be downloaded from the [ArPiRobot-Toolchain Releases](https://github.com/ArPiRobot/ArPiRobot-Toolchain/releases) page. Prebuilt toolchains are currently provided for Windows (64-bit) and macOS (x86_64 = 64-bit Intel CPUs). For other systems, you can build a cross compiler toolchain yourself, but you might prefer to use Python to program robots instead. Building a cross compiler can be a complex task.
 
-For Linux, you can download a prebuilt toolchain from [here](https://github.com/abhiTronix/raspberry-pi-cross-compilers).
+A toolchain is intended to be used with a specific version of the Raspberry Pi OS (ArPiRobot images are modified versions of the Raspberry Pi OS). Each release of the Raspberry Pi OS is based on a version of debian, identified by the version's codename. For example, on the downloads page, if an image's RasPiOS version is listed as `2020-05-27-raspios-buster-lite`, the image is based on Raspberry Pi OS Buster. "Buster" is the codename. As such, you need a toolchain designed to target a Raspberry Pi OS Buster system. All prebuilt ArPiRobot toolchains are listed under a specific codename. While it may be possible to use an older toolchain (for example, using a RasPiOS 10 "buster" toolchain and running the program on RasPiOS 11 "bullseye"), it is generally not recommended.
 
-For macOS... I don't know of any pre-built toolchains. You can build one yourself, but you might prefer to look into using Python or Java.
+Alternatively, prebuilt toolchains can be downloaded from other sources. These toolchains have not been tested with the ArPiRobot project, but there is no reason they should not work. However, be aware that not all toolchains support the Pi Zero (`armv6` architecture). The ArPiRobot images are also 32-bit images, so a compiler targeting a 64-bit system will not work.
 
-When downloading the toolchain you need one for the same version of Raspberry Pi OS as is used on the robot (see Raspberry Pi OS version in image version table). Currently this is GCC 8.3.x for buster. When using the linux toolchains linked above, make sure to download one that supports a Pi zero target.
-
-When installing the toolchain you need to install it to `.arpirobot/toolchain` in your home directory. The `.arpirobot` directory will be created the first time you run the deploy tool or drive station.
-
-On windows, using the exe installer, set the install location to `C:\USERNAME\.arpirobot\toolchain`, where `USERNAME` is your windows username.
-
-On Linux, extract the downloaded archive to `~/.arpirobot`. Then rename the `cross-pi-...` folder to `toolchain`.
-
-If updating the toolchain, you will need to delete/uninstall the old one first.
+- SysProgs Toolchains (Windows Machine):  [link](https://gnutoolchains.com/raspberry/)
+    - These are compatible with the Pi Zero
+- raspberry-pi-cross-compilers project (Linux Machine): [link](https://github.com/abhiTronix/raspberry-pi-cross-compilers)
+    - There are multiple builds of each toolchain. Generally, use the same version of gcc as is installed on the Pi.
+    - When you download the toolchain, you will be taken to a stackoverflow page with multipe folders. If you want the version with Pi zero support, choose that folder.
 
 **CMake**
 
-You will also need CMake installed. As usual, if using Linux or BSD you should be able to install this from the system repos. If using Windows or macOS, you can download an installer from [cmake.org](https://cmake.org/).
+You will also need CMake installed. As usual, if using Linux or BSD you should be able to install this from the system repos. If using Windows or macOS, you can download an installer from [cmake.org](https://cmake.org/). Alternatively, the [Homebrew](https://brew.sh/) package manager for macOS includes cmake and the [scoop](https://scoop.sh/) package manager for windows include cmake.
 
 **GNU Make**
 
-On windows, you will also need a make program. One should be installed by default on macOS and Linux (if not use system packages). For windows, download from [gnuwin32 project](http://gnuwin32.sourceforge.net/packages/make.htm).
+Make should be installed by default on macOS and Linux (if not use system packages). 
+
+For windows, the easiest method is to use download from the [ezwin32 project](https://downloads.sourceforge.net/project/ezwinports/make-4.3-without-guile-w32-bin.zip). This will download a zip file, not an installer. You need to extract the zip somewhere on your system and add the "bin" folder to your `PATH` environment variable. Alternatively, the [scoop](https://scoop.sh/) package manager for windows includes make and will automatically add it to your path.
+
 
 ### Python
 
 You will need to install Python on your PC. You can download python installers for windows and macOS from [python.org](https://www.python.org/downloads/). Generally, it is recommended to use a version of python that matches the first two numbers of the version on the Pi (see the images download table for which version is in use in the newest Pi image).
 
 On Linux / BSD systems you should be able to install a recent version of python from the system repositories. You can use pyenv to build and install a specific version. On Ubuntu you can use the [deadsnakes PPA](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa).
-
