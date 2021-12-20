@@ -38,7 +38,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Drive Station Versions | Compatible CoreLib Versions   | Latest Download |
 | ---------------------- | ----------------------------- | --------------- |
-| v0.4.0                 | v0.0.8-alpha+                 | [v0.4.0-alpha3](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.4.0-alpha3) |
+| v0.4.0                 | v0.0.8-alpha+                 | [v0.4.0-beta1](https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v0.4.0-beta1) |
 | v0.3.x                 | v0.0.8-alpha+                 | [v0.3.5](https://github.com/ArPiRobot/ArPiRobot-DriveStationOLDJAVA/releases/tag/v0.3.5)      |
 
 
