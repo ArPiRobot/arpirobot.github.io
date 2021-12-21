@@ -11,6 +11,8 @@ It is always recommended to use the latest ArPiRobot image, a list of which is a
 
 
 ## Flash the Image
+*WARNING: Flashing an image to the SD card will erase the entire contents of the SD card!*
+
 To start, download the newest Raspberry Pi image. This image contains a modified version of Raspbian, the official Raspberry Pi OS. It has tools, libraries, and programs pre-installed to allow it to work with ArPiRobot robot code. 
 
 The Raspberry Pi loads the OS form a micro SD Card, so the image must be written to a micro SD Card. To do so, we will use [balenaEtcher](https://www.balena.io/etcher/). Download and run it. You should see a screen like the one below.
@@ -19,4 +21,4 @@ Choose select image and choose the ArPiRobot image file (`ArPiRobot-VERSION.img.
 
 Put the SD Card in the Raspbery Pi and power it on. The activity light (green) should start blinking, indicating that the Pi is booting. Wait for it to finish booting (about 30-60 seconds). The first boot will take longer than most as it will expand the root partition to fill the SD card then reboot.
 
-Once the Pi boots it will be generating a WiFi network called "ArPiRobot-Robot" with a default password of "arpirobot123". This network is how we will interface with the Raspberry Pi later. When working with the robot, keep in mind that there will be no internet access via this network. While connected to the Pi's network you can open the deploy tool and connect it to the robot (by clicking the connect button in the deploy tool). There is a network settings tab in the deploy tool where you can change the robot's WiFi SSID and password (useful if you want multiple robots running at once or if you want a non-default password).
+Once the Pi boots it will be generating a WiFi network called "ArPiRobot-Robot" with a default password of "arpirobot123". This network is how we will interface with the Raspberry Pi later. When working with the robot, keep in mind that there will be no internet access via this network, it is just used to communicate with the robot. While connected to the Pi's network you can open the deploy tool and connect it to the robot (by clicking the connect button in the deploy tool). There is a network settings tab in the deploy tool where you can change the robot's WiFi SSID and password (useful if you want multiple robots running at once or if you want a non-default password).

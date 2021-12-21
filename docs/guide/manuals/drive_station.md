@@ -1,5 +1,7 @@
 # Drive Station Manual
 
+*NOTICE: THIS MANUAL WAS WRITTEN FOR THE OLD JAVA DRIVE STATION. THE NEWER DRIVE STATION (V0.4.0+) IS REWRITTEN IN PYTHON USING QT. SOME OF THIS INFORMATION DOES NOT APPLY!!!*
+
 The ArPiRobot Drive Station is the program for your computer (Windows, macOS, Linux) that is used to control the robot. Its primary function is to enable/disable the robot and send data from a gamepad connected to your computer to the robot via WiFi.
 
 ![Drive Station Screenshot](../../img/drive_station.png){: style="height:300px"}

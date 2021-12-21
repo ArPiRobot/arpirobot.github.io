@@ -17,13 +17,12 @@ Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.
 
 **Ubuntu Linux**
 
-A `.deb` package has been provided for Ubuntu. It has generally been tested on the latest LTS release. While not guaranteed it should still work on other ubuntu releases or other distributions that use deb packages. If you have trouble with the deb package just install java and use the `.jar` file.
+A `.deb` package has been provided for Ubuntu. It has generally been tested on the latest LTS release. While not guaranteed it should still work on other ubuntu releases or other distributions that use deb packages. If you have trouble with the `.deb` package or use a different distribtion, a `.tar.gz` package is provided that should work on any linux distro (however, you must install python3 before using). If using the `.tar.gz` package run the `install.sh` script after extracting.
 
-**Arch Linux**
-
-A `.pkg.tar.zst` package for Arch Linux is provided and can be installed using pacman.
 
 **Other**
+
+*Deploy Tool*:
 
 This method will work on any platform where Java is available (Linux, *BSD, Windows, macOS, etc). First install Java 11 (or newer). Then download the `.jar` files (see [downloads page](../../downloads/latest.md)). Most of the time, if Java is installed, double clicking the `.jar` file will run the program. If not, the command below can be used
 
@@ -31,7 +30,9 @@ This method will work on any platform where Java is available (Linux, *BSD, Wind
 java -jar /full/path/to/jar/file.jar
 ```
 
-Note: For &ast;BSD users the drive station does not include a build of the required native library. You will have to build it yourself. You can find instructions on doing so in the Drive Station's GitHub repository. The only platforms that have builtin support are: Windows (32-bit), Windows (64-bit), Linux (64-bit), macOS (64-bit).
+*Drive Station:*
+
+The drive station is written in python and requires python 3.6 or newer. In addition, several python packages are required (most notably `PySide6` and `PySDL2`). Download the zip of the repository (source code) and extract it on your system. Then install the required python packages (optionally in a virtual environment) by running `pip install -r requirements.txt` in the directory where you extracted the program. Then run the program with `python src/main.py`.
 
 
 ## Installing Visual Studio Code
@@ -113,6 +114,6 @@ For windows, the easiest method is to use download from the [ezwin32 project](ht
 
 ### Python
 
-You will need to install Python on your PC. You can download python installers for windows and macOS from [python.org](https://www.python.org/downloads/). Generally, it is recommended to use a version of python that matches the first two numbers of the version on the Pi (see the images download table for which version is in use in the newest Pi image).
+You will need to install Python on your PC. You can download python installers for windows and macOS from [python.org](https://www.python.org/downloads/). Generally, it is recommended to use a version of python that matches the first two numbers of the version on the Pi (see the images download table for which version is in use in the newest Pi image). Alternatively, you can use [Homebrew](https://brew.sh/) on macOS or [scoop](https://scoop.sh/) on windows.
 
-On Linux / BSD systems you should be able to install a recent version of python from the system repositories. You can use pyenv to build and install a specific version. On Ubuntu you can use the [deadsnakes PPA](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa).
+On Linux / BSD systems you should be able to install a recent version of python from the system repositories. You can use pyenv to build and install a specific version. On Ubuntu you can use the [deadsnakes PPA](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa) to install specific versions of python.

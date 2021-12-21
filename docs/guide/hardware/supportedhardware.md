@@ -47,7 +47,7 @@ Note: you can also use a 5V regulator to power the Pi from the motor batteries (
 | Anker Astro E1 5200 mAh | 2.0A | Yes | Yes | Similar in size and weight to GETIHU option. Feels like slightly higher build quality. | [Amazon](https://www.amazon.com/Anker-bar-Sized-Portable-High-Speed-Technology/dp/B00P7N0320/) |
 | Anker Astro E1 6700 mAh | 2.0A | Yes | Yes | Similar to 5200 mAh version | [Amazon](https://www.amazon.com/Anker-Upgraded-Candy-Bar-High-Speed-Technology/dp/B06XS9RMWS/) |
 | EnergyCell 10000 | 2.4A | Yes | Yes | NOT TESTED! SPECS AND CAPABILITIES BASED ON AMAZON LISTING | [Amazon](https://www.amazon.com/10000mAh-Ultra-Compact-High-Speed-Compatible-More-Black/dp/B09B3FSL1T) |
-| Miady 10000 mAh | 2.4A | Yes | Yes | NOT TESTED! SPECS AND CAPABILITIES BASED ON AMAZON LISTING | [Amazon](https://www.amazon.com/Miady-Portable-Charger-10000mAh-External/dp/B0842FCWGM) |
+| Miady 10000 mAh | 2.4A | Yes | Yes | Decent build quality. Smaller size than many other options. | [Amazon](https://www.amazon.com/Miady-Portable-Charger-10000mAh-External/dp/B0842FCWGM) |
 | Miady 5000 mAh | 2.4A | Yes | Yes | NOT TESTED! SPECS AND CAPABILITIES BASED ON AMAZON LISTING | [Amazon](https://www.amazon.com/Miady-Portable-Charger-5000mAh-Lightweight/dp/B08GLYSTLZ) |
 
 #### **Supported Arduino Coprocessors**
