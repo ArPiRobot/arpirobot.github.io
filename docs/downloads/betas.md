@@ -48,6 +48,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 | Mobile Drive Station Versions | Compatible CoreLib Versions   | Latest Download |
 | ----------------------------- | ----------------------------- | --------------- |
 | v0.0.3                        | v0.0.8-alpha+                 | [v0.0.3](https://github.com/ArPiRobot/ArPiRobot-MobileDriveStation/releases/tag/v0.0.3) |
+| v0.0.2                        | v0.0.8-alpha+                 | [v0.0.2](https://github.com/ArPiRobot/ArPiRobot-MobileDriveStation/releases/tag/v0.0.2) |
 
 
 ## Deploy Tool
