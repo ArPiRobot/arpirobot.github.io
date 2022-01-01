@@ -25,7 +25,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Update Number      | Link |
 | ------------------ | ---- |
-| v0.0.20-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.20-beta) |
+| v0.0.21-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.21-beta) |
 | v0.0.18-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.18-beta) |
 | v0.0.17-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.17-beta) |
 | v0.0.16-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.16-beta) |
@@ -77,10 +77,8 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Arduino Firmware Versions | Compatible CoreLib Versions |
 | ------------------------- | --------------------------- |
-| v0.0.13                   | v0.0.20-beta+&ast;          |
+| v0.0.13                   | v0.0.21-beta+               |
 | v0.0.12                   | v0.0.8-alpha+               |
 | v0.0.11                   | v0.0.8-alpha+               |
 | v0.0.10                   | v0.0.8-alpha+               |
 | v0.0.9                    | v0.0.8-alpha+               |
-
-&ast;Works with v0.0.8-alpha and newer, however only v0.0.20-beta and newer support encoder speed measurements added in this release.
