@@ -80,7 +80,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 | Arduino Firmware Versions | Compatible CoreLib Versions  |
 | ------------------------- | ---------------------------- |
 | v0.0.14                   | v0.0.21-beta+                |
-| ~~v0.0.13~~               | v0.0.20-beta (only)          |
+| v0.0.13                   | v0.0.20-beta (only)          |
 | v0.0.12                   | v0.0.8-alpha to v0.0.19-beta |
 | v0.0.11                   | v0.0.8-alpha to v0.0.19-beta |
 | v0.0.10                   | v0.0.8-alpha to v0.0.19-beta |
