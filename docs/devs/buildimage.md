@@ -15,8 +15,8 @@ There will likely be slight differences if using another version of Raspbian or 
 ## Raspbian Version
 This guide is currently up to data for the Beta6 image (2020-02-13-raspbian-buster-lite). The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
 
-## Base Raspbian Install
-- Download the Raspbian Image from [here](https://www.raspberrypi.org/downloads/raspbian/). If the correct version is no longer available it is likely OK to use a newer version, but older images can be found [here](http://downloads.raspberrypi.org/raspbian_lite/images/) or [here](http://downloads.raspberrypi.org/raspios_lite_armhf/images/).
+## Base RasPiOS Install
+- Download the RasPiOS Image from [here](https://www.raspberrypi.com/software/). If the correct version is no longer available it is likely OK to use a newer version, but older images can be found [here](http://downloads.raspberrypi.org/raspbian_lite/images/) or [here](http://downloads.raspberrypi.org/raspios_lite_armhf/images/). Alternatively, oldstable downloads are available [here](http://downloads.raspberrypi.org/raspios_oldstable_armhf/images/).
 - Download and install [balenaEtcher](https://www.balena.io/etcher/)
 - Install balenaEtcher
 - Insert the SD Card into an SD Card slot on your PC or connect it using a USB adapter.
