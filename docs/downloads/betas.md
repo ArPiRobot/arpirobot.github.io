@@ -14,6 +14,7 @@ The deploy tool is used to manage the robot and deploy code to it.
 
 | Image Version | RasPiOS Version | ArPiRobot-Tools Version | Python Version | Link |
 | ------------- | ---------------- | -------------- | --------------------- | ----- |
+| Beta 10A      | 2021-05-07-raspios-buster-lite  | v0.2.7 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta10a) |
 | Beta 9        | 2020-05-27-raspios-buster-lite  | v0.2.7 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta9) |
 | Beta 8C       | 2020-05-27-raspios-buster-lite  | v0.2.6 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta8c) |
 | Beta 8B       | 2020-05-27-raspios-buster-lite  | v0.2.5 | 3.7           | [Download](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/beta8b) |
