@@ -27,6 +27,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Update Number      | Link |
 | ------------------ | ---- |
+| v0.0.22-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.22-beta)  |
 | v0.0.21-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.21-beta)  |
 | v0.0.20-beta       | No Download                                                                           |
 | v0.0.19-beta       | No Download                                                                           |
@@ -67,6 +68,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Extension Version | Link |
 | ----------------- | ---- |
+| v0.1.8            | Not Available Yet |
 | v0.1.7            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.7) |
 | v0.1.6            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.6) |
 | v0.1.5            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.5) |
