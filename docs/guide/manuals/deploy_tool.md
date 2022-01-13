@@ -1,5 +1,7 @@
 # Deploy Tool Manual
 
+*NOTICE: THIS MANUAL WAS WRITTEN FOR THE OLD JAVA DEPLOY TOOL. THE NEWER DEPLOY TOOL (V0.4.0+) IS REWRITTEN IN PYTHON USING QT. SOME OF THIS INFORMATION DOES NOT APPLY!!!*
+
 The Deploy Tool is a program that runs on your computer with the primary purpose of deploying a robot program written on your computer to the robot via the robot's WiFi network. It is also used to configure the robot's Raspberry Pi.
 
 ## Uses / Features
