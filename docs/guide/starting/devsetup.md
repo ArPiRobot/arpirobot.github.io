@@ -22,17 +22,7 @@ A `.deb` package has been provided for Ubuntu. It has generally been tested on t
 
 **Other**
 
-*Deploy Tool*:
-
-This method will work on any platform where Java is available (Linux, *BSD, Windows, macOS, etc). First install Java 11 (or newer). Then download the `.jar` files (see [downloads page](../../downloads/latest.md)). Most of the time, if Java is installed, double clicking the `.jar` file will run the program. If not, the command below can be used
-
-```
-java -jar /full/path/to/jar/file.jar
-```
-
-*Drive Station:*
-
-The drive station is written in python and requires python 3.6 or newer. In addition, several python packages are required (most notably `PySide6` and `PySDL2`). Download the zip of the repository (source code) and extract it on your system. Then install the required python packages (optionally in a virtual environment) by running `pip install -r requirements.txt` in the directory where you extracted the program. Then run the program with `python src/main.py`.
+The drive station and deploy tool are written in python and require python 3.6 or newer. In addition, several python packages are required (most notably `PySide6` and `PySDL2`). Download the zip of the repository (source code) and extract it on your system. Then install the required python packages (optionally in a virtual environment) by running `pip install -r requirements.txt` in the directory where you extracted the program. Then run the program with `python src/main.py`. Note that often one must replace `python` in the above commands with `python3`, but this is system dependent.
 
 
 ## Installing Visual Studio Code
