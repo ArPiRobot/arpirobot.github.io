@@ -76,20 +76,8 @@ Alternatively, prebuilt toolchains can be downloaded from other sources. These t
     - There are multiple builds of each toolchain. Generally, use the same version of gcc as is installed on the Pi.
     - When you download the toolchain, you will be taken to a stackoverflow page with multipe folders. If you want the version with Pi zero support, choose that folder.
 
-Regardless of which toolchain you download, you need to extract / install it to a specific location. The prebuilt toolchains from the ArPiRobot-Toolchain repo are all distributed in an archive (`zip` or `tar.gz`). If you extract this archive you will have a folder called `armv6-rpi-linux-gnueabihf`. In your home folder create or open a folder called `.arpirobot`. The dot in front of the name makes this a hidden folder. As such, you may have to show hidden folders (View menu in Windows Explorer and Cmd+Shit+. in macOS Finder). Once coped, rename the `armv6-rpi-linux-gnueabihf` folder to `toolchain`. The file structure should look something like the following
+The ArPiRobot toolchain packages can be installed using the Deploy Tool. Other toolchains must be installed manually. The toolchain should be placed in `$HOME/.arpirobot/toolchain`. The `toolchain` directory should contain `bin`, `include`, `lib`, etc (they should not be in another subdirectory). With third party toolchains it may be necessary to run an installer or extract it elsewhere and copy the correct directories.
 
-```
-- Home Folder
-    - .arpirobot
-        - toolchain
-            - armv6-rpi-linux-gnueabihf
-            - bin
-            - include
-            - lib
-            - libexec
-            - share
-        - Other files and folders
-```
 
 **CMake**
 
