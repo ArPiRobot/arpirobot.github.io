@@ -9,15 +9,15 @@ In addition this guide will cover setting up Visual Studio Code to write ArPiRob
 
 **Windows**
 
-Download the exe installers for both (see [downloads page](../../downloads/latest.md)). Run the installer. A Java runtime will be installed with each program. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.
+Download the exe installers for both (see [downloads page](../../downloads/latest.md)). Run the installer. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.
 
 **macOS**
 
-Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app comes with its own Java runtime. Each app is also *unsigned*, so when you first run it you will have to approve the app in System Preferences > Security.
+Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app is *unsigned*, so when you first run it you will have to approve the app in System Preferences > Security.
 
 **Ubuntu Linux**
 
-A `.deb` package has been provided for Ubuntu. It has generally been tested on the latest LTS release. While not guaranteed it should still work on other ubuntu releases or other distributions that use deb packages. If you have trouble with the `.deb` package or use a different distribtion, a `.tar.gz` package is provided that should work on any linux distro (however, you must install python3 before using). If using the `.tar.gz` package run the `install.sh` script after extracting.
+A `.deb` package has been provided for Ubuntu. It has generally been tested on the latest LTS release. While not guaranteed it should still work on other ubuntu releases or other distributions that use deb packages. If you have trouble with the `.deb` package or use a different distribution, a `.tar.gz` package is provided that should work on any linux distro (however, you must install python3 before using). If using the `.tar.gz` package run the `install.sh` script after extracting.
 
 
 **Other**
@@ -74,7 +74,7 @@ Alternatively, prebuilt toolchains can be downloaded from other sources. These t
     - These are compatible with the Pi Zero
 - raspberry-pi-cross-compilers project (Linux Machine): [link](https://github.com/abhiTronix/raspberry-pi-cross-compilers)
     - There are multiple builds of each toolchain. Generally, use the same version of gcc as is installed on the Pi.
-    - When you download the toolchain, you will be taken to a stackoverflow page with multipe folders. If you want the version with Pi zero support, choose that folder.
+    - When you download the toolchain, you will be taken to a sourceforge page with multiple folders. If you want the version with Pi zero support, choose that folder.
 
 The ArPiRobot toolchain packages can be installed using the Deploy Tool. Other toolchains must be installed manually. The toolchain should be placed in `$HOME/.arpirobot/toolchain`. The `toolchain` directory should contain `bin`, `include`, `lib`, etc (they should not be in another subdirectory). With third party toolchains it may be necessary to run an installer or extract it elsewhere and copy the correct directories.
 

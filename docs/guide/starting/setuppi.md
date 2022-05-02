@@ -7,13 +7,13 @@ Before starting you will need a computer<sup>&ast;</sup>, a [supported Raspberry
 <sup>&ast;</sup>The software used in this section (balenaEtcher) is available for Windows, macOS, and Linux computers. If using another OS you will need to find another program to write the image file to the SD Card.
 
 ## Choosing an Image
-It is always recommended to use the latest ArPiRobot image, a list of which is available on the [downloads page](../../downloads/latest.md).
+It is always recommended to use the latest ArPiRobot image, available on the [downloads page](../../downloads/latest.md).
 
 
 ## Flash the Image
 *WARNING: Flashing an image to the SD card will erase the entire contents of the SD card!*
 
-To start, download the newest Raspberry Pi image. This image contains a modified version of Raspbian, the official Raspberry Pi OS. It has tools, libraries, and programs pre-installed to allow it to work with ArPiRobot robot code. 
+To start, download the newest Raspberry Pi image. This image contains a modified version of the Raspberry Pi OS. It has tools, libraries, and programs pre-installed to allow it to work with ArPiRobot robot code. 
 
 The Raspberry Pi loads the OS form a micro SD Card, so the image must be written to a micro SD Card. To do so, we will use [balenaEtcher](https://www.balena.io/etcher/). Download and run it. You should see a screen like the one below.
 
