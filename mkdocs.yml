@@ -43,7 +43,7 @@ nav:
             - Mobile Drive Station Manual: guide/manuals/android_drive_station.md
         
     - Documentation:
-        # Programming reference is documentation. Guide is more example.
+        # Programming reference is documentation. Guide is more example code.
         - Programming Reference:
             - Project Structure: none.md   # Info about file org, build system, etc
             - Recommended Code Organization: none.md # Info about what code in which file and where to instantiate objects
@@ -55,6 +55,7 @@ nav:
             - Arduino Interface and Sensors: none.md
             - Action System & Action Manager: none.md
             - PID Controller: none.md
+            - AudioManger: none.md
         - Default Robot Settings: defaultsettings.md
         - CoreLib API Docs:
             - C++ Library API: doxygen-docs/cpp/html/index.html
