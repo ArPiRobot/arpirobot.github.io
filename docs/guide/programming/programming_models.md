@@ -1,5 +1,8 @@
 # Programming Models
 
+There are two main ways of programming the robot. The first way is more intuitive and easier for new users. The second is more flexible and allows easier use of concurrent tasks and more complex decision making processes.
+
+
 ## Periodic Robot Model
 The periodic programming model uses certain functions that run every so often. For example, a function may run every 50 milliseconds (20 times per second) while the robot is enabled. There are three of these functions in the `BaseRobot` class.
 

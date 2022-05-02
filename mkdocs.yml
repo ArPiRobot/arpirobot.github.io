@@ -26,19 +26,16 @@ nav:
             - Setup your Computer: guide/setup/setupcomputer.md
             - Setup the Raspberry Pi: guide/setup/setuppi.md
         - Programming the Robot:
-            - Starting With C++: guide/programming/startingcpp.md
-            - Starting With Python: guide/programming/startingpython.md
-            - Programming Models: guide/programming/programming_models.md
-        - Example Robot Code:
-            - Intro: none.md
-            - Arcade Drive: none.md
-            - Voltage Monitor: none.md
-            - Sensors & NetworkTable: none.md
-            - Line Following Robot: none.md
-            - Automated Routines: none.md
-            - Mecanum Drive: none.md
-            - Playing Audio: guide/examples/audio.md
+            - First Program: none.md
+            - Moving Motors: none.md
+            - Driving with Gamepad: none.md
+            - Sensor Data & NetworkTable: none.md
+            - Using Actions: none.md
+            - PID Controller: none.md
             - Examples Repo: https://github.com/ArPiRobot/ArPiRobot-Examples
+        - Other Tasks:
+            - Playing Audio: guide/other/audio.md
+            - Camera Streaming: none.md
         - Manuals:
             - Drive Station Manual: guide/manuals/drive_station.md
             - Deploy Tool Manual: guide/manuals/deploy_tool.md

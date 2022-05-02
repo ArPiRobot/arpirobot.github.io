@@ -1,0 +1,46 @@
+First Program:
+- Create a project
+- How to build and deploy
+- Add log message on enable and disable
+- Explain the periodic programming model
+
+Moving motors:
+- (Almost) every robot will have drive motors
+- This program should move the motors +0.5 when enabled
+- Discuss configuring motor directions and testing them as well
+
+Driving with gamepad:
+- Use of gamepad object in code and of gamepads in drive station
+- Use arcade drive controls to move the robot
+- Explain fixing rotation direction if necessary
+- Explain negating joystick value to make positive forward (and why)
+- Explain and implement axis transforms as an "extra"
+
+Sensor Data & NetworkTable:
+- Use arduino to get vmon data, usonic data, imu data
+- These sensors should be explained (what they do, not wiring)
+- Main vmon should be explained
+- Put data on dashboard
+- To do something with data, don't allow drive forward if object too close
+- Also use brake mode to stop quickly
+
+Using Actions:
+- Explain the concept of the action system
+- Explain "best use" of action instances, etc
+- Explain what code should be left in robot (devices, net table, etc)
+- Reimplement drive as an action that is always running
+- TODO: Something to show parallel actions
+- Implement drive time and rotate time actions
+- On button press run action sequence
+
+PID Controller:
+- Replace rotate time action with rotate angle using PID
+
+
+Not explained here:
+- Encoder usage for a drive distance instead of time
+- Line follower using IR sensors
+- Velocity PID for wheels using encoder velocity (both single and quad encoder)
+- Motion profiling???
+
+
