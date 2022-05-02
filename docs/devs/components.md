@@ -1,11 +1,9 @@
 # Descriptions of Components
 
 #### **Raspberry Pi Image**
-Downloads are available on the [downloads page](../downloads/latest.md)
-
 Built using scripts available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-ImageScripts)
 
-This is the modified version of Raspbian (the official Raspberry Pi OS) with required software for ArPiRobot robots. This contains an initial version of ArPiRobot Pythonlib and ArPiRobot Tools, but future updates may chagne which versions are used. While ArPiRobot software can be updated with the ArPiRobot (described below), it is sometimes necessary to make changes to the OS itself. If this becomes necessary new Raspberry Pi Images will be released.
+This is the modified version of Raspbian (the official Raspberry Pi OS) with required software for ArPiRobot robots. While ArPiRobot software can be updated with the ArPiRobot (described below), it is sometimes necessary to make changes to the OS itself. If this becomes necessary new Raspberry Pi Images will be released.
 
 #### **ArPiRobot CoreLib**
 Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-CoreLib)
@@ -22,7 +20,7 @@ Configuration and tools used on the Pi to run and configure robots and robot pro
 #### **ArPiRobot Drive Station**
 Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-DriveStation)
 
-The PC-side control software for ArPiRobot robots. This interfaces with a running robot program (using the PythonLib's NetworkManager). This means that Drive Station compatibility mostly depends on the version of the PythonLib in use on the robot.
+The PC-side control software for ArPiRobot robots. This interfaces with a running robot program (using the CoreLib's NetworkManager). This means that Drive Station compatibility mostly depends on the version of the CoreLib in use on the robot.
 
 
 #### **ArPiRobot Deploy Tool**
@@ -34,10 +32,22 @@ The PC-side configuration software for ArPiRobot robots. The deploy tool mostly 
 #### **ArPiRobot Arduino Firmware**
 Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware)
 
-The program to run on an Arduino co-processor for ArPiRobot robots. The ArduinoFirmware and PythonLib must use a compatible set of devices/sensors and a compatible communication protocol. This means that changing the communication protocol between the Pi and the Arduino co-processor requires changes to the PythonLib. The same is true when adding support for a new device/sensor or changing what data comes from a device/sensor.
+The program to run on an Arduino co-processor for ArPiRobot robots. The ArduinoFirmware and CoreLib must use a compatible set of devices/sensors and a compatible communication protocol. This means that changing the communication protocol between the Pi and the Arduino co-processor requires changes to the CoreLib. The same is true when adding support for a new device/sensor or changing what data comes from a device/sensor.
 
 #### **ArPiRobot Visual Studio Code Extension**
 
 Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension)
 
 Enables creating ArPiRobot projects in VSCode and installing ArPiRobot Updates on the development PC.
+
+#### **ArPiRobot Toolchain**
+
+Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-Toolchain/)
+
+Documentation of the process used to create cross compiler C/C++ toolchains for the Raspberry Pi.
+
+#### **ArPiRobot CameraStreaming**
+
+Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-CameraStreaming)
+
+Scripts and services to support realtime low-latency camera streaming on ArPiRobot robots. Also includes scripts to setup the services used during the creation of the ArPiRobot images.

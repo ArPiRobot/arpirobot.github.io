@@ -1,5 +1,5 @@
 # Building an ArPiRobot Image
-This guide details how the prebuilt Raspbian image is created for ArPiRobot robots. This guide exists mostly to document the image creation process, but can be followed to create a custom Raspbian image or an image with another Linux OS. 
+This guide details how the prebuilt Raspbian image is created for ArPiRobot robots. This guide exists mostly to document the image creation process, but can be followed to create a custom Raspbian image or an image with another Linux OS. ***This guide is not kept up to date. There may be significant differences between the procedure described below and the process used by the image scripts.***
 
 ## Why Would I need to build an Image?
 There are few reasons to ever need a custom image. Most users do not need to spend the time creating their own image. Some reasons for wanting to build a custom image are:
@@ -12,7 +12,7 @@ It is important to be aware that this guide is not always kept up to date. It is
 
 There will likely be slight differences if using another version of Raspbian or another Linux OS. Some important things to remember if using another Linux OS: there must be a `pi` user (or systemd services and `dt-` script must be edited) and the `pi` user (or whatever user is used with the deploy tool) must be able to use `sudo` with no password.
 
-## Raspbian Version
+## RasPiOS Version
 This guide is currently up to data for the Beta6 image (2020-02-13-raspbian-buster-lite). The resulting image has been tested on a Raspberry Pi Zero W and a Raspberry Pi 3A+.
 
 ## Base RasPiOS Install

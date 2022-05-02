@@ -11,7 +11,7 @@ Sometimes there may be issues with a robot related to WiFi. These issues can inc
 
 While there are other problems that can cause these issues WiFi is a common one. WiFi-related problems can be caused by many things including
 
-- The distance between the robot and the 
+- The distance between the robot and the computer
 - The other WiFi networks in your area
 - The WiFi adapter on your PC or WiFi settings on your PC
 - The WiFi adapter/settings on the Raspberry Pi
@@ -67,7 +67,7 @@ Once you decide which channel to use you can change the WiFi channel by using th
 
 This should help fix many WiFi related issues, however keep in mind that WiFi routers will "seek" the best channel, meaning they may change what channel they use to try to find the best option. The Raspberry Pi does not do this, so it is possible that the best channel for the Pi will change over time. If you find this happening a lot it is advised to change the settings on your home WiFi network (if possible) to use a specific channel instead of "Auto" or "Best".
 
-<sup>&ast;</sup>In many countries there are restrictions on which channels can be used. In the US the allowed channels are 1 through 11 ([source](https://en.wikipedia.org/wiki/List_of_WLAN_channels#2.4_GHz_(802.11b/g/n/ax)). If you try to configure the Pi to use a channel out of the allowed range for the configured country it will not start the WiFi network and you may have to re-flash the SD card to get access to the robot back.
+<sup>&ast;</sup>In many countries there are restrictions on which channels can be used. In the US the allowed channels are 1 through 11 ([source](https://en.wikipedia.org/wiki/List_of_WLAN_channels#2.4_GHz_(802.11b/g/n/ax))). If you try to configure the Pi to use a channel out of the allowed range for the configured country it will not start the WiFi network and you may have to re-flash the SD card to get access to the robot back.
 
 ### Test the Network
 After making sure your network is on a "good" channel, if you are still having issues it will often be useful to test network bandwidth and latency. The bandwidth is simply how much data can be sent in a certain amount of time. The latency is how long between when one device sends data and when the other receives it.

@@ -18,3 +18,4 @@ Resources for developers working on ArPiRobot components.
 | VSCode Extension | [GitHub](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension) | [GitHub](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/issues) |
 | Image Scripts | [GitHub](https://github.com/ArPiRobot/ArPiRobot-ImageScripts) | [GitHub](https://github.com/ArPiRobot/ArPiRobot-ImageScripts/issues) |
 | Toolchain | [Github](https://github.com/ArPiRobot/ArPiRobot-Toolchain) | [GitHub](https://github.com/ArPiRobot/ArPiRobot-Toolchain/issues) |
+| CameraStreaming | [GitHub](https://github.com/ArPiRobot/ArPiRobot-CameraStreaming) | [GitHub](https://github.com/ArPiRobot/ArPiRobot-CameraStreaming/issues) |

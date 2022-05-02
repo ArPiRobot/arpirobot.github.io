@@ -2,6 +2,8 @@
 
 *Note: This may not always be up to date and is intended as a reference.*
 
+*Sections containing only bulleted lists have not yet been written and exist only as an outline.*
+
 ## WiFi Configuration on the Pi
 
 Currently, robots are configured to host a WiFi access point on the 2.4GHz band. 
@@ -24,12 +26,10 @@ Previously a dual AP and client mode setup was used, which allowed the robot to 
 ## CoreLib General Structure
 - Robot classes
 - Scheduler
-- Asyncio
 - NetworkManager
+- NetworkTable
 - ControllerData
 - Action API
-- Event API
-- NetworkTable
 - Arduinos
 - Logging (and how it integrates with networking)
     - Also prints to stdout so ArPiRobot-Tools arpirobot-program service can log to file
@@ -52,9 +52,11 @@ Things controlled entirely by the Pi.
 Things controlled by the arduino that provide data to the Pi.
 
 - SingeEncoder
+- QuadEncoder
 - Ultrasonic4Pin
 - OldAda9DofImu
 - NxpAda9DofImu
+- Mpu6050Imu
 - VoltageMonitor
 - IRReflectorModule
 
@@ -66,9 +68,11 @@ Things controlled by the arduino that provide data to the Pi.
 ## ArduinoFirmware Devices
 
 - SingeEncoder
+- QuadEncoder
 - Ultrasonic4Pin
 - OldAda9DofImu
 - NxpAda9DofImu
+- Mpu6050Imu
 - VoltageMonitor
 - IRReflectorModule
 
@@ -118,4 +122,3 @@ Things controlled by the arduino that provide data to the Pi.
 
 ## VSCode Extension Functionality
 - Create Projects (using template hard-coded in extension)
-- Install updates on development PC

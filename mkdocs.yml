@@ -18,11 +18,11 @@ nav:
         - Beta Downloads: downloads/betas.md
         - Old Beta Downloads: downloads/betas-old.md
     - Guide:
-        - Components & Hardware:
+        - Building a Robot:
             - What Hardware Do I Need: guide/hardware/requiredhardware.md
             - Supported Robot Hardware: guide/hardware/supportedhardware.md
             - Example Robot Builds: guide/hardware/examplebuilds.md
-        - Setup:
+        - Software Setup:
             - Setup your Computer: guide/setup/setupcomputer.md
             - Setup the Raspberry Pi: guide/setup/setuppi.md
         - Programming the Robot:
