@@ -36,20 +36,33 @@ nav:
         - Other Tasks:
             - Playing Audio: guide/other/audio.md
             - Camera Streaming: none.md
+            - WiFi Debugging: guide/other/wifidebug.md
         - Manuals:
             - Drive Station Manual: guide/manuals/drive_station.md
             - Deploy Tool Manual: guide/manuals/deploy_tool.md
             - Mobile Drive Station Manual: guide/manuals/android_drive_station.md
         
     - Documentation:
-        - ArPiRobot-CoreLib C++ Library API: doxygen-docs/cpp/html/index.html
-        - ArPiRobot-CoreLib Python Library API: doxygen-docs/python/html/index.html
-        - Default Settings: defaultsettings.md
+        # Programming reference is documentation. Guide is more example.
+        - Programming Reference:
+            - Project Structure: none.md   # Info about file org, build system, etc
+            - Recommended Code Organization: none.md # Info about what code in which file and where to instantiate objects
+            - BaseRobot & RobotProfile: none.md
+            - Motor Controllers: none.md    # ref/motors.md
+            - Drive Helpers & Axis Transforms: none.md
+            - Network Table & Logger: none.md
+            - Raspberry Pi Sensors: none.md
+            - Arduino Interface and Sensors: none.md
+            - Action System & Action Manager: none.md
+            - PID Controller: none.md
+        - Default Robot Settings: defaultsettings.md
+        - CoreLib API Docs:
+            - C++ Library API: doxygen-docs/cpp/html/index.html
+            - Python Library API: doxygen-docs/python/html/index.html
     
     - For Developers: 
         - ArPiRobot Components: devs/components.md
         - Development Resources: devs/resources.md
-        - WiFi Debugging: devs/wifidebug.md
         - CoreLib Development: devs/developing_corelib.md
         - Building an ArPiRobot Image: devs/buildimage.md
         - Image to/from SD Card: devs/imagefromsd.md
