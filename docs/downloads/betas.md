@@ -9,6 +9,12 @@ The drive station connects to a running robot program on the robot.
 
 The deploy tool is used to manage the robot and deploy code to it.
 
+## Versions
+
+Many versions of each tool are listed below. Which version you should use depends on which OS Image you are using. If you are just starting it is recommended to use the latest OS  Image, therefore you should download the latest version of each.
+
+If you are not using the latest image, you may still be able to use newer versions of many tools. The DeployTool lists compatible images with each download. The CoreLib does too. The DriveStation supports certain CoreLib versions. If you are using an older CoreLib version (due to using an older image that doesn't support newer CoreLib versions) you may also need to use an older DriveStation. Finally the Arduino Firmware will only support certain CoreLib versions. Similar to the Drive Station, if using an older CoreLib you may need an older ArduinoFirmware release. The VSCode extension should work with any version of the CoreLib and other tools. The extension is only used to generate new robot projects.
+
 
 ## ArPiRobot OS Images
 

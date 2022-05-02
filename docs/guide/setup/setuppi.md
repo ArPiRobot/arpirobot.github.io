@@ -1,5 +1,6 @@
 # Setup the Raspberry Pi
-First you need to setup the Raspberry Pi with the custom ArPiRobot image (which is just a modified version of Raspberry Pi OS).
+
+Before using the robot, you need to setup the Raspberry Pi with the custom ArPiRobot image (which is just a modified version of Raspberry Pi OS).
 
 ## Requirements
 Before starting you will need a computer<sup>&ast;</sup>, a [supported Raspberry Pi](../hardware/supportedhardware.md), a power supply for the Raspberry Pi (this can be a 2A or greater USB power adapter, a 2A or greater battery pack, etc), a micro SD card (at least 8GB), and a way to connect the micro SD card to your computer.

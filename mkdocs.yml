@@ -23,9 +23,8 @@ nav:
             - Supported Robot Hardware: guide/hardware/supportedhardware.md
             - Example Robot Builds: guide/hardware/examplebuilds.md
         - Setup:
-            - Programming Languages: guide/starting/languages.md
-            - Setup your Computer: guide/starting/devsetup.md
-            - Setup the Raspberry Pi: guide/starting/setuppi.md
+            - Setup your Computer: guide/setup/setupcomputer.md
+            - Setup the Raspberry Pi: guide/setup/setuppi.md
         - Programming the Robot:
             - Starting With C++: guide/programming/startingcpp.md
             - Starting With Python: guide/programming/startingpython.md
