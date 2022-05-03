@@ -1,5 +1,7 @@
 site_name: ArPiRobot
 site_url: https://arpirobot.gitlab.io/
+extra_css:
+  - css/extra.css
 theme:
   name: material
   features:

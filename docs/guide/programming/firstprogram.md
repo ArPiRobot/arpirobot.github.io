@@ -30,7 +30,7 @@ Each project has its own folder which will be created in the location selected. 
 
 Once the project has been created it will be opened in VSCode. If you want to open the same project later open VSCode and use the `File > Open Folder` option (or just `File > Open...` on macOS) to open the project's folder. The project will be created with several files, described below.
 
-If you generated a C++ project you may be prompted to select a "kit". Just press escape for now.
+If you generated a C++ project you will be prompted to "configure" the project when you open it. Click yes to configure the project. If prompted to select a kit choose "Raspberry Pi Toolchain"
 
 
 === "Python Project Files"
@@ -56,28 +56,28 @@ Before deploying a project it is sometimes necessary to "build" the project. In 
     Python projects do not need to be "built". The source code is deployed directly.
 
 === "C++"
-    C++ projects must be built before they can be deployed. Before building, select the Raspberry Pi Toolchain "kit" for CMake in VSCode.
+    C++ projects must be built before they can be deployed. Before building, select the Raspberry Pi Toolchain "kit" for CMake in VSCode. If you do not see this option, the project is not "configured". Press `Ctrl+Shift+P` (`Cmd+Shift+P` on macOS) and type "CMake: Configure" and run that command. The pictured options should then be on the bottom toolbar.
 
-    TODO: IMAGE
+    ![VSCode Screenshot](../../img/vscode_kit.png){: style="height:300px"}
 
     Then click the build button to build the project. A window will open with build output. It should build with no errors.
 
-    TODO: IMAGE
+    ![VSCode Screenshot](../../img/vscode_build.png){: style="height:300px"}
 
 <hr />
 
 
-After building, deploying the robot is done using the Deploy Tool. First, connect your computer to the robot's WiFi network (the robot will of course need to be powered on). After this is done open the Deploy Tool and click the "Connect" button.
+After building, deploying to the robot is done using the Deploy Tool. First, connect your computer to the robot's WiFi network (the robot will of course need to be powered on). After this is done open the Deploy Tool and click the "Connect" button.
 
-TODO: IMAGE
+![VSCode Screenshot](../../img/dt_connect.png){: style="height:300px"}
 
-Next select the Robot Program tab. In this tab click the browse button and choose the folder for the project. Finally, click the deploy button. The Deploy Tool will then perform several tasks to deploy the program. No errors should be reported.
+Next select the Robot Program tab. In this tab click the three dots button and choose the folder for the project. Finally, click the deploy button. The Deploy Tool will then perform several tasks to deploy the program. No errors should be reported.
 
-TODO: IMAGE
+![VSCode Screenshot](../../img/dt_deploy.png){: style="height:300px"}
 
 Once the program has been deployed select the "Robot Program Log" tab. You should see some output similar to the following. The "robot started line" indicates that the robot program has started successfully.
 
-TODO: IMAGE
+![VSCode Screenshot](../../img/dt_robotlog.png){: style="height:300px"}
 
 
 ## Periodic Functions
