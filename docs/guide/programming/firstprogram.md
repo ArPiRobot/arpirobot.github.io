@@ -80,11 +80,126 @@ Once the program has been deployed select the "Robot Program Log" tab. You shoul
 ![VSCode Screenshot](../../img/dt_robotlog.png){: style="height:300px"}
 
 
-## Periodic Functions
+## The Robot Program
 
-TODO: Explain the periodic programming model and add some custom log messages.
+The core of the robot program lies either in the `robot.py` or `robot.cpp` (and `robot.hpp`) file(s). This file implements a class called `Robot` that inherits from (read is based on) `BaseRobot`. `BaseRobot` is part of the CoreLib and handles starting and managing the robot program. The `Robot` class based on it is capable of modifying certain behaviors by implementing some functions. If you look in `robot.py` or `robot.hpp` several functions are defined with comments explaining their use. These functions are listed below
+
+=== "Python"
+    - `robot_started`: This function runs one time when the robot program starts running. This function is used to configure things that only need to happen once at the start of the robot program.
+    - `robot_enabled`: There are two states the robot can be in. When enabled, motors and other devices that could be considered "potentially harmful" are allowed to function. This function is run each time the robot becomes enabled (switches from disabled to enabled). This function is used to "prepare" for the enabled state.
+    - `robot_disabled`: This function is run when the robot becomes disabled. When disabled "potentially harmful" devices (such as motors) are disabled automatically. The robot automatically becomes disabled if the Drive Station becomes disconnected (or under some other scenarios). This function is often used to stop anything that should not happen while the robot is disabled. Note that stopping motors manually is not necessary as they are automatically stopped when the robot becomes disabled.
+    - `periodic`: This function runs over and over while the robot program is running. By default this function runs once every 50ms. This function runs if the robot is enabled or if it is disabled. It is used to do things that should happen repeatedly always.
+    - `enabled_periodic`: This function runs over and over, similar to `periodic`, but only if the robot is enabled. This function is often used to implement the control of the robot.
+    - `disabled_periodic`: This function runs over and over, similar to `periodic`, but only if the robot is disabled.
+
+=== "C++"
+    - `robotStarted`: This function runs one time when the robot program starts running. This function is used to configure things that only need to happen once at the start of the robot program.
+    - `robotEnabled`: There are two states the robot can be in. When enabled, motors and other devices that could be considered "potentially harmful" are allowed to function. This function is run each time the robot becomes enabled (switches from disabled to enabled). This function is used to "prepare" for the enabled state.
+    - `robotDisabled`: This function is run when the robot becomes disabled. When disabled "potentially harmful" devices (such as motors) are disabled automatically. The robot automatically becomes disabled if the Drive Station becomes disconnected (or under some other scenarios). This function is often used to stop anything that should not happen while the robot is disabled. Note that stopping motors manually is not necessary as they are automatically stopped when the robot becomes disabled.
+    - `periodic`: This function runs over and over while the robot program is running. By default this function runs once every 50ms. This function runs if the robot is enabled or if it is disabled. It is used to do things that should happen repeatedly always.
+    - `enabledPeriodic`: This function runs over and over, similar to `periodic`, but only if the robot is enabled. This function is often used to implement the control of the robot.
+    - `disabledPeriodic`: This function runs over and over, similar to `periodic`, but only if the robot is disabled.
+
+By putting code in these functions, a robot program can be made to perform a wide variety of tasks. For now, to get a better feel for when these functions run, the following modifications can be made to the program to add some custom log messages. When the function containing a log message is run, the message is printed to the log. The added lines are indicated in the code below.
+
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.core.robot import BaseRobot
+    from arpirobot.core.log import Logger
+    from arpirobot.core.action import ActionManager
+    from arpirobot.core.network import NetworkTable
+
+    # Import devices and other things here
+
+    # Import actions here
+    # from actions import ...
+
+    class Robot(BaseRobot):
+        def __init__(self):
+            # Do not remove this line
+            super().__init__()
+
+            # Create devices and constants as member variables here
+            # self.device_var = DeviceClass(args)
+
+            # Only create the devices here. Do not configure them here!
+        
+        def robot_started(self):
+            # Run once when the robot starts
+            # Configure devices here
+            Logger.log_info("robot_started() run!")
+
+        def robot_enabled(self):
+            # Runs once each time the robot becomes enabled
+            Logger.log_info("robot_enabled() run!")
+
+        def robot_disabled(self):
+            # Runs once each time the robot becomes disabled
+            Logger.log_info("robot_disabled() run!")
+
+        def enabled_periodic(self):
+            # Runs periodically while the robot is enabled
+            pass
+
+        def disabled_periodic(self):
+            # Runs periodically while the robot is disabled
+            pass
+
+        def periodic(self):
+            # Runs periodically (regardless of robot state)
+
+            # Do not remove this line or some devices will be disabled
+            self.feed_watchdog()
+
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <robot.hpp>
+
+    #include <arpirobot/core/log/Logger.hpp>
+    #include <arpirobot/core/action/ActionManager.hpp>
+    #include <arpirobot/core/network/NetworkTable.hpp>
+
+    using namespace arpirobot;
 
 
-## Next Steps
+    void Robot::robotStarted(){
+        Logger::logInfo("robotStarted() run!");
+    }
 
-TODO: Other parts of this guide can be followed and build on each other to create more complex code. Alternatively, can create new projects for each or those followed. Each will provide initial code assumed to be used.
+    void Robot::robotEnabled(){
+        Logger::logInfo("robotEnabled() run!");
+    }
+
+    void Robot::robotDisabled(){
+        Logger::logInfo("robotDisabled() run!");
+    }
+
+    void Robot::enabledPeriodic(){
+
+    }
+
+    void Robot::disabledPeriodic(){
+
+    }
+
+    void Robot::periodic(){
+        // Do not remove this line or some devices will be disabled.
+        feedWatchdog();
+    }
+    ```
+
+The above program adds custom log messages in the `robot_started` / `robotStarted`, `robot_enabled` / `robotEnabled`, and `robot_disabled` / `robotDisabled` functions. The periodic functions do not have log messages in them to avoid logging excessive information (these functions run every 50ms = 20 times per second).
+
+<br />
+
+Build the program (if applicable) and deploy it to the robot. Then, open the drive station and wait for it to connect to the running program (wait for both the "Network" and "Robot Program" indicators to become green). Once it does click the enable and disable buttons a few times.
+
+![VSCode Screenshot](../../img/ds_enable_disable.png){: style="height:300px"}
+
+After doing so, log output similar to the following should be visible in the deploy tool.
+
+![VSCode Screenshot](../../img/dt_custom_log.png){: style="height:300px"}
+
+As seen above, the `robot_started` / `robotStarted` function runs only once, whereas the `robot_enabled` / `robotEnabled` and `robot_disabled` / `robotDisabled` run multiple times (depending on how many times the robot was enabled / disabled from the drive station).
