@@ -1,16 +1,28 @@
 site_name: ArPiRobot
 site_url: https://arpirobot.gitlab.io/
-theme: cinder
-extra_css:
-    - css/codetabs.css
+theme:
+  name: material
+  features:
+    - navigation.tabs
+  palette: 
+    - scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+    - scheme: slate 
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
 markdown_extensions:
   - attr_list
-  - markdown_fenced_code_tabs:
-      single_block_as_tab: False
-      active_class: 'active'
-      template: 'default'
   - markdown_include.include:
         base_path: docs
+  - pymdownx.tabbed:
+      alternate_style: true
 nav:
     - Home: index.md
     - Downloads: 
@@ -26,16 +38,16 @@ nav:
             - Setup your Computer: guide/setup/setupcomputer.md
             - Setup the Raspberry Pi: guide/setup/setuppi.md
         - Programming the Robot:
-            - First Program: none.md
-            - Moving Motors: none.md
-            - Driving with Gamepad: none.md
-            - Sensor Data & NetworkTable: none.md
-            - Using Actions: none.md
-            - PID Controller: none.md
-            - Examples Repo: https://github.com/ArPiRobot/ArPiRobot-Examples
+            - First Program: guide/programming/firstprogram.md
+            - Moving Motors: guide/programming/movingmotors.md
+            - Driving with Gamepad: guide/programming/drivegamepad.md
+            - Sensor Data & NetworkTable: guide/programming/sensordata.md
+            - Using Actions: guide/programming/actions.md
+            - PID Controller: guide/programming/pid.md
+            - Examples Repo: guide/programming/examplesrepo.md
         - Other Tasks:
             - Playing Audio: guide/other/audio.md
-            - Camera Streaming: none.md
+            - Camera Streaming: guide/other/camstream.md
             - WiFi Debugging: guide/other/wifidebug.md
         - Manuals:
             - Drive Station Manual: guide/manuals/drive_station.md
@@ -43,23 +55,20 @@ nav:
             - Mobile Drive Station Manual: guide/manuals/android_drive_station.md
         
     - Documentation:
-        # Programming reference is documentation. Guide is more example code.
         - Programming Reference:
-            - Project Structure: none.md   # Info about file org, build system, etc
-            - Recommended Code Organization: none.md # Info about what code in which file and where to instantiate objects
-            - BaseRobot & RobotProfile: none.md
-            - Motor Controllers: none.md    # ref/motors.md
-            - Drive Helpers & Axis Transforms: none.md
-            - Network Table & Logger: none.md
-            - Raspberry Pi Sensors: none.md
-            - Arduino Interface and Sensors: none.md
-            - Action System & Action Manager: none.md
-            - PID Controller: none.md
-            - AudioManger: none.md
+            - Project Structure: ref/projstructure.md
+            - Recommended Code Organization: ref/codeorg.md
+            - BaseRobot & RobotProfile: ref/baserobot.md
+            - Motor Controllers: ref/motors.md
+            - Drive Helpers & Axis Transforms: ref/drivehelper.md
+            - Network Table & Logger: ref/nettable.md
+            - Raspberry Pi Sensors: ref/pisensors.md
+            - Arduino Interface and Sensors: ref/arduino.md
+            - Action System & Action Manager: ref/actions.md
+            - PID Controller: ref/pid.md
+            - AudioManger: ref/audio.md
+        - CoreLib API Docs: doxygen-links.md
         - Default Robot Settings: defaultsettings.md
-        - CoreLib API Docs:
-            - C++ Library API: doxygen-docs/cpp/html/index.html
-            - Python Library API: doxygen-docs/python/html/index.html
     
     - For Developers: 
         - ArPiRobot Components: devs/components.md
