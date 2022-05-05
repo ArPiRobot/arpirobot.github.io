@@ -1,5 +1,7 @@
 # First Program
 
+This portion of the guide will walk you through creating a robot project and running it on your robot. In addition, the basic structure of a robot program will be explained. Each part of this guide builds on the 
+
 
 ## Creating a New Project
 
@@ -50,7 +52,7 @@ If you generated a C++ project you will be prompted to "configure" the project w
 
 The project is created with a minimal amount of code to make it a valid robot program. As such, it can be deployed to the robot immediately to verify it runs and to learn how to deploy code.
 
-Before deploying a project it is sometimes necessary to "build" the project. In simple terms "building" means taking the source code and translating it into a form that can be run. What exactly this process entails and whether it is necessary depends on the programming language.
+Before deploying a project it is sometimes necessary to "build" the project. In simple terms "building" means taking the source code and translating it into a form that can be run. What exactly this process entails, and whether it is necessary, depends on the programming language.
 
 === "Python"
     Python projects do not need to be "built". The source code is deployed directly.
@@ -60,9 +62,13 @@ Before deploying a project it is sometimes necessary to "build" the project. In 
 
     ![VSCode Screenshot](../../img/vscode_kit.png){: style="height:300px"}
 
-    Then click the build button to build the project. A window will open with build output. It should build with no errors.
+    Then click the build button to build the project.
 
     ![VSCode Screenshot](../../img/vscode_build.png){: style="height:300px"}
+
+    A window will open with build output. It should build with no errors.
+
+    ![VSCode Screenshot](../../img/vscode_buildout.png){: style="height:300px"}
 
 <hr />
 
@@ -82,7 +88,7 @@ Once the program has been deployed select the "Robot Program Log" tab. You shoul
 
 ## The Robot Program
 
-The core of the robot program lies either in the `robot.py` or `robot.cpp` (and `robot.hpp`) file(s). This file implements a class called `Robot` that inherits from (read is based on) `BaseRobot`. `BaseRobot` is part of the CoreLib and handles starting and managing the robot program. The `Robot` class based on it is capable of modifying certain behaviors by implementing some functions. If you look in `robot.py` or `robot.hpp` several functions are defined with comments explaining their use. These functions are listed below
+The core of the robot program lies either in the `robot.py` or `robot.cpp` (and `robot.hpp`) file(s). This file implements a class called `Robot` that inherits from (is based on) `BaseRobot`. `BaseRobot` is part of the CoreLib and handles starting and managing the robot program. The `Robot` class based on it is capable of modifying certain behaviors by implementing some functions. If you look in `robot.py` or `robot.hpp` several functions are defined with comments explaining their use. These functions are listed below
 
 === "Python"
     - `robot_started`: This function runs one time when the robot program starts running. This function is used to configure things that only need to happen once at the start of the robot program.
@@ -198,7 +204,7 @@ Build the program (if applicable) and deploy it to the robot. Then, open the dri
 
 ![VSCode Screenshot](../../img/ds_enable_disable.png){: style="height:300px"}
 
-After doing so, log output similar to the following should be visible in the deploy tool.
+After doing so, log output similar to the following should be visible in the deploy tool. Some of this log output will also be visible in the robot program log tab of the drive station, however the drive station only shows the log messages after the drive station was connected. The deploy tool shows log messages for the entire program.
 
 ![VSCode Screenshot](../../img/dt_custom_log.png){: style="height:300px"}
 
