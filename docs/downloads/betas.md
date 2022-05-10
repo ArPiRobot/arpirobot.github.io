@@ -71,6 +71,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Extension Version | Link |
 | ----------------- | ---- |
+| v0.1.10           | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.10) |
 | v0.1.9            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.9) |
 | v0.1.8            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.8) |
 | v0.1.7            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.7) |
