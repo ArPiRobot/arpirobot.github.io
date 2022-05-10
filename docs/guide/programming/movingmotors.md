@@ -5,7 +5,7 @@ One of the most important devices on a robot are the motors. Controlling the mot
 
 ## Motor Controllers
 
-There are many different motor controllers that are supported by the ArPiRobot framework. Each one requires slightly different code to use. The ArPiRobot framework is object oriented, meaning your program will have one object for each motor on your robot, and sometimes one for the motor controller itself. The objects for the motors all have the same set of functions, but must be created differently based on the motor controller in use. This section covers creating the objects for the motors depending on which motor controller you use on your robot. The following section shows how to use the motor objects. Use of the motor objects is the same regardless of which motor type. In this section, you need only add the code for the motor controller you use on your robot.
+Many different motor controllers are supported by the ArPiRobot framework. Each one requires slightly different code to use. The ArPiRobot framework is object oriented, meaning your program will have one object for each motor on your robot, and sometimes one for the motor controller itself. The objects for the motors all have the same set of functions, but must be created differently based on the motor controller in use. This section covers creating the objects for the motors depending on which motor controller you use on your robot. The following section shows how to use the motor objects. Use of the motor objects is the same regardless of which motor type. In this section, you need only add the code for the motor controller you use on your robot.
 
 
 ### DRV8833 Motor Controller
@@ -13,6 +13,9 @@ There are many different motor controllers that are supported by the ArPiRobot f
 ![](../../img/drv8833.png){: style="height: 300px"}
 
 *Image Credit: [Adafruit](https://www.adafruit.com/product/3297)*
+
+TODO: Describe motor controller use and what pins are needed
+TODO: Describe motor controller object and getting motor objects
 
 
 ### TB6612 Motor Controller
@@ -33,11 +36,11 @@ TODO: Code & Explanation
 
 ### Adafruit Motor Hat / Bonnet
 
-![](../../img/drv8833.png){: style="height: 300px"}
+*Note: The Geekworm motor hat uses the same code as the Adafruit Motor Hat.*
+
+![](../../img/motorhat.png){: style="height: 300px"}
 
 *Image Credit: [Adafruit](https://www.adafruit.com/product/2348)*
-
-*Note: The Geekworm motor hat works the same way as the Adafruit motor hat and uses the same code.*
 
 TODO: Code & Explanation
 

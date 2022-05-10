@@ -33,6 +33,10 @@ Previously a dual AP and client mode setup was used, which allowed the robot to 
 - Arduinos
 - Logging (and how it integrates with networking)
     - Also prints to stdout so ArPiRobot-Tools arpirobot-program service can log to file
+- Use of references for statically allocated objects (user must keep in scope) and shared_ptrs for dynamically allocated that the user does not need to manage the lifecycle of. Also document why some places such as BaseDevice::action and ArduinoDevice::arduino use raw pointers (these should not keep what they point to alive and the object that sets these vars clears these vars on its deletion).
+- Document bridge lifecycle management
+    - Bridge creates objects using make_shared and keeps a map of raw ptr to shared_ptr
+    - Bridge returns raw ptr. When passed a raw ptr it looks up the shared_ptr and passes that to c++ functions. The c++ funcs may keep a copy of the shared_ptr to keep objects in scope even if the bridge's calling language (eg python) has its object leave scope and call destroy. Destroy just removes the shared_ptr copy from the bridge's map. If a copy is held elsewhere the object is not deallocated. If it is not held elsewhere, the object is deallocated immediately. BaseRobot does not use this method as the robot is started using its own blocking start method. No need to handle scenarios where a reference is not kept by user code for the duration of the program. Additionally, the bridge calling language must make sure objects with callbacks (eg Actions) are not cleaned up in the calling language (eg python) while C++ may call functions that are members (pointers to member functions). To this end, Actions are always kept in scope once instantiated by the python bindings.
 
 ## CoreLib Devices
 
