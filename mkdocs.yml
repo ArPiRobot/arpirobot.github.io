@@ -43,7 +43,7 @@ nav:
             - Setup your Computer: guide/setup/setupcomputer.md
             - Setup the Raspberry Pi: guide/setup/setuppi.md
         - Programming the Robot:
-            - First Program: guide/programming/firstprogram.md
+            - Getting Started: guide/programming/gettingstarted.md
             - Moving Motors: guide/programming/movingmotors.md
             - Driving with Gamepad: guide/programming/drivegamepad.md
             - Sensor Data & NetworkTable: guide/programming/sensordata.md

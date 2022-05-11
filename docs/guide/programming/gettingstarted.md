@@ -1,4 +1,4 @@
-# First Program
+# Getting Started
 
 This portion of the guide will walk you through creating a robot project and running it on your robot. In addition, the basic structure of a robot program will be explained. Each part of this guide builds on the 
 

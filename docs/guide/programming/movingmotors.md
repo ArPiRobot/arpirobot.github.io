@@ -16,14 +16,14 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
     The DRV8833 motor controller is a PWM driven motor controller chip capable of controlling two motors. The module pictured above is Adafruit's DRV8833 breakout board. Battery power is input using the terminal block (labeled Vmotor), motors are connected to Aout pins and Bout pins, and several I/O pins from the Raspberry Pi are connected to the control pins opposite the Aout and Bout pins. The Ain pins are used to control motor A and the Bin pins are used to controller motor B. The SLP (sleep) pin is used to enable / disable sleep mode on the entire controller. When in sleep mode, neither motor will respond. As such, it is necessary to make the following connections to the Raspberry Pi
 
-    | DRV8833 Pin | Raspberry Pi Pin |
-    | ----------- | ---------------- |
-    | Ain1        | Any GPIO         |
-    | Ain2        | Any GPIO         |
-    | SLP         | Any GPIO         |
-    | Bin1        | Any GPIO         |
-    | Bin2        | Any GPIO         |
-    | GND         | GND&ast;         |
+    | DRV8833 Pin | Raspberry Pi Pin  |
+    | ----------- | ----------------- |
+    | Ain1        | Any GPIO (eg. 23) |
+    | Ain2        | Any GPIO (eg. 24) |
+    | SLP         | Any GPIO (eg. 25) |
+    | Bin1        | Any GPIO (eg. 17) |
+    | Bin2        | Any GPIO (eg. 27) |
+    | GND         | AnyGND&ast;       |
 
     &ast; This only needs to be connected on one motor controller if multiple are used on the robot. This ensures that motor battery GND (usually AA batteries) and robot power GND (usually a USB battery pack) are connected. This is important for some sensors.
 
@@ -56,7 +56,7 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
                 # Duplicate this code for each DRV8833 in use, but use different
                 # variable names. When constructing DRV8833Module arguments are pin
                 # numbers in order Ain1, Ain2, Bin1, Bin2, SLP
-                self.drv8833 = DRV8833Module()
+                self.drv8833 = DRV8833Module(23, 24, 17, 27, 25)
                 self.lmotor = self.drv8833.get_motor_a()
                 self.rmotor = self.drv8833.get_motor_b()
 
