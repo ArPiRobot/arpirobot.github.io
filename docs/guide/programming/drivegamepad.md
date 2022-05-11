@@ -195,8 +195,6 @@ If you click on the name of the gamepad in the list you will be able to see a re
 
 
 
-
-
 ### Adding a Gamepad to Code
 
 To get gamepad data in your code you need to add a `Gamepad` object. First add the import / include with the others at the top of `robot.py` or `robot.hpp`.
@@ -321,4 +319,70 @@ If your rotation is also the incorrect direction this can also be fixed the same
 
 ## Axis Transforms (Advanced Topic)
 
-TODO: Axis transforms & explain why they are chosen
+***Note: This section describes in detail what an axis transform is, how they work mathematically, and why certain transforms are selected for rotation and speed. If you don't care about that, skip to the bottom of this section. Code is shown for how to use the transforms. You can implement this code and just experiment with them to see if you like the results.***
+
+### What is an Axis Transform
+
+An Axis Transform is an object that alters how an axis's value changes as the joystick is moved. It can be considered a mathematical function that takes joystick position (-1 to 1) as an input and returns an altered output to change the "shape" of the joystick graph. Unaltered, the value returned by `get_axis` / `getAxis` (referred to as the output value) is the same as the value obtained from the drive station (referred to as the input value) provided no deadband is used. This can be considered a simple linear function.
+
+![](../../img/linear.png){: style="height:300px"}
+
+An axis transform alters this linear relation to have a different shape. Two axis transforms are currently implemented: a cubic transform and a square root transform.
+
+### Square Root Axis Transform
+
+The square root transform is very simple. The output is the square root of the input (note that for negative inputs, the output is the negative of the square root of the absolute value of the input). The original intention behind this transform is for use with rotating the robot. In practice, it is often the case that when rotating the robot "slow" speeds of rotation are used little if at all. Often rotating the robot even a slow speed requires a significant amount of rotation power. As such, it is desirable that when the joystick is moved a little distance from center (zero) the rotation power (output of `get_axis` / `getAxis`) should increase rapidly. However, once the rotation power reaches a certain point small changes in power can quickly alter rotation speed. As such, as the joystick is further from center it is desired to slow the rate of change of output power to increase controllability. This describes a square root graph. Effectively, this means that the joystick must only be pressed a small distance to begin rotating and once rotation starts a large range of the joystick is dedicated to fine tuning of rotation speed making it easy to achieve a constant rotation speed.
+
+![](../../img/sqrt.png){: style="height:300px"}
+
+Consider the example where 30% power is necessary to begin rotating the robot. It is desirable to quickly reach this level once the joystick begins to move. With a linear relation (no transform) this is acheived once the stick is pressed 30% of its range of motion, leaving 70% of the range of motion to "fine tune" rotation speed. In contrast, with the square root relation 30% output is reached when the stick has moved to only 9% of its range of motion. This leaves 91% of the range of motion to fine tune rotation. As such, the joystick can be held "less accurately" in the same spot while still maintaining the "same" rotation rate. While an increase of 21% may seem fairly small, the joysticks on gamepads often have a small range of motion. 
+
+![](../../img/linear_rot_demo.png){: style="height:300px"}
+
+![](../../img/sqrt_rot_demo.png){: style="height:300px"}
+
+
+As is seen in the above graphs, when used for the rotation axis, a square root transform reduces the distance over which there is no effect and increases the "fine tune" region making it easier to both start rotation and to maintain a "fixed" rotation speed.
+
+
+### Cubic Axis Transform
+
+In addition to the square root transform, a cubic transform is implemented. The cubic transform is designed for use with a drive speed axis and is more complex than the square root transform. The idea behind the square root transform is that most often when driving the robot two speeds are used: full speed and a "medium" speed that is sufficient to keep the robot moving, but allow maneuvering the robot to be simpler. Rarely are speeds between these used (other than of course stopped). Attaining full speed is easy, simply press the joystick to the limit. However, attaining and maintaining a "medium" controllable speed is more difficult as there is a very limited range of stick motion that is allowable. The goal of the cubic transform is to extend the area of the stick that results in the "medium" speed. This speed will be referred to as the "mid power" or "midPower". Additionally, it is sometimes the case that a minimum speed exist when driving the robot (generally desirable if the robot does not start moving until a fairly high amount of power is applied). This will be referred to as the "min power" or "minPower".
+
+Since the goal of the cubic transform is to dedicate a large area of the joystick to the mid power, it follows that going from zero output to mid power must happen fairly rapidly. The curve then flattens out around mid power before rising fairly rapidly to full power. This is achieved by fitting a cubic curve to the following set of points
+
+| input | output     |
+| ----- | ---------- |
+| 0     | minPower   |
+| 0.45  | midPower   |
+| 0.5   | midPower   |
+| 0.55  | midPower   |
+| 1     | 1          |
+
+Note that when the input is zero the output is minPower. As such using a cubic axis transform with a non-zero minPower requires use of a deadband (otherwise the robot will always move). Additionally, the cubic transform is constructed only for positive inputs. When inputs are negative the transform operates on their absolute value. The output of the transform matches the sign of the input (in other words, the cubic function is rotated about the origin into the third quadrant to yield the correct response for negative inputs). This results in a curve looking something like the following (in the below example minPower = 0.2 and minPower = 0.6)
+
+![](../../img/cubic.png){: style="height:300px"}
+
+Analyzing this curve it is seen that approximately a third of the joystick's range of motion will achieve the "controllable" speed discussed before.
+
+![](../../img/cubic_demo.png){: style="height:300px"}
+
+### Deadbands with Axis Transforms
+
+As mentioned previously, using the cubic transform with a non-zero minPower requires use of a deadband. Additionally, it is rarely desirable to use any transform without a deadband (for the same reasons as it is not desirable to use a linear relation without a deadband). However, this brings up the question of how the deadband is applied and how that affects the transforms. In the `Gamepad`'s `get_axis` / `getAxis` function, the deadband is applied before the transform. If the value is within the deadband (too small) the function returns zero and never applies the transform. Once the deadband is crossed the input value is actually altered. A deadband alters the input value from a controller to make it smooth. If it was unaltered there would be a jump as the deadband is crossed (see picture below). The deadband alters the input by adjusting it to fit a line from (deadband, 0) to (1, 1) as shown in the second picture (or those equivalent points in the third quadrant). In the pictures below the deadband is 0.1
+
+![](../../img/baddeadband.png){: style="height:300px"}
+
+![](../../img/gooddeadband.png){: style="height:300px"}
+
+The second graph is how the deadband works in the ArPiRobot CoreLib. The values on this adjusted line are then passed to the transforms. In effect, this compresses any transform slightly horizontally just as the deadband does for a line. Some examples of this are shown below for both the square root and cubic transforms seen earlier. Note that the "jump" in the cubic with deadbad graph is due to the minPower of the cubic. If a minPower of zero were used there would be no jump.
+
+
+![](../../img/deadbandcubic.png){: style="height:300px"}
+
+![](../../img/deadbandsqrt.png){: style="height:300px"}
+
+
+### Using Axis Transforms in Code
+
+TODO: Code for axis transforms
