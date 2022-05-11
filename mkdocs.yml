@@ -26,6 +26,8 @@ markdown_extensions:
         base_path: docs
   - pymdownx.tabbed:
       alternate_style: true
+  - admonition
+  - pymdownx.details
 nav:
     - Home: index.md
     - Downloads: 
