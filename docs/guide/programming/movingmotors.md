@@ -112,9 +112,6 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
         class Robot : public BaseRobot{
         public:
-            
-            // ADDED: Declare constructor (if this does not already exist)
-            Robot();
 
             // Run when the robot starts
             void robotStarted();
@@ -140,59 +137,13 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
             // ADDED: Creation of DRV8833 module and motor variables
             // Duplicate this code for each DRV8833 in use, but use different
-            // variable names.
-            DRV8833Module drv8833;
-            DRV8833Motor &motorA;
-            DRV8833Motor &motorB;
+            // variable names. When constructing DRV8833Module arguments are pin 
+            // numbers in order Ain1, Ain2, Bin1, Bin2, SLP
+            DRV8833Module drv8833 {23, 24, 17, 27, 25};
+            DRV8833Motor &motorA {drv8833.getMotorA()};
+            DRV8833Motor &motorB {drv8833.getMotorB()};
         };
         ```
-
-    === "C++ (`robot.cpp`)"
-        ```cpp
-        #include <robot.hpp>
-
-        #include <arpirobot/core/log/Logger.hpp>
-        #include <arpirobot/core/action/ActionManager.hpp>
-        #include <arpirobot/core/network/NetworkTable.hpp>
-
-        using namespace arpirobot;
-
-        // ADDED: Constructor with initializer list for DRV8833 module and motors
-        // Add new entries to initializer list for each DRV8833 in use. When 
-        // constructing DRV8833Module arguments are pin numbers in order Ain1, Ain2, 
-        // Bin1, Bin2, SLP
-        Robot::Robot() : drv8833(23, 24, 17, 27, 25), 
-                        motorA(drv8833.getMotorA()), 
-                        motorB(drv8833.getMotorB()){
-
-        }
-
-        void Robot::robotStarted(){
-            
-        }
-
-        void Robot::robotEnabled(){
-            
-        }
-
-        void Robot::robotDisabled(){
-            
-        }
-
-        void Robot::enabledPeriodic(){
-
-        }
-
-        void Robot::disabledPeriodic(){
-
-        }
-
-        void Robot::periodic(){
-            // Do not remove this line or some devices will be disabled.
-            feedWatchdog();
-        }
-        ```
-  
 
 ??? "TB6612 Motor Controller"
 
@@ -299,9 +250,6 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
         class Robot : public BaseRobot{
         public:
-            
-            // ADDED: Declare constructor (if this does not already exist)
-            Robot();
 
             // Run when the robot starts
             void robotStarted();
@@ -327,60 +275,13 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
             // ADDED: Creation of TB6612 module and motor variables
             // Duplicate this code for each TB6612 in use, but use different
-            // variable names.
-            TB6612Module tb6612;
-            TB6612Motor &motorA;
-            TB6612Motor &motorB;
+            // variable names. When constructing TB6612Module arguments are pin 
+            // numbers in order Ain1, Ain2, PwmA, Bin1, Bin2, PwmB
+            TB6612Module tb6612 {23, 24, 25, 17, 27, 22};
+            TB6612Motor &motorA {tb6612.getMotorA()};
+            TB6612Motor &motorB {tb6612.getMotorB()};
         };
         ```
-
-    === "C++ (`robot.cpp`)"
-        ```cpp
-        #include <robot.hpp>
-
-        #include <arpirobot/core/log/Logger.hpp>
-        #include <arpirobot/core/action/ActionManager.hpp>
-        #include <arpirobot/core/network/NetworkTable.hpp>
-
-        using namespace arpirobot;
-
-        // ADDED: Constructor with initializer list for TB6612 module and motors
-        // Add new entries to initializer list for each TB6612 in use. When 
-        // constructing TB6612Module arguments are pin numbers in order Ain1, Ain2, 
-        // PwmA, Bin1, Bin2, PwmB
-        Robot::Robot() : tb6612(23, 24, 25, 17, 27, 22), 
-                        motorA(tb6612.getMotorA()), 
-                        motorB(tb6612.getMotorB()){
-
-        }
-
-        void Robot::robotStarted(){
-            
-        }
-
-        void Robot::robotEnabled(){
-            
-        }
-
-        void Robot::robotDisabled(){
-            
-        }
-
-        void Robot::enabledPeriodic(){
-
-        }
-
-        void Robot::disabledPeriodic(){
-
-        }
-
-        void Robot::periodic(){
-            // Do not remove this line or some devices will be disabled.
-            feedWatchdog();
-        }
-        ```
-
-  
 
 ??? "L298N Motor Controller"
 
@@ -485,9 +386,6 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
         class Robot : public BaseRobot{
         public:
-            
-            // ADDED: Declare constructor (if this does not already exist)
-            Robot();
 
             // Run when the robot starts
             void robotStarted();
@@ -513,60 +411,13 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
             // ADDED: Creation of L298N module and motor variables
             // Duplicate this code for each L298N in use, but use different
-            // variable names.
-            L298NModule l298n;
-            L298NMotor &motorA;
-            L298NMotor &motorB;
+            // variable names. When constructing L298NModule arguments are pin 
+            // numbers in order IN1, IN2, ENA, IN3, IN4, ENB
+            L298NModule l298n {23, 24, 25, 17, 27, 22};
+            L298NMotor &motorA {l298n.getMotorA()};
+            L298NMotor &motorB {l298n.getMotorB()};
         };
-        ```
-
-    === "C++ (`robot.cpp`)"
-        ```cpp
-        #include <robot.hpp>
-
-        #include <arpirobot/core/log/Logger.hpp>
-        #include <arpirobot/core/action/ActionManager.hpp>
-        #include <arpirobot/core/network/NetworkTable.hpp>
-
-        using namespace arpirobot;
-
-        // ADDED: Constructor with initializer list for L298N module and motors
-        // Add new entries to initializer list for each L298N in use. When 
-        // constructing L298NModule arguments are pin numbers in order IN1, IN2, 
-        // ENA, IN3, IN4, ENB
-        Robot::Robot() : l298n(23, 24, 25, 17, 27, 22), 
-                        motorA(l298n.getMotorA()), 
-                        motorB(l298n.getMotorB()){
-
-        }
-
-        void Robot::robotStarted(){
-            
-        }
-
-        void Robot::robotEnabled(){
-            
-        }
-
-        void Robot::robotDisabled(){
-            
-        }
-
-        void Robot::enabledPeriodic(){
-
-        }
-
-        void Robot::disabledPeriodic(){
-
-        }
-
-        void Robot::periodic(){
-            // Do not remove this line or some devices will be disabled.
-            feedWatchdog();
-        }
-        ```
-
-  
+        ```  
 
 ??? "Adafruit Motor Hat / Bonnet"
 
