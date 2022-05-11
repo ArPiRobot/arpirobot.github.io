@@ -319,6 +319,6 @@ Most likely, your robot drives forward when you press the left stick down. Recal
 If your rotation is also the incorrect direction this can also be fixed the same way (multiply the rotation variable by negative 1). If you are unable to fix directions with multiplications by negative 1, you have motors numbered incorrectly (motor numbers for left and right motors are mixed up).
 
 
-### Axis Transforms (Advanced Topic)
+## Axis Transforms (Advanced Topic)
 
 TODO: Axis transforms & explain why they are chosen

@@ -28,6 +28,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Update Package | <div style="flex-grow: 100;">Link</div> |
 | -------------- | ---- |
+| v0.1.0-beta2       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.1.0-beta2) |
 | v0.1.0-beta1       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.1.0-beta1) |
 | v0.0.23-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.23-beta)  |
 | v0.0.22-beta       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.0.22-beta)  |
