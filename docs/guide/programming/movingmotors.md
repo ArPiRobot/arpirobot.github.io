@@ -712,17 +712,72 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
         ```
 
 
-## Moving the Motors
+## Using the Motors
 
-TODO: Note that only works if robot enabled
+Once you have added motor objects to your robot program, they can all be used the same way (regardless of which motor controller you are using). The motor objects all share a common set of functions and features.
 
 
 ### Motor Speed & Direction
 
-TODO: Explain inverting directions both in hardware and software. Explain process for getting all motors to spin such that positive is forward.
+Motor speeds are represented as values between -1 and 1. The sign controls direction so -0.5 is 50% in the opposite direction of 0.5 (which is still 50% power). Whether negative is forward or reverse depends on several factors, which will be discussed later.
+
+The following code show how to use a motor's `set_speed` (or `setSpeed` in C++) function to control a motor's speed. Replace the `robot_enabled` and `robot_disabled` functions in your progam with the following.
+
+=== "Python (`robot.py`)"
+    ```py
+    def robot_enabled(self):
+        self.motor1.set_speed(0.75)
+    
+    def robot_disabled(self):
+        self.motor1.set_speed(0)
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    void robotEnabled(){
+        motor1.setSpeed(0.75);
+    }
+
+    void robotDisabled(){
+        motor1.setSpeed(0);
+    }
+    ```
+
+The above code will set the motor called `motor1` to a speed of 75% when the robot is enabled. When disabled, the motor will be stopped by setting the speed to 0. Note that even if the speed were not set to zero, motors are still disabled and stopped when the robot is disabled. If needed, change the name of the motor from `motor1` to `motor_a` or `motorA` depending on what you named the motor in your code.
+
+In the above example, a speed of positive 75% was used. Often it is desired to make positive forward for all motors. If your motor spins in reverse when you run the above code you have a few options. First, you could switch how the motor is connected. A motor has two wires (often a red and a black). Switching the order of the wires connected to the motor controller will reverse the motor direction. However, the motor direction can also be inverted in software. To invert the direction of `motor` add the following to `robot_started`
+
+=== "Python (`robot.py`)"
+    ```py
+    def robot_started(self):
+        # Add this line to robot_started
+        self.motor1.set_inverted(True)
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    void robotStarted(){
+        // Add this line to robotStarted
+        motor1.setInverted(true);
+    }
+    ```
 
 
 ### Brake Mode & Coast Mode
 
-TODO: Default to coast. Show code to put in brake mode and show effects.
+In addition to setting speed and direction, motor controllers have one other common setting handling what happens when a motor is stopped (speed 0). When a motor is not moving it can either spin freely or it can attempt to resist motion. The latter is referred to as "brake mode". To enable brake mode for a motor add a line like the following to `robot_started`. Brake mode can be disabled later by using the same function, but replacing `True` with `False` (or `true` with `false`).
 
+=== "Python (`robot.py`)"
+    ```py
+    def robot_started(self):
+        # Add this line to robot_started
+        self.motor1.set_brake_mode(True)
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    void robotStarted(){
+        // Add this line to robotStarted
+        motor1.setBrakeMode(true);
+    }
+    ```
