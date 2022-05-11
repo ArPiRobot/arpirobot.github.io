@@ -385,4 +385,25 @@ The second graph is how the deadband works in the ArPiRobot CoreLib. The values 
 
 ### Using Axis Transforms in Code
 
-TODO: Code for axis transforms
+Implementing either of the two axis transforms described above is simple as they are builtin to the core library. The following shows how to add a Cubic transform (minPower = 0, midPower = 0.5) to the speed axis and a square root transform to the rotate axis.
+
+=== "Python (`robot.py`)"
+    ```py
+    # Add with imports at top
+    from arpirobot.core.drive import CubicAxisTransform, SquareRootAxisTransform
+
+    # Add in robot_started
+    self.gp0.set_axis_transform(self.SPEED_AXIS, CubicAxisTransform(0, 0.5))
+    self.gp0.set_axis_transform(self.ROTATE_AXIS, SquareRootAxisTransform())
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    // Add with includes at top
+    #include <arpirobot/core/drive/CubicAxisTransform.hpp>
+    #include <arpirobot/core/drive/SquareRootAxisTransform.hpp>
+
+    // Add in robotStarted
+    gp0.setAxisTransform(SPEED_AXIS, std::make_shared<CubicAxisTransform>(0, 0.5));
+    gp0.setAxisTransform(ROTATE_AXIS, std::make_shared<SquareRootAxisTransform>());
+    ```
