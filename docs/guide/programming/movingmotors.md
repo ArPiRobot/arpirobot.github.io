@@ -144,7 +144,7 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
             DRV8833Motor &motorB {drv8833.getMotorB()};
         };
         ```
-
+        
 ??? "TB6612 Motor Controller"
 
     ![](../../img/tb6612.png){: style="height: 300px"}

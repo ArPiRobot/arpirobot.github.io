@@ -45,8 +45,6 @@ If you generated a C++ project you will be prompted to "configure" the project w
 
     ![VSCode Screenshot](../../img/cpp_proj_files.png){: style="height:300px"}
 
-<hr />
-
 
 ## Deploying to Robot
 
@@ -69,8 +67,6 @@ Before deploying a project it is sometimes necessary to "build" the project. In 
     A window will open with build output. It should build with no errors.
 
     ![VSCode Screenshot](../../img/vscode_buildout.png){: style="height:300px"}
-
-<hr />
 
 
 After building, deploying to the robot is done using the Deploy Tool. First, connect your computer to the robot's WiFi network (the robot will of course need to be powered on). After this is done open the Deploy Tool and click the "Connect" button.

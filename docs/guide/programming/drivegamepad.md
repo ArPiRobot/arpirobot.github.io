@@ -199,20 +199,126 @@ If you click on the name of the gamepad in the list you will be able to see a re
 
 ### Adding a Gamepad to Code
 
-TODO: Gamepad object and numbers (and relation to DS)
+To get gamepad data in your code you need to add a `Gamepad` object. First add the import / include with the others at the top of `robot.py` or `robot.hpp`.
 
-TODO: Read gamepad data in enabledPeriodic
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.devices.gamepad import Gamepad
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    #include <arpirobot/devices/gamepad/Gamepad.hpp>
+    ```
+
+The add a new device to your `Robot` class
+
+=== "Python (`robot.py`)"
+    ```py
+    # Add below drive_helper in __init__
+    # Using gamepad number 0
+    # Change number in constructor to use other gamepad number
+    # You can create multiple gamepad objects to use multiple gamepads
+    self.gp0 = Gamepad(0)
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // Add below driveHelper in class declaration
+    // Using gamepad number 0
+    // Change number in constructor to use other gamepad number
+    // You can create multiple gamepad objects to use multiple gamepads
+    Gamepad gp0 {0};
+    ```
+
+This `Gamepad` object has several functions to get data from the gamepad (note that the drive station must have the corresponding number gamepad checked).
+
+=== "Python"
+    - `get_axis(axis_num, deadband)`: Get the value of the given axis (between -1 and 1). A deadband is optional. A deadband is a "minimum magnitude" of axis values. Any axis value who's absolute value is smaller than the deadband is treated as zero. For example, if the deadband is 0.1 and the axis reads 0.05 or -0.05 the get_axis function will return 0 not 0.05 or -0.05. Only once the axis reads 0.1 will the value returned by get_axis increase above zero. A deadband is useful as a stick is rarely (if ever) going to read exactly zero when not pressed.
+    - `get_button(button_num`): Determine if the given button is pressed (True = pressed, False = not pressed).
+    - `get_dpad(dpad_num`): Get the value of the current dpad. Note that currently only one dpad is supported so calling this with any dpad_num other than 0 will always return 0. The direction is given as a number between 0 and 8 (see Drive Station for what these numbers mean).
+
+=== "C++"
+    - `getAxis(axisNum, deadband)`: Get the value of the given axis (between -1 and 1). A deadband is optional. A deadband is a "minimum magnitude" of axis values. Any axis value who's absolute value is smaller than the deadband is treated as zero. For example, if the deadband is 0.1 and the axis reads 0.05 or -0.05 the getAxis function will return 0 not 0.05 or -0.05. Only once the axis reads 0.1 will the value returned by getAxis increase above zero. A deadband is useful as a stick is rarely (if ever) going to read exactly zero when not pressed.
+    - `getButton(buttonNum`): Determine if the given button is pressed (true = pressed, false = not pressed).
+    - `getDpad(dpadNum`): Get the value of the current dpad. Note that currently only one dpad is supported so calling this with any dapdNum other than 0 will always return 0. The direction is given as a number between 0 and 8 (see Drive Station for what these numbers mean).
+
+The above functions can be used to get gamepad data and use it to move the robot.
 
 ### Driving the Robot
 
-TODO: Use gamepad data to control speed / rotation. Use neg sign for speed & explain. Explain deadband also.
+Up until now, the `enabled_periodic` / `enabledPeriodic` function has not been used. However, to drive the robot with a gamepad it must repeatedly check the current gamepad data and adjust motor speeds based on it. Since motors can only be moved while the robot is enabled, `enabled_periodic` / `enabledPeriodic` is the place for this code to go. To drive the robot the following set of tasks will be performed in `enabled_periodic` / `enabledPeriodic`
 
-TODO: Explain using DS to drive the robot. Explain gamepad usage and testing in DS.
+- Get the value for the speed axis
+- Get the value for the rotation axis
+- Update the speed of all motors using the drive helper
 
-TODO: Explain what to do if rotation direction is wrong
+Before this code can be added, however, it is necessary to choose a speed axis and a rotation axis. The speed axis will be the left y (vertical) axis or axis number 1. The rotation axis will be the right x (horizontal) axis or axis number 2. To make the code more readable and easier to change later if desired, instead of using the numbers directly constants are created for the axis numbers in `robot.py` or `robot.hpp`. Additionally, a deadband of 0.1 will be used as this should be sufficient for most controllers. If a deadband were not used the motors would still try to move slightly even when the joysticks were not pressed.
 
-TODO: Explain what to do if drive direction is wrong
+=== "Python (`robot.py`)"
+    ```py
+    # Add in __init__ after device variables
+    # Note that python does not support actual constants
+    # We will treat any variable in all caps as a constant
+    self.SPEED_AXIS = 1
+    self.ROTATE_AXIS = 2
+    self.DEADBAND = 0.1
+    ```
 
-### Axis Transforms
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // Add in the Robot class declaration after device variables
+    const int SPEED_AXIS = 1;
+    const int ROTATE_AXIS = 2;
+    const double DEADBAND = 0.1;
+    ```
+
+Then the `enabled_periodic` / `enabledPeriodic` function can be implemented as follows. Also, remove anything in `robot_enabled` / `robotEnabled` that may be left from testing drive helpers (`robot_enabled` / `robotEnabled` should be an empty function now; in python use "pass").
+
+=== "Python (`robot.py`)"
+    ```py
+    def enabled_periodic(self):
+        # Get value for the speed axis
+        speed = self.gp0.get_axis(self.SPEED_AXIS, self.DEADBAND)
+        
+        # Get value for the rotation axis
+        rotation = self.gp0.get_axis(self.ROTATE_AXIS, self.DEADBAND)
+
+        # Update speed of all motors using drive helper
+        self.drive_helper.update(speed, rotation)
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    void enabledPeriodic(){
+        // Get value for speed axis
+        double speed = gp0.getAxis(SPEED_AXIS, DEADBAND);
+        
+        // Get value for the rotation axis
+        double rotation = gp0.getAxis(ROTATE_AXIS, DEADBAND);
+
+        // Update speed of all motors using drive helper
+        driveHelper.update(speed, rotation);
+    }
+    ```
+
+Build and deploy this program to the robot. Open the Drive Station, connect your gamepad and enable it in the drive station (check the box by the gamepad). Also make sure it is gamepad number 0. Then, enable the robot. You should now be able to drive the robot using the gamepad, however directions are probably incorrect.
+
+Most likely, your robot drives forward when you press the left stick down. Recall that the motors were configured such that positive was forward. However, most gamepads "up" on the stick is negative = reverse. To fix this, multiply the speed by negative 1.
+
+=== "Python (`robot.py`)"
+    ```py
+    speed = -1 * self.gp0.get_axis(self.SPEED_AXIS, self.DEADBAND)
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    double speed = -1 * gp0.getAxis(SPEED_AXIS, DEADBAND);
+    ```
+
+If your rotation is also the incorrect direction this can also be fixed the same way (multiply the rotation variable by negative 1). If you are unable to fix directions with multiplications by negative 1, you have motors numbered incorrectly (motor numbers for left and right motors are mixed up).
+
+
+### Axis Transforms (Advanced Topic)
 
 TODO: Axis transforms & explain why they are chosen
