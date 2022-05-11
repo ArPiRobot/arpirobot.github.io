@@ -18,7 +18,7 @@ After clicking this option you will be prompted to choose a programming language
 ![VSCode Screenshot](../../img/vscode_lang.png){: style="height:300px"}
 
 
-Once the language has been selected enter the project name. The project name is your choice. In this case, `FirstProgram` would be a good choice. 
+Once the language has been selected enter the project name. The project name is your choice. In this case, `GuideProgram` would be a good choice. 
 
 ![VSCode Screenshot](../../img/vscode_projname.png){: style="height:300px"}
 
@@ -26,7 +26,7 @@ Finally, choose a location to create the project. If in doubt, use your `Documen
 
 ![VSCode Screenshot](../../img/documents_location.png){: style="height:300px"}
 
-Each project has its own folder which will be created in the location selected. The folder name is the same as the project name. For example, if your project is named `FirstProgram` and the parent directory is `Documents` the project will be `Documents/FirstProgram`.
+Each project has its own folder which will be created in the location selected. The folder name is the same as the project name. For example, if your project is named `GuideProgram` and the parent directory is `Documents` the project will be `Documents/GuideProgram`.
 
 ![VSCode Screenshot](../../img/proj_in_docs.png){: style="height:300px"}
 
