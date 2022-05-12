@@ -96,13 +96,13 @@ To test network bandwidth we will use a tool called iperf.
 
 *As of the Beta7 image iperf3 is included in the image. For older images you will need to  copy the sources to the Pi and build from source.*
 
-On the Pi login via SSH and run 
+On the Pi [login via SSH](./ssh.md) and run 
 
 ```
 iperf3 -s
 ```
 
-Then on your PC download iperf3 and run (in the same directory as you extracted iperf)
+Then on your PC [download iperf3](https://iperf.fr/iperf-download.php) and run (in the same directory as you extracted iperf)
 
 ```
 ./iperf3 -c 192.168.10.1
@@ -121,7 +121,7 @@ If you suspect the problem is the PC's WiFi adapter you have a few options:
 - If you are using a USB WiFi adapter with builtin antenna these will always work better than the ones without an antenna. That being said, I've had good results with some without antennas including [TPLink's TL-WN725N](https://www.amazon.com/TP-Link-wireless-network-Adapter-SoftAP/dp/B008IFXQFU/). If you're willing to spend a little more on one with an antenna those almost always are the better option, but if not the TL-WN725N is a decent option and not very expensive.
 
 ## Advanced Options on The Pi
-*To perform these steps you will need to be able to login to the Pi via SSH (you can use PuTTY on windows). Alternatively you can login via the UART console using a Raspberry Pi console cable.*
+*To perform these steps you will need to be able to [login to the Pi via SSH](./ssh.md). Alternatively you can login via the UART console using a Raspberry Pi console cable.*
 
 Edit `/etc/hostapd/hostapd.conf` as root (`sudo nano /etc/hostapd/hostapd.conf`)
 
