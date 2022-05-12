@@ -53,6 +53,7 @@ nav:
         - Other Tasks:
             - Playing Audio: guide/other/audio.md
             - Camera Streaming: guide/other/camstream.md
+            - Connect by SSH: guide/other/ssh.md
             - WiFi Debugging: guide/other/wifidebug.md
         - Manuals:
             - Drive Station Manual: guide/manuals/drive_station.md
