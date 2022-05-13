@@ -299,6 +299,52 @@ As you move the robot you should see the gyro angle and ultrasonic distance chan
 
 ### Doing something Useful
 
-TODO: Don't allow driving forward if object to close by usonic sensor
+While the above shows how to display sensor values, they have not really been used in the robot program to do anything useful yet. However, one simple task using sensors would be to prevent the robot from driving into an object (while moving forward). Since the ultrasonic sensor faces the front of the robot, it measures the distance to the nearest object in the front of the robot. If aimed straight ahead, this can be used to detect if the robot is about to run into something. When we detect this, we want to only allow the robot to rotate or drive backwards (negative speed), but prevent it from driving forward (positive speed). Additionally, when an object is detected too close, brake mode should be activated to stop the robot quickly enough to prevent it from running into the object, however when far enough away brake mode should be disabled. It should also be disabled if the robot is no longer moving toward the object.
 
-TODO: Maybe also use brake mode here
+This might sound a little complicated, but it is not too bad. Breaking it down into simple steps that can be placed in `enabled_periodic` / `enabledPeriodic`
+- Get the speed and rotation amounts from the gamepad
+- If the robot sees an object "too close" and trying to drive forward (positive speed)
+    - Set speed to zero
+    - Enable brake mode
+- Else
+    - Enable coast mode and don't change speed
+- Use drive helper to update speed / rotation
+
+If we let 30 cm be the threshold for "too close" the code looks like the following
+
+=== "Python (`robot.py`)"
+    ```py
+    # Add to enabled_periodic between getting axis values and drive_helper.update
+    if self.usonic.get_distance() <= 30 and speed > 0:
+        speed = 0
+        self.flmotor.set_brake_mode(True)
+        self.frmotor.set_brake_mode(True)
+        self.rlmotor.set_brake_mode(True)
+        self.rrmotor.set_brake_mode(True)
+    else:
+        self.flmotor.set_brake_mode(False)
+        self.frmotor.set_brake_mode(False)
+        self.rlmotor.set_brake_mode(False)
+        self.rrmotor.set_brake_mode(False)
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    // Add to enabledPeriodic between getting axis values and driveHelper.update
+    if(self.usonic.getDistance() <= 30 && speed > 0){
+        speed = 0;
+        flmotor.setBrakeMode(true);
+        frmotor.setBrakeMode(true);
+        rlmotor.setBrakeMode(true);
+        rrmotor.setBrakeMode(true);
+    }else{
+        flmotor.setBrakeMode(false);
+        frmotor.setBrakeMode(false);
+        rlmotor.setBrakeMode(false);
+        rrmotor.setBrakeMode(false);
+    }
+    ```
+
+Test this code by slowly driving towards an object. Make sure the ultrasonic sensor is working by checking the Network Table indicator in the drive station. Once the distance is 30 or less, the robot should stop and no longer let you drive forward, but you sill still be able to rotate or drive in reverse. Once you are no longer within 30 cm of an object, you can drive forward again.
+
+The number 30 is arbitrarily chosen. You can (carefully) try driving your robot more quickly toward an object and see if it stops in time. If not, you may need to increase the distance higher than 30.
