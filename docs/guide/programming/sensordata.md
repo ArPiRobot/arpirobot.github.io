@@ -146,31 +146,155 @@ If you instead see a message similar to the following, the uart port name is pro
 
 ### Creating the Sensors
 
-TODO: Create objects for the sensors
+Now that your program has an Arudino Interface object, sensors can be added to it. Start by creating an object for each sensor as shown below
 
-TODO: Add these objects to the arduino (BEFORE BEGIN CALL)
+=== "Python (`robot.py`)"
+    ```py
+    # Add with other device imports at the top of file
+    from arpirobot.arduino.sensor import VoltageMonitor, Ultrasonic4Pin, Mpu6050Imu
 
-TODO: Add vmon, usonic, and imu for this part of guide
+    # Add in __init__ below arduino interface creation
 
-TODO: Link to reference page with info about all sensor types
+    # A0 is what pin signal ("S") is connected to
+    # 30000, 7500 are resistor values used in the voltage divider module
+    self.vmon = VoltageMonitor("A0", 30000, 7500)
+
+    # Arguments are trigger pin, echo pin
+    self.usonic = Ultrasonic4Pin(7, 8)
+
+    # No arguments for IMU
+    self.imu = Mpu6050Imu()
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // Add with other device includes at top of file
+    #include <arpirobot/arduino/sensor/VoltageMonitor.hpp>
+    #include <arpirobot/arduino/sensor/Ultrasonic4Pin.hpp>
+    #include <arpirobot/arduino/sensor/Mpu6050Imu.hpp>
+
+    // Add in Robot class declaration below arduino interface creation
+
+    // A0 is what pin signal ("S") is connected to
+    // 30000, 7500 are resistor values used in the voltage divider module
+    VoltageMonitor vmon {"A0", 30000, 7500};
+
+    // Arguments are trigger pin, echo pin
+    Ultrasonic4Pin usonic {7, 8};
+
+    // No arguments for IMU
+    Mpu6050Imu imu;
+    ```
+
+Then, in `robot_started` / `robotStarted` add each device to the arduino interface object **before calling `arduino.begin`.**
+
+=== "Python (`robot.py`)"
+    ```py
+    # Add BEFORE self.arduino.begin() in robot_started
+    self.arduino.add_device(self.vmon)
+    self.arduino.add_device(self.usonic)
+    self.arduino.add_device(self.imu)
+
+    # self.arduino.begin() is HERE
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    // Add BEFORE arduino.begin() in robotStarted
+    arduino.addDevice(vmon);
+    arduino.addDevice(usonic);
+    arduino.addDevice(imu);
+
+    // arduino.begin() is HERE
+    ```
+
+If you build and deploy this code now, you should see messages indicating the devices are being created in the robot program log in the Deploy Tool (don't worry about the ID numbers).
+
+```
+[DEBUG]: VoltageMonitor(A0) - Created device with ID 0
+[DEBUG]: Ultrasonic4Pin(7, 8) - Created device with ID 1
+[DEBUG]: Mpu6050Imu - Created device with ID 2
+```
+
+If you don't see the output above you probably added the devices after running `begin`.
 
 
 ### Getting sensor values
 
-TODO: Make main vmon
+Now your robot program has objects that can be used to get sensor data and the arduino has been setup and told what sensors are connected to it. As such, you can not get values from your sensors.
 
-TODO: Log usonic distance
+The easiest sensor to start with is the voltage monitor. The voltage monitor should be wired into the motor batteries (usually AA batteries). In the Drive Station there is a battery indicator. This indicator is used to show the "main" battery voltage (in this case the voltage of the motor batteries). To make this show up, the voltage monitor object must be made the "main" voltage monitor. This can be done by adding the following line of code.
 
-TODO: Log imu angle z
+=== "Python (`robot.py`)"
+    ```py
+    # Add in robot_started AFTER self.arduino.begin
+    self.vmon.make_main_vmon()
+    ```
 
-TODO: Explain issues with just using log for this
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    // Add in robotStarted AFTER arduino.begin()
+    vmon.makeMainVmon()
+    ```
+
+Only one voltage monitor can be the "main" voltage monitor. The "main" voltage monitor's voltage reading will be displayed in the drive station. If you build and deploy the program now, you should see the motor battery voltage when you open the drive station (after it connects to the robot program).
+
+![](../../img/ds_main_vmon.png){: style="height:300px"}
+
+The battery indicator in the drive station will change colors based on the current battery voltage (red = dead, orange = low, yellow = medium, green = full). Don't worry if the voltage drops while quickly changing motor direction (this is expected). If the robot is still and the indicator is orange or red you probably want to replace the batteries.
+
+The ultrasonic sensor and IMU do not have any dedicated place in the drive station to show their values. So for now, they will be printed to the log. Add the following in `periodic`
+
+=== "Python (`robot.py`)"
+    ```py
+    Logger.log_info("Gyro: " + str(self.imu.get_gyro_z()))
+    Logger.log_info("Distance: " + str(self.usonic.get_distance()))
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    Logger::logInfo("Gyro: " + std::to_string(imu.getGyroZ()));
+    Logger::logInfo("Distance: " + std::to_string(usonic.getDistance()));
+    ```
+
+If you build and deploy this code now you should see rapid log messages appearing in the Deploy Tool and Drive Station with sensor readings. While this does let you see the sensor values, it is often not useful because it adds so much information to the log.
+
+Generally, if you want to see a sensor value you only care about the current value. It is not necessary to save all old values by logging them. It is also inconvenient to read a rapidly scrolling log to determine sensors values. This is where the Network Table can help.
 
 
 ### Network Table
 
-TODO: Show network table code
+The Network Table is a simple way of sharing data between the drive station and the robot. The network table holds a set of values. Each value is "named" with a unique "key". The key generally indicates what the value is showing. The value itself is often just a number. You can think of the network table as a set of "variables" shared between the drive station and the robot program. The "key" is the variable's name and special functions are used to set or get the variable's value.
 
-TODO: Explain net table indicators in DS
+In our example above we could use two network table keys:
+- "Gyro" would be used to hold the current angle of the robot
+- "Distance" would be used to hold the current reading from the ultrasonic sensor
+
+To implement this, replace the log messages in `periodic` with the following
+
+=== "Python (`robot.py`)"
+    ```py
+    # Replace the log messages with the following
+    # Set function takes two arguments key, value
+    # Keys and values are always strings
+    NetworkTable.set("Gyro", str(self.imu.get_gyro_z()))
+    NetworkTable.set("Distance", str(self.usonic.get_distance()))
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    // Replace the log messages with the following
+    // Set function takes two arguments key, value
+    // Keys and values are always strings
+    NetworkTable::set("Gyro", std::to_string(imu.get_gyro_z()));
+    NetworkTable::set("Distance", std::to_string(usonic.get_distance()));
+    ```
+
+If you build and deploy this code, you won't notice anything at first. The drive station will not automatically show network table values when connecting. Instead indicators must be added to show certain "variables". After the drive station connects to the robot, you can add an indicator using the `Network Table` > `Add From Robot` menu. You should see both the `Gyro` and `Distance` keys there. Click one of them to add it. It will be added to the center of the Network Table section. You can drag it by its name to move it to a different location. It can also be resized by dragging corners with your mouse. Add both the `Gyro` and `Distance` indicators. Move them so you can see both at the same time.
+
+![](../../img/ds_net_table_indicators.png){: style="height:400"}
+
+As you move the robot you should see the gyro angle and ultrasonic distance changing in the indicators. Whenever your robot program runs the `NetworkTable`'s `set` function the value shown in the drive station will change. This makes it easy to determine current measurements and keeps your log from being filled up with sensor data messages.
 
 
 ### Doing something Useful
