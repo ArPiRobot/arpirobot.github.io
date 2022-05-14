@@ -1,19 +1,90 @@
 # Using Actions
 
+Up until now, this guide has used the *periodic* programming model. This is the programming model where robot functionality is implemented using the `enabled_periodic` / `enabledPeriodic` and `disabled_periodic` / `disabledPeriodic` functions in the `Robot` class. While this has worked fine so far, it becomes limiting for more complex robot programs.
+
+
 ## Challenges with Periodic Programming Model
 
-TODO: Why is the periodic model limited
+The main issue with the periodic programming model is switching between tasks. Suppose you sometimes want the robot to respond to gamepad controls, at other times you want it to drive some distance on its own. How do you implement both in `enabled_periodic` / `enabledPeriodic`? You would need some variable that indicates what task you are currently performing. This could be a simple integer where zero means human drive and one means autonomous drive, however this quickly becomes difficult to work with. What happens if you want your robot to drive a triangle instead of just a straight line? Task zero is still human drive, task one drives an edge, task two rotates, task three drives the next edge and so on. Once done, it goes back to task zero. This could look something like the following
 
-TODO: Explain how a series of sequential actions could work
+=== "Python"
+    ```py
+    # In enabled_periodic
+    if task == 0:
+        # Respond to gamepad controls
+        # Drive using drive helper
+        # If a button is pressed switch to task 1
+        # Store start time of task 1
+    elif task == 1:
+        # Drive straight
+        # if enough time has passed, move to task 2
+        # Store start time of task 2
+    elif task == 2:
+        # Rotate
+        # if enough time has passed, move to task 3
+        # Store start time of task 3
+    elif task == 3:
+        # Drive straight
+        # if enough time has passed, move to task 4
+        # Store start time of task 4
+    elif task == 4:
+        # Rotate
+        # if enough time has passed, move to task 5
+        # Store start time of task 5
+    elif task == 5:
+        # Drive straight
+        # if enough time has passed, move to task 6
+        # Store start time of task 6
+    elif task == 6:
+        # Rotate
+        # if enough time has passed, move to task 0
+    ```
 
-TODO: Explain the challenge with parallel actions
+=== "C++"
+    ```cpp
+    // In enabledPeriodic
+    if (task == 0){
+        // Respond to gamepad controls
+        // Drive using drive helper
+        // If a button is pressed switch to task 1
+        // Store start time of task 1
+    }}elif (task == 1){
+        // Drive straight
+        // if enough time has passed, move to task 2
+        // Store start time of task 2
+    }elif (task == 2){
+        // Rotate
+        // if enough time has passed, move to task 3
+        // Store start time of task 3
+    }elif (task == 3){
+        // Drive straight
+        // if enough time has passed, move to task 4
+        // Store start time of task 4
+    }elif (task == 4){
+        // Rotate
+        // if enough time has passed, move to task 5
+        // Store start time of task 5
+    }elif (task == 5){
+        // Drive straight
+        // if enough time has passed, move to task 6
+        // Store start time of task 6
+    }elif (task == 6){
+        // Rotate
+        // if enough time has passed, move to task 0
+    }
+    ```
 
-TODO: Explain why not modular
+Looking at the above outline, it has a few issues. First, it is hard to read what the program is supposed to be doing. Without comments looking at code structured like the above outline would be very difficult to interpret. Second, it is hard to modify the sequence of tasks. Say you wanted to introduce a delay between task 0 and 1. You now need to change many places in the code. Finally, there is a lot of duplicated code. Three different tasks drive straight. Three rotate. Reusing code in this format is very difficult. It becomes even more difficult if you wanted to the ability to drive many different shapes. The rotate code for a triangle could not be reused for a square, so you would have seven rotate task. The code is not modular and reusable and is also difficult to follow. This is clearly a non-ideal way to create complex sequences of tasks. The action system helps to address these issues.
 
 
 ## What is an Action
 
-TODO: Modular reusable code is easy using objects. This can be extended to different robot tasks. Additionally many actions can run in parallel
+Object oriented programming makes reusing code easy. The action system takes advantage of this. Each action is an object of a certain type. That type might be a rotate action or a drive action. If you need to rotate multiple times, the same action just has multiple instances (possibly with different parameters during construction). For example, this would allow you to define an action that rotates for some amount of time and create instances of that action to rotate for 1 second, 2 seconds, 3 seconds, etc. This allows the same code to be used for all three rotations.
+
+This approach helps solve the code reusability / organization and readability issues, but what exactly is an action? In simple terms an actions is like one of the tasks defined previously. An action is a class that defines how to perform a specific type of task. This task could be driving with the gamepad, driving straight for some amount of time, or rotating for some amount of time. Once that class is defined instances of that class are created to represent specific tasks. Those objects (instances) can be started and stopped independently of each other.
+
+In other words, an action is a class that defines how to perform a task. An instance of an action is an object that represents a specific task. Each instance can be started and stopped when needed to create complex robot programs.
+
 
 ### Action Structure
 
