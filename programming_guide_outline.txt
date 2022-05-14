@@ -29,7 +29,6 @@ Using Actions:
 - Explain "best use" of action instances, etc
 - Explain what code should be left in robot (devices, net table, etc)
 - Reimplement drive as an action that is always running
-- TODO: Something to show parallel actions
 - Implement drive time and rotate time actions
 - On button press run action sequence
 
