@@ -88,11 +88,75 @@ In other words, an action is a class that defines how to perform a task. An inst
 
 ### Action Structure
 
-TODO: Explain begin, process, finish, should_continue
+An action is a class that inherits from the builtin `Action` class (part of ArPiRobot CoreLib). Child classes must implement four functions to define the behavior of an action.
+
+=== "Python"
+    - `begin()`: Run each time an action is started. Any setup for the action should occur here including locking devices (explained later).
+    - `process()`: Run periodically while an action is running. Every 50ms (by default) this function is run. This is where the main functionality of the action is often implemented.
+    - `finish(was_interrupted: bool)`: Called when the action is stopped / stops. There are two ways an action can stop. First, it's `should_continue` function returns false (used to allow the action to stop itself when it finishes). Second, it can be interrupted (stopped early) for a number of reasons (explained later). The `was_interrupted` argument is used to inform the action why it is stopping. Any cleanup for the action should be done here. Anything the action was doing should also be stopped here. Sometimes, what is done depends on whether the action completed (based on `was_interrupted`).
+    - `should_continue() -> bool`: This function is called after each time `process` is run. If this function returns false, this action will stop (`process` will not run again). If this function returns true, this action will continue running (`process` will be called again later unless this action is interrupted). The only way an action can finish without being interrupted is if this function returns false.
+
+
+    ```py
+    class MyAction(Action):
+        def begin(self):
+            # Setup for the action to run
+            pass
+        
+        def process(self):
+            # Implement the action
+            pass
+
+        def finish(self, was_interrupted: bool):
+            # Stop anything / do any cleanup
+            pass
+        
+        def should_continue(self) -> bool:
+            # Return False when action is done
+            return True
+    ```
+
+=== "C++"
+    - `void begin()`: Run each time an action is started. Any setup for the action should occur here including locking devices (explained later).
+    - `void process()`: Run periodically while an action is running. Every 50ms (by default) this function is run. This is where the main functionality of the action is often implemented.
+    - `void finish(bool wasInterrupted)`: Called when the action is stopped / stops. There are two ways an action can stop. First, it's `shouldContinue` function returns false (used to allow the action to stop itself when it finishes). Second, it can be interrupted (stopped early) for a number of reasons (explained later). The `wasInterrupted` argument is used to inform the action why it is stopping. Any cleanup for the action should be done here. Anything the action was doing should also be stopped here. Sometimes, what is done depends on whether the action completed (based on `wasInterrupted`).
+    - `bool shouldContinue()`: This function is called after each time `process` is run. If this function returns false, this action will stop (`process` will not run again). If this function returns true, this action will continue running (`process` will be called again later unless this action is interrupted). The only way an action can finish without being interrupted is if this function returns false.
+
+    === "Header (.hpp)" 
+        ```cpp
+        class MyAction : public Action {
+        protected:
+            void begin() override;
+            void process() override;
+            void finish(bool wasInterrupted) override;
+            bool shouldContinue() override;
+        }
+        ```
+    === "Source (.cpp)"
+        ```cpp
+        void MyAction::begin(){
+            // Setup for action to run
+        }
+
+        void MyAction::process(){
+            // Implement the action
+        }
+
+        void MyAction::finish(bool wasInterrupted){
+            // Stop anything / do any cleanup
+        }
+
+        bool MyAction::shouldContinue(){
+            // Return false when action is done
+            return true;
+        }
+        ```
 
 TODO: Mention the actions files in robot code
 
-TODO: Example code with empty "template" for an action that can be pasted into robot code files
+TOOD: Explain using constructor to pass arguments to an action
+
+TODO: Example code with empty "template" for an action that can be pasted into robot code files (including ctor)
 
 
 ### Using Actions
