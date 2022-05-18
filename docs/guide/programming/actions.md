@@ -326,13 +326,111 @@ This method allows the same code to be used for waiting regardless of how long t
 
 ### Using Actions
 
-TODO: Explain action manager and how using actions works (manual method)
+The `ActionManager` provides two functions `start_action` / `startAction` and `stop_action` / `stopAction` to start and stop actions respectively. These functions can be used in your robot program when needed to manage actions. For instance, you could start an action in `robot_enabled` / `robotEnabled` and stop it in `robot_disabled` / `robotDisabled`.
 
-TODO: Example code
+=== "Python"
+    ```py
+    # Add with imports if not there
+    from arpirobot.core.action import ActionManager
 
-TODO: Explain action triggers
+    # Use these where needed
+    ActionManager.start_action(self.my_instance)
+    ActionManager.stop_action(self.my_instance)
+    ```
 
-TODO: Example code w/ gamepad triggers
+=== "C++"
+    ```cpp
+    // Add with includes if not there
+    #include <arpirobot/core/action/ActionManager.hpp>
+
+    ActionManager::startAction(myInstance);
+    ActionManager::stopAction(myInstance);
+    ```
+
+You can also start an action without holding a reference to the instance, but you will not be able to stop it using the `stop_action` / `stopAction` function. This is often useful in `robot_started` / `robotStarted` for actions that should always remain running.
+
+=== "Python"
+    ```py
+    # This is ok because the action manager will keep the action object in scope even if your code does not
+    ActionManager.start_action(MyAction())
+    ```
+
+=== "C++"
+    ```cpp
+    // When passing dynamically allocated objects the C++ library uses shared_ptrs
+    // As such it is necessary to use std::make_shared
+    // Statically allocated objects are intended to be passed by reference (as shown previously)
+    // Since shared_ptrs are used there is no need to handle deletion of the dynamically allocated action
+    // The action manager holds a reference to it while it is running.
+    ActionManager::startAction(std::make_shared<MyAction>());
+    ```
+
+Often, it is useful to be able to determine if an action is already running. before attempting to start / stop it. This can be done using the action's `is_running` / `isRunning` function.
+
+=== "Python"
+    ```py
+    running = self.my_instance.is_running()
+    ```
+
+=== "C++"
+    ```cpp
+    bool running = myInstance.isRunning();
+    ```
+
+This can be used to prevent restarting an action that is already running. By default if you attempt to start an action that is already running it will be restarted. This means that it will be stopped and started again. This behavior can be disabled by using the second (optional) argument of `start_action` / `startAction`. If this argument is false, the action will not be restarted if running. It will continue running, but a warning will be added to the robot program log.
+
+=== "Python"
+    ```py
+    ActionManager.start_action(self.my_instance, False)
+    ```
+
+=== "C++"
+    ```cpp
+    ActionManger::startAction(myInstance, false);
+    ```
+
+Note that the `start_action` / `startAction` function also returns a bool indicating if an action was started successfully. This will only return false if the action is already running and is not allowed to be restarted (or if you attempt to start an action before the robot has started which should never happen).
+
+
+<br />
+
+Using the `ActionManager` functions is an easy way to manually start and stop actions, however there is also a way to start actions when some even occurs. The `ActionManager` can have triggers that start a specified action when something occurs. What that event is depends on the type of trigger. The most common trigger is a gamepad related trigger. There are two such triggers `ButtonPressedTrigger` and `ButtonReleasedTrigger`. These triggers are used to start an action when a button on the gamepad is pressed or released respectively. Once a trigger is added to the action manager, the action associated with it will be started (or restarted) whenever the event occurs. This will remain the case until the trigger is removed from the `ActionManager`.
+
+=== "Python"
+    ```py
+    # Starts action instance my_instance when button 0 on gp0 is pressed
+    ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, 0, self.my_instance))
+
+    # If you need to remove later use ActionManager.remove_trigger, but hold an instance of the trigger
+    self.trigger = ButtonPressedTrigger(self.gp0, 0, self.my_instance)
+    ActionManager.add_trigger(self.trigger)
+
+    # And later
+    ActionManager.remove_trigger(self.trigger)
+    ```
+
+=== "C++"
+    ```
+    // Starts action instance myInstance when button 0 on gp0 is pressed
+    ActionManager::addTrigger(std::make_shared<ButtonPressedTrigger>(gp0, 0, myInstance));
+
+    // If you need to remove later use ActionManager::removeTrigger, but hold an instance of the trigger
+    // Add "trigger" variable as a member in class declaration
+    ButtonPressedTrigger trigger {gp0, 0, myInstance};
+
+    // Then in a function somewhere
+    ActionManager::addTrigger(trigger);
+
+    // And later
+    ActionManager::removeTrigger(trigger);
+    ```
+
+
+### Running Actions Sequentially
+
+TODO: Explain ActionSeries and give an example
+
+TODO: ActionSeries example code
 
 
 ### Ownership of Devices
@@ -347,12 +445,6 @@ TODO: Explain that you must be careful with using periodic code if an action may
 
 TODO: Example code of an issue and show use of isLocked method to address in some cases
 
-
-### Running Actions Sequentially
-
-TODO: Explain ActionSeries and give an example
-
-TODO: ActionSeries example code
 
 
 ## Making Drive Code into an Action
