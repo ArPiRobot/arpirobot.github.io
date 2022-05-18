@@ -425,6 +425,17 @@ Using the `ActionManager` functions is an easy way to manually start and stop ac
     ActionManager::removeTrigger(trigger);
     ```
 
+As with `start_action` / `startAction`, an trigger will restart an action by default. If this behavior is not desired use the optional argument after the action instance.
+
+=== "Python"
+    ```py
+    self.trigger = ButtonPressedTrigger(self.gp0, 0, self.my_instance, False)
+    ```
+
+=== "C++"
+    ```cpp
+    ButtonPressedTrigger trigger {hp0, 0, myInstance, false};
+    ```
 
 ### Running Actions Sequentially
 
