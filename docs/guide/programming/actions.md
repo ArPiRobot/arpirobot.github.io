@@ -130,7 +130,7 @@ An action is a class that inherits from the builtin `Action` class (part of ArPi
             void process() override;
             void finish(bool wasInterrupted) override;
             bool shouldContinue() override;
-        }
+        };
         ```
     === "Source (.cpp)"
         ```cpp
@@ -152,7 +152,67 @@ An action is a class that inherits from the builtin `Action` class (part of ArPi
         }
         ```
 
-TODO: Mention the actions files in robot code
+In robot programs, actions are typically created in the `actions` files (`actions.py` or `actions.hpp` and `actions.cpp`). All action classes are defined in these files. In contrast, the `robot` files (`robot.py` or `robot.hpp` and `robot.cpp`) are used only for the `Robot` class. Instances of actions are often created in the `Robot` class. For example, the following could be added to the `actions` files to create an action (this action does nothing, it's just an example).
+
+=== "Python (`actions.py`)"
+    ```py
+    class MyAction(Action):
+        def begin(self):
+            pass
+        
+        def process(self):
+            pass
+
+        def finish(self, was_interrupted: bool):
+            pass
+
+        def should_continue(self) -> bool:
+            return False
+    ```
+
+=== "C++ (`actions.hpp`)"
+    ```cpp
+    class MyAction : public Action{
+    protected:
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    };
+    ```
+
+=== "C++ (`actions.cpp`)"
+    ```cpp
+    void MyAction::begin(){
+
+    }
+
+    void MyAction::process(){
+
+    }
+
+    void MyAction::finish(bool wasInterrupted){
+
+    }
+
+    bool MyAction::shouldContinue(){
+        return false;
+    }
+    ```
+
+Then an instance of the action is created in the robot class. This instance can be used as described in later sections.
+
+=== "Python (`robot.py`)"
+    ```py
+    # Add somewhere in __init__
+    self.my_instance = MyAction()
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // Add somewhere in Robot class declaration
+    MyAction myInstance;
+    ```
 
 TOOD: Explain using constructor to pass arguments to an action
 
