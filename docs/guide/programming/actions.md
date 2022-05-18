@@ -214,9 +214,114 @@ Then an instance of the action is created in the robot class. This instance can 
     MyAction myInstance;
     ```
 
-TOOD: Explain using constructor to pass arguments to an action
+Often, you will only have one instance of an action (or multiple instances that all behave the same way), but in other cases you may have multiple instances that all work differently. Consider an action that waits a certain amount of time (why this is useful will be seen later). It is likely that you would want to wait for different amounts of time (eg 3 seconds, 5 seconds, 10 seconds). Instead of making three actions that all wait for an amount of time, the you can create an action that takes an argument in its constructor for the amount of time to wait. Then, you only need three instances of the action for 3, 5, and 10 seconds.
 
-TODO: Example code with empty "template" for an action that can be pasted into robot code files (including ctor)
+=== "Python (`actions.py`)"
+    ```py
+    # Note: Add "import time" at top of file
+
+    class WaitAction(Action):
+
+        # __init__ function is constructor run when creating instance
+        # Add arguments after "self"
+        # In this case one argument for wait time (in seconds) is added
+        def __init__(self, wait_time_sec: float):
+            # ALWAYS CALL PARENT CLASS INIT!!!
+            super().__init__()
+
+            # Store the argument's value in a member variable for use later
+            self.wait_time_sec = wait_time_sec
+
+            # Another member variable to store when the action starts
+            # Just store some value for now. This value won't be used
+            self.start_time: float = 0.0
+
+        def begin(self):
+            # Action is started when begin() runs. Store current time
+            self.start_time = time.time()
+        
+        def process(self):
+            # Nothing to do. Just waiting
+            pass
+
+        def finish(self, was_interrupted: bool):
+            # Action is done. Done waiting, so nothing needs to be done here
+            pass
+
+        def should_continue(self) -> bool:
+            # Should continue waiting if (now - start) < wait_time
+            return (time.time() - self.start_time) < self.wait_time_sec
+    ```
+
+=== "C++ (`actions.hpp`)"
+    ```cpp
+    // Note: Import "chrono" at top of file
+
+    class WaitAction : public Action {
+    public:
+        // Add constructor taking argument
+        // Constructor is run when creating instance of action
+        WaitAction(double waitTimeSec);
+
+    protected:
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    
+    private:
+        // Member variables to store wait time and start time
+        double waitTimeSec;
+        std::chrono::time_point<std::chrono::steady_clock> startTime;
+    }
+    ```
+
+=== "C++ (`actions.cpp`)"
+    ```
+    // Using initializer list to assign member varible waitTimeSec to argument value
+    WaitAction::WaitAction(double waitTimeSec) : waitTimeSec(waitTimeSec) {
+        
+    }
+
+    void WaitAction::begin(){
+        // Action is started when begin runs. Store start time.
+        startTime = std::chrono::steady_clock::now();
+    }
+
+    void WaitAction::process(){
+        // Nothing to do. Just waiting.
+    }
+
+    void WaitAction::finish(bool wasInterrupted){
+        // Action is done. Done waiting, so nothing needs to be done here
+    }
+
+    bool WaitAction::shouldContinue(){
+        // Should continue waiting if (now - start) < wait_time
+        auto now = std::chrono::steady_clock::now();
+        return std::chrono::duration_cast<std::chrono::seconds>(now - startTime).count() < waitTimeSec;
+    }
+    ```
+
+Then in the robot class, several instances are created as shown below
+
+=== "Python (`robot.py`)
+    ```py
+    # In __init__
+    self.wait3s = WaitAction(3)
+    self.wait5s = WaitAction(5)
+    self.wait10s = WaitAction(10)
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // In class declaration
+    WaitAction wait3s {3};
+    WaitAction wait5s {5};
+    WaitAction wait10s {10};
+    ```
+
+This method allows the same code to be used for waiting regardless of how long the robot is waiting for.
 
 
 ### Using Actions
