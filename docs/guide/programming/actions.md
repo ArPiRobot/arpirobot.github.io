@@ -544,16 +544,160 @@ This clearly would prevent either action from working as intended. The solution 
 
 To achieve this, it is necessary to know what devices an action uses (or equivalently which action is currently controlling a device). The action controlling a device is said to "own" or "lock" a device. If a newer action is started, it can take ownership of the device. When this happens, the previous action is automatically stopped.
 
-In an `Action`'s `started` function, a builtin function called `lock_device` / `lockDevice` can be used to take ownership of a device the action will control. If another action is controlling the device it will be stopped to allow the newer action to take control. There is also a `lock_devices` / `lockDevices` function that can lock multiple devices in one line of code.
+In an `Action`'s `begin` function, a builtin function called `lock_device` / `lockDevice` can be used to take ownership of a device the action will control. If another action is controlling the device it will be stopped to allow the newer action to take control. There is also a `lock_devices` / `lockDevices` function that can lock multiple devices in one line of code.
 
 Additionally, if you have code in `enabled_periodic` / `enabledPeriodic` or `disabled_periodic` / `disabledPeriodic` that controls a device, you will need to be careful not to control it while an action has locked the device. The device has a function called `is_locked` / `isLocked` which can be used to determine if the device is locked by an action. **Unlike actions, the periodic functions cannot lock a device. As such, it is highly recommended to either control a device using actions or the periodic functions, not both.** However, it is not a problem to control some devices using actions and others from the `Robot`'s periodic functions.
 
 
 ## Making Drive Code into an Action
 
-TODO: Move existing drive code into its own action
+Before attempting to create complex setups with actions, it is a good idea to convert the gamepad drive code into an action. Later, actions will be implemented that are used to drive shapes. Since these actions will control the motors, it is a bad idea to also have `enabled_periodic` / `enabledPeriodic` controlling the motors with the gamepad.
 
-TODO: Start the action in robot started let it run forever
+To start, create a new action in `actions.py` or `actions.hpp` and `actions.cpp`
+
+=== "Python (`actions.py`)"
+    ```py
+    class JSDriveAction(Action):
+        def begin(self):
+            pass
+        
+        def process(self):
+            pass
+        
+        def finish(self, was_interrupted: bool):
+            pass
+        
+        def should_continue(self) -> bool:
+            pass
+    ```
+
+=== "C++ (`actions.hpp`)"
+    ```cpp
+    class JSDriveAction : public Action{
+    protected:
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    };
+    ```
+
+=== "C++ (`actions.cpp`)"
+    ```cpp
+    void JSDriveAction::begin(){
+
+    }
+
+    void JSDriveAction::process(){
+
+    }
+
+    void JSDriveAction::finish(bool wasInterrupted){
+
+    }
+
+    bool JSDriveAction::shouldContinue(){
+
+    }
+    ```
+
+Then, in `process` move the existing drive code from `enabled_periodic` / `enabledPeriodic`. You will have to change a few variable names. The drive helper object and gamepad object belong to the `Robot` instance, not the `Action` instance the code is now in. As such, you have to refer to them using the `Robot` instance. This is done using `main.robot` in python or `Main::robot` in C++.
+
+=== "Python (`actions.py`)"
+    ```py
+    def process(self):
+        # Get value for the speed axis
+        speed = main.robot.gp0.get_axis(main.robot.SPEED_AXIS, main.robot.DEADBAND)
+        
+        # Get value for the rotation axis
+        rotation = main.robot.gp0.get_axis(main.robot.ROTATE_AXIS, main.robot.DEADBAND)
+
+        # Update speed of all motors using drive helper
+        main.robot.drive_helper.update(speed, rotation)
+    ```
+
+=== "C++ (`actions.cpp`)"
+    ```cpp
+    void process(){
+        // Get value for speed axis
+        double speed = Main::robot->gp0.getAxis(Main::robot->SPEED_AXIS, Main::robot->DEADBAND);
+        
+        // Get value for the rotation axis
+        double rotation = Main::robot->gp0.getAxis(Main::robot->ROTATE_AXIS, Main::robot->DEADBAND);
+
+        // Update speed of all motors using drive helper
+        Main::robot->driveHelper.update(speed, rotation);
+    }
+    ```
+
+Then, in `begin`, add the following to lock the motors. All four motors are locked as this action (indirectly) controls all four using the drive helper. *Note: You cannot lock the drive helper. It is not a device.* Locking the motors is not important yet, but having this will be important later.
+
+=== "Python (`actions.py`)"
+    ```py
+    def begin(self):
+        # If your robot only has two motors, only reference those motors
+        self.lock_devices([main.robot.flmotor, main.robot.frmotor, 
+                main.robot.rlmotor, main.robot.rrmotor])
+    ```
+
+=== "C++ (`actions.cpp`)"
+    ```cpp
+    void begin(){
+        // If your robot only has two motors, only reference those motors
+        lockDevices({Main::robot->flmotor, Main::robot->frmotor, 
+            Main::robot->rlmotor, Main::robot->rrmotor});
+    }
+    ```
+
+Next, in the action's `finish` function add the following line to ensure that motors stop moving if the action is ever stopped. When an action is stopped it should (almost) always make sure anything it was controlling is returned to a safe state. For motors, stopped is a safe state.
+
+=== "Python (`actions.py`)"
+    ```py
+    def finish(self, was_interrupted: bool):
+        main.robot.drive_helper.update(0, 0)
+    ```
+
+=== "C++ (`actions.cpp`)"
+    ```cpp
+    void finish(){
+        Main::robot->driveHelper.update(0, 0);
+    }
+    ```
+
+Then, make `should_continue` / `shouldContinue` always return true so this action runs forever.
+
+=== "Python (`actions.py`)"
+    ```py
+    def should_continue(self) -> bool:
+        return True
+    ```
+
+=== "C++ (`actions.cpp`)"
+    ```cpp
+    bool shouldContinue(){
+        return true;
+    }
+    ```
+
+Finally, start the action in `robot_started` / `robotStarted`. Since the action never finishes, it will run forever. The action actually remains running whether the robot is enabled or disabled, however the robot's motors are disabled when the robot is disabled so you will still be unable to drive the robot while it is disabled.
+
+=== "Python (`robot.py`)"
+    ```py
+    # Import action at top of file (with other imports)
+    from actions import JSDriveAction
+
+    # Add at the end of robot_started
+    ActionManager.start_action(JSDriveAction())
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    // No need to include anything for C++
+    // actions.hpp should already be included
+
+    // Add at the end of robotStarted
+    ActionManager::startAction(std::make_shared<JSDriveAction>());
+    ```
 
 
 ## Automated Routines using Actions
