@@ -439,9 +439,99 @@ As with `start_action` / `startAction`, an trigger will restart an action by def
 
 ### Running Actions Sequentially
 
-TODO: Explain ActionSeries and give an example
+Any actions started will run concurrently, meaning that starting a second action will not wait for the currently running action to finish. While this parallel execution of actions is useful for developing complex routines and maximizing code sharing, it is equally useful to be able to run a set of actions sequentially (one after the other).
 
-TODO: ActionSeries example code
+This is achieved using an `ActionSeries`. An `ActionSeries` is itself an action that can be started and stopped with the action manager, however it's task is to manage other actions. When creating an `ActionSeries` a list of actions is used. This list of actions is run sequentially. The first action is started. When it finishes, the second, then when it finishes the third and so on. The `ActionSeries` (being an `Action` itself) remains running until all of its actions finish (or until it is interrupted).
+
+=== "Python"
+    ```py
+    self.series = ActionSeries(
+        # List of actions to be run as a part of the series
+        [
+            action1,
+            action2,
+            action3,
+            ...
+            action_n
+        ], 
+
+        # finished_action
+        # An action to start when the action series is done
+        # This action is not part of the action series so the action series
+        # will not continue running while this action is running
+        None
+    )
+    ```
+
+=== "C++"
+    ```cpp
+    ActionSeries series{
+        // List of actions to be run as a part of the series
+        {
+            action1,
+            action2,
+            action3,
+            ...
+            actionN
+        },
+
+        // finishedAction
+        // An action to start when the action series is done
+        // This action is not part of the action series so the action series
+        // will not continue running while this action is running
+        nullptr
+    };
+    ```
+
+There is also an optional "finished action" that can be automatically started when the action series finishes. This is often useful to avoid having actions that run "forever" be a part of the action series so you can determine when an action series completes its primary task. Consider the following example. The action series is used to drive a square. By making the human drive action the "finished action" this ensures that when the square driving is done, human control will resume. However, once human control resumes the "drive square" action is no longer running, which makes sense as the square has been driven.
+
+=== "Python"
+    ```py
+    self.drive_square_series = ActionSeries(
+        # List of actions to be run as a part of the series
+        [
+            DriveDistanceAction(10),
+            RotateAngleAction(90),
+            DriveDistanceAction(10),
+            RotateAngleAction(90),
+            DriveDistanceAction(10),
+            RotateAngleAction(90),
+            DriveDistanceAction(10),
+            RotateAngleAction(90)
+        ], 
+
+        # finished_action
+        # An action to start when the action series is done
+        # This action is not part of the action series so the action series
+        # will not continue running while this action is running
+        HumanDriveAction()
+    )
+    ```
+
+=== "C++"
+    ```cpp
+    ActionSeries driveSquareSeries{
+        // List of actions to be run as a part of the series
+        {
+            std::make_shared<DriveDistanceAction>(10),
+            std::make_shared<RotateAngleAction>(90),
+            std::make_shared<DriveDistanceAction>(10),
+            std::make_shared<RotateAngleAction>(90),
+            std::make_shared<DriveDistanceAction>(10),
+            std::make_shared<RotateAngleAction>(90),
+            std::make_shared<DriveDistanceAction>(10),
+            std::make_shared<RotateAngleAction>(90)
+        },
+
+        // finishedAction
+        // An action to start when the action series is done
+        // This action is not part of the action series so the action series
+        // will not continue running while this action is running
+        std::make_shared<HumanDriveAction>()
+    };
+    ```
+
+Since `ActionSeries` are actions, multiple can run in parallel too. This allows for complex routines to be developed using the action system.
 
 
 ### Ownership of Devices
