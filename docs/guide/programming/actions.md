@@ -536,16 +536,17 @@ Since `ActionSeries` are actions, multiple can run in parallel too. This allows 
 
 ### Ownership of Devices
 
-TODO: Explain locking devices and how that works (note specifically that it interrupts any previous owner)
+One final important concept with actions is the ownership of devices. Devices are many of the "objects" created on the robot. More specifically, a "Device" is anything connected directly to the Raspberry Pi on the robot that has its own object in code (such as motors). Note that currently, devices attached to the arduino (such as sensors) are "ArduinoDevices" and are not able to be owned by actions.
 
-TODO: Example code locking devices
+Often, multiple actions in a robot program control the same device. In many cases, this can cause unintended behaviors. Consider a scenario where one action allows a gamepad to move motors, and another uses motors to drive a square. Which action would "win"? It is likely the actions would "fight" each other causing the robot to rapidly switch between the tasks (rapidly meaning 20+ times per second).
 
-TODO: Explain why this is beneficial
+This clearly would prevent either action from working as intended. The solution is to ensure that only one action that controls the motors is ever active at a time. In general, the action that should remain active is the newer one. For example, if the robot is being driven with the gamepad using one action, and another action to drive a square is triggered by a button press, the square should be driven stopping gamepad drive control.
 
-TODO: Explain that you must be careful with using periodic code if an action may lock the device you are using
+To achieve this, it is necessary to know what devices an action uses (or equivalently which action is currently controlling a device). The action controlling a device is said to "own" or "lock" a device. If a newer action is started, it can take ownership of the device. When this happens, the previous action is automatically stopped.
 
-TODO: Example code of an issue and show use of isLocked method to address in some cases
+In an `Action`'s `started` function, a builtin function called `lock_device` / `lockDevice` can be used to take ownership of a device the action will control. If another action is controlling the device it will be stopped to allow the newer action to take control. There is also a `lock_devices` / `lockDevices` function that can lock multiple devices in one line of code.
 
+Additionally, if you have code in `enabled_periodic` / `enabledPeriodic` or `disabled_periodic` / `disabledPeriodic` that controls a device, you will need to be careful not to control it while an action has locked the device. The device has a function called `is_locked` / `isLocked` which can be used to determine if the device is locked by an action. **Unlike actions, the periodic functions cannot lock a device. As such, it is highly recommended to either control a device using actions or the periodic functions, not both.** However, it is not a problem to control some devices using actions and others from the `Robot`'s periodic functions.
 
 
 ## Making Drive Code into an Action
@@ -574,6 +575,8 @@ TODO: Implement this
 TODO: Implement an action series showing how this works. Drive a "square"
 
 TODO: Comment on tuning drive times and rotate times to drive the square correctly
+
+TODO: Also implement a drive triangle using a different button to show how multiple actionseries are useful
 
 
 ## Using Sensors Instead of Time
