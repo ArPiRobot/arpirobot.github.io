@@ -699,24 +699,255 @@ Finally, start the action in `robot_started` / `robotStarted`. Since the action 
     ActionManager::startAction(std::make_shared<JSDriveAction>());
     ```
 
+After building and deploying this program to the robot, driving with the gamepad will still work as it previously had, but since it is now implemented as an action it is easy to start and stop as needed to allow other actions to run.
 
 ## Automated Routines using Actions
 
-TODO: Explain the goal of this section. Note that not using sensors is not the best way to do this. Conceptually, using encoders to do a DriveDistance is better and IMU to do a RotateAngle is better than using time
+Actions can be used as building blocks for complex tasks. In this section two tasks will be implemented using actions. The first task will drive a circle. The second will drive a square. When neither task is active, the robot will be able to be controlled using the gamepad (using the `JSDriveAction` implemented previously).
+
+While it would be possible to make an action to drive each shape, this is not the easiest way to do so and does not allow much code reuse. Instead, driving shapes is broken down into simpler actions that can be chained together to make shapes. This also allows the same actions to be used to drive multiple different shapes.
+
+Driving both a square and a triangle can be accomplished using two basic actions. First, the robot needs to be able to drive a straight line. Second, it needs to be able to rotate. These two actions can be repeated as many times as necessary to drive the desired shape.
+
+Ideally, driving a straight line would be done using encoders on the robot to drive some specific distance and rotation would use a gyroscope to rotate to some angle, however for the sake of simplicity, time will be used instead in this section (later the actions will be adapted to use distance and angle instead of time). This means that instead of an action that drives some number inches we will have an action that drives for some amount of time. For rotation, it will rotate for some amount of time. *Timed driving is not a precise way to create shapes. You may need to change some times (especially for the rotations) to drive the correct shape. The code in this section will behave differently on different robots.*
+
 
 ### Drive Time Action
 
-TODO: Implement this
+The first action to be implemented needs to drive a straight line for some amount of time (this will be passed as an argument in the constructor so the same action can be used for different amounts of time). This action will control motors, so they should be locked in `begin`. Additionally, the robot will drive a constant speed for the given amount of time. As such, the robot can start driving in `begin` and stop in `finish` leaving `process` empty. Finally, `should_continue` / `shouldContinue` needs to return true until enough time has passed, when it should return false stopping the action. This requires tracking when the action is started by storing some value in `begin`. This is all implemented in the code shown below.
+
+=== "Python (`actions.py`)"
+    ```py
+    # Add this import at the top of the file (with other imports)
+    import time
+
+    class DriveTimeAction(Action):
+        # Each instance of the action can drive for a different duration
+        # This allows reusing the same action for various purposes
+        def __init__(self, duration_sec: float):
+            super().__init__()
+
+            # Store the duration this action should run for
+            self.duration_sec = duration_sec / 1000
+
+            # Will be used to store the time when the action starts (begin called)
+            self.start_time = 0.0
+
+        def begin(self):
+            # Lock motors as this action controls them
+            # This stops whatever action currently controls the motors (if any)
+            self.lock_devices([main.robot.flmotor, main.robot.frmotor, 
+                main.robot.rlmotor, main.robot.rrmotor])
+            
+            # Store the time this action started
+            self.start_time = time.time()
+
+            # Start moving the motors forward at 70% speed, no rotation
+            main.robot.drive_helper.update(0.7, 0)
+        
+        def process(self):
+            # Nothing to do here. Just let motors keep running
+            pass
+        
+        def finish(self, was_interrupted: bool):
+            # Stop the motors
+            main.robot.drive_helper.update(0, 0)
+
+        def should_continue(self) -> bool:
+            now = time.time()
+            if (now - self.start_time) >= self.duration_sec:
+                return False
+            return True
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // Add with other imports
+    #include <chrono>
+
+    class DriveTimeAction : public Action {
+    public:
+        // Each instance of the action can drive for a different duration
+        // This allows reusing the same action for various purposes
+        DriveTimeAction(double durationSec);
+
+    protected:
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    
+    private:
+        // Store the duration this action should run for
+        double durationSec;
+        
+        // Will be used to store the time when the action starts (begin called)
+        std::chrono::time_point<std::chrono::steady_clock> startTime;
+    };
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    DriveTimeAction::DriveTimeAction(double durationSec) : durationSec(durationSec){
+
+    }
+
+    void DriveTimeAction::begin(){
+        // Lock motors as this action controls them
+        // This stops whatever action currently controls the motors (if any)
+        lockDevices({Main::robot->flmotor, Main::robot->frmotor, 
+            Main::robot->rlmotor, Main::robot->rrmotor});
+        
+        // Store the time this action started 
+        startTime = std::chrono::steady_clock::now();
+
+        // Start moving the motors forward at 70% speed, no rotation
+        Main::robot->driveHelper.update(0.7, 0);
+    }
+
+    void DriveTimeAction::process(){
+        // Nothing to do here. Just let motors keep running
+    }
+
+    void DriveTimeAction::finish(bool wasInterrupted){
+        // Stop the motors
+        Main::robot->driveHelper.update(0, 0);
+    }
+
+    bool DriveTimeAction::shouldContinue(){
+        double elapsedSec = std::chrono::duration_cast<std::chrono::seconds>(now - startTime).count();
+        if(elapsedSec >= durationSec)
+            return false;
+        return true;
+    }
+
+    ```
 
 
 ### Rotate Time Action
 
-TODO: Implement this
+The rotate time action is implemented almost the same way as the drive time action. Instead of driving forward at 70% speed though, the action rotates at 90% speed.
+
+=== "Python (`actions.py`)"
+    ```py
+    # Add this import at the top of the file (with other imports)
+    import time
+
+    class RotateTimeAction(Action):
+        # Each instance of the action can drive for a different duration
+        # This allows reusing the same action for various purposes
+        def __init__(self, duration_sec: float):
+            super().__init__()
+
+            # Store the duration this action should run for
+            self.duration_sec = duration_sec / 1000
+
+            # Will be used to store the time when the action starts (begin called)
+            self.start_time = 0.0
+
+        def begin(self):
+            # Lock motors as this action controls them
+            # This stops whatever action currently controls the motors (if any)
+            self.lock_devices([main.robot.flmotor, main.robot.frmotor, 
+                main.robot.rlmotor, main.robot.rrmotor])
+            
+            # Store the time this action started
+            self.start_time = time.time()
+
+            # Start moving the motors at 90% rotation (no forward / reverse speed)
+            main.robot.drive_helper.update(0, 0.9)
+        
+        def process(self):
+            # Nothing to do here. Just let motors keep running
+            pass
+        
+        def finish(self, was_interrupted: bool):
+            # Stop the motors
+            main.robot.drive_helper.update(0, 0)
+
+        def should_continue(self) -> bool:
+            now = time.time()
+            if (now - self.start_time) >= self.duration_sec:
+                return False
+            return True
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // Add with other imports
+    #include <chrono>
+
+    class RotateTimeAction : public Action {
+    public:
+        // Each instance of the action can drive for a different duration
+        // This allows reusing the same action for various purposes
+        RotateTimeAction(double durationSec);
+
+    protected:
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    
+    private:
+        // Store the duration this action should run for
+        double durationSec;
+        
+        // Will be used to store the time when the action starts (begin called)
+        std::chrono::time_point<std::chrono::steady_clock> startTime;
+    };
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    RotateTimeAction::RotateTimeAction(double durationSec) : durationSec(durationSec){
+
+    }
+
+    void RotateTimeAction::begin(){
+        // Lock motors as this action controls them
+        // This stops whatever action currently controls the motors (if any)
+        lockDevices({Main::robot->flmotor, Main::robot->frmotor, 
+            Main::robot->rlmotor, Main::robot->rrmotor});
+        
+        // Store the time this action started 
+        startTime = std::chrono::steady_clock::now();
+
+        // Start moving the motors at 90% rotation (no forward / reverse speed)
+        Main::robot->driveHelper.update(0, 0.9);
+    }
+
+    void RotateTimeAction::process(){
+        // Nothing to do here. Just let motors keep running
+    }
+
+    void RotateTimeAction::finish(bool wasInterrupted){
+        // Stop the motors
+        Main::robot->driveHelper.update(0, 0);
+    }
+
+    bool RotateTimeAction::shouldContinue(){
+        double elapsedSec = std::chrono::duration_cast<std::chrono::seconds>(now - startTime).count();
+        if(elapsedSec >= durationSec)
+            return false;
+        return true;
+    }
+
+    ```
+
+
+### Brake Mode
+
+TODO: Show how to switch between brake and coast mode for different actions
+
+TODO: Explain why. Makes more consistent by trying to stop when action finishes
 
 
 ### Using the Actions
 
 TODO: Implement an action series showing how this works. Drive a "square"
+
+TODO: Also use the wait action from earlier to make each segment of the square more visible
 
 TODO: Comment on tuning drive times and rotate times to drive the square correctly
 
