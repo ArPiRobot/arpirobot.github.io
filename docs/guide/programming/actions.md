@@ -932,15 +932,58 @@ The rotate time action is implemented almost the same way as the drive time acti
             return false;
         return true;
     }
-
     ```
 
 
 ### Brake Mode
 
-TODO: Show how to switch between brake and coast mode for different actions
+Generally, coast mode is better when driving the robot with a gamepad. It results in more natural control of the robot and prevents sudden stops when changing directions. However, when performing automated driving, it is often better to use brake mode. This ensures the robot stops quicker when the action is finished driving and makes driving more consistent.
 
-TODO: Explain why. Makes more consistent by trying to stop when action finishes
+As such, the motors should be in brake mode for the drive time and rotate time actions, but in coast mode for the joystick drive action. This can be achieved by setting the motors to brake / coast mode as needed in an action's `begin` function.
+
+Add the following lines to the end of each action's `begin` function as indicated. For robots with fewer motors, only set the brake mode for the motors the robot has (and change motor object names as needed).
+
+=== "Python (`actions.py`)"
+    ```py
+    # Add to DriveTimeAction's begin
+    main.robot.flmotor.set_brake_mode(True)
+    main.robot.frmotor.set_brake_mode(True)
+    main.robot.rlmotor.set_brake_mode(True)
+    main.robot.rrmotor.set_brake_mode(True)
+
+    # Add to RotateTimeAction's begin
+    main.robot.flmotor.set_brake_mode(True)
+    main.robot.frmotor.set_brake_mode(True)
+    main.robot.rlmotor.set_brake_mode(True)
+    main.robot.rrmotor.set_brake_mode(True)
+
+    # Add to JSDriveAction's begin
+    main.robot.flmotor.set_brake_mode(False)
+    main.robot.frmotor.set_brake_mode(False)
+    main.robot.rlmotor.set_brake_mode(False)
+    main.robot.rrmotor.set_brake_mode(False)
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    // Add to DriveTimeAction's begin
+    Main::robot->flmotor.setBrakeMode(true);
+    Main::robot->frmotor.setBrakeMode(true);
+    Main::robot->rlmotor.setBrakeMode(true);
+    Main::robot->rrmotor.setBrakeMode(true);
+
+    // Add to RotateTimeAction's begin
+    Main::robot->flmotor.setBrakeMode(true);
+    Main::robot->frmotor.setBrakeMode(true);
+    Main::robot->rlmotor.setBrakeMode(true);
+    Main::robot->rrmotor.setBrakeMode(true);
+
+    // Add to JSDriveAction's begin
+    Main::robot->flmotor.setBrakeMode(false);
+    Main::robot->frmotor.setBrakeMode(false);
+    Main::robot->rlmotor.setBrakeMode(false);
+    Main::robot->rrmotor.setBrakeMode(false);
+    ```
 
 
 ### Using the Actions
