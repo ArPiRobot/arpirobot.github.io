@@ -988,14 +988,89 @@ Add the following lines to the end of each action's `begin` function as indicate
 
 ### Using the Actions
 
-TODO: Implement an action series showing how this works. Drive a "square"
+The `DriveTimeAction`, `RotateTimeAction` and `WaitAction` (shown earlier) can be used to create `ActionSeries` to drive a square and triangle. These action series will look something like the following, however *you will likely need to change the drive and rotate times to suit your specific robot and the surface you are driving on*.
 
-TODO: Also use the wait action from earlier to make each segment of the square more visible
+=== "Python (`robot.py`)"
+    ```py
+    # Add with other imports
+    from actions import DriveTimeAction, RotateTimeAction, JSDriveAction, WaitAction()
 
-TODO: Comment on tuning drive times and rotate times to drive the square correctly
+    # Add in __init__
+    self.SQUARE_BTN = 0
+    self.TRIANGLE_BTN = 1
+    self.js_drive_action = JSDriveAction()
+    self.drive_square_series = ActionSeries(
+        # This is a list of actions to run sequentially
+        [
+            DriveTimeAction(2),         # First edge
+            RotateTimeAction(3.5),      # Rotate 90 (adjust time as needed)
 
-TODO: Also implement a drive triangle using a different button to show how multiple actionseries are useful
+            WaitAction(0.5),            # Delay before driving next edge
 
+            DriveTimeAction(2),         # Second edge
+            RotateTimeAction(3.5),      # Rotate 90 (adjust time as needed)
+
+            WaitAction(0.5),            # Delay before driving next edge
+
+            DriveTimeAction(2),         # Third edge
+            RotateTimeAction(3.5),      # Rotate 90 (adjust time as needed)
+
+            WaitAction(0.5),            # Delay before driving next edge
+
+            DriveTimeAction(2),         # Fourth edge
+            RotateTimeAction(3.5),      # Rotate 90 (adjust time as needed)
+
+            WaitAction(0.1)             # Small delay so brake mode has time to work
+
+        ],
+
+        # Start JSDriveAction instance when this action series finishes
+        self.js_drive_action
+    )
+    self.drive_triangle_series = ActionSeries(
+        # This is a list of actions to run sequentially
+        [
+            DriveTimeAction(2),         # First edge
+            RotateTimeAction(4.5),      # Rotate 120 (adjust time as needed)
+
+            WaitAction(0.5),            # Delay before driving next edge
+
+            DriveTimeAction(2),         # Second edge
+            RotateTimeAction(4.5),      # Rotate 120 (adjust time as needed)
+
+            WaitAction(0.5),            # Delay before driving next edge
+
+            DriveTimeAction(2),         # Third edge
+            RotateTimeAction(4.5),      # Rotate 120 (adjust time as needed)
+
+            WaitAction(0.1)             # Small delay so brake mode has time to work
+        ],
+
+        # Start JSDriveAction instance when this action series finishes
+        self.js_drive_action
+    )
+
+    # Remove This line in robot_started
+    ActionManager.start_action(JSDriveAction())
+
+    # And replace it with
+    ActionManager.start_action(self.js_drive_action())
+
+    # Finally, add two button triggers to run the drive shape actions
+    # Add in robot_started
+    ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.SQUARE_BTN, self.drive_square_series))
+    ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.TRIANGLE_BTN, self.drive_triangle_series))
+    ```
+
+If built and deployed, the buttons 0 and 1 on the gamepad (see drive station to identify which button is which) will start the drive square series or drive triangle series respectively.
+
+TODO: HOW TO HANDLE STOPPING ONE ACTION SERIES WHEN ANOTHER STARTS???
+TODO: LOCK_DEVICES WON'T WORK FOR THIS UNLESS THE ACTION SERIES IS THE THING LOCKING
+TODO: THIS REQUIRES CHANGES TO THE CORELIB...
+TODO: BEST SOLUTION IS TO PROBABLY HAVE AN ACTIONSERIES BE THE LOCKING OBJECT IF ANY CHILD ACTION LOCKS A DEVICE
+TODO: ANY OTHER SOLUTION DOES NOT ENSURE THE ENTIRE SERIES IS STOPPED
+TODO: OTHER OPTION COULD BE TO STOP ACTIONSERIES IF ANY ACTION INTERRUPTED, BUT SOMETHING LIKE WAIT ACTION WOULD BREAK THIS
+TODO: AND COULD ACTUALLY CAUSE THE WRONG SERIES TO BE STOPPED.
 
 ## Using Sensors Instead of Time
 
