@@ -544,7 +544,7 @@ This clearly would prevent either action from working as intended. The solution 
 
 To achieve this, it is necessary to know what devices an action uses (or equivalently which action is currently controlling a device). The action controlling a device is said to "own" or "lock" a device. If a newer action is started, it can take ownership of the device. When this happens, the previous action is automatically stopped.
 
-In an `Action`'s `begin` function, a builtin function called `lock_device` / `lockDevice` can be used to take ownership of a device the action will control. If another action is controlling the device it will be stopped to allow the newer action to take control. There is also a `lock_devices` / `lockDevices` function that can lock multiple devices in one line of code.
+An `Action` can optionally have a function called `lockedDevices` / `locked_devices`. This function returns a list of devices that should be locked when the action starts (`LockedDeviceList`). When an action with this function is started, any devices in the list returned from `lockedDevices` / `locked_devices` are locked by the action. If another action is running that had previously locked any device now locked by the new action, the old action will be stopped to allow the newer action to take control.
 
 Additionally, if you have code in `enabled_periodic` / `enabledPeriodic` or `disabled_periodic` / `disabledPeriodic` that controls a device, you will need to be careful not to control it while an action has locked the device. The device has a function called `is_locked` / `isLocked` which can be used to determine if the device is locked by an action. **Unlike actions, the periodic functions cannot lock a device. As such, it is highly recommended to either control a device using actions or the periodic functions, not both.** However, it is not a problem to control some devices using actions and others from the `Robot`'s periodic functions.
 
@@ -558,6 +558,9 @@ To start, create a new action in `actions.py` or `actions.hpp` and `actions.cpp`
 === "Python (`actions.py`)"
     ```py
     class JSDriveAction(Action):
+        def locked_devices(self) -> LockedDeviceList:
+            pass
+        
         def begin(self):
             pass
         
@@ -575,6 +578,7 @@ To start, create a new action in `actions.py` or `actions.hpp` and `actions.cpp`
     ```cpp
     class JSDriveAction : public Action{
     protected:
+        LockedDeviceList lockedDevices() override;
         void begin() override;
         void process() override;
         void finish(bool wasInterrupted) override;
@@ -584,6 +588,10 @@ To start, create a new action in `actions.py` or `actions.hpp` and `actions.cpp`
 
 === "C++ (`actions.cpp`)"
     ```cpp
+    LockedDeviceList JSDriveAction::lockedDevices(){
+
+    }
+
     void JSDriveAction::begin(){
 
     }
@@ -618,7 +626,7 @@ Then, in `process` move the existing drive code from `enabled_periodic` / `enabl
 
 === "C++ (`actions.cpp`)"
     ```cpp
-    void process(){
+    void JSDriveAction::process(){
         // Get value for speed axis
         double speed = Main::robot->gp0.getAxis(Main::robot->SPEED_AXIS, Main::robot->DEADBAND);
         
@@ -630,22 +638,22 @@ Then, in `process` move the existing drive code from `enabled_periodic` / `enabl
     }
     ```
 
-Then, in `begin`, add the following to lock the motors. All four motors are locked as this action (indirectly) controls all four using the drive helper. *Note: You cannot lock the drive helper. It is not a device.* Locking the motors is not important yet, but having this will be important later.
+Then, in `lockedDevices` / `locked_devices`, add the following to lock the motors. All four motors are locked as this action (indirectly) controls all four using the drive helper. *Note: You cannot lock the drive helper. It is not a device.* Locking the motors is not important yet, but having this will be important later.
 
 === "Python (`actions.py`)"
     ```py
-    def begin(self):
+    def locked_devices(self) -> LockedDeviceList:
         # If your robot only has two motors, only reference those motors
-        self.lock_devices([main.robot.flmotor, main.robot.frmotor, 
-                main.robot.rlmotor, main.robot.rrmotor])
+        return [ main.robot.flmotor, main.robot.frmotor, 
+                main.robot.rlmotor, main.robot.rrmotor ]
     ```
 
 === "C++ (`actions.cpp`)"
     ```cpp
-    void begin(){
+    LockedDeviceList JSDriveAction::lockedDevices(){
         // If your robot only has two motors, only reference those motors
-        lockDevices({Main::robot->flmotor, Main::robot->frmotor, 
-            Main::robot->rlmotor, Main::robot->rrmotor});
+        return { Main::robot->flmotor, Main::robot->frmotor, 
+            Main::robot->rlmotor, Main::robot->rrmotor };
     }
     ```
 
@@ -659,7 +667,7 @@ Next, in the action's `finish` function add the following line to ensure that mo
 
 === "C++ (`actions.cpp`)"
     ```cpp
-    void finish(){
+    void JSDriveAction::finish(){
         Main::robot->driveHelper.update(0, 0);
     }
     ```
@@ -733,12 +741,13 @@ The first action to be implemented needs to drive a straight line for some amoun
             # Will be used to store the time when the action starts (begin called)
             self.start_time = 0.0
 
-        def begin(self):
+        def locked_devices(self) -> LockedDeviceList:
             # Lock motors as this action controls them
             # This stops whatever action currently controls the motors (if any)
-            self.lock_devices([main.robot.flmotor, main.robot.frmotor, 
-                main.robot.rlmotor, main.robot.rrmotor])
-            
+            return [ main.robot.flmotor, main.robot.frmotor, 
+                main.robot.rlmotor, main.robot.rrmotor ]
+
+        def begin(self):
             # Store the time this action started
             self.start_time = time.time()
 
@@ -772,6 +781,7 @@ The first action to be implemented needs to drive a straight line for some amoun
         DriveTimeAction(double durationSec);
 
     protected:
+        LockedDeviceList lockedDevices() override;
         void begin() override;
         void process() override;
         void finish(bool wasInterrupted) override;
@@ -792,12 +802,14 @@ The first action to be implemented needs to drive a straight line for some amoun
 
     }
 
-    void DriveTimeAction::begin(){
+    LockedDeviceList DriveTimeAction::lockedDevices(){
         // Lock motors as this action controls them
         // This stops whatever action currently controls the motors (if any)
-        lockDevices({Main::robot->flmotor, Main::robot->frmotor, 
-            Main::robot->rlmotor, Main::robot->rrmotor});
-        
+        return { Main::robot->flmotor, Main::robot->frmotor, 
+            Main::robot->rlmotor, Main::robot->rrmotor };
+    }
+
+    void DriveTimeAction::begin(){        
         // Store the time this action started 
         startTime = std::chrono::steady_clock::now();
 
@@ -845,12 +857,13 @@ The rotate time action is implemented almost the same way as the drive time acti
             # Will be used to store the time when the action starts (begin called)
             self.start_time = 0.0
 
-        def begin(self):
+        def locked_devices(self) -> LockedDeviceList:
             # Lock motors as this action controls them
             # This stops whatever action currently controls the motors (if any)
-            self.lock_devices([main.robot.flmotor, main.robot.frmotor, 
-                main.robot.rlmotor, main.robot.rrmotor])
-            
+            return [ main.robot.flmotor, main.robot.frmotor, 
+                main.robot.rlmotor, main.robot.rrmotor ]
+
+        def begin(self):            
             # Store the time this action started
             self.start_time = time.time()
 
@@ -884,6 +897,7 @@ The rotate time action is implemented almost the same way as the drive time acti
         RotateTimeAction(double durationSec);
 
     protected:
+        LockedDeviceList lockedDevices() override;
         void begin() override;
         void process() override;
         void finish(bool wasInterrupted) override;
@@ -904,12 +918,14 @@ The rotate time action is implemented almost the same way as the drive time acti
 
     }
 
-    void RotateTimeAction::begin(){
+    LockedDeviceList RotateTimeAction::lockedDevices(){
         // Lock motors as this action controls them
         // This stops whatever action currently controls the motors (if any)
-        lockDevices({Main::robot->flmotor, Main::robot->frmotor, 
-            Main::robot->rlmotor, Main::robot->rrmotor});
-        
+        return { Main::robot->flmotor, Main::robot->frmotor, 
+            Main::robot->rlmotor, Main::robot->rrmotor };
+    }
+
+    void RotateTimeAction::begin(){        
         // Store the time this action started 
         startTime = std::chrono::steady_clock::now();
 
