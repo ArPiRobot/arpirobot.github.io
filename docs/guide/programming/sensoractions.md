@@ -65,8 +65,11 @@ The following code implements an action that rotates a certain number of degrees
             self.target_angle = main.robot.imu.get_gyro_z() + self.degrees
 
             # Start rotating in the correct direction
-            # Note: it is assumed that positive rotation speed rotates the positive direction on the IMU
-            # If the robot rotates "forever" swap the positive and negative rotation directions
+            # Note: It is assumed that positive rotation in the drive helper 
+            #       results in positive change in IMU angle. If this is not the
+            #       case, swap the +0.9 and -0.9 in the if / else below.
+            #       If these signs are incorrect, the robot will rotate forever
+            #       as it never reaches its target angle.
             if self.degrees >= 0:
                 main.robot.drive_helper.update(0, 0.9)
             else:
@@ -95,16 +98,99 @@ The following code implements an action that rotates a certain number of degrees
                 return main.robot.imu.get_gyro_z() > self.target_angle
     ```
 
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    class RotateAngleAction : public Action{
+    public:
+        RotateAngleAction(double degrees);
+
+    protected:
+        LockedDeviceList lockedDevices() override;
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    
+    private:
+        double degrees;
+        double targetAngle = 0;     // Will be set in begin()
+    };
+    ```
+
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    RotateAngleAction::RotateAngleAction(double degrees) : degrees(degrees){
+
+    }
+
+    LockedDeviceList RotateAngleAction::lockedDevices(){
+        // This needs to be the only action using motors while running
+        return { Main::robot->flmotor, Main::robot->frmotor, 
+            Main::robot->rlmotor, Main::robot->rrmotor };
+    }
+
+    void RotateAngleAction::begin(){
+        // Calculate target angle
+        // Action should rotate this->degrees degrees from where the robot is initially facing
+        targetAngle = degrees + Main::robot->imu.getGyroZ();
+
+        // Start rotating in the correct direction
+        // Note: It is assumed that positive rotation in the drive helper 
+        //       results in positive change in IMU angle. If this is not the
+        //       case, swap the +0.9 and -0.9 in the if / else below.
+        //       If these signs are incorrect, the robot will rotate forever
+        //       as it never reaches its target angle.
+        if(degrees >= 0){
+            Main::robot->driveHelper.update(0, 0.9);
+        }else{
+            Main::robot->driveHelper.update(0, -0.9);
+        }
+    }
+
+    void RotateAngleAction::process(){
+        // Nothing to do here. Just let it keep rotating.
+    }
+
+    void RotateAngleAction::finish(bool wasInterrupted){
+        // Stop rotating
+        Main::robot->driveHelper.update(0, 0);
+    }
+
+    bool RotateAngleAction::shouldContinue(){
+        if(degrees >= 0){
+            // Rotating in positive direction
+            // This means that the angle will be increasing
+            // Done rotating when angle is at greater than or equal to target
+            // If not done, should continue running (continue if less than target)
+            return Main::robot->imu.getGyroZ() < targetAngle;
+        }else{
+            // Rotating in negative direction
+            // This means that the angle will be decreasing
+            // Done rotating when angle is less than or equal to target
+            // If not done, should continue running (continue if greater than target)
+            return Main::robot->imu.getGyroZ() > targetAngle;
+        }
+    }
+
+    ```
+
 When the action starts, it calculates the target angle (the angle it should go to) which is a sum of the angle the robot starts at and the angle the action is supposed to rotate (passed as a constructor argument). The robot continues rotating at a constant speed until it reaches (or passes) this angle. The `shouldContinue` / `should_continue` function is used to stop the action once it has rotated far enough. Note that negative rotation is simply rotating in the opposite direction. As such, it is necessary to know which way the robot is rotating to determine if it has rotated far enough (hence the if statement in `shouldContinue` / `should_continue`).
 
 ### Drive Distance Action
 
-TODO: Add support for encoders in robot program
+A drive distance action can be implemented similarly. Since `SingleEncoders` are used, it is not possible to determine the direction the robot is moving using encoders, only how far it has moved. However, it is reasonable to assume that if a positive power is applied the robot is moving forward and if a negative power is applied, the robot is moving backward. This assumption can be made since this is how motor directions were setup previously (see [Moving Motors](./movingmotors.md)). As such, if a positive distance is passed in, the action will drive forward (positive power), otherwise it will drive in reverse.
 
-TODO: Use encoders + brake mode to drive until a distance threshold has passed
+TODO: Code
+
+This action functions similarly to the `RotateAngleAction` previously implemented. When it starts, it calculates a target distance to travel. Then, the robot starts moving. In `shouldContinue` / `should_continue` it is checked if the robot has driven far enough. If so, the action stops.
 
 
 ### Using the Actions
+
+<!--The main challenge with this action is converting a distance in inches to a number of encoder "ticks". An encoder "tick" is one count from the encoder. `SingleEncoder`s count rising and falling edges, so when using a [standard 20-slot disk](https://www.adafruit.com/product/3782), there are 40 "ticks" per wheel revolution. Converting wheel revolutions to linear distance traveled requires the wheel radius. If using [standard black and yellow TT motor wheels](https://www.onemakergroup.com/store/products/tt-motor-wheels) the radius is 2.5 inches. The following equation is used to calculate number of ticks from linear distance
+
+`ticks` = `distance_inches` / `wheel_radius` * `ticks_per_revolution`-->
+
 
 TODO: Implement driving a square and triangle on button presses using automated routines
 
