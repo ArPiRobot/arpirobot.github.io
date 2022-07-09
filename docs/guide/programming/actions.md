@@ -638,7 +638,7 @@ Then, in `process` move the existing drive code from `enabled_periodic` / `enabl
     }
     ```
 
-Then, in `lockedDevices` / `locked_devices`, add the following to lock the motors. All four motors are locked as this action (indirectly) controls all four using the drive helper. *Note: You cannot lock the drive helper. It is not a device.* Locking the motors is not important yet, but having this will be important later.
+Then, in `locked_devices` / `lockedDevices`, add the following to lock the motors. All four motors are locked as this action (indirectly) controls all four using the drive helper. *Note: You cannot lock the drive helper. It is not a device.* Locking the motors is not important yet, but having this will be important later.
 
 === "Python (`actions.py`)"
     ```py
