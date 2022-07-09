@@ -717,7 +717,7 @@ While it would be possible to make an action to drive each shape, this is not th
 
 Driving both a square and a triangle can be accomplished using two basic actions. First, the robot needs to be able to drive a straight line. Second, it needs to be able to rotate. These two actions can be repeated as many times as necessary to drive the desired shape.
 
-Ideally, driving a straight line would be done using encoders on the robot to drive some specific distance and rotation would use a gyroscope to rotate to some angle, however for the sake of simplicity, time will be used instead in this section (later the actions will be adapted to use distance and angle instead of time). This means that instead of an action that drives some number inches we will have an action that drives for some amount of time. For rotation, it will rotate for some amount of time. *Timed driving is not a precise way to create shapes. You may need to change some times (especially for the rotations) to drive the correct shape. The code in this section will behave differently on different robots.*
+Ideally, driving a straight line would be done using encoders on the robot to drive some specific distance and rotation would use a gyroscope to rotate to some angle, however for the sake of simplicity, time will be used instead in this section. This means that instead of an action that drives some number of inches we will have an action that drives for some amount of time. For rotation, it will rotate for some amount of time. *Timed driving is not a precise way to create shapes. You may need to change some times (especially for the rotations) to drive the correct shape. The code in this section will behave differently on different robots.*
 
 
 ### Drive Time Action
@@ -1009,11 +1009,17 @@ The `DriveTimeAction`, `RotateTimeAction` and `WaitAction` (shown earlier) can b
 === "Python (`robot.py`)"
     ```py
     # Add with other imports
-    from actions import DriveTimeAction, RotateTimeAction, JSDriveAction, WaitAction()
+    from actions import DriveTimeAction, RotateTimeAction, JSDriveAction, WaitAction
 
+    ################################################################################
     # Add in __init__
+    ################################################################################
+
+    # Constants for button mappings on gamepad
     self.SQUARE_BTN = 0
     self.TRIANGLE_BTN = 1
+
+    # Action and ActionSeries instances
     self.js_drive_action = JSDriveAction()
     self.drive_square_series = ActionSeries(
         # This is a list of actions to run sequentially
@@ -1066,47 +1072,121 @@ The `DriveTimeAction`, `RotateTimeAction` and `WaitAction` (shown earlier) can b
         self.js_drive_action
     )
 
-    # Remove This line in robot_started
+
+    ################################################################################
+    # In robot_started
+    ################################################################################
+    
+    # Remove this line
     ActionManager.start_action(JSDriveAction())
 
     # And replace it with
     ActionManager.start_action(self.js_drive_action())
 
     # Finally, add two button triggers to run the drive shape actions
-    # Add in robot_started
+    ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.SQUARE_BTN, self.drive_square_series))
+    ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.TRIANGLE_BTN, self.drive_triangle_series))
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    ////////////////////////////////////////////////////////////////////////////////
+    // Add with other member variables at the bottom of the Robot class declaration
+    ////////////////////////////////////////////////////////////////////////////////
+
+    // Constants for button mappings on gamepad
+    const int SQUARE_BUTTON = 0;
+    const int TRIANGLE_BUTTON = 1;
+
+    // Action and ActionSeries instances
+    JSDriveAction jsDriveAction;
+    ActionSeries driveSquareSeries{
+        // This is a list of actions to run sequentially
+        {
+            std::make_shared<DriveTimeAction>(2),         // First edge
+            std::make_shared<RotateTimeAction>(3.5),      // Rotate 90 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.5),            // Delay before driving next edge
+
+            std::make_shared<DriveTimeAction>(2),         // Second edge
+            std::make_shared<RotateTimeAction>(3.5),      // Rotate 90 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.5),            // Delay before driving next edge
+
+            std::make_shared<DriveTimeAction>(2),         // Third edge
+            std::make_shared<RotateTimeAction>(3.5),      // Rotate 90 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.5),            // Delay before driving next edge
+
+            std::make_shared<DriveTimeAction>(2),         // Fourth edge
+            std::make_shared<RotateTimeAction>(3.5),      // Rotate 90 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.1)             // Small delay so brake mode has time to work
+
+        },
+
+        // Start JSDriveAction instance when this action series finishes
+        jsDriveAction
+    };
+    ActionSeries driveTriangleSeries {
+        # This is a list of actions to run sequentially
+        {
+            std::make_shared<DriveTimeAction>(2),         // First edge
+            std::make_shared<RotateTimeAction>(4.5),      // Rotate 120 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.5),            // Delay before driving next edge
+
+            std::make_shared<DriveTimeAction>(2),         // Second edge
+            std::make_shared<RotateTimeAction>(4.5),      // Rotate 120 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.5),            // Delay before driving next edge
+
+            std::make_shared<DriveTimeAction>(2),         // Third edge
+            std::make_shared<RotateTimeAction>(4.5),      // Rotate 120 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.1)             // Small delay so brake mode has time to work
+        },
+
+        // Start JSDriveAction instance when this action series finishes
+        jsDriveAction
+    };
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    ////////////////////////////////////////////////////////////////////////////////
+    // In robotStarted
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    // Remove this line
+    ActionManager::startAction(std::make_shared<JSDriveAction>());
+
+    // And replace it with
+    ActionManager::startAction(jsDriveAction);
+
+    // Finally, add two button triggers to run the drive shape actions
     ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.SQUARE_BTN, self.drive_square_series))
     ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.TRIANGLE_BTN, self.drive_triangle_series))
     ```
 
 If built and deployed, the buttons 0 and 1 on the gamepad (see drive station to identify which button is which) will start the drive square series or drive triangle series respectively.
 
-TODO: HOW TO HANDLE STOPPING ONE ACTION SERIES WHEN ANOTHER STARTS???
-TODO: LOCK_DEVICES WON'T WORK FOR THIS UNLESS THE ACTION SERIES IS THE THING LOCKING
-TODO: THIS REQUIRES CHANGES TO THE CORELIB...
-TODO: BEST SOLUTION IS TO PROBABLY HAVE AN ACTIONSERIES BE THE LOCKING OBJECT IF ANY CHILD ACTION LOCKS A DEVICE
-TODO: ANY OTHER SOLUTION DOES NOT ENSURE THE ENTIRE SERIES IS STOPPED
-TODO: OTHER OPTION COULD BE TO STOP ACTIONSERIES IF ANY ACTION INTERRUPTED, BUT SOMETHING LIKE WAIT ACTION WOULD BREAK THIS
-TODO: AND COULD ACTUALLY CAUSE THE WRONG SERIES TO BE STOPPED.
+Additionally, if one series is started while the other is running the older series will be stopped by the newer one. This behavior is caused by the device locking discussed earlier. When an `ActionSeries` starts, it locks all devices that its child actions would otherwise lock. The devices are not actually locked by the child actions, only by the action series.
 
-## Using Sensors Instead of Time
+In the above example, the "drive square" series uses an action that locks the robot's motors. The same is true of the "drive triangle" series. As such, if the "drive square" series is started the series locks the motors (since they will be used sometime while the series is running). Then, if the "drive triangle" series is started while the "drive square" series is still running, the "drive triangle" series will lock the motors. In doing so, it will stop whatever locked them last, which in this case was the "drive square" series.
 
-TODO: Explain goal. Improve time-based drive to allow easier automated routines.
+This behavior can be used to ensure that `ActionSeries` can interrupt (stop) each other to allow the newest one to run, just like individual actions.
 
-### Rotate Angle Action
+### Fixing the Shapes
 
-TODO: Replace rotate time with rotate angle that uses no PID and just stops at the given angle
+As previously mentioned, when using time-based motions, the shapes will likely not be correct on your robot. Each robot will have different physical characteristics and different environments that will affect how long it needs to drive or rotate to make the correct shape.
 
+The next section of this guide re-implements the shape `ActionSeries` using sensor based actions instead, however if you do want to fix the time-based shapes the recommended approach is as follows.
 
-### Drive Distance ACtion
-
-TODO: Add support for encoders in robot program
-
-TODO: Use encoders + brake mode to drive until a distance threshold has passed
-
-### Using the Actions
-
-TODO: Implement driving a square and triangle on button presses using automated routines
-
-### Limitations
-
-TODO: Explain limitations of this method. Drive distance can go too far. It also doesn't use the IMU to ensure a straight line. Rotate angle can overshoot and does not correct. Rotating to an angle is actually a perfect application for a PID loop, shown in the next section of the guide.
+1. Deploy the code to your robot
+2. Press button 0 (which starts driving a square)
+3. Observe how far the robot drives before it starts to rotate. A good distance would be between 2 and 5 feet (this partially depends on how much space you have). If it seems too far, reduce the time for drive actions (arguments to constructor of `DriveTimeAction`). If it seems too short, increase the time. Remember to rebuild (if applicable) and deploy before testing new values.
+4. Once you have a good drive distance, it is recommended to use that time for all `DriveTimeActions` in both `ActionSeries` instances.
+5. Next, the rotation angle needs to be adjusted for the square. This is relatively simple. Run the action, and allow it to reach the first rotation action. Ideally, it would rotate 90 degrees. It doesn't need to be perfect, just close enough. Increase / decrease the rotation time (argument in constructor of `RotateTimeAction`) until the rotation distance is generally approximately 90 degrees. Remember to rebuild (if applicable) and deploy before testing new values.
+6. Use the time determined above for all rotations in the square `ActionSeries`.
+7. The triangle rotations will need to be approximately 120 degrees. A good starting point would be to take the time used for rotation actions, multiply it by 4, then divide by 3. Start with this time (round to two decimal places).
+8. Build (if applicable) and deploy the program. Test the triangle action (start running this action by pressing button 1 on the gamepad). If the rotate seems approximately correct, leave it as is. If the rotation time seems very wrong, adjust it in the direction it needs to go. The same time should generally be used for all `RotateTimeAction`s used in the triangle `ActionSeries`.

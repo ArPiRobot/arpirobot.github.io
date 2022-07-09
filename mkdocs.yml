@@ -48,6 +48,7 @@ nav:
             - Driving with Gamepad: guide/programming/drivegamepad.md
             - Sensor Data & NetworkTable: guide/programming/sensordata.md
             - Using Actions: guide/programming/actions.md
+            - Using Sensors with Actions: guide/programming/sensoractions.md
             - PID Controller: guide/programming/pid.md
             - Examples Repo: guide/programming/examplesrepo.md
         - Other Tasks:
