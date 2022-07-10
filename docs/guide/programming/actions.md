@@ -1129,7 +1129,7 @@ The `DriveTimeAction`, `RotateTimeAction` and `WaitAction` (shown earlier) can b
         jsDriveAction
     };
     ActionSeries driveTriangleSeries {
-        # This is a list of actions to run sequentially
+        // This is a list of actions to run sequentially
         {
             std::make_shared<DriveTimeAction>(2),         // First edge
             std::make_shared<RotateTimeAction>(4.5),      // Rotate 120 (adjust time as needed)

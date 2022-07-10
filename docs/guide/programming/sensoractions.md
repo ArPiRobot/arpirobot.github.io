@@ -326,14 +326,138 @@ When the action starts, it resets encoder counts to zero. This makes detecting w
 
 ### Using the Actions
 
-<!--The main challenge with this action is converting a distance in inches to a number of encoder "ticks". An encoder "tick" is one count from the encoder. `SingleEncoder`s count rising and falling edges, so when using a [standard 20-slot disk](https://www.adafruit.com/product/3782), there are 40 "ticks" per wheel revolution. Converting wheel revolutions to linear distance traveled requires the wheel radius. If using [standard black and yellow TT motor wheels](https://www.onemakergroup.com/store/products/tt-motor-wheels) the radius is 2.5 inches. The following equation is used to calculate number of ticks from linear distance
+The actions implemented above can be used to replace the "drive square" and "drive triangle" `ActionSeries` from the [previous section](./actions.md) of this guide. Time based rotations are replaced with angle-based rotations and time-based drives are replaced with distance-based drives. The only challenging part is determining how far to drive.
 
-`ticks` = `distance_inches` / `wheel_radius` * `ticks_per_revolution`-->
+The `DriveDistanceAction` drives a certain number of encoder "ticks" or "counts". An encoder "tick" (for a `SingleEncoder`) is any rising or falling edge of the signal. This means that for a typical optical encoder there will be twice as many "ticks" per wheel revolution as there are slots in the disk. For example, when using a [standard 20-slot disk](https://www.adafruit.com/product/3782), there are 40 "ticks" per wheel revolution. Converting wheel revolutions into distance traveled (linear distance traveled by the robot) is also fairly simple. Each revolution, the robot drives a distance equal to the circumference of the wheel. The circumference of the wheel is pi (π ≈ 3.14) times the diameter of the wheel. If using [standard black and yellow TT motor wheels](https://www.onemakergroup.com/store/products/tt-motor-wheels) the diameter is 2.5 inches.
 
+The following equation can be used to calculate how many "ticks" should be used with the `DriveDistanceAction` to drive a given distance (note that *distance* and *wheel_diameter* must have the same unit). Always round to the nearest whole number.
 
-TODO: Implement driving a square and triangle on button presses using automated routines
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ticks* = *distance* ÷ (*π* × *wheel_diameter*) × *ticks_per_revolution*
 
+For example, to drive two feet (24 inches) with the encoder disk and wheels mentioned earlier:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ticks* = *24* ÷ (*π* × *2.5*) × *40*
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ticks ≈ 122*
+
+This number is used in the code below to implement the "drive square" and "drive triangle" `ActionSeries`.
+
+The following code can replace the same `ActionSeries` from the previous section to use the sensor-based actions instead of the time-based ones.
+
+=== "Python (`robot.py`)"
+    ```py
+    self.drive_square_series = ActionSeries(
+        # This is a list of actions to run sequentially
+        [
+            DriveDistanceAction(122),       # First edge
+            RotateAngleAction(90),          # Rotate 90
+
+            WaitAction(0.5),                # Delay before driving next edge
+
+            DriveDistanceAction(122),       # Second edge
+            RotateAngleAction(90),          # Rotate 90
+
+            WaitAction(0.5),                # Delay before driving next edge
+
+            DriveDistanceAction(122),       # Third edge
+            RotateAngleAction(90),          # Rotate 90
+
+            WaitAction(0.5),                # Delay before driving next edge
+
+            DriveDistanceAction(122),       # Fourth edge
+            RotateAngleAction(90),          # Rotate 90
+
+            WaitAction(0.1)                 # Small delay so brake mode has time to work
+
+        ],
+
+        # Start JSDriveAction instance when this action series finishes
+        self.js_drive_action
+    )
+    self.drive_triangle_series = ActionSeries(
+        # This is a list of actions to run sequentially
+        [
+            DriveDistanceAction(122),       # First edge
+            RotateAngleAction(120),         # Rotate 120
+
+            WaitAction(0.5),                # Delay before driving next edge
+
+            DriveDistanceAction(122),       # Second edge
+            RotateAngleAction(120),         # Rotate 120
+
+            WaitAction(0.5),                # Delay before driving next edge
+
+            DriveDistanceAction(122),       # Third edge
+            RotateAngleAction(120),         # Rotate 120
+
+            WaitAction(0.1)                 # Small delay so brake mode has time to work
+        ],
+
+        # Start JSDriveAction instance when this action series finishes
+        self.js_drive_action
+    )
+    ```
+
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    ActionSeries driveSquareSeries{
+        // This is a list of actions to run sequentially
+        {
+            std::make_shared<DriveDistanceAction>(122),     // First edge
+            std::make_shared<RotateAngleAction>(90),        // Rotate 90
+
+            std::make_shared<WaitAction>(0.5),              // Delay before driving next edge
+
+            std::make_shared<DriveDistanceAction>(122),     // Second edge
+            std::make_shared<RotateAngleAction>(90),        // Rotate 90
+
+            std::make_shared<WaitAction>(0.5),              // Delay before driving next edge
+
+            std::make_shared<DriveDistanceAction>(122),     // Third edge
+            std::make_shared<RotateAngleAction>(90),        // Rotate 90
+
+            std::make_shared<WaitAction>(0.5),              // Delay before driving next edge
+
+            std::make_shared<DriveDistanceAction>(122),     // Fourth edge
+            std::make_shared<RotateAngleAction>(90),        // Rotate 90
+
+            std::make_shared<WaitAction>(0.1)               // Small delay so brake mode has time to work
+
+        },
+
+        // Start JSDriveAction instance when this action series finishes
+        jsDriveAction
+    };
+    ActionSeries driveTriangleSeries {
+        // This is a list of actions to run sequentially
+        {
+            std::make_shared<DriveDistanceAction>(122),     // First edge
+            std::make_shared<RotateAngleAction>(120),       // Rotate 120 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.5),              // Delay before driving next edge
+
+            std::make_shared<DriveDistanceAction>(122),     // Second edge
+            std::make_shared<RotateAngleAction>(120),       // Rotate 120 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.5),              // Delay before driving next edge
+
+            std::make_shared<DriveDistanceAction>(122),     // Third edge
+            std::make_shared<RotateAngleAction>(120),       // Rotate 120 (adjust time as needed)
+
+            std::make_shared<WaitAction>(0.1)               // Small delay so brake mode has time to work
+        },
+
+        // Start JSDriveAction instance when this action series finishes
+        jsDriveAction
+    };
+    ```
+
+Build and deploy the code. This should result in much more accurate and consistent shapes than the time-based method. 
+
+*Note: If your robot rotates forever at the first rotation, you probably need to swap the +0.9 and -0.9 in the `if` / `else` statement in `RotateAngleAction`'s `begin` function.*
 
 ### Limitations
 
 TODO: Explain limitations of this method. Drive distance can go too far. It also doesn't use the IMU to ensure a straight line. Rotate angle can overshoot and does not correct. Rotating to an angle is actually a perfect application for a PID loop, shown in the next section of the guide.
+
+TODO: Explain potential solutions to overshoot drive distance and rotate angle (including PID control)
