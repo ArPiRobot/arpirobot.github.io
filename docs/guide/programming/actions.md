@@ -769,7 +769,7 @@ The first action to be implemented needs to drive a straight line for some amoun
             return True
     ```
 
-=== "C++ (`robot.hpp`)"
+=== "C++ (`actions.hpp`)"
     ```cpp
     // Add with other imports
     #include <chrono>
@@ -796,7 +796,7 @@ The first action to be implemented needs to drive a straight line for some amoun
     };
     ```
 
-=== "C++ (`robot.cpp`)"
+=== "C++ (`actions.cpp`)"
     ```cpp
     DriveTimeAction::DriveTimeAction(double durationSec) : durationSec(durationSec){
 
@@ -885,7 +885,7 @@ The rotate time action is implemented almost the same way as the drive time acti
             return True
     ```
 
-=== "C++ (`robot.hpp`)"
+=== "C++ (`actions.hpp`)"
     ```cpp
     // Add with other imports
     #include <chrono>
@@ -912,7 +912,7 @@ The rotate time action is implemented almost the same way as the drive time acti
     };
     ```
 
-=== "C++ (`robot.cpp`)"
+=== "C++ (`actions.cpp`)"
     ```cpp
     RotateTimeAction::RotateTimeAction(double durationSec) : durationSec(durationSec){
 
@@ -980,7 +980,7 @@ Add the following lines to the end of each action's `begin` function as indicate
     main.robot.rrmotor.set_brake_mode(False)
     ```
 
-=== "C++ (`robot.cpp`)"
+=== "C++ (`actions.cpp`)"
     ```cpp
     // Add to DriveTimeAction's begin
     Main::robot->flmotor.setBrakeMode(true);

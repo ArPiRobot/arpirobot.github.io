@@ -24,12 +24,57 @@ Additionally, the PID controller object in the ArPiRobot Core Library has one mo
 
 ## Code for a PID Controller
 
-TODO: General code
+The ArPiRobot Core Library includes a `PID` object. This object supports setting all four gains previously described, as well as a min and max output (defaulting to -1.0 and 1.0 respectively). The gains can be changed at any time.
 
+The `setSetpoint` function is used to assign a setpoint for the PID controller. The `getOutput` function is used to calculate the current output. This function is passed the current sensor value as an argument and returns the output. For mathematical reasons, this function should be called at fairly regular intervals. As such, this makes `Action`s a good candidate to use PID objects. However, it is generally recommended to keep all PID object instances in the `Robot` class. This makes it easier to use the network table to help with tuning and allows multiple actions to reuse the same PID (without having to use the same gains in multiple places in the code).
+
+=== "Python (`action.py`)"
+    ```py
+    class PIDAAction(Action):
+        # Assumes my_pid is defined in __init__ of Robot class
+        # Assumes tuning is somewhere in robot_started or elsewhere in Robot class
+        # For example, it could be hard coded during instantiation
+        # Ex: In Robot __init__
+        #       self.my_pid = PID(1.0, 0.0, 0.0)
+
+        def begin(self):
+            # Reset before each use (clears previous state info)
+            main.robot.my_pid.reset()
+
+            # Use the setpoint for this action
+            main.robot.my_pid.set_setpoint(setpoint_for_this_action)
+        
+        def process(self):
+            # Get sensor value
+            current_pv = main.robot.sensor.get_value()
+            
+            # Calculate output from PID
+            out = main.robot.my_pid.get_output(current_pv)
+            
+            # Do something with PID output
+            # Maybe move motors
+        
+        def finish(self, was_interrupted: bool):
+            # Stop any motors or anything the PID was moving
+            pass
+        
+        def should_continue(self) -> bool:
+            # Determining if done is not always trivial as will be seen in the next section
+            if pid_done:
+                return False
+            return True
+            
+    ```
+
+TODO: C++ code for above action
+
+## Rotate Angle Action using PID
 
 TODO: Rotate action based on a PID controller
 
 TODO: Create instance of action that rotates 90 deg when active.
+
+TODO: Explain method of detecting steady state
 
 
 ## Tuning a PID

@@ -104,7 +104,7 @@ The following code implements an action that rotates a certain number of degrees
                 return main.robot.imu.get_gyro_z() > self.target_angle
     ```
 
-=== "C++ (`robot.hpp`)"
+=== "C++ (`actions.hpp`)"
     ```cpp
     class RotateAngleAction : public Action{
     public:
@@ -123,7 +123,7 @@ The following code implements an action that rotates a certain number of degrees
     };
     ```
 
-=== "C++ (`robot.cpp`)"
+=== "C++ (`actions.cpp`)"
     ```cpp
     RotateAngleAction::RotateAngleAction(double degrees) : degrees(degrees){
 
@@ -191,7 +191,7 @@ When the action starts, it calculates the target angle (the angle it should go t
 
 A drive distance action can be implemented similarly. Since `SingleEncoders` are used, it is not possible to determine the direction the robot is moving using encoders, only how far it has moved (the encoder count will always be positive). In other words, rotating the wheel one revolution forward increases the encoder count and rotating the wheel one revolution backward increases the encoder count (no rotation decreases the encoder count). As such, to move in the negative direction, the motors move in reverse (negative speed), but the encoder count still grows. The action below is implemented to handle this. Note that if your robot has Quadrature encoders, this action will not work without modifications. You could either adapt this action to handle directions (similar to `RotateAngleAction` above), or use `SingleEncoder` objects in code instead of `QuadEncoder` objects (just pick one signal wire per encoder).
 
-=== "Python (`robot.py`)"
+=== "Python (`actions.py`)"
     ```py
     class DriveDistanceAction(Action):
         def __init__(self, distance_ticks: int):
@@ -244,7 +244,7 @@ A drive distance action can be implemented similarly. Since `SingleEncoders` are
             return distance_traveled < self.distance_ticks
     ```
 
-=== "C++ (`robot.hpp`)"
+=== "C++ (`actions.hpp`)"
     ```cpp
     class DriveDistanceAction : pubic Action{
     public:
@@ -269,7 +269,7 @@ A drive distance action can be implemented similarly. Since `SingleEncoders` are
     };
     ```
 
-=== "C++ (`robot.cpp`)"
+=== "C++ (`actions.cpp`)"
     ```cpp
     DriveDistanceAction::DriveDistanceAction(int distanceTicks) :
             distanceTicks(std::abs(distanceTicks)), forward(distanceTicks >= 0){
