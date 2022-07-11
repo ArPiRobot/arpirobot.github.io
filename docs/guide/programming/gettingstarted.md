@@ -1,6 +1,19 @@
 # Getting Started
 
-This portion of the guide will walk you through creating a robot project and running it on your robot. In addition, the basic structure of a robot program will be explained. Each part of this guide builds on the 
+This portion of the guide will walk you through creating a robot project and running it on your robot. In addition, the basic structure of a robot program will be explained. 
+
+
+## About this Guide
+
+This guide is written to be fairly generic in regards to the robot build used. However, the following assumptions are made.
+- Robot uses a differential drive system. This means that the robot has motorized wheels on both left and right sides of the robot and steers by varying the speeds of each side. Most robots use this style drive system.
+- The [Sensors & Network Table](./sensordata.md) section assumes the robot has an ultrasonic sensor facing forward and an IMU. Both are assumed to be connected to an Arduino coprocessor.
+- The [Using Sensors with Actions](./sensoractions.md) section assumes the robot has an IMU and 2 encoders (one on the left side and one on the right side). The encoders can be single channel or quadrature encoders.
+- The [PID Controller](./pid.md) section assumes the robot has an IMU.
+
+Additionally, code is written as if it were to run on the 4-wheel drive clipboard (or mini clipboard) robot builds as described in [Example Robot Builds](../hardware/examplebuilds.md). Comments are made in various places about what should be changed for other robots (generally this is just due to a different number of motors).
+
+Finally, some sections of this guide build on previous sections. It is generally assumed that this guide is followed in order.
 
 
 ## Creating a New Project
