@@ -129,6 +129,8 @@ TODO: Create instance of action that rotates 90 deg when active.
 
 TODO: Explain method of detecting steady state
 
+TODO: Indicate that tunings used were for one specific robot (mini clipboard 4wd). It will likely need slight adjustments for different robot. Follow tuning section below.
+
 
 ## Tuning a PID
 
