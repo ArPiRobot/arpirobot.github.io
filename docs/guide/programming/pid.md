@@ -26,12 +26,12 @@ Additionally, the PID controller object in the ArPiRobot Core Library has one mo
 
 The ArPiRobot Core Library includes a `PID` object. This object supports setting all four gains previously described, as well as a min and max output (defaulting to -1.0 and 1.0 respectively). The gains can be changed at any time.
 
-The `setSetpoint` function is used to assign a setpoint for the PID controller. The `getOutput` function is used to calculate the current output. This function is passed the current sensor value as an argument and returns the output. For mathematical reasons, this function should be called at fairly regular intervals. As such, this makes `Action`s a good candidate to use PID objects. However, it is generally recommended to keep all PID object instances in the `Robot` class. This makes it easier to use the network table to help with tuning and allows multiple actions to reuse the same PID (without having to use the same gains in multiple places in the code).
+The `set_setpoint` / `setSetpoint` function is used to assign a setpoint for the PID controller. The `get_output` / `getOutput` function is used to calculate the current output. This function is passed the current sensor value as an argument and returns the output. For mathematical reasons, this function should be called at fairly regular intervals. As such, this makes `Action`s a good candidate to use PID objects. However, it is generally recommended to keep all PID object instances in the `Robot` class. This makes it easier to use the network table to help with tuning and allows multiple actions to reuse the same PID (without having to use the same gains in multiple places in the code).
 
-=== "Python (`action.py`)"
+=== "Python (`actions.py`)"
     ```py
-    class PIDAAction(Action):
-        # Assumes my_pid is defined in __init__ of Robot class
+    class PIDAction(Action):
+        # Assumes my_pid is defined as a member of Robot class
         # Assumes tuning is somewhere in robot_started or elsewhere in Robot class
         # For example, it could be hard coded during instantiation
         # Ex: In Robot __init__
@@ -59,14 +59,67 @@ The `setSetpoint` function is used to assign a setpoint for the PID controller. 
             pass
         
         def should_continue(self) -> bool:
-            # Determining if done is not always trivial as will be seen in the next section
+            # Once setpoint is reached, stop
+            # Note: determining if setpoint is reached is not always trivial
+            #       due to possible oscillations
             if pid_done:
                 return False
             return True
             
     ```
 
-TODO: C++ code for above action
+=== "C++ (`actions.hpp`)"
+    ```cpp
+    // Assumes myPid is defined as a member of Robot class
+    // Assumes tuning is somewhere in robot_started or elsewhere in Robot class
+    // For example, it could be hard coded during instantiation
+    // Ex: In Robot class declaration
+    //       PID myPid { 1.0, 0.0, 0.0 };
+    class PIDAction : public Action {
+    protected:
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    };
+    ```
+
+=== "C++ (`actions.cpp`)"
+    ```cpp
+    void PIDAction::begin(){
+        // Reset before each use (clears previous state info)
+        Main::robot->myPid.reset();
+
+        // Use the setpoint for this action
+        Main::robot->myPid.setSetpoint(setpointForThisAction);
+    }
+
+    void PIDAction::process(){
+        // Get sensor value
+        double currentPv = Main::robot->sensor.getValue();
+        
+        // Calculate output from PID
+        double out = Main::robot.myPid.getOutput(currentPv);
+        
+        // Do something with PID output
+        // Maybe move motors
+    }
+
+    void PIDAction::finish(bool wasInterrupted){
+        // Stop any motors or anything the PID was moving
+    }
+
+    bool PIDAction::shouldContinue(){
+        // Once setpoint is reached, stop
+        // Note: determining if setpoint is reached is not always trivial
+        //       due to possible oscillations
+        if(pidDone){
+            return false;
+        }
+        return true;
+    }
+    ```
+
 
 ## Rotate Angle Action using PID
 
@@ -79,7 +132,7 @@ TODO: Explain method of detecting steady state
 
 ## Tuning a PID
 
-Tuning a PID is not a trivial process. The method described here is a basic "guess and check" method. There are mathematical methods of tuning, however often a guess and check approach is used in real world applications.
+Tuning a PID is not a trivial process. The method described here is a basic "guess and check" method. There are mathematical methods of tuning, however a guess and check approach is often used in real world applications.
 
 To tune a PID, choose a reasonable setpoint. The setpoint should be realistic for the use of the PID controller, but large enough to "see" what is happening if possible. For the rotation example above, 90 degrees is a good setpoint to tune with.
 
@@ -92,7 +145,7 @@ Once the initial values have been set, the following process is recommended for 
 - Multiply of divide by 2 for "fine" tuning (smaller changes)
 - Finally, add and subtract small amounts for final tweaks.
 
-Tune parameters in the following order
+Tune parameters in the following order. Note that specific value recommendations are just guidelines, not rules that must be followed.
 - Start with kP. If there is oscillation around the setpoint, reduce kP. If it never reaches the setpoint, increase kP. In a lot of cases with robotics, a small steady state error (slightly too small kP) is preferable to oscillation (slightly too large kP). Steady state error will be corrected with kI anyway.
 - Then tune kI. Start with 1 / 1000 of kP or 0.000001 (whichever is smaller). If steady state error is too large (or is corrected for too slowly) increase kI. If oscillation occurs and prevents the robot from ever settling at the target decrease kI. Some oscillation is ok as long as the robot reaches its target eventually (oscillation needs to decay and die off).
 - Finally tune kD. Start with 1 / 100 of kP or 0.0001 (whichever is smaller). If the oscillation is still too large, increase kD. If the robot behaves "erratically" decrease kD. Too large of a kD will cause unpredictable results. In many cases a kD of larger than 0.01 is a very bad idea.
