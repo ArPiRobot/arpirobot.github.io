@@ -305,10 +305,10 @@ To make tuning the PID easier, it is recommended to create an instance of the ac
 === "Python (`robot.py`)"
     ```py
     # In Robot class's __init__ method
-    self.ROTATE_TEST_BTN = 2
+    TEST_BTN = 2
 
     # In robot_started method
-    ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.ROTATE_TEST_BTN, RotatePIDAction(90)))
+    ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, TEST_BTN, RotatePIDAction(90)))
     ```
 === "C++ (`robot.hpp`)"
     ```cpp
@@ -348,4 +348,118 @@ Tune parameters in the following order. Note that specific value recommendations
 
 ## Extra: Adding PID Info / Gains to Network Table
 
-TODO
+When tuning a PID it is often useful to be able to edit the gains (kp, ki, kd and sometimes kf) without changing the code. The NetworkTable makes this possible. Indicators can be created for each gain and changed from the drive station. Changes will affect the PID controller in realtime. Once a good set of values is determined, they can be coped into the code and the NetworkTable code can optionally be removed.
+
+The following example shows how to add controls for kp, ki, and kd, and kf for a PID controller in the `Robot` class called `pid`.
+
+Add the following function to your `Robot` class
+
+=== "Python (`robot.py`)"
+    ```py
+    def pid_network_table(self, name: str, pid: PID):
+        # Create net table keys for the given name of the PID
+        KP_KEY = "{0} kP".format(name)
+        KI_KEY = "{0} kI".format(name)
+        KD_KEY = "{0} kD".format(name)
+        KF_KEY = "{0} kF".format(name)
+
+        # Add to network table if not already there
+        if not NetworkTable.has(KP_KEY):
+            NetworkTable.set(KP_KEY, str(pid.get_kp()))
+        if not NetworkTable.has(KI_KEY):
+            NetworkTable.set(KI_KEY, str(pid.get_ki()))
+        if not NetworkTable.has(KD_KEY):
+            NetworkTable.set(KD_KEY, str(pid.get_kd()))
+        if not NetworkTable.has(KF_KEY):
+            NetworkTable.set(KF_KEY, str(pid.get_kf()))
+
+        # If drive station edited a gain, update the pid object
+        # If the value entered in the drive station is not a valid number,
+        # the value will be discarded and reset to what the PID controller uses
+        if NetworkTable.changed(KP_KEY):
+            try:
+                pid.set_kp(float(NetworkTable.get(KP_KEY)))
+            except:
+                NetworkTable.set(KP_KEY, str(pid.get_kp()))
+        if NetworkTable.changed(KI_KEY):
+            try:
+                pid.set_ki(float(NetworkTable.get(KI_KEY)))
+            except:
+                NetworkTable.set(KI_KEY, str(pid.get_ki()))
+        if NetworkTable.changed(KD_KEY):
+            try:
+                pid.set_kd(float(NetworkTable.get(KD_KEY)))
+            except:
+                NetworkTable.set(KD_KEY, str(pid.get_kd()))
+        if NetworkTable.changed(KF_KEY):
+            try:
+                pid.set_kf(float(NetworkTable.get(KF_KEY)))
+            except:
+                NetworkTable.set(KF_KEY, str(pid.get_kf()))
+    ```
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    void pidNetworkTable(std::string name, PID &pid);
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    void Robot::pidNetworkTable(std::string name, PID &pid){
+        // Create net table keys for the given name of the pid
+        auto KP_KEY = name + " kP";
+        auto KI_KEY = name + " kI";
+        auto KD_KEY = name + " kD";
+        auto KF_KEY = name + " kF";
+
+        // Add to network table if not already there
+        if(!NetworkTable::has(KP_KEY)){
+            NetworkTable::set(KP_KEY, std::to_string(pid.getKp()));
+        }
+        if(!NetworkTable::has(KI_KEY)){
+            NetworkTable::set(KI_KEY, std::to_string(pid.getKi()));
+        }
+        if(!NetworkTable::has(KD_KEY)){
+            NetworkTable::set(KD_KEY, std::to_string(pid.getKd()));
+        }
+        if(!NetworkTable::has(KF_KEY)){
+            NetworkTable::set(KF_KEY, std::to_string(pid.getKf()));
+        }
+
+        // If drive station edited a gain, update the pid object
+        // If the value entered in the drive station is not a valid number,
+        // the value will be discarded and reset to what the PID controller uses
+        if(NetworkTable::changed(ROTATE_KP_KEY)){
+            try{
+                rotatePid.setKp(std::stod(NetworkTable::get(ROTATE_KP_KEY)));
+            }catch(const std::invalid_argument &e){
+                NetworkTable::set(ROTATE_KP_KEY, std::to_string(rotatePid.getKp()));
+            }
+        }
+        if(NetworkTable::changed(ROTATE_KI_KEY)){
+            try{
+                rotatePid.setKi(std::stod(NetworkTable::get(ROTATE_KI_KEY)));
+            }catch(const std::invalid_argument &e){
+                NetworkTable::set(ROTATE_KI_KEY, std::to_string(rotatePid.getKi()));
+            }
+        }
+        if(NetworkTable::changed(ROTATE_KD_KEY)){
+            try{
+                rotatePid.setKd(std::stod(NetworkTable::get(ROTATE_KD_KEY)));
+            }catch(const std::invalid_argument &e){
+                NetworkTable::set(ROTATE_KD_KEY, std::to_string(rotatePid.getKd()));
+            }
+        }
+    }
+    ```
+
+Then, for each PID you want on the NetworkTable, add a line like the following to the `Robot`'s `process` function. Make sure to use a unique name for each PID controller you add.
+
+=== "Python (`robot.py`)"
+    ```py
+    self.pid_network_table("Rotate PID", self.rotate_pid)
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    pidNetworkTable("Rotate PID", rotatePid);
+    ```
+
+When run, this will crate network table entries that can be used to edit PID gains while the code is running.
