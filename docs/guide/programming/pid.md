@@ -123,14 +123,73 @@ The `set_setpoint` / `setSetpoint` function is used to assign a setpoint for the
 
 ## Rotate Angle Action using PID
 
-TODO: Rotate action based on a PID controller
+To improve the `RotateAngleAction` from the previous section, a PID can be used. This will help reduce overshooting the angle and will improve consistency of arriving at the correct angle after rotation actions complete.
 
-TODO: Create instance of action that rotates 90 deg when active.
+Before implementing the action, a rotation PID controller needs to be added to the `Robot` class.
 
-TODO: Explain method of detecting steady state
+=== "Python (`robot.py`)"
+    ```py
+    # Add with other imports
+    from arpirobot.core.control import PID
 
-TODO: Indicate that tunings used were for one specific robot (mini clipboard 4wd). It will likely need slight adjustments for different robot. Follow tuning section below.
+    # in Robot's __init__ function
+    # Arguments: kp, ki, kd, kf, min, max
+    # If arguments are omitted, they default to 0.0 for gains or -1.0 / 1.0 for min / max
+    # min / max define range of PID controller's output values
+    # -1.0 to 1.0 is used as this is the range of rotation speeds accepted by a drive helper
+    self.rotate_pid = PID(1.0, 0.0, 0.0, 0.0, -1.0, 1.0)
+    ```
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // Add with other includes
+    #include <arpirobot/core/control/PID.hpp>
 
+    // With other member variables in Robot class
+    // Arguments: kp, ki, kd, kf, min, max
+    // If arguments are omitted, they default to 0.0 for gains or -1.0 / 1.0 for min / max
+    // min / max define range of PID controller's output values
+    // -1.0 to 1.0 is used as this is the range of rotation speeds accepted by a drive helper
+    PID rotatePid { 1.0, 0.0, 0.0, 0.0, -1.0, 1.0 };
+    ```
+
+The initial gains and output range for the PID controller are passed as arguments to the constructor, but they can all be changed later using set functions.
+
+An action to rotate using the PID controller can be implemented as shown below
+
+TODO: code for `RotatePIDAction`
+
+=== "Python (`actions.py`)"
+    ```py
+    ```
+=== "C++ (`actions.hpp`)"
+    ```cpp
+    ```
+=== "C++ (actions.cpp`)"
+    ```cpp
+    ```
+
+To make tuning the PID easier, it is recommended to create an instance of the action that rotates 90 degrees and add a trigger to run this action when a button is pressed. This will allow testing just this one action while tuning.
+
+=== "Python (`robot.py`)"
+    ```py
+    # In Robot class's __init__ method
+    self.ROTATE_TEST_BTN = 2
+
+    # In robot_started method
+    ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.ROTATE_TEST_BTN, RotatePIDAction(90)))
+    ```
+=== "C++ (`robot.hpp`)"
+    ```cpp
+    // Add with other constants (member variables)
+    const int ROTATE_TEST_BTN = 2;
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    // In robotStarted method
+    ActionManager::addTrigger(std::make_shared<ButtonPressedTrigger>(gp0, ROTATE_TEST_BTN, std::make_shared<RotatePIDAction>(90)))
+    ```
+
+The PID is then ready to be tuned. It is advised to read the following section on tuning fully before tuning the PID if you are not familiar with tuning PID controllers. Additionally, if you wish to avoid having to rebuild / redeploy the robot program each time a gain is changed for the PID controller see the section on adding PID info to the Network Table below the tuning section.
 
 ## Tuning a PID
 
@@ -140,14 +199,21 @@ To tune a PID, choose a reasonable setpoint. The setpoint should be realistic fo
 
 Generally, it is recommended to start with either only a kP (optionally with a kF). A kF is useful if the output should vary proportionally to the setpoint. For example, if the PID were to attempt to achieve a certain speed, the motor power (output of PID) would grow if speed grew. However, with rotation this is not the case (output of PID goes to motors, but a higher angle does not mean higher motor power forever).
 
-If no kF is used, start with kP = 1.0, kI = 0.0, and kD = 0.0. If a kF is used, divide by 100 as the initial kP value. Note that an initial kF value can be selected by applying an output power and measuring the sensor value. Then *kF* = *sensor_measurement* ÷ *output_power*.
+If no kF is used, start with kP = 1.0, kI = 0.0, and kD = 0.0. If a kF is used, use 0.1 as the initial kP value. Note that an initial kF value can be selected by applying an output power and measuring the sensor value. Then *kF* = *sensor_measurement* ÷ *output_power*. Note that for the rotate PID, no kF should be used.
 
 Once the initial values have been set, the following process is recommended for tuning.
+
 - Multiply or divide by 10 for "coarse" tuning (larger changes)
 - Multiply of divide by 2 for "fine" tuning (smaller changes)
 - Finally, add and subtract small amounts for final tweaks.
 
 Tune parameters in the following order. Note that specific value recommendations are just guidelines, not rules that must be followed.
+
 - Start with kP. If there is oscillation around the setpoint, reduce kP. If it never reaches the setpoint, increase kP. In a lot of cases with robotics, a small steady state error (slightly too small kP) is preferable to oscillation (slightly too large kP). Steady state error will be corrected with kI anyway.
 - Then tune kI. Start with 1 / 1000 of kP or 0.000001 (whichever is smaller). If steady state error is too large (or is corrected for too slowly) increase kI. If oscillation occurs and prevents the robot from ever settling at the target decrease kI. Some oscillation is ok as long as the robot reaches its target eventually (oscillation needs to decay and die off).
 - Finally tune kD. Start with 1 / 100 of kP or 0.0001 (whichever is smaller). If the oscillation is still too large, increase kD. If the robot behaves "erratically" decrease kD. Too large of a kD will cause unpredictable results. In many cases a kD of larger than 0.01 is a very bad idea.
+
+
+## Extra: Adding PID Info / Gains to Network Table
+
+TODO
