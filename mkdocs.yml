@@ -35,15 +35,15 @@ nav:
         - Beta Downloads: downloads/betas.md
         - Old Beta Downloads: downloads/betas-old.md
     - Guide:
+        - Getting Started: guide/requireditems.md
         - Building a Robot:
-            - What Do I Need to Build a Robot: guide/hardware/requiredhardware.md
             - Supported Robot Hardware: guide/hardware/supportedhardware.md
             - Example Robot Builds: guide/hardware/examplebuilds.md
         - Software Setup:
             - Setup your Computer: guide/setup/setupcomputer.md
             - Setup the Raspberry Pi: guide/setup/setuppi.md
         - Programming the Robot:
-            - Getting Started: guide/programming/gettingstarted.md
+            - Creating a Project: guide/programming/createproject.md
             - Moving Motors: guide/programming/movingmotors.md
             - Driving with Gamepad: guide/programming/drivegamepad.md
             - Sensor Data & NetworkTable: guide/programming/sensordata.md

@@ -1,4 +1,4 @@
-# What Do I Need to Build a Robot
+# Getting Started
 
 Before getting started with the ArPiRobot framework there are a few things you'll need to have. These can be broken down into three categories.
 - Parts to build your robot
