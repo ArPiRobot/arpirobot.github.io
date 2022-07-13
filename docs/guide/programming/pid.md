@@ -156,16 +156,148 @@ The initial gains and output range for the PID controller are passed as argument
 
 An action to rotate using the PID controller can be implemented as shown below
 
-TODO: code for `RotatePIDAction`
-
 === "Python (`actions.py`)"
     ```py
+    class RotatePIDAction(Action):
+        def __init__(self, degrees: float):
+            super().__init__()
+            
+            # Store the angle this action instance should rotate
+            self.degrees = degrees
+
+            # This will be used to detect when the robot has reached its target
+            self.correct_counter = 0
+
+        
+        def begin(self):
+            # Reset correct counter to zero
+            self.correct_counter = 0
+
+            # Put motors in brake mode (often better for automated actions)
+            main.robot.flmotor.set_brake_mode(True)
+            main.robot.frmotor.set_brake_mode(True)
+            main.robot.rlmotor.set_brake_mode(True)
+            main.robot.rrmotor.set_brake_mode(True)
+
+            # Configure rotate PID controller for use
+            # Reset it to a clean state and set a new setpoint
+            # Setpoint is target angle, which is self.degrees away from where the robot is currently facing
+            main.robot.rotate_pid.reset()
+            main.robot.rotate_pid.set_setpoint(main.robot.imu.get_gyro_z() + self.degrees)
+
+        def process(self):
+            # Calculate the rotation speed using the PID
+            rot = main.robot.rotate_pid.get_output(main.robot.imu.get_gyro_z())
+
+            # Update the current rotation speed
+            # Note: it is possible that rotating the robot with positive power makes the IMU angle more negative
+            # If this is the case, the PID will rotate forever. To fix, use "-rot" instead of "rot" below
+            main.robot.drive_helper.update(0, rot)
+        
+        def finish(self, was_interrupted: bool):
+            # Stop moving motors
+            main.robot.drive_helper.update(0, 0)
+        
+        def should_continue(self) -> bool:
+            # This action should stop when the robot has been "close enough" to the target angle for "long enough"
+            # For this action, allow within 3 degrees of target angle
+            # Require 10 iterations of being at the correct angle
+            # 10 iterations at 50ms between each iteration = 0.5 second
+            # Requiring the robot to be within 3 degrees of the correct angle for 0.5 seconds
+            # prevents the action from stopping if the robot is oscillating through the correct angle
+            angle_error = abs(main.robot.imu.get_gyro_z() - main.robot.rotate_pid.get_setpoint())
+
+            if angle_error <= 3.0:
+                # Within 3 degrees. Angle is correct
+                self.correct_counter += 1
+            else:
+                # Not within 3 degrees. Reset correct counter
+                # Must be correct for 10 consecutive iterations before exit is valid
+                self.correct_counter = 0
+            
+            # Stop if correct_counter is at least 10, therefore continue if less than 10
+            return self.correct_counter < 10
+
     ```
 === "C++ (`actions.hpp`)"
     ```cpp
+    class RotatePIDAction : public Action {
+    public:
+        RotatePIDAction(double degrees);
+
+    protected:
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    
+    private:
+        // Store angle passed to action (angle to rotate)
+        double degrees;
+
+        // Used to detect when robot has reached its target
+        int correctCounter = 0;
+    };
     ```
 === "C++ (actions.cpp`)"
     ```cpp
+    RotatePIDAction::RotatePIDAction(double degrees) : degrees(degrees){
+
+    }
+
+    void RotatePIDAction::begin(){
+        // Reset correct counter to zero
+        correctCounter = 0;
+
+        // Put motors in brake mode (often better for automated actions)
+        Main::robot->flmotor.setBrakeMode(true);
+        Main::robot->frmotor.setBrakeMode(true);
+        Main::robot->rlmotor.setBrakeMode(true);
+        Main::robot->rrmotor.setBrakeMode(true);
+
+        // Configure rotate PID controller for use
+        // Reset it to a clean state and set a new setpoint
+        // Setpoint is target angle, which is self.degrees away from where the robot is currently facing
+        Main::robot->rotatePid.reset();
+        Main::robot->rotatePid.setSetpoint(Main::robot->imu.getGyroZ() + degrees);
+    }
+
+    void RotatePIDAction::process(){
+        // Calculate the rotation speed using the PID
+        double rot = Main::robot->pid.get_output(Main::robot->imu.getGyroZ());
+
+        // Update the current rotation speed
+        // Note: it is possible that rotating the robot with positive power makes the IMU angle more negative
+        // If this is the case, the PID will rotate forever. To fix, use "-rot" instead of "rot" below
+        Main::robot->driveHelper.update(0, rot);
+    }
+
+    void RotatePIDAction::finish(){
+        // Stop moving motors
+        Main::robot->driveHelper.update(0, 0);
+    }
+
+    bool RotatePIDAction::shouldContinue(){
+        // This action should stop when the robot has been "close enough" to the target angle for "long enough"
+        // For this action, allow within 3 degrees of target angle
+        // Require 10 iterations of being at the correct angle
+        // 10 iterations at 50ms between each iteration = 0.5 second
+        // Requiring the robot to be within 3 degrees of the correct angle for 0.5 seconds
+        // prevents the action from stopping if the robot is oscillating through the correct angle
+        double angleError = std::abs(Main::robot->imu.getGyroZ() - Main::robot->rotatePid.getSetpoint());
+
+        if(angleError <= 3.0){
+            // Within 3 degrees. Angle is correct
+            correctCounter++;
+        }else{
+            // Not within 3 degrees. Reset correct counter
+            // Must be correct for 10 consecutive iterations before exit is valid
+            correctCounter = 0;
+        }
+
+        // Stop if correctCounter is at least 10, therefore continue if less than 10
+        return correctCounter < 10;
+    }
     ```
 
 To make tuning the PID easier, it is recommended to create an instance of the action that rotates 90 degrees and add a trigger to run this action when a button is pressed. This will allow testing just this one action while tuning.
