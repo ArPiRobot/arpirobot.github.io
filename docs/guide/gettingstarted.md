@@ -1,24 +1,24 @@
-# Getting Started
 
-Before getting started with the ArPiRobot framework there are a few things you'll need to have. These can be broken down into three categories.
-- Parts to build your robot
-- Tools to build your robot
-- Other items needed to work with your robot
+The ArPiRobot Framework is designed to make building and programming a robot easy for beginners, while still being sufficiently flexible to allow support complex designs and software. This guide is intended to introduce important parts of the ArPiRobot Framework, as well as introduce key robotics concepts and walk you through building a basic robot.
+
+This guide is written with beginners in mind. For those with more robotics experience, some sections can be skipped, however this guide will still provide important information specific to the ArPirobot Framework.
 
 
-## Parts to Build your Robot
+## Guide Outline
 
-TODO
+This Guide will cover the following topics
+
+- Building a Robot: Covers what is necessary to build a custom robot to use with the ArPiRobot Framework. Also includes some example build with instructions to create them.
+- Software Setup: Covers setting up software on your computer to program the robot and setting up the computer on the robot for use.
+- Programming the Robot: Covers using various tools to program the robot and writing code to program the robot. This section is not a tutorial on any programming language. It covers how to use ArPiRobot CoreLib features to program the robot.
+- Other Tasks: This section is a collection of various standalone guides to perform specific tasks (unrelated to each other or other sections of this guide).
+
+It is intended that the first three sections of this guide be followed in order.
 
 
-## Tools to Build your Robot
+## Required Items
 
-TODO
-
-
-## Other Items
-
-You will also need the following items
+Before getting started with the ArPiRobot Framework you will need the following items. These are in addition to any parts and tools required to actually build the robot.:
 
 - A computer running Windows, macOS, or Linux. This computer will be used to write robot code and run the Drive Station.
 - Your computer will need to be capable of connecting to a WiFi network. Laptops will almost always have WiFi builtin, however many desktops do not. If you computer does not support WiFi, a USB WiFi adapter can be used instead. Cheap ones such as the [TP-Link TL-WN725N](https://www.amazon.com/TP-Link-wireless-network-Adapter-SoftAP/dp/B008IFXQFU) should work, however you may get better range with one with an external antenna such as the [TP-Link AC600](https://www.amazon.com/dp/B07P5PRK7J/).
@@ -40,25 +40,3 @@ You will also need the following items
     | Xbox One Controller | USB works. Wireless adapter works | USB works with [third party software](https://github.com/360Controller/360Controller) | USB works. Wireless using adapter requires [third party software](https://github.com/medusalix/xone) |
     | XBox One Controller with Bluetooth Support | Bluetooth works. USB requires [third party software](https://github.com/360Controller/360Controller) | USB and Bluetooth Work | USB and Bluetooth work |
 - Alternatively, instead of a gamepad you can use the Mobile Drive Station on an Android phone or tablet instead of running the PC Drive Station on your computer. However, the Mobile Drive Station currently lacks some features of the PC Drive Station and does **not** support iOS. As such, a controller that works with your computer is generally recommended.
-
-<!--
-## Robot Hardware
-See [Supported Robot Hardware](./supportedhardware.md) section for a list of supported components and devices.
-
-See the [Example Builds](./examplebuilds.md) section for a few tested configurations.
-
-## Tools
-- Examples of some of these items can be found on the [Supported Robot Hardware](./supportedhardware.md) page.
-- Solder Iron (and solder, etc. Maybe just a basic kit)
-- Wire strippers
-- USB micro SD Card Reader
-- Small screw drivers
-- (Maybe) Multimeter (useful for debugging and a good tool to have around)
-
-## Other Supplies
-- Examples of some of these items can be found on the [Supported Robot Hardware](./supportedhardware.md) page.
-- Jumper wires
-- Hook and Loop tape (often incorrectly referred to as "Velcro")
-- Electrical Tape
-- Twist ties
--->

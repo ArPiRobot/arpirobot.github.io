@@ -35,9 +35,8 @@ nav:
         - Beta Downloads: downloads/betas.md
         - Old Beta Downloads: downloads/betas-old.md
     - Guide:
-        - Getting Started: guide/requireditems.md
+        - Getting Started: guide/gettingstarted.md
         - Building a Robot:
-            - Supported Robot Hardware: guide/hardware/supportedhardware.md
             - Example Robot Builds: guide/hardware/examplebuilds.md
         - Software Setup:
             - Setup your Computer: guide/setup/setupcomputer.md
@@ -56,12 +55,13 @@ nav:
             - Camera Streaming: guide/other/camstream.md
             - Connect by SSH: guide/other/ssh.md
             - WiFi Debugging: guide/other/wifidebug.md
-        - Manuals:
-            - Drive Station Manual: guide/manuals/drive_station.md
-            - Deploy Tool Manual: guide/manuals/deploy_tool.md
-            - Mobile Drive Station Manual: guide/manuals/android_drive_station.md
         
     - Documentation:
+        - Supported Robot Hardware: ref/supportedhardware.md
+        - Manuals:
+            - Drive Station Manual: ref/manuals/drive_station.md
+            - Deploy Tool Manual: ref/manuals/deploy_tool.md
+            - Mobile Drive Station Manual: guide/manuals/android_drive_station.md
         - Programming Reference:
             - Project Structure: ref/projstructure.md
             - Recommended Code Organization: ref/codeorg.md
