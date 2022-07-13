@@ -36,7 +36,7 @@ nav:
         - Old Beta Downloads: downloads/betas-old.md
     - Guide:
         - Building a Robot:
-            - What Hardware Do I Need: guide/hardware/requiredhardware.md
+            - What Do I Need to Build a Robot: guide/hardware/requiredhardware.md
             - Supported Robot Hardware: guide/hardware/supportedhardware.md
             - Example Robot Builds: guide/hardware/examplebuilds.md
         - Software Setup:

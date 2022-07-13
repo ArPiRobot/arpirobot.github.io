@@ -23,6 +23,13 @@ Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-DriveSt
 The PC-side control software for ArPiRobot robots. This interfaces with a running robot program (using the CoreLib's NetworkManager). This means that Drive Station compatibility mostly depends on the version of the CoreLib in use on the robot.
 
 
+#### **ArPiRobot Mobile Drive Station**
+
+Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-MobileDriveStation)
+
+Android version of the ArPiRobot Drive Station featuring a virtual on-screen controller.
+
+
 #### **ArPiRobot Deploy Tool**
 Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-DeployTool)
 
@@ -44,9 +51,9 @@ Enables creating ArPiRobot projects in VSCode and installing ArPiRobot Updates o
 
 Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-Toolchain/)
 
-Documentation of the process used to create cross compiler C/C++ toolchains for the Raspberry Pi.
+Documentation of the process used to create cross compiler C/C++ toolchains for the Raspberry Pi. Repository also used to host toolchain downloads.
 
-#### **ArPiRobot CameraStreaming**
+#### **ArPiRobot Camera Streaming**
 
 Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-CameraStreaming)
 
