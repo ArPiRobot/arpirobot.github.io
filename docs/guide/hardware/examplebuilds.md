@@ -1,16 +1,10 @@
 # Example Robot Builds
 
-### 4WD Cardboard / Clipboard Robot
+## 4WD Cardboard / Clipboard Robot
 
-#### Features & Limitations
-
-#### Robot Hardware
+TODO
 
 
---------------------------------------------------------------------------------
+## 4WD Mini Cardboard / Clipboard Robot
 
-### 4WD Mini Cardboard / Clipboard Robot
-
-#### Features & Limitations
-
-#### Robot Hardware
+TODO

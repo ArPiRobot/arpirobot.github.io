@@ -37,6 +37,8 @@ nav:
     - Guide:
         - Getting Started: guide/gettingstarted.md
         - Building a Robot:
+            - Starting a Robot Build: guide/hardware/startingbuild.md
+            - Building a Custom Robot: guide/hardware/custombuild.md
             - Example Robot Builds: guide/hardware/examplebuilds.md
         - Software Setup:
             - Setup your Computer: guide/setup/setupcomputer.md
