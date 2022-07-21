@@ -37,8 +37,9 @@ nav:
     - Guide:
         - Getting Started: guide/gettingstarted.md
         - Building a Robot:
-          - The Physical Robot: guide/hardware/mechanicalsystem.md
-          - The Electrical System: guide/hardware/electricalsystem.md
+          - Required Components: guide/hardware/requiredhardware.md
+          - Supported Hardware: guide/hardware/supportedhardware.md
+          - Example Robot Builds: guide/hardware/examplebuilds.md
         - Software Setup:
             - Setup your Computer: guide/setup/setupcomputer.md
             - Setup the Raspberry Pi: guide/setup/setuppi.md
@@ -56,9 +57,7 @@ nav:
             - Camera Streaming: guide/other/camstream.md
             - Connect by SSH: guide/other/ssh.md
             - WiFi Debugging: guide/other/wifidebug.md
-        
     - Documentation:
-        - Supported Robot Hardware: ref/supportedhardware.md
         - Manuals:
             - Drive Station Manual: ref/manuals/drive_station.md
             - Deploy Tool Manual: ref/manuals/deploy_tool.md
@@ -77,7 +76,6 @@ nav:
             - AudioManger: ref/audio.md
         - CoreLib API Docs: doxygen-links.md
         - Default Robot Settings: defaultsettings.md
-    
     - For Developers: 
         - ArPiRobot Components: devs/components.md
         - Development Resources: devs/resources.md
