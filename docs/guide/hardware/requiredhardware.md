@@ -1,7 +1,16 @@
 
 ## Mechanical Components
 
-TODO
+The mechanical components of your robot include structural components and physical parts that make up various systems on the robot and make the robot function. The mechanical components used on a robot will vary widely depending on what the robot is designed to do. The following list is a guideline set of components necessary for a simple drive base (robot that just drives). Additional systems on the robot to perform different tasks, or robots designed to move in different ways, will likely need a very different set of components.
+
+### Major Drive Base Components
+
+- Base / Frame / Chassis: This is the foundation that the rest of the robot is built on. This may be made up of several components. A "base" is typically just a flat plane that other mechanical components are attached to. A "frame" is typically an "outline" which components are attached to. Often, a flat plane will be placed on top of a frame to allow space for electronics, but items such as motors are attached on the sides. A chassis is more of a generic term in this context.
+- Motors: Motors are used to spin wheels to make the robot drive. Typically, either two or four motors are used, with an even number on each side. If only two are used, a caster wheel is often required for stability. Alternatively, two "free spinning" wheels could be used instead (robot would have four wheels, but two motors). However, this configuration is often less ideal than a caster as steering is more difficult.
+- Wheels: Attach to motors, or in the case of a caster, to the drive base / frame / chassis.
+- Mounting Hardware: Screws, nuts, bolts, etc. Anything that you plan to use to attach components to each other.
+- Spacers: Washers or other 3d printed / metal / other spacers to place components where desired when attaching.
+
 
 
 ## Electrical Components
@@ -48,6 +57,8 @@ There are a few "minor" components and tools that are sometimes necessary as wel
 - Hot Glue & Glue Gun: Useful to attach components and for wire management
 - Super glue: Useful to attach components with more stress on them
 - Ruler: Useful during assembly at times
+- Screwdrivers: Used with screws to assemble mechanical components (if necessary). Small screwdrivers are also used with various electrical components to connect wires (in screw terminal blocks).
+- Wrenches: Used during assembly of mechanical components
 
 
 ## Selecting Components
@@ -56,4 +67,4 @@ The next section includes lists of supported hardware. Choosing items from this 
 
 Generally, one of each component is necessary. More than one motor controller may be needed depending on which motor controller(s) and how many motors are on the robot. Additionally, the sensors used on your robot depend on its physical construction and what you want it to do. It is also possible to build a robot without sensors, in which case a sensor coprocessor is not needed. There is also a small selection of sensors that work directly with the main computer and do not require a sensor coprocessor. More details on the supported hardware page.
 
-Alternatively, some example robot builds are documented. If you're less experienced with robotics, it may be beneficial to start with one of these examples, instead of building your own robot.
+Alternatively, some example robot builds are documented. If you're less experienced with robotics, it may be beneficial to start with one of these examples, instead of a custom build.
