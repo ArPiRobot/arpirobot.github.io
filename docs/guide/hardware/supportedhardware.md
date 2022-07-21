@@ -26,7 +26,7 @@
 
 ### Base / Frame / Chassis
 
-*Sometimes, kits are used for the robot's base / frame / chassis, however this is also frequently custom built. Some kits are linked here. This is not a complete list of kits.*
+*Sometimes, kits are used for the robot's base / frame / chassis, however this is also frequently custom built. Some kits are linked here. This is not a complete list of kits. Amazon is a good place to look for chassis kits. DFRobot also has several custom kits available.*
 
 ??? info "Kits"
     | Chassis Kit    | Description                                             | Link(s)           |
