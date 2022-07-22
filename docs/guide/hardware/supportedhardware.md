@@ -3,23 +3,24 @@
 
 *Note: These are not the only possible places to buy components. These are just general recommendations.*
 
-[Adafruit](https://www.adafruit.com/) - Sell many custom microcontroller boards and sensor / motor controller breakout boards. Also sell Raspberry Pi computers and various components such as motors. 
+??? info "Sources"
+    [Adafruit](https://www.adafruit.com/) - Sell many custom microcontroller boards and sensor / motor controller breakout boards. Also sell Raspberry Pi computers and various components such as motors. 
 
-[SparkFun](https://www.sparkfun.com/) - Similar to Adafruit, sell many custom sensor / motor controller boards. Sell Arduinos and custom microcontroller boards as well as Raspberry Pi computers, motors, and various other components.
+    [SparkFun](https://www.sparkfun.com/) - Similar to Adafruit, sell many custom sensor / motor controller boards. Sell Arduinos and custom microcontroller boards as well as Raspberry Pi computers, motors, and various other components.
 
-[Digikey](https://www.digikey.com/) - Sell various electronic chips and components. Also stock most / all Adafruit parts (and usually allow back ordering).
+    [Digikey](https://www.digikey.com/) - Sell various electronic chips and components. Also stock most / all Adafruit parts (and usually allow back ordering).
 
-[Mouser](https://www.mouser.com/) -  Sell various electronic chips and components. Also stock many Adafruit parts (and usually allow back ordering).
+    [Mouser](https://www.mouser.com/) -  Sell various electronic chips and components. Also stock many Adafruit parts (and usually allow back ordering).
 
-[Amazon](https://www.amazon.com/) - Good source for "common" parts being used. Sometimes motors and some sensor boards can be found. Mostly good for "generic" type parts and common parts.
+    [Amazon](https://www.amazon.com/) - Good source for "common" parts being used. Sometimes motors and some sensor boards can be found. Mostly good for "generic" type parts and common parts.
 
-[Banggood](https://www.banggood.com/) - Stocks many items to be purchased online. Similar to Amazon, but slow shipping from China. Sometimes cheaper prices than Amazon and sometimes slightly different availability.
+    [Banggood](https://www.banggood.com/) - Stocks many items to be purchased online. Similar to Amazon, but slow shipping from China. Sometimes cheaper prices than Amazon and sometimes slightly different availability.
 
-[DFRobot](https://www.dfrobot.com/) - Provide many robot kits and components. The kits often include electronics that are not easily usable with the ArPiRobot framework, but the robot chases can be useful. Additionally, some sensors and motors are useful.
+    [DFRobot](https://www.dfrobot.com/) - Provide many robot kits and components. The kits often include electronics that are not easily usable with the ArPiRobot framework, but the robot chases can be useful. Additionally, some sensors and motors are useful.
 
-[Robotshop](https://www.robotshop.com/) - Stock many components, including many DFRobot motors with cheaper shipping.
+    [Robotshop](https://www.robotshop.com/) - Stock many components, including many DFRobot motors with cheaper shipping.
 
-[Arduino Store](https://store.arduino.cc/usa/) - This is sometimes the only place to easily find some Arduino boards.
+    [Arduino Store](https://store.arduino.cc/usa/) - This is sometimes the only place to easily find some Arduino boards.
 
 
 ## Mechanical Components
@@ -64,7 +65,50 @@
 
 ## Electrical Components
 
-TODO
+### Main Computer
+
+*Currently, only Raspberry Pi boards are officially supported. This is due to the OS image used. Other boards could be used, but would require custom configuring the operating system (which is not a trivial process). Additionally, a board with a WiFi adapter is required for full functionality.*
+
+??? info "Raspberry Pi Boards"
+
+    There are three main "models" of raspberry Pi boards.
+
+    - Model B: Traditional size with multiple USB ports, ethernet, more display options, etc. Slightly larger than a hat.
+    - Model A: Same size as a hat (smaller than model B). Has one USB port and no ethernet. Typically has same processor, but less ram than corresponding model B.
+    - Zero series: A smaller raspberry pi board with reduced size connectors. Uses micro USB OTG instead of a USB A port. Often weaker processor than similar aged model B and A boards and less RAM than model B boards.
+
+    In addition to the "models" listed above, there are different generations of each. The Model A and B typically share generation numbers. The Zero series has its own generation numbers. There is not a Pi of each model for each generation. The generation numbers used below are for the model A and B boards. The Pi zero is associated with a generation based on release date. Additionally, there are sometimes "+" models released (eg Model B+, Model A+). Typically, this is just due to a different SoC (processor) being used. Not much tends to change with the board functionally.
+
+    | Generation         | Model B Board              | Model A Board              | Zero series Board                       |
+    | ------------------ | -------------------------- | -------------------------- | --------------------------------------- |
+    | 1                  | Raspberry Pi 1 Model B (+) | Raspberry Pi 1 Model A (+) |                                         |
+    | 2                  | Raspberry Pi 2 Model B     |                            |                                         |
+    | 3                  | Raspberry Pi 3 Model B (+) | Raspberry Pi 3A+           | Raspberry Pi Zero / Raspberry Pi Zero W |
+    | 4                  | Raspberry Pi 4 Model B     |                            | Raspberry Pi Zero 2 W                   |
+    
+    Things to consider when choosing a board: 
+
+    - At this time, 32-bit arm board (armv6 and armv7) are supported, but at a later date only 64-bit arm (armv8+aarch64) boards may be supported. As such, these boards are generally recommended. 
+    - For more complex robots more RAM and CPU cores are useful. Avoiding single core boards with less than 1GB RAM is a good idea if you plan to build a more complex robot (more concurrent tasks, image processing, etc). However, less powerful boards are often ok for simpler robots.
+    - Only boards with builtin WiFi are recommended. While other boards can be used with a USB WiFi adapter, this is not a tested / well supported configuration.
+    - Typically model A and Zero series boards are recommended for robots due to the reduced size. Often, additional connectors on the larger model B boards are not necessary for robots.
+
+    The following boards are generally recommended
+    
+    - [Raspberry Pi 3 Model A+](https://www.raspberrypi.com/products/raspberry-pi-3-model-a-plus/): Quad core (aarch64 capable) with 512MB RAM. Good for many mid range robots.
+    - [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/): Quad core (aarch64 capable) with 1G RAM. Good for scenarios where a little more RAM is needed than a 3A+ has. [Model B](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) is also about the same.
+    - [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/): Quad core (aarch64 capable) and more powerful than a 3B+. Also has options with much more RAM (up to 8GB). However, these "overkill" for many robots. Cooling is also sometimes something that needs to be considered.
+    - [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/): Quad core (aarch64 capable) with 512MB RAM. Small size and low cost. Good for low to mid range robots.
+    - [Raspberry Pi Zero W](https://www.raspberrypi.com/products/raspberry-pi-zero-w/): Single core (**not** aarch64 capable) with 512MB RAM. Small size and low cost. Advisable only if you cannot get a Pi Zero 2 W and only for simple robots.
+
+    The following boards are generally **not** recommended:
+    
+    - Raspberry Pi 1 Model B or Model A: No WiFi and only a 26-pin header (not compatible with most hats).
+    - Raspberry Pi 1 Model B+ or A+: No WiFi and single core (not aarch64 capable)
+    - Raspberry Pi 2 Model B: No WiFi and not aarch64 capable
+    - Raspberry Pi Zero: No WiFi (W variant has WiFi).
+
+    For more information see [Wikipedia's page](https://en.wikipedia.org/wiki/Raspberry_Pi#Series_and_generations)
 
 
 ## Tools
