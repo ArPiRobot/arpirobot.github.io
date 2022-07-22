@@ -1,7 +1,7 @@
 
 ## Where to Buy Components
 
-*Note: These are not the only possible places to buy components. These are just general recommendations.*
+Note: These are not the only possible places to buy components. These are just general recommendations.
 
 ??? info "Sources"
     [Adafruit](https://www.adafruit.com/) - Sell many custom microcontroller boards and sensor / motor controller breakout boards. Also sell Raspberry Pi computers and various components such as motors. 
@@ -27,7 +27,7 @@
 
 ### Base / Frame / Chassis
 
-*Sometimes, kits are used for the robot's base / frame / chassis, however this is also frequently custom built. Some kits are linked here. This is not a complete list of kits. Amazon is a good place to look for chassis kits. DFRobot also has several custom kits available.*
+Sometimes, kits are used for the robot's base / frame / chassis, however this is also frequently custom built. Some kits are linked here. This is not a complete list of kits. Amazon is a good place to look for chassis kits. DFRobot also has several custom kits available.
 
 ??? info "Kits"
     | Chassis Kit    | Description                                             | Link(s)           |
@@ -39,7 +39,7 @@
 
 ### Motors and Wheels
 
-*The list below includes commonly used motors. Any motor should be usable, provided it is usable with the motor driver and power source used. The power source will need to be of a sufficient voltage and the motor controller (motor driver) will need to be able to supply enough current for the motor.*
+The list below includes commonly used motors. Any motor should be usable, provided it is usable with the motor driver and power source used. The power source will need to be of a sufficient voltage and the motor controller (motor driver) will need to be able to supply enough current for the motor.
 
 ??? info "Motors"
     | Motor            | Description                                              | Link(s)          |
@@ -67,7 +67,7 @@
 
 ### Main Computer
 
-*Currently, only Raspberry Pi boards are officially supported. This is due to the OS image used. Other boards could be used, but would require custom configuring the operating system (which is not a trivial process). Additionally, a board with a WiFi adapter is required for full functionality.*
+Currently, only Raspberry Pi boards are officially supported. This is due to the OS image used. Other boards could be used, but would require custom configuring the operating system (which is not a trivial process). Additionally, a board with a WiFi adapter is required for full functionality.
 
 ??? info "Raspberry Pi Boards"
 
@@ -102,7 +102,7 @@
     - [Raspberry Pi Zero W](https://www.raspberrypi.com/products/raspberry-pi-zero-w/): Single core (**not** aarch64 capable) with 512MB RAM. Small size and low cost. Advisable only if you cannot get a Pi Zero 2 W and only for simple robots.
 
     The following boards are generally **not** recommended:
-    
+
     - Raspberry Pi 1 Model B or Model A: No WiFi and only a 26-pin header (not compatible with most hats).
     - Raspberry Pi 1 Model B+ or A+: No WiFi and single core (not aarch64 capable)
     - Raspberry Pi 2 Model B: No WiFi and not aarch64 capable
@@ -110,6 +110,25 @@
 
     For more information see [Wikipedia's page](https://en.wikipedia.org/wiki/Raspberry_Pi#Series_and_generations)
 
+
+## Computer Power Sources
+
+Generally, it is easiest to have two power sources on the robot. This avoids scenarios where motors changing speed cause a voltage drop that reboots the computer. Often, the computer power source is a USB battery pack.
+
+When selecting a power source, be aware that it needs to be able to supply a sufficient amount of current. The current requirement mostly depends on the main computer. In general, using a 2.4A power source is a safe option (3A is better for a Pi 4B) and is generally recommended. Depending on how many sensors and other devices are connected, lower currents may be required. The following are minimum recommendations by each computer. These minimums are lower than commonly recommended due to the fact that the computer is generally not driving a display when used on a robot.
+- 2.1A for Pi 3A+, Pi 3B+, and Pi 3B
+- 2.4A for Pi 4B
+- 1.0A for Pi Zero W
+- 1.5A for Pi Zero 2 W
+
+??? info "USB Battery Packs"
+    | Battery Pack            | Description             | Current Capacity    | Link(s)      |
+    | ----------------------- | ----------------------- | ------------------- | ------------ |
+    
+    TODO
+
+??? info "Other Options"
+    TODO: Regulator and battery hats
 
 ## Tools
 
