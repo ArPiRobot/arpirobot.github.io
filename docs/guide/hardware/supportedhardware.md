@@ -138,6 +138,26 @@ When selecting a power source, be aware that it needs to be able to supply a suf
     - [Geekworm Raspberry Pi UPS HAT](https://www.amazon.com/Geekworm-Raspberry-X706-Function-Compatible/dp/B096FT6THL/)
 
 
+## Motor Power Sources
+
+The "easiest" power source for motors is a AA battery pack. At least 4AA batteries are recommended for two TT motors and 5 AA batteries for 4 TT motors. When using TT motors, more than 6AA batteries is not recommended (or 8 if using rechargeable). Other motors may require different voltages / current draw and may need different types or numbers of batteries.
+
+??? info "AA Battery Packs"
+    *Note: these are just holders for the batteries. Batteries are not included. If using rechargeable AA's it is recommended to use one or two more batteries than the minimum recommended above (rechargeable are 1.2V per not 1.5V per).*
+    
+    | Item                   | Link(s) |
+    | ---------------------- | ------- |
+    | 4x AA Holder           | [Amazon 1](https://www.amazon.com/LAMPVPATH-Battery-Holder-Leads-Wires/dp/B07T7MTRZX/) <br /> [Amazon 2](https://www.amazon.com/WMYCONGCONG-Battery-Standard-Connector-Plastic/dp/B07XBJLFL3/) <br /> [Amazon 3](https://www.amazon.com/LAMPVPATH-Battery-Holder-Switch-Leads/dp/B07C6T6YCZ/) <br /> [Adafruit 1](https://www.adafruit.com/product/3859) <br /> [Adafruit 2](https://www.adafruit.com/product/830) |
+    | 5x AA Holder           | [Amazon 1](https://www.amazon.com/Vanki-Battery-Holder-Case-Leads/dp/B073XC52BG/) <br /> [Amazon 2](https://www.amazon.com/LampVPath-Battery-Holder-Leads-Wires/dp/B07WRQ44YK/) <br /> [Adafruit](https://www.adafruit.com/product/3456) |
+    | 6x AA Holder           | [Amazon 1](https://www.amazon.com/Hilitchi-Thicken-Battery-Standard-Connector/dp/B019P0VDRO/) <br /> [Amazon 2](https://www.amazon.com/Battery-Holder-Enclosure-Connector-Cable/dp/B01N2INSBR/) <br />  [Adafruit](https://www.adafruit.com/product/248) |
+    | 8x AA Holder           | [Amazon 1](https://www.amazon.com/Thicken-Battery-Holder-Standard-Connector/dp/B07WP1CYYW/) <br /> [Amazon 2](https://www.amazon.com/LAMPVPATH-Battery-Holder-Layers-Connector/dp/B093BVWX6T/) <br /> [Amazon 3](https://www.amazon.com/Thicken-Battery-Holder-Switch-QTEATAK/dp/B07WY48TFC/) <br /> [Adafruit](https://www.adafruit.com/product/875) |
+
+
+Other types of batteries can also be used. Typically, NiMH batteries are the best option (from a safety standpoint), but LiPo batteries are usable too (however more caution must be used with them).
+
+??? info "Other Batteries"
+    TODO
+
 ## Tools
 
 TODO

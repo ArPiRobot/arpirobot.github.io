@@ -21,8 +21,8 @@ Unlike the physical construction of the robot, the requirements for a robot's el
 ###  Major Components
 
 - Main Computer: The main computer is what runs the robot software. This is an embedded computer running a Linux operating system. Often, Raspberry Pi boards are used.
-- Motor Power Source: The power source used to power motors. Often this is a set of AA batteries, or a rechargeable battery pack.
 - Computer Power Source: The power source used to power the computer (and other devices powered from the computer). In many cases, this is a second battery in the form of a USB battery pack (rechargeable). However, this can also sometimes be regulated from the same source powering motors.
+- Motor Power Source: The power source used to power motors. Often this is a set of AA batteries, or a rechargeable battery pack.
 - Motion controllers: These components are used to control the robot's motion. This includes devices such as motor controllers used to move motors on the robot.
 - Sensor Coprocessor: A microcontroller (or microcontroller dev board) capable of interfacing with sensors on the robot. Communicates important information back to the main computer. Often, Arduino development boards are used.
 - Sensors: Any device on the robot used to provide the software information about the robot or its environment. Includes encoders, IMUs (gyro, accelerometer, magnetometer), voltage sensors, ultrasonic sensor, IR reflection detectors, etc
@@ -49,6 +49,7 @@ There are a few "minor" components and tools that are sometimes necessary as wel
 - Micro SD Card: Required to boot the computer (in most cases). Stores the computer's OS and the robot's program files.
 - USB Cables: Required to connect some components. Typically, a USB cable is needed to connect a sensor coprocessor to the main computer and to connect the computer power source to the computer.
 - Jumper Wires: Used to connect various components on the robot to each other (sensors, motors, etc)
+- Barrel Jack Connector: Used to connect power to motor driver(s).
 - Breadboards: Used to connect sensor and other devices using jumper wires. No soldering required.
 - Solder Iron: Used to assemble electronic components. Required to assemble some sensor boards, solder headers to some main computers, or connect wires to some motors. Most of the time, it is possible to avoid soldering if you want to do so, but some components will no be available assembled or may be more expensive assembled.
 - Wire Strippers: Used to remove insulation from wires. Useful if you are making your own jumper wires or attaching wires to motors yourself. Not always required.
