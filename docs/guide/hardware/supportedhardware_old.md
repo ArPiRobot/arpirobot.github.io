@@ -104,7 +104,9 @@ Most sensors require an arduino either due to timing, sensor communication requi
 
 | Item | Description/Notes | Link(s) |
 | ---- | ----------------- | ------- |
-| TT Motor | Most common motor option. It is cheap and well-tested. Gear ratio is 1:48. Many kits come with these. | [Adafruit](https://www.adafruit.com/product/3777) |
+| TT Motor | Most common motor option. It is cheap and well-tested. Gear ratio is 1:48. Many kits come with these. | [Adafruit](https://www.adafruit.com/product/3777) | to have two power sources on the robot. This avoids scenarios where motors changing speed cause a voltage drop that reboots the computer. Often, the computer power source is a USB battery pack.
+
+When selecting a power source, be aware th
 | Angled TT Motor | These are not often used, but some kits do use them. Gear ratio is 1:120 | [RobotShop](https://www.robotshop.com/en/dfrobot-6v-180-rpm-micro-dc-geared-motor-with-back-shaft.html), [DFRobot](https://www.dfrobot.com/product-100.html?search=tt%20motor&description=true) |
 | High Torque TT Motor | Same shape as standard TT Motor, but 1:120 gear ratio. These are hard to find. | [Banggood](https://www.banggood.com/DC-3V-6V-DC-1120-Gear-Motor-TT-Motor-for-Arduino-Smart-Car-Robot-DIY-p-1260117.html?cur_warehouse=CN) |
 | High Torque TT Motor w/ Quad Encoder | Same as high torque TT motor (1:120 gear ratio), but with builtin quadrature encoder. | [RobotShop](https://www.robotshop.com/en/micro-6v-160rpm-1201-dc-geared-motor-encoder.html), [DFRobot](https://www.dfrobot.com/product-1457.html?search=tt%20motor&description=true) |

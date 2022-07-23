@@ -67,48 +67,38 @@ The list below includes commonly used motors. Any motor should be usable, provid
 
 ### Main Computer
 
-Currently, only Raspberry Pi boards are officially supported. This is due to the OS image used. Other boards could be used, but would require custom configuring the operating system (which is not a trivial process). Additionally, a board with a WiFi adapter is required for full functionality.
+Currently, only Raspberry Pi boards are officially supported. This is due to the OS image used and the IO backends in the CoreLib. Other boards could be used, but would require custom configuring the operating system (which is not a trivial process) and likely implementing a new IO provider in the CoreLib (also not a trivial process). Additionally, a board with a WiFi adapter is required for full functionality.
+
 
 ??? info "Raspberry Pi Boards"
+    There are thee main types of Raspberry Pi boards
 
-    There are three main "models" of raspberry Pi boards.
+    - Model B boards: "Full size" Raspberry Pis. Small, but larger than the other options.
+    - Model A boards: Smaller boards (size of a Pi hat). Also generally slightly less powerful than same generation Model B board.
+    - Zero series boards: Very small boards (about half the size of a Model A board). Generally significantly less powerful than similarly aged Model B / Model A boards.
 
-    - Model B: Traditional size with multiple USB ports, ethernet, more display options, etc. Slightly larger than a hat.
-    - Model A: Same size as a hat (smaller than model B). Has one USB port and no ethernet. Typically has same processor, but less ram than corresponding model B.
-    - Zero series: A smaller raspberry pi board with reduced size connectors. Uses micro USB OTG instead of a USB A port. Often weaker processor than similar aged model B and A boards and less RAM than model B boards.
+    There are several generations of Raspberry Pi boards. Model B and A boards share the same generation numbers (though there isn't a Model A for each generation). The zero series has its own generation numbers. Also note that there are sometimes "plus variants" (eg Model B+). Typically these are similar to the non-plus variants.
 
-    In addition to the "models" listed above, there are different generations of each. The Model A and B typically share generation numbers. The Zero series has its own generation numbers. There is not a Pi of each model for each generation. The generation numbers used below are for the model A and B boards. The Pi zero is associated with a generation based on release date. Additionally, there are sometimes "+" models released (eg Model B+, Model A+). Typically, this is just due to a different SoC (processor) being used. Not much tends to change with the board functionally.
+    When choosing a Raspberry Pi board there are a few things to consider:
 
-    | Generation         | Model B Board              | Model A Board              | Zero series Board                       |
-    | ------------------ | -------------------------- | -------------------------- | --------------------------------------- |
-    | 1                  | Raspberry Pi 1 Model B (+) | Raspberry Pi 1 Model A (+) |                                         |
-    | 2                  | Raspberry Pi 2 Model B     |                            |                                         |
-    | 3                  | Raspberry Pi 3 Model B (+) | Raspberry Pi 3A+           | Raspberry Pi Zero / Raspberry Pi Zero W |
-    | 4                  | Raspberry Pi 4 Model B     |                            | Raspberry Pi Zero 2 W                   |
-    
-    Things to consider when choosing a board: 
+    - Not all Raspberry Pi boards have WiFi builtin. Generation 1 and 2 boards do not. The Pi Zero (non W) also does not.
+    - 64-bit boards are recommended. At some point in the future, only 64-bit boards may be supported (however, for now 32-bit boards are supported).
+    - Single core boards are not good for complex software. More RAM is also beneficial.
+    - Raspberry Pi 4 Model B sometimes has thermal issues and may require heatsinks and / or a fan. As such, it is often no the best choice for robots.
+    - Generally, Raspberry Pi 3A+ or Raspberry Pi Zero 2 W boards are recommended as they are smaller, but still provide adequate computational power for most robots.
+    - The Raspberry Pi Zero W is not generally advisable. It is a single core board and not 64-bit capable.
 
-    - At this time, 32-bit arm board (armv6 and armv7) are supported, but at a later date only 64-bit arm (armv8+aarch64) boards may be supported. As such, these boards are generally recommended. 
-    - For more complex robots more RAM and CPU cores are useful. Avoiding single core boards with less than 1GB RAM is a good idea if you plan to build a more complex robot (more concurrent tasks, image processing, etc). However, less powerful boards are often ok for simpler robots.
-    - Only boards with builtin WiFi are recommended. While other boards can be used with a USB WiFi adapter, this is not a tested / well supported configuration.
-    - Typically model A and Zero series boards are recommended for robots due to the reduced size. Often, additional connectors on the larger model B boards are not necessary for robots.
+    The following boards are recommended for use with the ArPiRobot Framework
 
-    The following boards are generally recommended
-    
-    - [Raspberry Pi 3 Model A+](https://www.raspberrypi.com/products/raspberry-pi-3-model-a-plus/): Quad core (aarch64 capable) with 512MB RAM. Good for many mid range robots.
-    - [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/): Quad core (aarch64 capable) with 1G RAM. Good for scenarios where a little more RAM is needed than a 3A+ has. [Model B](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) is also about the same.
-    - [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/): Quad core (aarch64 capable) and more powerful than a 3B+. Also has options with much more RAM (up to 8GB). However, these "overkill" for many robots. Cooling is also sometimes something that needs to be considered.
-    - [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/): Quad core (aarch64 capable) with 512MB RAM. Small size and low cost. Good for low to mid range robots.
-    - [Raspberry Pi Zero W](https://www.raspberrypi.com/products/raspberry-pi-zero-w/): Single core (**not** aarch64 capable) with 512MB RAM. Small size and low cost. Advisable only if you cannot get a Pi Zero 2 W and only for simple robots.
+    | Board                   | Number of Cores    | RAM         | 64-bit | Link           |
+    | ----------------------- | ------------------ | ----------- | ------ | -------------- |
+    | Raspberry Pi 4 Model B  | 4                  | 1GB - 8GB   | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) |
+    | Raspberry Pi 3 Model A+ | 4                  | 512MB       | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-a-plus/) |
+    | Raspberry Pi 3 Model B  | 4                  | 1GB         | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) |
+    | Raspberry Pi 3 Model B+ | 4                  | 1GB         | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/) |
+    | Raspberry Pi Zero 2 W   | 4                  | 512MB       | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
+    | Raspberry Pi Zero W     | 1                  | 512MB       | No     | [Link](https://www.raspberrypi.com/products/raspberry-pi-zero-w/) |
 
-    The following boards are generally **not** recommended:
-
-    - Raspberry Pi 1 Model B or Model A: No WiFi and only a 26-pin header (not compatible with most hats).
-    - Raspberry Pi 1 Model B+ or A+: No WiFi and single core (not aarch64 capable)
-    - Raspberry Pi 2 Model B: No WiFi and not aarch64 capable
-    - Raspberry Pi Zero: No WiFi (W variant has WiFi).
-
-    For more information see [Wikipedia's page](https://en.wikipedia.org/wiki/Raspberry_Pi#Series_and_generations)
 
 
 ## Computer Power Sources
@@ -116,19 +106,36 @@ Currently, only Raspberry Pi boards are officially supported. This is due to the
 Generally, it is easiest to have two power sources on the robot. This avoids scenarios where motors changing speed cause a voltage drop that reboots the computer. Often, the computer power source is a USB battery pack.
 
 When selecting a power source, be aware that it needs to be able to supply a sufficient amount of current. The current requirement mostly depends on the main computer. In general, using a 2.4A power source is a safe option (3A is better for a Pi 4B) and is generally recommended. Depending on how many sensors and other devices are connected, lower currents may be required. The following are minimum recommendations by each computer. These minimums are lower than commonly recommended due to the fact that the computer is generally not driving a display when used on a robot.
+
 - 2.1A for Pi 3A+, Pi 3B+, and Pi 3B
 - 2.4A for Pi 4B
 - 1.0A for Pi Zero W
 - 1.5A for Pi Zero 2 W
 
+*Note: Higher capacity battery packs last longer.*
+
+
 ??? info "USB Battery Packs"
-    | Battery Pack            | Description             | Current Capacity    | Link(s)      |
-    | ----------------------- | ----------------------- | ------------------- | ------------ |
-    
-    TODO
+    | Battery Pack            | Capacity             | Output Current (max) | Link(s)      |
+    | ----------------------- | -------------------- | -------------------- | ------------ |
+    | Anker Astro E1          | 5200 mAh / 6700mAh   | 2.1A                 | [Amazon (5200mAh)](https://www.amazon.com/Anker-bar-Sized-Portable-High-Speed-Technology/dp/B00P7N0320) <br /> [Amazon (6700mAh)](https://www.amazon.com/Anker-Upgraded-Candy-Bar-High-Speed-Technology/dp/B06XS9RMWS/) |
+    | EnergyCell Compact      | 10000 mAh            | 2.4A                 | [Amazon](https://www.amazon.com/10000mAh-Ultra-Compact-High-Speed-Compatible-More-Black/dp/B09B3FSL1T) |
+    | Miday Portable Charger  | 10000 mAh            | 2.4A                 | [Amazon](https://www.amazon.com/Miady-Portable-Charger-10000mAh-External/dp/B0842FCWGM) |
+    | Miday Portable Charger  | 5000 mAh             | 2.4A                 | [Amazon](https://www.amazon.com/Miady-Portable-Charger-5000mAh-Lightweight/dp/B08GLYSTLZ) |
 
 ??? info "Other Options"
-    TODO: Regulator and battery hats
+    Voltage regulators can be used to regulate power from the same source that powers motors (or another unregulated source). Raspberry Pi's require a 5V supply capable of the currents indicated above. Keep this in mind when selecting a regulator. Also be aware of the regulator's input voltage requirements. Some example regulators are listed below
+    
+    - 5V/3A UBEC from [Adafruit](https://www.adafruit.com/product/1385)
+    - 5V/3A UBEC from ShareGoo ([Amazon](https://www.amazon.com/ShareGoo-Converter-Module-Quadcopter-Holder/dp/B07DYXTX9H/))
+
+
+    There are also other batteries designed for use with a raspberry pi. Some are listed below.
+    
+    - [PiJuice Hat](https://www.amazon.com/PiJuice-HAT-Portable-Platform-Raspberry/dp/B0788B9YGW)
+    - [Kuman UPS Battery Pack Board](https://www.amazon.com/Kuman-Lithium-Battery-Expansion-Raspberry/dp/B07FDBZCXG)
+    - [Geekworm Raspberry Pi UPS HAT](https://www.amazon.com/Geekworm-Raspberry-X706-Function-Compatible/dp/B096FT6THL/)
+
 
 ## Tools
 
