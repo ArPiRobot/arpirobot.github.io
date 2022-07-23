@@ -49,8 +49,9 @@ The list below includes commonly used motors. Any motor should be usable, provid
     | Angled TT Motor  | Similar to other TT Motors above, but output shaft is 90 degrees angle from motor input shaft. These are harder to find. These are also usually 1:120 gear ratio. | [Robot Shop](https://www.robotshop.com/en/dfrobot-6v-180-rpm-micro-dc-geared-motor-with-back-shaft.html) <br /> [DFRobot](https://www.dfrobot.com/product-100.html) |
     | Various Pololu Plastic Gearmotors | Similar in form factor and capabilities to the common "TT" motors, but have a different output shaft. | [Pololu](https://www.pololu.com/category/158/mini-plastic-gearmotors) |
     | Various Pololu Metal Gearmotors | May options including larger higher voltage / current motors capable of generating / withstanding higher torque. Output shafts vary. | [Pololu](https://www.pololu.com/category/51/pololu-metal-gearmotors) |
-
-    TODO: Metal TT Motor options from Adafruit / Others
+    | TT Motor Bi-Metal | Similar to TT Motor, but with some metal internal gears. 1:90 gear ratio. Note: these have no rear output shaft making encoders more difficult. | [Adafruit](https://www.adafruit.com/product/3801) | 
+    | TT Motor All-Metal | Similar to TT Motor ,but all internal gears are metal. 1:90 gear ratio. Note: these have no rear output shaft making encoders more difficult. | [Adafruit](https://www.adafruit.com/product/3802) |
+    
 
 ??? info "Wheels"
     | Wheel         | Description                                              | Link(s)           |
