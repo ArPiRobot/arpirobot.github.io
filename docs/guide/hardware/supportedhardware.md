@@ -1,7 +1,7 @@
 
 ## Where to Buy Components
 
-Note: These are not the only possible places to buy components. These are just general recommendations.
+Note: These are not the only possible places to buy components. These are just some general starting points.
 
 ??? info "Sources"
     [Adafruit](https://www.adafruit.com/) - Sell many custom microcontroller boards and sensor / motor controller breakout boards. Also sell Raspberry Pi computers and various components such as motors. 
@@ -222,4 +222,40 @@ Most sensors are only supported using an sensor coprocessor. This is either due 
 
 ## Tools & Miscellaneous
 
-TODO
+??? info "Other Electrical Components"
+
+    | Item               | Purpose                                                                            | Link(s)    |
+    | ------------------ | ---------------------------------------------------------------------------------- | ---------- |
+    | LEDs               | Indicators to user. Connect to main computer's GPIO pins. LEDs require a current limiting resistor. | [Adafruit 5mm](https://www.adafruit.com/product/4203) <br /> [Amazon 5mm - 1](https://www.amazon.com/eBoot-Pieces-Emitting-Diodes-Assorted/dp/B06XPV4CSH/) <br /> [Amazon 5mm - 2](https://www.amazon.com/MCIGICM-Circuit-Assorted-Science-Experiment/dp/B07PG84V17/) <br /> [SparkFun 5mm Builtin Resistor](https://www.sparkfun.com/products/14563) |
+    | Micro SD Card      | Storage for main computer OS. Generally A1 or A2 rated cards are faster when running an OS from the card. | [SanDisk Ultra (A1) - Amazon](https://www.amazon.com/SanDisk-256GB-MicroSDXC-Memory-Adapter/dp/B08GYBBBBH/) <br /> [SanDisk Extreme (A2)](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMBLV6/) <br /> [Samsung Evo Select (A1 / A2)](https://www.amazon.com/SAMSUNG-microSDXC-Expanded-MB-ME128KA-AM/dp/B09B1F9L52/) |
+    | USB Cables         | Connect devices (power to main computer, sensor coprocessor to main computer, etc) | [A to Mini B (6 in)](https://www.adafruit.com/product/899) <br /> [A to Micro B (6 in)](https://www.adafruit.com/product/898) <br /> [A to Mini B (3 ft)](https://www.adafruit.com/product/260) <br /> [A to Micro B (3 ft)](https://www.adafruit.com/product/592) |
+    | USB OTG Adapter    | Used to connect a USB device to a micro-B OTG host port (eg on Pi Zero).           | [Adafruit (No Cable)](https://www.adafruit.com/product/2910) <br /> [Adafruit (Cable)](https://www.adafruit.com/product/1099) <br /> [Amazon - 1](https://www.amazon.com/UGREEN-Adapter-Samsung-Controller-Smartphone/dp/B00LN3LQKQ/) <br /> [Amazon 2](https://www.amazon.com/BSHTU-Splitter-Enhancer-Straight-90Degree/dp/B07C3JPZBC/) <br /> [Adafruit (Micro B to Micro B)](https://www.adafruit.com/product/3610) |
+    | Barrel Jack Connectors | Used to attach barrel jack connectors to jumper wires. Useful for motor battery power input. | [Adafruit (Female)](https://www.adafruit.com/product/368) <br /> [Amazon (Multipack) - 1](https://www.amazon.com/Power-Connector-Female-Adapter-Camera/dp/B07C61434H/) <br /> [Amazon (Multipack) - 2](https://www.amazon.com/DAYKIT-Female-2-1x5-5MM-Adapter-Connector/dp/B01J1WZENK/) |
+    | Jumper Wires           | Premade wires with "DuPont" headers. Useful for connecting sensors. Often come in packs includeing male / male wires, female / female wires, and male / female wires. | [Amazon - 1](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/) <br /> [Amazon -2](https://www.amazon.com/Elegoo-EL-CP-004-Multicolored-Breadboard-arduino/dp/B01EV70C78/) <br /> [Adafruit](https://www.adafruit.com/product/1954) |
+    | Wire 28AWG             | Useful for making custom "DuPont" jumper wires. Will need the headers, pins, and crimper (see following entries). Also useful to connect low current motors (eg TT motor). | [Amazon - 1](https://www.amazon.com/Fermerry-Silicone-Stranded-Copper-Electrical/dp/B089CP9N98/) <br /> [Amazon - 2](https://www.amazon.com/StrivedayTM-Flexible-Silicone-electronic-electrics/dp/B01KQ2LHFI/) |
+    | "DuPont" Kit           | Includes pins and housings for "DuPont" connectors. Some kits come with a crimper and some wire too. Housings and pins can also be purchased separately. | [Amazon - 1](https://www.amazon.com/Haitronic-310pcs-sockets-Connector-Housing/dp/B0744CV3Y5/) <br /> [Amazon - 2](https://www.amazon.com/HJ-Garden-Connectors-Terminal-1-12Pin/dp/B07BDJ63CP/) |
+    | "Dupont" Crimper       | Used to crimp "DuPont" pins to wires.                                          | [Amazon - 1](https://www.amazon.com/IWISS-SN-28B-Crimping-AWG28-18-Dupont/dp/B08D67L3YS/) <br /> [Amazon - 2](https://www.amazon.com/IWISS-SN-28B-Crimping-AWG28-18-Dupont/dp/B00OMM4YUY/) <br /> [Amazon - 3](https://www.amazon.com/Flytuo-Ratcheting-AWG24-16-0-25-1-5mm%C2%B2-Terminals/dp/B08FR38529/) |
+    | Male .1 inch Header Pins | Soldered onto many boards to connect wires or breadboard. Often come with boards, but not always. | [Adafruit](https://www.adafruit.com/product/392) <br /> [Amazon - 1](https://www.amazon.com/MCIGICM-Header-2-45mm-Arduino-Connector/dp/B07PKKY8BX/) <br /> [Amazon - 2](https://www.amazon.com/Header-Lystaii-Pin-Connector-Electronic/dp/B06ZZN8L9S/) |
+    | Logic Level Shifter    | Used to adjust signals between voltage levels. Necessary to connect some sensors to some boards (eg 5V sensors to 3.3V boards). Note that not all shifters support logic level frequencies (PWM, I2C, SPI, UART, etc) and may only work for lower frequency GPIOs. Parts linked here are bidirectional level shifters. | [Adafruit - 1](https://www.adafruit.com/product/1875) <br /> [Adafruit - 2](https://www.adafruit.com/product/757) <br /> [Amazon - 1](https://www.amazon.com/KeeYees-Channels-Converter-Bi-Directional-Shifter/dp/B07LG646VS/) <br /> [Amazon - 2](https://www.amazon.com/HiLetgo-Channels-Converter-Bi-Directional-3-3V-5V/dp/B07F7W91LC/) |
+    | Switches               | Often used to switch motor battery on and off.                                 | [Adafruit - 1](https://www.adafruit.com/product/3221) <br /> [Adafruit - 2](https://www.adafruit.com/product/805) <br /> [Adafruit - 3](https://www.adafruit.com/product/1620) |
+    | Mini Breadboard        | Used to connect electronics without soldering. Very small size.                | [Adafruit](https://www.adafruit.com/product/65) <br /> [Amazon - 1](https://www.amazon.com/HiLetgo-SYB-170-Breadboard-Colorful-Plates/dp/B071KCZZ4K/) <br /> [Amazon - 2](https://www.amazon.com/DaFuRui-tie-Points-Solderless-Breadboard-Compatible/dp/B07KGQ7H8B/) |
+    | Half Size Breadboard   | Used to connect electronics without soldering. Half of standard size.          | [Adafruit](https://www.adafruit.com/product/64) <br /> [Amazon - 1](https://www.amazon.com/Pcs-MCIGICM-Points-Solderless-Breadboard/dp/B07PCJP9DY/) <br /> [Amazon - 2](https://www.amazon.com/DEYUE-breadboard-Set-Prototype-Board/dp/B07LFD4LT6/) |
+    | Full Size Breadboard   | Used to connect electronics without soldering. Standard size.                  | [Adafruit](https://www.adafruit.com/product/239) <br /> [Amazon - 1](https://www.amazon.com/DEYUE-Solderless-Prototype-Breadboard-Points/dp/B07NVWR495/) <br /> [Amazon - 2](https://www.amazon.com/EL-CP-003-Breadboard-Solderless-Distribution-Connecting/dp/B01EV6LJ7G/) |
+    | USB / UART Converter   | Useful to connect to main computer by UART (debugging, fixing things, etc). Not usually necessary, but useful to have at times. Often sold as a "Console Cable", having  a blue USB connector housing. DO NOT BUY THIS TYPE OF CABLE FROM AMAZON. THE PL2303 ONES SOLD THERE GENERALLY DO NOT WORK IN RECENT YEARS! Adafruit is the only source that still has a functional version (different chip). The adapters linked here do work and are 3.3V devices (suitable for use with Raspberry Pi boards). | [Adafruit](https://www.adafruit.com/product/954) <br /> [Amazon - 1](https://www.amazon.com/Electronics123-SparkFun-Serial-Basic-Breakout/dp/B07MLXS877/) <br /> [Amazon - 2](https://www.amazon.com/SparkFun-FTDI-Basic-Breakout-3-3V/dp/B079M4F7W5/) <br /> [SparkFun](https://www.sparkfun.com/products/12977) |
+
+
+??? info "Tools and Assembly Components"
+    
+    | Item               | Purpose                                                                            | Link(s)    |
+    | ------------------ | ---------------------------------------------------------------------------------- | ---------- |
+    | Hook and Loop Tape |
+    | Twist Ties         |
+    | Zip Ties           |
+    | Hot Glue + Glue Gun |
+    | Super Glue         |
+    | Electrical Tape    |
+    | Ruler              |
+    | Small Screwdriver Kit |
+    | Solder Iron        |
+    | Multimeter         |
+    | Wire Stripper      |
