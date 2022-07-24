@@ -23,6 +23,9 @@ Note: These are not the only possible places to buy components. These are just g
     [Arduino Store](https://store.arduino.cc/usa/) - This is sometimes the only place to easily find some Arduino boards.
 
 
+*Note: In many cases, the components listed below are examples of a type of product. The linked items are intended to serve as examples and are not endorsements of a specific item / specific items.*
+
+
 ## Mechanical Components
 
 ### Base / Frame / Chassis
@@ -102,7 +105,7 @@ Currently, only Raspberry Pi boards are officially supported. This is due to the
 
 
 
-## Computer Power Sources
+### Computer Power Sources
 
 Generally, it is easiest to have two power sources on the robot. This avoids scenarios where motors changing speed cause a voltage drop that reboots the computer. Often, the computer power source is a USB battery pack.
 
@@ -138,7 +141,7 @@ When selecting a power source, be aware that it needs to be able to supply a suf
     - [Geekworm Raspberry Pi UPS HAT](https://www.amazon.com/Geekworm-Raspberry-X706-Function-Compatible/dp/B096FT6THL/)
 
 
-## Motor Power Sources
+### Motor Power Sources
 
 The "easiest" power source for motors is a AA battery pack. At least 4AA batteries are recommended for two TT motors and 5 AA batteries for 4 TT motors. When using TT motors, more than 6AA batteries is not recommended (or 8 if using rechargeable). Other motors may require different voltages / current draw and may need different types or numbers of batteries.
 
@@ -156,8 +159,66 @@ The "easiest" power source for motors is a AA battery pack. At least 4AA batteri
 Other types of batteries can also be used. Typically, NiMH batteries are the best option (from a safety standpoint), but LiPo batteries are usable too (however more caution must be used with them).
 
 ??? info "Other Batteries"
-    TODO
+    - [7.2V 3600mAh NiMH Battery](https://www.amazon.com/Zeee-3600mAh-Battery-Traxxas-Associated/dp/B07VLKP6RJ/)
+    - [6V 200mAh NiMH Battery](https://www.amazon.com/Tenergy-Rechargeable-Connector-Airplanes-Aircrafts/dp/B001BCOWLY/)
+    - [2 Cell LiPo Battery 6200mAh](https://www.amazon.com/Zeee-Battery-6200mAh-Connector-Vehicles/dp/B0925GSYDN/)
+    - [2 Cell LiPo battery 5200mAh](https://www.amazon.com/Zeee-Batteries-Dean-Style-Connector-Vehicles/dp/B076Z778MJ)
+    - [NiMH Charger (6V-12V)](https://www.amazon.com/Tenergy-Universal-Batteries-Compatible-Connectors/dp/B003MXMJX8/)
+    - [LiPo Charger](https://www.amazon.com/SKYRC-LiIon-Battery-Charger-Discharger/dp/B01MZ1ZZ7Z/)
 
-## Tools
+### Supported Sensor Coprocessors
+
+Officially supported sensor coprocessors must run the ArPiRobot Arduino Firmware. The following boards are officially supported by the firmware. However, other boards will likely work, but would require firmware modifications.
+
+??? info "Supported Boards"
+    
+    Notes on Arduino Compatible Boards:
+
+    - Official Arduino boards are open source hardware, meaning they can be easily copied. Thus, many "clones" of official boards exist on the market (often same board name with a different brand name). Clones are generally fine, however may cut corners to reduce cost. Additionally, there are some counterfeit boards which try to pass themselves off as official Arduino boards. These should be avoided (buy from reputable seller / site; if buying from Amazon, check the seller).
+    - Many non-Arduino brand boards are compatible with Arduino software. Some of these are officially supported on the list below
+    - Additionally, some non-Arduino brand boards are compatible with other boards (eg some boards are "Arduino Uno Compatible"). If a board is compatible with a supported model, it should work too. 
+    - Also, some boards come with headers soldered, others come with loose headers (that can be soldered), and some do not come with headers. Be aware of this when buying a board. There are also sometimes variants with headers pre-soldered (Adafruit and SparkFun often sell soldered header versions that may not be linked here).
+
+    Officially supported list:
+
+    *Note: This list should be considered incomplete. This list includes board that have been tested / are known to work, but many other "compatible" boards should also work. For example, other boards that are "Arduino Uno Compatible" will work. Also, other clones should be compatible.*
+
+    | Board                      | Description                                                               | Link(s)     |
+    | -------------------------- | ------------------------------------------------------------------------- | ----------- |
+    | Arduino Nano               | Low power board with a small size. Same chip as Arduino Uno.              | [Arduino Store](https://store-usa.arduino.cc/products/arduino-nano) <br /> [Amazon](https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/) |
+    | Arduino Uno                | Low power board, commonly included in kits.                               | [Arduino Store](https://store.arduino.cc/products/arduino-uno-rev3) <br /> [SparkFun](https://www.sparkfun.com/products/11021) <br /> [Amazon](https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/) |
+    | Arduino Nano Every         | Slightly more powerful than original Nano; similar size and pinout.       | [Arduino Store](https://store-usa.arduino.cc/products/arduino-nano-every) <br /> [SparkFun](https://www.sparkfun.com/products/15590) <br /> [Amazon](https://www.amazon.com/Arduino-Nano-Every-Single-Board/dp/B07VX7MX27/) |
+    | Teensy 3.1 / 3.2           | Small, but powerful chip. Capable of handling more sensors.               | [PJRC Store](https://www.pjrc.com/store/teensy32.html) <br /> [Adafruit](https://www.adafruit.com/product/2756) <br /> [SparkFun](https://www.sparkfun.com/products/13736) |
+    | Raspberry Pi Pico          | Low cost, small, and powerful. Capable of handling many sensors.          | [Raspberry Pi Site](https://www.raspberrypi.com/products/raspberry-pi-pico/) <br /> [Adafruit](https://www.adafruit.com/product/4864) <br /> [SparkFun](https://www.sparkfun.com/products/17829) |
+    | Feather S2                 | ESP32 based board with feather form factor. Small and powerful processor. Note: wireless features are not used. | [Adafruit](https://www.adafruit.com/product/4769) <br /> [Unexpected Maker Shop](https://unexpectedmaker.com/shop/feathers2-esp32-s2) |
+    | Adafruit Metro 328         | Arduino Uno compatible board of a similar size to Arduino Uno.            | [Adafruit](https://www.adafruit.com/product/2488) |
+    | Adafruit Metro Mini 328    | Arduino Uno compatible board of a similar size to Arduino Nano.           | [Adafruit](https://www.adafruit.com/product/2590) |
+
+
+### Supported Sensors  
+
+Most sensors are only supported using an sensor coprocessor. This is either due the how the sensors connect or requirements regarding timing when working with the sensors. However, there are a few sensors that are supported connected directly to the main computer.
+
+??? info "Coprocessor Sensors"
+
+    | Sensor                              | Description                                                           | Example Parts (Links) |
+    | ----------------------------------- | --------------------------------------------------------------------- | --------------------- |
+    | Single Channel Encoders             |
+    | Quadrature Encoders                 |
+    | Voltage Divider Voltage Monitors    |
+    | 4-Pin Ultrasonic Sensors            |
+    | IR Reflection Detector              |
+    | L3GD20H + LSM303 IMU                |
+    | FXOS8700 + FXAS21002 IMU            |
+    | MPU-6050 IMU                        | 
+
+??? info "Main Computer Sensors"
+
+    | Sensor                              | Description                                                           | Example Parts (Links) |
+    | ----------------------------------- | --------------------------------------------------------------------- | --------------------- |
+    | INA260 Voltage + Current Sensor     |
+
+
+## Tools & Miscellaneous
 
 TODO
