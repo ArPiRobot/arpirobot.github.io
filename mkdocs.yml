@@ -57,6 +57,8 @@ nav:
             - Camera Streaming: guide/other/camstream.md
             - Connect by SSH: guide/other/ssh.md
             - WiFi Debugging: guide/other/wifidebug.md
+        - Custom Parts:
+            - TT Motor Quadrature Encoder: guide/custom/quadencoder.md
     - Documentation:
         - Manuals:
             - Drive Station Manual: ref/manuals/drive_station.md

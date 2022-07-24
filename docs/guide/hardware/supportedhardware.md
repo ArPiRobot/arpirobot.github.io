@@ -201,22 +201,23 @@ Most sensors are only supported using an sensor coprocessor. This is either due 
 
 ??? info "Coprocessor Sensors"
 
-    | Sensor                              | Description                                                           | Example Parts (Links) |
+    | Sensor                              | Description                                                           | Parts (Links)         |
     | ----------------------------------- | --------------------------------------------------------------------- | --------------------- |
-    | Single Channel Encoders             |
-    | Quadrature Encoders                 |
-    | Voltage Divider Voltage Monitors    |
-    | 4-Pin Ultrasonic Sensors            |
-    | IR Reflection Detector              |
-    | L3GD20H + LSM303 IMU                |
-    | FXOS8700 + FXAS21002 IMU            |
-    | MPU-6050 IMU                        | 
+    | Single Channel Encoders             | Used to determine how far something (such as a motor) has rotated or how fast it is rotating. Single channel encoders have only one signal channel and are capable only of determining distance or speed, but not the direction of rotation. Often constructed using a photo interrupter and a slotted disk. | [TT Motor Disk - Adafruit](https://www.adafruit.com/product/3782)<br /> [Photo Interrupter (No breakout)](https://www.adafruit.com/product/3986) <br /> [Breakout Board - Amazon 1](https://www.amazon.com/Willwin-Measuring-Comparator-Optocoupler-Arduino/dp/B0776RHKB1/) <br /> [Breakout Board - Amazon 2](https://www.amazon.com/DAOKI-Optocoupler-Sensor-Module-Arduino/dp/B01MRELRS1) <br /> [Breakout Board - Amazon 3](https://www.amazon.com/Measuring-Optocoupler-Interrupter-Detection-Arduino%EF%BC%885pcs%EF%BC%89/dp/B08977QFK5/) <br /> [Breakout Board - Amazon 4](https://www.amazon.com/DAOKI-Measuring-Optocoupler-Interrupter-Detection/dp/B081W4KMHC/) |
+    | Quadrature Encoders                 | Used to determine how far something (such as a motor) has rotated or how fast it is rotating. Quadrature encoders have two signal channels and are capable of distinguishing direction of rotation. Sometimes these are magnetic and sometimes these are optical (two photo interrupters with a slotted disk and precise positioning). | [TT Motor w/ Builtin Encoder - DFRobot](https://www.dfrobot.com/product-1457.html) <br /> [TT Motor (L) w/ Builtin Encoder - DFRobot](https://www.dfrobot.com/product-1458.html) <br /> [TT Motor w/ Builtin Encoder - RobotShop](https://www.robotshop.com/en/micro-6v-160rpm-1201-dc-geared-motor-encoder.html) <br /> [TT Motor (L) w/ Builtin Encoder - RobotShop](https://www.robotshop.com/en/6v-1201-160rpm-micro-dc-geared-motor-encoder.html) <br /> [Custom Quadrature Encoder for TT Motor](../custom/quadencoder.md) |
+    | Analog Voltage Monitors             | Measure a voltage on a sensor coprocessor's analog input pins. A voltage divider can be used to measure larger voltages. Voltage divider modules also exist and can be used instead of loose resistors. | [Voltage Divider Module - Amazon 1](https://www.amazon.com/Diymall-Voltage-Sensor-Dc0-25v-Arduino/dp/B00NK4L97Q/) <br /> [Voltage Divider Module - Amazon 2](https://www.amazon.com/Voltage-Measurement-Detection-Arduino-Geekstory/dp/B07FVVSYYH/) <br /> [Voltage Divider Module - Amazon 3](https://www.amazon.com/HiLetgo-Voltage-Detection-Arduino-Electronic/dp/B01HTC4XKY/) <br /> [Voltage Divider Module - Amazon 4](https://www.amazon.com/UMLIFE-Detection-Terminal-Measurement-Raspberry/dp/B096VCYD6M/) |
+    | 4-Pin Ultrasonic Sensors            | Use sound to measure the distance to an object the sensor is facing. This version has 4 pins including a "trigger" and "echo" pin. | [Standard HC-SR04](https://www.adafruit.com/product/3942)<br /> [5V/3V Compatible Device](https://www.adafruit.com/product/4007) <br /> [HC-SR04 Amazon 1](https://www.amazon.com/SainSmart-HC-SR04-Ranging-Detector-Distance/dp/B004U8TOE6/) |
+    | IR Reflection Detector              | Often used to detect dark lines on a light surface (line follower robots). Measure IR light reflected off a surface. | [Longer Range Module - Amazon 1](https://www.amazon.com/DIYmall-Avoidance-Transmitting-Receiving-Photoelectric/dp/B07K6PYFZS/) <br /> [Longer Range Module - Amazon 2](https://www.amazon.com/HiLetgo-Infrared-Avoidance-Reflective-Photoelectric/dp/B07W97H2WS/) <br /> [Shorter Range Module - Amazon 1](https://www.amazon.com/HiLetgo-Channel-Tracing-Sensor-Detection/dp/B00LZV1V10/) <br /> [Shorter Range Module - Amazon 2](https://www.amazon.com/OSOYOO-TCRT5000-Infrared-Reflective-Photoelectric/dp/B07C69N65P/) |
+    | L3GD20H + LSM303 IMU                | 9DOF sensor (3 axis gyroscope + 3 axis accelerometer + 3 axis magnetometer). Intended to be used with Adafruit's old 9DOF IMU board | [Adafruit](https://www.adafruit.com/product/1714) |
+    | FXOS8700 + FXAS21002 IMU            | 9DOF sensor (3 axis gyroscope + 3 axis accelerometer + 3 axis magnetometer). Intended to be used with Adafruit's NXP 9DOF IMU board | [Adafruit](https://www.adafruit.com/product/3463) |
+    | MPU-6050 IMU                        | 6DOF sensor (3 axis gyroscope + 3 axis accelerometer). This is a common low cost IMU chip. | [Adafruit Breakout Board](https://www.adafruit.com/product/3886) <br /> [Cable for Adafruit Board](https://www.adafruit.com/product/4209) <br /> [Sparkfun Breakout Board](https://www.sparkfun.com/products/11028) |
 
 ??? info "Main Computer Sensors"
 
-    | Sensor                              | Description                                                           | Example Parts (Links) |
+    | Sensor                              | Description                                                           | Parts (Links)         |
     | ----------------------------------- | --------------------------------------------------------------------- | --------------------- |
-    | INA260 Voltage + Current Sensor     |
+    | INA260 Voltage + Current Sensor     | Voltage and current sensor capable of interfacing directly with the main computer (good for robots without a sensor coprocessor). Also provides higher accuracy readings than are typically possible with an Analog Voltage Monitor on a sensor coprocessor. | [Adafruit](https://www.adafruit.com/product/4226) |
+
 
 
 ## Tools & Miscellaneous
