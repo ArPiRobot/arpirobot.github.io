@@ -91,5 +91,38 @@ A four wheel differential drive robot build on a small clipboard (6" by 9"). Thi
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_encoder_disks.png){: style="height:300px;"}
 
     2. Electronics
+
+        - Place the motor bonnet on top of the Raspberry Pi Zero (solder header to Pi Zero if required first). When fully seated, there may be a small gap. This is ok.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_bonnet_on_pi.png){: style="height:200px;"}
+
+        - This assembly (pi and bonnet) can then be attached to the clipboard. Place electrical tape on the bottom of the Raspberry Pi (to protect the PCB from hook and loop tape adhesive). Then apply hook tape. Place loop tape in the correct spot on the clipboard and attach the Raspberry Pi using the hook and loop tape.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_pi_pos.png){: style="height:300px;"}
+
+        - Next, place the Arduino Nano in the mini breadboard as shown below. Notice that one side has three rows on the breadboard and the other only has two. Also notice that the "back" of the breadboard has one empty row not obstructed by the row. Matching this is important.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_arduino_asm.png){: style="height:200px;"}
+
+        - The add the breadboard in the position shown below. The breadboard likely has adhesive tape on the bottom. If not, electrical tape followed by hook and loop tape can be used as was done for the Raspberry Pi.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_breadboard_pos.png){: style="height:300px;"}
+
+        - Next add the top-side sensors in the indicated positions. These are attached directly to the clipboard using hot glue. Generally, the PCB is set directly onto the clipboard and hot glue is applied around the edges (not under the board). This makes it easier to remove if needed. For the ultrasonic sensor, hot glue is generally placed under the metal rings around the emitter and receiver. Note that the ultrasonic sensor's front face is flush with the front edge of the clipboard.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_top_sensors.png){: style="height:300px;"}
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_flush_usonic.png){: style="height:200px;"}
+
+        - Then, add the following sensors in the indicated positions on the bottom of the board. These too are attached using hot glue on the sides of the PCBs.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_bottom_sensors.png){: style="height:300px;"}
+
+        - Finally, use hook and loop tape to attach both the AA battery pack and USB battery pack in the positions shown below.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_bat_pos.png){: style="height:300px;"}
     
+    3. Wiring
+
+        - TODO
 
