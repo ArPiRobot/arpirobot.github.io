@@ -122,7 +122,53 @@ A four wheel differential drive robot build on a small clipboard (6" by 9"). Thi
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_bat_pos.png){: style="height:300px;"}
     
-    3. Wiring
+    3. Wiring (Non-Sensor Cables)
 
-        - TODO
+        - Connect the USB OTG adapter to the Raspberry Pi Zero's USB host port (inner one; outer one is for power).
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_pi_zero_ports.png){: style="height:200px;"}
+
+        - Then connect the USB A to Mini B cable (or Micro B cable depending on the sensor coprocessor board used). The USB A (rectangle) side should be connected to the OTG adapter on the Raspberry Pi Zero and the Mini / Micro B should be connected to the Arduino Nano (or other board as applicable).
+
+        - The USB Battery pack should have come with a USB A to Micro B cable. This will be used to power the raspberry Pi. Connect the micro B end to the Raspberry Pi's power port. It is recommended to use hot glue to secure this cable on top of the clipboard and let it hang over the back. Only plug this into the battery pack when you are using the robot.
+
+        - Motor battery power should go to the motor bonnet power ports. Place the female barrel jack screw terminal adapter where shown. In each screw terminal port, two jumper wires (male to male) are needed (four wires total). One power and one ground (one each + and -) go to cooresponding places on the motor hat. The other pair goes to the voltage monitor
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_barrel_jack_pos.png){: style="height:300px;"}
+
+        - To connect motor battery power, bring the AA battery pack wires around the back of the clipboard and connect the barrel jack to the female one. If your AA battery pack does not have a male barrel jack connector installed, add one with screw terminal blocks (you may need to strip off some wire insulation).
+
+        - When done, the robot should look something like the following
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_nonmotor_power_wires.png){: style="height:300px;"}
+
+        - Finally, connect the motor cables to the correct places on the motor bonnet. Motor numbers are shown below. Order of red and black wires in these ports does not matter. Swapping red and black (for the same motor) will invert its direction. You may want to use hot glue or tape to keep the wires on top of the clipboard.
+
+        | Motor           | Number |
+        | --------------- | ------ |
+        | Front Left      | 3      |
+        | Rear Left       | 4      |
+        | Front Right     | 2      |
+        | Rear Right      | 1      |
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_motor_wires.png){: style="height:300px;"}
+
+
+    4. Wiring (Sensor Cables)
+
+        Sensor wiring
+
+        Left Encoder: D2, 3.3V
+
+        Right Encoder: D3, 3.3V
+
+        Left IR: D11, 3.3V
+
+        Right IR: D12, 3.3V
+
+        MPU6050: SDA, SCL, 5V         Yellow A5, Blue A4
+
+        Voltage Monitor: A0 and GND
+
+        Ultrasonic: Trig 7, Echo 8, 5.0V
 

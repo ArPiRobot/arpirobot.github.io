@@ -63,7 +63,7 @@ nav:
         - Manuals:
             - Drive Station Manual: ref/manuals/drive_station.md
             - Deploy Tool Manual: ref/manuals/deploy_tool.md
-            - Mobile Drive Station Manual: guide/manuals/android_drive_station.md
+            - Mobile Drive Station Manual: ref/manuals/android_drive_station.md
         - Programming Reference:
             - Project Structure: ref/projstructure.md
             - Recommended Code Organization: ref/codeorg.md
