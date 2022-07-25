@@ -156,19 +156,47 @@ A four wheel differential drive robot build on a small clipboard (6" by 9"). Thi
 
     4. Wiring (Sensor Cables)
 
-        Sensor wiring
+        - First, you need to know how breadboards work. Each row of pins is connected internally. To connect a wire to a pin on the Arduino Nano, plug it into the same row on the breadboard.
 
-        Left Encoder: D2, 3.3V
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_howbreadboard.png){: style="height:200px;"}
 
-        Right Encoder: D3, 3.3V
+        - Next, more sensors will need connections to the 3.3V pin (3V3) and GND pins than are available on the breadboard. As such, the two empty rows need to be connected to 3.3V and GND. This provides four extra GND and 3.3V pins. Note that the MPU6050 has a cable that connects to either port on the short sides of the board. This cable has four jumper wire pins on the other end that are connected to the breadboard.
 
-        Left IR: D11, 3.3V
+        TODO: Image
 
-        Right IR: D12, 3.3V
+        - Then connect each sensor as follows using jumper wires
+    
+        | Sensor            | Sensor Pin  | Arduino Nano |
+        | ----------------- | ----------- | ------------ |
+        | Voltage Monitor   | -           | GND          |
+        | Voltage Monitor   | S           | A0           |
+        | Ultrasonic        | VCC         | 5V           |
+        | Ultrasonic        | GND         | GND          |
+        | Ultrasonic        | TRIG        | 7            |
+        | Ultrasonic        | ECHO        | 8            |
+        | Left Encoder      | VCC         | 3.3V         |
+        | Left Encoder      | GND         | GND          |
+        | Left Encoder      | D0          | D2           |
+        | Right Encoder     | VCC         | 3.3V         |
+        | Right Encoder     | GND         | GND          |
+        | Right Encoder     | D0          | D3           |
+        | Left IR           | VCC         | 3.3V         |
+        | Left IR           | GND         | GND          |
+        | Left IR           | OUT         | D11          |
+        | Right IR          | VCC         | 3.3V         |
+        | Right IR          | GND         | GND          |
+        | Right IR          | OUT         | D12          |
+        | MPU6050           | Red Wire    | 5V           |
+        | MPU6050           | Black Wire  | GND          |
+        | MPU6050           | Yellow Wire | A5           |
+        | MPU6050           | Blue Wire   | A4           |
 
-        MPU6050: SDA, SCL, 5V         Yellow A5, Blue A4
+        - To connect the sensors on the bottom, it is recommended to bring the wires around the front of the clipboard and use hot glue or tape to keep them from hanging off the robot too much.
 
-        Voltage Monitor: A0 and GND
+        - Twist ties, electrical tape, and hot glue can be used for cable management. When fully wired, it should look something like the following images
 
-        Ultrasonic: Trig 7, Echo 8, 5.0V
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_sensor_wires.png){: style="height:400px;"}
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_sensor_wires_bottom.png){: style="height:300px;"}
+
 
