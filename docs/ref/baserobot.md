@@ -1,4 +1,13 @@
 
+=== "Python"
+    ```py
+    from arpirobot.core.robot import BaseRobot
+    ```
+=== "C++"
+    ```cpp
+    #include <arpirobot/core/robot/BaseRobot.hpp>
+    ```
+
 `BaseRobot` is the foundation of any ArPiRobot program. Each program must have exactly one instance of a child class of `BaseRobot` (the child class is generally called `Robot`). The functions in this child class are used to define the robot's behavior.
 
 ## Overridden Functions
@@ -78,6 +87,15 @@ The `periodic` functions are run by an internal scheduler thread pool, the same 
 
 ## RobotProfile
 
+=== "Python"
+    ```py
+    from arpirobot.core.robot import RobotProfile
+    ```
+=== "C++"
+    ```cpp
+    #include <arpirobot/core/robot/RobotProfile.hpp>
+    ```
+
 The `RobotProfile` is a class containing only static members. The variables are used to configure various settings about how the robot is run including:
 
 - How many threads are in the main scheduler's thread pool (used for running actions, periodic functions, etc). Defaults to 10.
@@ -85,3 +103,5 @@ The `RobotProfile` is a class containing only static members. The variables are 
 - How old gamepad data is allowed to be (in milliseconds). Data older than this age will be discarded (this prevents scenarios where network slowdowns prevent the robot from being controllable). Defaults to 100.
 - How frequently action's periodic functions are run (in milliseconds). Defaults to 50.
 - Which IO provider is used when the program runs. An IO provider is an underlying library which allows using GPIO pins and communication busses. Which ones are available / used by default is platform specific. Setting this to an empty string will use the default provider for the platform.
+
+Any variables in `RobotProfile` must be modified *before* the `BaseRobot` instance is started. In a typical project, this means that variables must either be changed in the `main` source file (before it calls start on the `Robot` class instance) or they must be changed in the constructor of the `Robot` class (where `Robot` is the class derived from `BaseRobot`).

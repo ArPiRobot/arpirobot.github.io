@@ -71,6 +71,7 @@ nav:
             - Arduino Sensor Coprocessor: ref/arduino.md
             - Network Table: ref/nettable.md
             - Action System: ref/actionsystem.md
+            - Langauge Bindings: ref/langbindings.md
         - CoreLib API Docs: doxygen-links.md
         - Default Robot Settings: defaultsettings.md
     - For Developers: 
