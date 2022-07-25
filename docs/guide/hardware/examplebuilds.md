@@ -1,7 +1,7 @@
 
-## 4WD Mini Clipboard Robot
+## Mini Clipboard Robot
 
-A four wheel differential drive robot build on a small clipboard (6" by 9"). This robot build uses common "TT" motors with a 1:48 gear ratio and does not require any soldering to assemble. This is intended to be a low-cost easy to build reference robot design for beginners. It includes various sensors such as encoders, an IMU, an ultrasonic sensor, a voltage monitor, and IR reflector sensors for line following.
+A four wheel differential drive robot build on a small clipboard (6" by 9"). This robot build uses common "TT" motors with a 1:48 gear ratio and does not require any soldering or 3D printed parts to assemble. This is intended to be a low-cost easy to build reference robot design for beginners. It includes various sensors such as encoders, an IMU, an ultrasonic sensor, a voltage monitor, and IR reflector sensors for line following.
 
 *This is the robot example code in the [ArPiRobot-Examples](https://github.com/ArPiRobot/ArPiRobot-Examples/) repository is designed for.*
 
@@ -52,7 +52,44 @@ A four wheel differential drive robot build on a small clipboard (6" by 9"). Thi
     - 1x [Female Barrel Jack screw terminal adapter](https://www.adafruit.com/product/368)
     - 1x [Cable for MPU-6050 Breakout](https://www.adafruit.com/product/4209)
 
+??? info "Assembly Instructions"
 
-## Assembly Instructions
+    1. Motor Assemblies
 
-TODO
+        - The motor assembly consists of the motor, wheels, bingo chip spacers, and encoder disks.
+
+        - The outside face of the motor is the face with an axel that has a "bump" on it. The front of the motor is the face opposite the actual motor.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_motor_faces.png){: style="height:150px;"}
+
+        - Bingo chips are used to construct a spacer (approx 0.25 in thick) to space the motor away from the clipboard it will eventually be mounted on. This is typically between 4 and 6 bingo chips.
+
+        - Bingo chip spacers should be constructed using super glue. Glue a stack of bingo chips to each other to result in a 0.25 in tall stack. Eight of these stacks are necessary in total.
+
+        - Two motors of each of two orientations are required. The first orientation requires bingo chips on the "top" face (as shown in the image above). Two require bingo chips on the bottom face. If the motors are arranged in the layout shown below, all bingo chip stacks go on the top faces.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_bingo_chip_sides.png){: style="height:300px;"}
+
+        - To attach the bingo chip stacks to the motor do **not** use super glue. Instead use hot glue. Ideally, clean each surface using isopropyl alcohol before applying hot glue (let it dry before applying glue) to ensure best adhesion. Use a decent amount of glue to ensure the motor remains attached to the bingo chips. Hot glue is used as isopropyl alcohol can be used later to easily remove it allowing the motor to be opened or replaced easily. *When placing the bingo chips, be careful with alignment. They will be slightly wider than the motor's face. Make sure the inside edge is flush. The bingo chips can overhang the outside edge slightly.*
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_chip_placmenet.png){: style="height:150px;"}
+
+        - Once all assembled, the motors can be arranged as follows. The clipboard is then essentially placed on top.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_motors_with_chips.png){: style="height:300px;"}
+
+        - However, it is easier to place the motors on the clipboard one at a time. Turn the clipboard clip-side up and place each motor at the distances shown below. The outside face of each motor should be flush with the edge of the clipboard to ensure proper movement. The motors should be attached to the clipboard using hot glue. It is again recommended to clean the bingo chip faces before applying hot glue. Super glue is not recommended as it is difficult to reposition if you mess up alignment.
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_motor_on_board.png){: style="height:300px;"}
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_motor_on_board_side.png){: style="height:150px;"}
+
+        - Finally, add the wheels to all motors (outside shaft) and add an encoder disk to the inside shaft of the front two motors (front is side without the clip).
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_with_wheels.png){: style="height:300px;"}
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_encoder_disks.png){: style="height:300px;"}
+
+    2. Electronics
+    
+
