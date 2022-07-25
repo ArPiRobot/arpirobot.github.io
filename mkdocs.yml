@@ -65,17 +65,12 @@ nav:
             - Deploy Tool Manual: ref/manuals/deploy_tool.md
             - Mobile Drive Station Manual: ref/manuals/android_drive_station.md
         - Programming Reference:
-            - Project Structure: ref/projstructure.md
-            - Recommended Code Organization: ref/codeorg.md
-            - BaseRobot & RobotProfile: ref/baserobot.md
-            - Motor Controllers: ref/motors.md
-            - Drive Helpers & Axis Transforms: ref/drivehelper.md
-            - Network Table & Logger: ref/nettable.md
-            - Raspberry Pi Sensors: ref/pisensors.md
-            - Arduino Interface and Sensors: ref/arduino.md
-            - Action System & Action Manager: ref/actions.md
-            - PID Controller: ref/pid.md
-            - AudioManger: ref/audio.md
+            - Project Structure: ref/projectstructure.md
+            - BaseRobot: ref/baserobot.md
+            - Devices: ref/devices.md
+            - Arduino Sensor Coprocessor: ref/arduino.md
+            - Network Table: ref/nettable.md
+            - Action System: ref/actionsystem.md
         - CoreLib API Docs: doxygen-links.md
         - Default Robot Settings: defaultsettings.md
     - For Developers: 
