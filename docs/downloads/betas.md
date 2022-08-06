@@ -28,6 +28,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Update Package | <div style="flex-grow: 100;">Link</div> |
 | -------------- | ---- |
+| v0.2.0-beta2       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.2.0-beta2) |
 | v0.2.0-beta1       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.2.0-beta1) |
 | v0.1.0-beta2       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.1.0-beta2) |
 | v0.1.0-beta1       | [Download](https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v0.1.0-beta1) |
@@ -66,7 +67,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Deploy Tool Versions | Compatible Images | Latest Download |
 | -------------------- | ----------------- | --------------- |
-| v0.4.x               | Beta8B, Beta8C, Beta9, Beta10A, Beta10B, Beta10C | [v0.4.0-beta5](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.4.0-beta5) |
+| v0.4.x               | Beta8B, Beta8C, Beta9, Beta10A, Beta10B, Beta10C | [v0.4.1-beta1](https://github.com/ArPiRobot/ArPiRobot-DeployTool/releases/tag/v0.4.1-beta1) |
 | v0.3.x               | Beta8B, Beta8C, Beta9, Beta10A, Beta10B | [v0.3.1](https://github.com/ArPiRobot/ArPiRobot-DeployToolOLDJAVA/releases/tag/v0.3.1) |
 
 
@@ -74,6 +75,7 @@ Install this on your PC using the Deploy Tool before deploying code. This will b
 
 | Extension Version | Link |
 | ----------------- | ---- |
+| v0.1.12           | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.12) |
 | v0.1.11           | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.11) |
 | v0.1.10           | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.10) |
 | v0.1.9            | [Download](https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v0.1.9) |
