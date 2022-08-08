@@ -27,3 +27,5 @@ A list of all default settings for the ArPiRobot OS Images
 
 - Username: `root`
 - Password: `notdefault`
+
+*Password for any default users (eg `pi`, `ubuntu`, etc) is also `notdefault`.
