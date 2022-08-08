@@ -1,6 +1,6 @@
 # Default Settings
 
-A list of all default settings for the ArPiRobot OS Image
+A list of all default settings for the ArPiRobot OS Images
 
 **Default WiFi Network Settings**
 
@@ -8,12 +8,22 @@ A list of all default settings for the ArPiRobot OS Image
 - Country: US<sup>&ast;</sup>
 - SSID: `ArPiRobot-Robot`
 - Password: `arpirobot123`
-- Pi's IP Address: `192.168.10.1`
-- Pi's Hostname: `ArPiRobot-Robot`
+- IP Address: `192.168.10.1`
+- Hostname: `ArPiRobot-Robot`
 
-    <sup>&ast;</sup>If you are not in the US make sure to change this or channels outside of regional restrictions may be enabled on the Pi. The default channel used by the image (channel 6) should be allowed in most regions. The country can be changed using the deploy tool or by logging into the Pi and editing `/etc/hostapd/hostapd.conf`.
+**Default Ethernet Settings**
 
-**Default Username and Password**
+- DHCP Server: No
+- IP Address: `192.168.11.1`
+- Hostname: `ArPiRobot-Robot`
 
-- Username: `pi`
+
+**Default Usernames and Passwords**
+
+- Username: `arpirobot`
 - Password: `arpirobot`
+
+<br />
+
+- Username: `root`
+- Password: `notdefault`
