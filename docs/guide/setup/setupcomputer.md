@@ -1,6 +1,7 @@
-# Setup your Computer
 
-Before you can start programming or using ArPiRobots you will need to setup a few tools on your computer. Some of these tools are programming language specific, so it is good to choose which programming language(s) you plan to use first.
+Before you can start programming or using ArPiRobots you will need to setup a few tools on the computer you plan to use to write code / work with the robot. This will be referred to as the "development computer". This is not the computer on the robot (Raspberry Pi, or other single board computers) which is referred to as the "main computer". 
+
+Some of these tools are programming language specific, so it is good to choose which programming language(s) you plan to use first.
 
 
 ## Choosing a Programming Language

@@ -41,8 +41,8 @@ nav:
           - Supported Hardware: guide/hardware/supportedhardware.md
           - Example Robot Builds: guide/hardware/examplebuilds.md
         - Software Setup:
-            - Setup your Computer: guide/setup/setupcomputer.md
-            - Setup the Raspberry Pi: guide/setup/setuppi.md
+            - Setup your Development Computer: guide/setup/setupcomputer.md
+            - Setup the Robot's Main Computer: guide/setup/setuppi.md
         - Programming the Robot:
             - Creating a Project: guide/programming/createproject.md
             - Moving Motors: guide/programming/movingmotors.md
@@ -72,7 +72,9 @@ nav:
             - Network Table: ref/nettable.md
             - Action System: ref/actionsystem.md
             - Langauge Bindings: ref/langbindings.md
-        - CoreLib API Docs: doxygen-links.md
+        - CoreLib API Docs:
+            - Doxygen (C++): ../doxygen-docs/cpp/html/index.html
+            - Doxygen (Python): ../doxygen-docs/python/html/index.html
         - Default Robot Settings: defaultsettings.md
     - For Developers: 
         - ArPiRobot Components: devs/components.md

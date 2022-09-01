@@ -1,25 +1,32 @@
-# Setup the Raspberry Pi
 
-Before using the robot, you need to setup the Raspberry Pi with the custom ArPiRobot image (which is just a modified version of Raspberry Pi OS).
+Before using the robot, you need to setup the Main Computer (often a Raspberry Pi) with the custom ArPiRobot OS image. 
+
+For most supported devices this just entails downloading an OS image and flashing it to an SD card. OS images for supported boards can be found on the [downloads page](../../downloads/latest.md).
+
+The ArPiRobot OS images are modified versions of operating system images for the board that include required software and proper configuration for use on an ArPiRobot robot.
+
 
 ## Requirements
-Before starting you will need a computer<sup>&ast;</sup>, a [supported Raspberry Pi](../hardware/supportedhardware.md), a power supply for the Raspberry Pi (this can be a 2A or greater USB power adapter, a 2A or greater battery pack, etc), a micro SD card (at least 8GB), and a way to connect the micro SD card to your computer.
+
+Before starting you will need a computer (laptop or desktop used for development)<sup>&ast;</sup>, a [supported Main Computer](../hardware/supportedhardware.md), a power supply for the main computer (this can be the battery pack used to power the computer on the robot).
 
 <sup>&ast;</sup>The software used in this section (balenaEtcher) is available for Windows, macOS, and Linux computers. If using another OS you will need to find another program to write the image file to the SD Card.
 
 ## Choosing an Image
-It is always recommended to use the latest ArPiRobot image, available on the [downloads page](../../downloads/latest.md).
+
+It is always recommended to use the latest ArPiRobot image, available on the [downloads page](../../downloads/latest.md). Make sure to download the correct image for your main computer board. Also note that some images are distributed as multiple files (all parts must be downloaded).
 
 
 ## Flash the Image
+
 *WARNING: Flashing an image to the SD card will erase the entire contents of the SD card!*
 
-To start, download the newest Raspberry Pi image. This image contains a modified version of the Raspberry Pi OS. It has tools, libraries, and programs pre-installed to allow it to work with ArPiRobot robot code. 
+The image must be written to a micro SD Card. To do so, we will use [balenaEtcher](https://www.balena.io/etcher/). Download and run it.
 
-The Raspberry Pi loads the OS form a micro SD Card, so the image must be written to a micro SD Card. To do so, we will use [balenaEtcher](https://www.balena.io/etcher/). Download and run it. You should see a screen like the one below.
+Choose select image and choose the ArPiRobot image file that you downloaded. Most of the time, this will be a single `.xz` file. balenaEtcher can use `.xz` files directly. In some cases, however, the image is too large to distribute as a single file. In these cases the image is distributed as multiple `.7z` files. The image (`.img` file) must be extracted using [7zip]() (windows) or [keka]() (macos) before flashing. 
 
-Choose select image and choose the ArPiRobot image file (`ArPiRobot-VERSION.img.gz`) that you downloaded. Then connect your micro SD card to your computer. Choose select target and choose the micro SD Card. Click flash and wait until it completes.
+Finally connect your micro SD card to your computer. Choose select target and choose the micro SD Card. Click flash and wait until it completes.
 
-Put the SD Card in the Raspbery Pi and power it on. The activity light (green) should start blinking, indicating that the Pi is booting. Wait for it to finish booting (about 30-60 seconds). The first boot will take longer than most as it will expand the root partition to fill the SD card then reboot.
+When done, insert the SD Card in the your robot's main computer and power it on.  Wait for it to finish booting (about 30-60 seconds for most boards). The first boot will take longer than most as it will expand the root partition to fill the SD card then reboot.
 
-Once the Pi boots it will be generating a WiFi network called "ArPiRobot-Robot" with a default password of "arpirobot123". This network is how we will interface with the Raspberry Pi later. When working with the robot, keep in mind that there will be no internet access via this network, it is just used to communicate with the robot. While connected to the Pi's network you can open the deploy tool and connect it to the robot (by clicking the connect button in the deploy tool). There is a network settings tab in the deploy tool where you can change the robot's WiFi SSID and password (useful if you want multiple robots running at once or if you want a non-default password).
+Once the main computer boots it will be generating a WiFi network called "ArPiRobot-Robot" with a default password of "arpirobot123". This network is how we will interface with the robot later. When working with the robot, keep in mind that there will be no internet access via this network, it is just used to communicate with the robot. While connected to the Pi's network you can open the deploy tool and connect it to the robot (by clicking the connect button in the deploy tool). There is a network settings tab in the deploy tool where you can change the robot's WiFi SSID and password (useful if you want multiple robots running at once or if you want a non-default password).
