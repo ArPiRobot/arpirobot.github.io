@@ -86,11 +86,11 @@ Currently, only Raspberry Pi boards are officially supported. This is due to the
     When choosing a Raspberry Pi board there are a few things to consider:
 
     - Not all Raspberry Pi boards have WiFi builtin. Generation 1 and 2 boards do not. The Pi Zero (non W) also does not.
-    - 64-bit boards are recommended. At some point in the future, only 64-bit boards may be supported (however, for now 32-bit boards are supported).
+    - 64-bit capable boards are recommended, however 32-bit boards are still supported.
     - Single core boards are not good for complex software. More RAM is also beneficial.
-    - Raspberry Pi 4 Model B sometimes has thermal issues and may require heatsinks and / or a fan. As such, it is often no the best choice for robots.
+    - Raspberry Pi 4 Model B may require heatsinks and / or a fan. As such, it is often no the best choice for robots.
     - Generally, Raspberry Pi 3A+ or Raspberry Pi Zero 2 W boards are recommended as they are smaller, but still provide adequate computational power for most robots.
-    - The Raspberry Pi Zero W is not generally advisable. It is a single core board and not 64-bit capable.
+    - The Raspberry Pi Zero W will work, but is generally not recommended as it is a single core board.
 
     The following boards are recommended for use with the ArPiRobot Framework
 
