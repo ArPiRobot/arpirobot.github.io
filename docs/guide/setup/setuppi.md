@@ -21,11 +21,11 @@ It is always recommended to use the latest ArPiRobot image, available on the [do
 
 *WARNING: Flashing an image to the SD card will erase the entire contents of the SD card!*
 
-The image must be written to a micro SD Card. To do so, we will use [balenaEtcher](https://www.balena.io/etcher/). Download and run it.
+The image must be written to a micro SD Card. To do so, we will use [USBImager](https://bztsrc.gitlab.io/usbimager/). Download and run it.
 
-Choose select image and choose the ArPiRobot image file that you downloaded. Most of the time, this will be a single `.xz` file. balenaEtcher can use `.xz` files directly. In some cases, however, the image is too large to distribute as a single file. In these cases the image is distributed as multiple `.7z` files. The image (`.img` file) must be extracted using [7zip]() (windows) or [keka]() (macos) before flashing. 
+Select the image file to write in the top box and select the SD card to write it to in the dropdown menu. Then click "Write" and wait for the process to finish.
 
-Finally connect your micro SD card to your computer. Choose select target and choose the micro SD Card. Click flash and wait until it completes.
+![](../../img/usb_imager.png)
 
 When done, insert the SD Card in the your robot's main computer and power it on.  Wait for it to finish booting (about 30-60 seconds for most boards). The first boot will take longer than most as it will expand the root partition to fill the SD card then reboot.
 

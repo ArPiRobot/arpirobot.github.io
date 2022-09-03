@@ -71,7 +71,9 @@ The list below includes commonly used motors. Any motor should be usable, provid
 
 ### Main Computer
 
-Currently, only Raspberry Pi boards are officially supported. This is due to the OS image used and the IO backends in the CoreLib. Other boards could be used, but would require custom configuring the operating system (which is not a trivial process) and likely implementing a new IO provider in the CoreLib (also not a trivial process). Additionally, a board with a WiFi adapter is required for full functionality.
+Typically, a Single Board Computer (SBC) is used as the robot's main computer. Often, Raspberry Pi boards are used as they are low cost and well supported. However, other SBCs are supported too (see lists below).
+
+Note that a board with a WiFi adapter is required for full functionality. Most supported boards have builtin wifi adapters, however if they do not a USB wifi adapter will be needed.
 
 
 ??? info "Raspberry Pi Boards"
@@ -81,27 +83,18 @@ Currently, only Raspberry Pi boards are officially supported. This is due to the
     - Model A boards: Smaller boards (size of a Pi hat). Also generally slightly less powerful than same generation Model B board.
     - Zero series boards: Very small boards (about half the size of a Model A board). Generally significantly less powerful than similarly aged Model B / Model A boards.
 
-    There are several generations of Raspberry Pi boards. Model B and A boards share the same generation numbers (though there isn't a Model A for each generation). The zero series has its own generation numbers. Also note that there are sometimes "plus variants" (eg Model B+). Typically these are similar to the non-plus variants.
-
-    When choosing a Raspberry Pi board there are a few things to consider:
-
-    - Not all Raspberry Pi boards have WiFi builtin. Generation 1 and 2 boards do not. The Pi Zero (non W) also does not.
-    - 64-bit capable boards are recommended, however 32-bit boards are still supported.
-    - Single core boards are not good for complex software. More RAM is also beneficial.
-    - Raspberry Pi 4 Model B may require heatsinks and / or a fan. As such, it is often no the best choice for robots.
-    - Generally, Raspberry Pi 3A+ or Raspberry Pi Zero 2 W boards are recommended as they are smaller, but still provide adequate computational power for most robots.
-    - The Raspberry Pi Zero W will work, but is generally not recommended as it is a single core board.
-
     The following boards are recommended for use with the ArPiRobot Framework
 
-    | Board                   | Number of Cores    | RAM         | 64-bit | Link           |
-    | ----------------------- | ------------------ | ----------- | ------ | -------------- |
-    | Raspberry Pi 4 Model B  | 4                  | 1GB - 8GB   | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) |
-    | Raspberry Pi 3 Model A+ | 4                  | 512MB       | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-a-plus/) |
-    | Raspberry Pi 3 Model B  | 4                  | 1GB         | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) |
-    | Raspberry Pi 3 Model B+ | 4                  | 1GB         | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/) |
-    | Raspberry Pi Zero 2 W   | 4                  | 512MB       | Yes    | [Link](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
-    | Raspberry Pi Zero W     | 1                  | 512MB       | No     | [Link](https://www.raspberrypi.com/products/raspberry-pi-zero-w/) |
+    | Board                   | Number of Cores    | RAM         | 64-bit | WiFi | Power Supply | Link           |
+    | ----------------------- | ------------------ | ----------- | ------ | ---- | ------------ | -------------- |
+    | Raspberry Pi 4 Model B  | 4                  | 1GB - 8GB   | Yes    | Yes  | 5V@2.4A      |[Link](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) |
+    | Raspberry Pi 3 Model A+ | 4                  | 512MB       | Yes    | Yes  | 5V@2.1A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-a-plus/) |
+    | Raspberry Pi 3 Model B  | 4                  | 1GB         | Yes    | Yes  | 5V@2.4A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) |
+    | Raspberry Pi 3 Model B+ | 4                  | 1GB         | Yes    | Yes  | 5V@2.4A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/) |
+    | Raspberry Pi Zero 2 W   | 4                  | 512MB       | Yes    | Yes  | 5V@2.1A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
+    | Raspberry Pi Zero W     | 1                  | 512MB       | No     | Yes  | 5V@1.5A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-zero-w/) |
+
+    *Note that the Raspberry Pi Zero W is a single core board. As such, it is only recommended for simple robots.*
 
 
 
@@ -109,17 +102,14 @@ Currently, only Raspberry Pi boards are officially supported. This is due to the
 
 Generally, it is easiest to have two power sources on the robot. This avoids scenarios where motors changing speed cause a voltage drop that reboots the computer. Often, the computer power source is a USB battery pack.
 
-When selecting a power source, be aware that it needs to be able to supply a sufficient amount of current. The current requirement mostly depends on the main computer. In general, using a 2.4A power source is a safe option (3A is better for a Pi 4B) and is generally recommended. Depending on how many sensors and other devices are connected, lower currents may be required. The following are minimum recommendations by each computer. These minimums are lower than commonly recommended due to the fact that the computer is generally not driving a display when used on a robot.
+When selecting a power source, be aware that it needs to be able to supply a sufficient amount of current. The current requirement mostly depends on the main computer. In general, using a 2.4A power source is a safe option, however double check the tables in the previous section to see the recommended current rating for each supported board. **It is ok to use a power source that has a higher current rating, but lower is not recommended.**
 
-- 2.1A for Pi 3A+, Pi 3B+, and Pi 3B
-- 2.4A for Pi 4B
-- 1.0A for Pi Zero W
-- 1.5A for Pi Zero 2 W
-
-*Note: Higher capacity battery packs last longer.*
+*Note that recommendations in the tables above are lower than manufacturer recommendations in many cases because the SBC will not be driving a display on the robot and often has fewer USB devices connected.*
 
 
 ??? info "USB Battery Packs"
+    *Higher capacity battery packs will last longer on a single charge.*
+
     | Battery Pack            | Capacity             | Output Current (max) | Link(s)      |
     | ----------------------- | -------------------- | -------------------- | ------------ |
     | Anker Astro E1          | 5200 mAh / 6700mAh   | 2.1A                 | [Amazon (5200mAh)](https://www.amazon.com/Anker-bar-Sized-Portable-High-Speed-Technology/dp/B00P7N0320) <br /> [Amazon (6700mAh)](https://www.amazon.com/Anker-Upgraded-Candy-Bar-High-Speed-Technology/dp/B06XS9RMWS/) |
@@ -128,7 +118,7 @@ When selecting a power source, be aware that it needs to be able to supply a suf
     | Miday Portable Charger  | 5000 mAh             | 2.4A                 | [Amazon](https://www.amazon.com/Miady-Portable-Charger-5000mAh-Lightweight/dp/B08GLYSTLZ) |
 
 ??? info "Other Options"
-    Voltage regulators can be used to regulate power from the same source that powers motors (or another unregulated source). Raspberry Pi's require a 5V supply capable of the currents indicated above. Keep this in mind when selecting a regulator. Also be aware of the regulator's input voltage requirements. Some example regulators are listed below
+    Voltage regulators can be used to regulate power from the same source that powers motors (or another unregulated source). Most single board computers require a 5V supply capable of the currents indicated above. Keep this in mind when selecting a regulator. Also be aware of the regulator's input voltage requirements. Some example regulators are listed below
     
     - 5V/3A UBEC from [Adafruit](https://www.adafruit.com/product/1385)
     - 5V/3A UBEC from ShareGoo ([Amazon](https://www.amazon.com/ShareGoo-Converter-Module-Quadcopter-Holder/dp/B07DYXTX9H/))
