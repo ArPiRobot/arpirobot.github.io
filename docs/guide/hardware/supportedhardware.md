@@ -87,7 +87,7 @@ Note that a board with a WiFi adapter is required for full functionality. Most s
 
     | Board                   | Number of Cores    | RAM         | 64-bit | WiFi | Power Supply | Link           |
     | ----------------------- | ------------------ | ----------- | ------ | ---- | ------------ | -------------- |
-    | Raspberry Pi 4 Model B  | 4                  | 1GB - 8GB   | Yes    | Yes  | 5V@2.4A      |[Link](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) |
+    | Raspberry Pi 4 Model B  | 4                  | 1GB - 8GB   | Yes    | Yes  | 5V@2.4A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) |
     | Raspberry Pi 3 Model A+ | 4                  | 512MB       | Yes    | Yes  | 5V@2.1A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-a-plus/) |
     | Raspberry Pi 3 Model B  | 4                  | 1GB         | Yes    | Yes  | 5V@2.4A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) |
     | Raspberry Pi 3 Model B+ | 4                  | 1GB         | Yes    | Yes  | 5V@2.4A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/) |
@@ -95,6 +95,13 @@ Note that a board with a WiFi adapter is required for full functionality. Most s
     | Raspberry Pi Zero W     | 1                  | 512MB       | No     | Yes  | 5V@1.5A      | [Link](https://www.raspberrypi.com/products/raspberry-pi-zero-w/) |
 
     *Note that the Raspberry Pi Zero W is a single core board. As such, it is only recommended for simple robots.*
+
+??? info "Orange Pi Boards"
+    The following Orange Pi boards are supported. Other boards are not officially supported (and would require a custom OS image).
+
+    | Board                   | Number of Cores    | RAM         | 64-bit | WiFi | Power Supply | Link           |
+    | ----------------------- | ------------------ | ----------- | ------ | ---- | ------------ | -------------- |
+    | Orange Pi Lite          | 4                  | 1GB         | No     | Yes  | 5V@2.4A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Lite.html) |
 
 
 
@@ -131,9 +138,38 @@ When selecting a power source, be aware that it needs to be able to supply a suf
     - [Geekworm Raspberry Pi UPS HAT](https://www.amazon.com/Geekworm-Raspberry-X706-Function-Compatible/dp/B096FT6THL/)
 
 
+### Supported Motor Drivers
+
+Motor drivers are connected directly to the SBC. There are multiple types of motor drivers listed below.
+
+??? "PWM Motor Drivers"
+    When used with the ArPiRobot Core Library, the PWM signals will be software generated. As such, it is recommended to use other motor drivers if you have many motors (more than 4-6) or if exact speeds are critical.
+
+    | Motor Driver              | Number of Motors | Motor Voltage        | Max Current per Motor | Links |
+    | ------------------------- | ---------------- | -------------------- | --------------------- | ----- |
+    | DRV8833                   | 2                | 2.7V - 10.8V         | 1.2A                  | [Adafruit Breakout](https://www.adafruit.com/product/3297) <br /> [Pololu Breakout](https://www.pololu.com/product/2130) |
+    | TB6612                    | 2                | 4.5V - 13.5V         | 1.2A                  | [Adafruit Breakout](https://www.adafruit.com/product/2448) <br /> [SparkFun Breakout](https://www.sparkfun.com/products/14451) |
+    | L298N                     | 2                | 5V - 12V             | 2A                    | [Generic Module (Amazon 1)](https://www.amazon.com/Qunqi-2Packs-Controller-Stepper-Arduino/dp/B01M29YK5U/) <br /> [Generic Module (Amazon 2)](https://www.amazon.com/Diymall-Module-Stepper-Modules-Arduino/dp/B00NJOTBOK/) |
+
+    *Note: The L298N has a voltage drop of about 1V from input power to motor outputs at full speed. As such, it is generally better to use other drivers.*
+
+??? "I2C Motor Drivers"
+    These I2C motor drivers connect to the SBC via I2C and have onboard PWM generators (avoiding the software PWM problem).
+    
+    | Motor Driver              | Number of Motors | Motor Voltage        | Max Current per Motor | Links |
+    | ------------------------- | ---------------- | -------------------- | --------------------- | ----- |
+    | Adafruit Motor Hat        | 4                | 4.5V - 13.5V         | 1.2A                  | [Adafruit](https://www.adafruit.com/product/2348) |
+    | Adafruit Motor Bonnet     | 4                | 4.5V - 13.5V         | 1.2A                  | [Adafruit](https://www.adafruit.com/product/4280) |
+    | Geekworm Motor Hat        | 4                | 4.5V - 13.5V         | 1.2A                  | [Amazon](https://www.amazon.com/Raspberry-Function-Expansion-Support-Stepper/dp/B0721MTJ3P/) <br /> [Geekworm Site](https://geekworm.com/products/new-updated-raspberry-pi-motor-hat-full-function-robot-expansion-board) |
+
+    *Note: The Adafruit Hat and Bonnet are identical except for size / form factor. The Geekworm hat is built around the same chips as the Adafruit hat and is very similar.*
+
+
 ### Motor Power Sources
 
 The "easiest" power source for motors is a AA battery pack. At least 4AA batteries are recommended for two TT motors and 5 AA batteries for 4 TT motors. When using TT motors, more than 6AA batteries is not recommended (or 8 if using rechargeable). Other motors may require different voltages / current draw and may need different types or numbers of batteries.
+
+*Note: Make sure the voltage of the power source you are using is acceptable for the motor driver you are using.*
 
 ??? info "AA Battery Packs"
     *Note: these are just holders for the batteries. Batteries are not included. If using rechargeable AA's it is recommended to use one or two more batteries than the minimum recommended above (rechargeable are 1.2V per not 1.5V per).*
@@ -155,6 +191,7 @@ Other types of batteries can also be used. Typically, NiMH batteries are the bes
     - [2 Cell LiPo battery 5200mAh](https://www.amazon.com/Zeee-Batteries-Dean-Style-Connector-Vehicles/dp/B076Z778MJ)
     - [NiMH Charger (6V-12V)](https://www.amazon.com/Tenergy-Universal-Batteries-Compatible-Connectors/dp/B003MXMJX8/)
     - [LiPo Charger](https://www.amazon.com/SKYRC-LiIon-Battery-Charger-Discharger/dp/B01MZ1ZZ7Z/)
+
 
 ### Supported Sensor Coprocessors
 
