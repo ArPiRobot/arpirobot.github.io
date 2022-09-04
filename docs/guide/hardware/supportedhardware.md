@@ -73,7 +73,14 @@ The list below includes commonly used motors. Any motor should be usable, provid
 
 Typically, a Single Board Computer (SBC) is used as the robot's main computer. Often, Raspberry Pi boards are used as they are low cost and well supported. However, other SBCs are supported too (see lists below).
 
-Note that a board with a WiFi adapter is required for full functionality. Most supported boards have builtin wifi adapters, however if they do not a USB wifi adapter will be needed.
+When selecting a SBC to use as the main computer consider not only the specs of the computer, but the following items as well
+- Size
+- Power requirements (current required and how power is connected)
+- Interface Options (USB ports, builtin wifi, types of headers)
+- Compatibility with Raspberry Pi Hats
+    - Many SBCs have a 40-pin header matching the raspberry pi for hat compatibility (pin numbers may differ though). Some SBCs also have a 26-pin header which matches part of the raspberry pi pinout and can be used with some, but not all hats.
+
+*Note that a board with a WiFi adapter is required for full functionality. Most supported boards have builtin wifi adapters, however if they do not a USB wifi adapter will be needed.*
 
 
 ??? info "Raspberry Pi Boards"
@@ -101,7 +108,12 @@ Note that a board with a WiFi adapter is required for full functionality. Most s
 
     | Board                   | Number of Cores    | RAM         | 64-bit | WiFi | Power Supply | Link           |
     | ----------------------- | ------------------ | ----------- | ------ | ---- | ------------ | -------------- |
-    | Orange Pi Lite          | 4                  | 1GB         | No     | Yes  | 5V@2.4A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Lite.html) |
+    | Orange Pi Lite          | 4                  | 1GB         | No     | Yes  | 5V@2.1A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Lite.html) |
+    | Orange Pi 3 LTS         | 4                  | 2GB         | Yes    | Yes  | 5V@2.4A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html) |
+
+    *Note that the Orange Pi Lite is compatible with Raspberry Pi hats (40-pin header). This header is however oriented "backwards" compared to a Raspberry Pi, meaning hats do not sit over the SBC, but hang off the SBC.*
+
+    *Note that the Orange Pi 3 LTS is compatible with some Raspberry Pi hats (26-pin header). Most I2C and SPI hats should work (including Adafruit Motor Hat), but check pinouts to be sure.*
 
 
 
