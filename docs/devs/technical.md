@@ -100,29 +100,18 @@ Things controlled by the arduino that provide data to the Pi.
     - Command Port (enable, disable, sync net table)
     - NetTable Data Port (send/receive key/value pairs)
     - Log Port (send log messages from robot to DS)
+- Gamepads (SDL, why no joystick support, etc)
 - Network table sync
-
-## Drive Station Native Library for Gamepads
-- How it works
-- Gamepad mappings file
-- Required libraries
-- JNI bindings
-- Building
-- Using on non-supported OSes
-    - Where does it look for native library
-    - And in what order
 
 ## Deploy Tool Routines / Scripts
 - When and how the deploy tool uses the scripts
 - Document procedure for actions not using scripts
 
-## How Updates Work
+## CoreLib Updates
 - On the robot
 - On the development PC
 - Creating updates 
-    - Using generate_package.sh
-    - Manually
-    - Custom updates (to change things, install deb packages, etc)
+    - Using generate_package.py
 
 ## VSCode Extension Functionality
 - Create Projects (using template hard-coded in extension)

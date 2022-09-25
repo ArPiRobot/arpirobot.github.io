@@ -1,9 +1,9 @@
 # Descriptions of Components
 
-#### **Raspberry Pi Image**
+#### **ArPiRobot OS Pi Images**
 Built using scripts available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-ImageScripts)
 
-This is the modified version of Raspbian (the official Raspberry Pi OS) with required software for ArPiRobot robots. While ArPiRobot software can be updated with the ArPiRobot (described below), it is sometimes necessary to make changes to the OS itself. If this becomes necessary new Raspberry Pi Images will be released.
+These are modified versions of Operating System Images for various supported single board computers with required software for ArPiRobot robots.
 
 #### **ArPiRobot CoreLib**
 Source code available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-CoreLib)

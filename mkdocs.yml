@@ -78,6 +78,5 @@ nav:
         - Default Robot Settings: defaultsettings.md
     - For Developers: 
         - ArPiRobot Components: devs/components.md
-        - Development Resources: devs/resources.md
         - CoreLib Development: devs/developing_corelib.md
         - Technical Documentation: devs/technical.md
