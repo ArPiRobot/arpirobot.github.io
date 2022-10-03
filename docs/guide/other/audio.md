@@ -143,7 +143,7 @@ The file should look something like the following
     ```
 
 === "C++ Project"
-    ```
+    ```json
     {
         "version": 2,
         "deployFiles": [
