@@ -32,6 +32,7 @@ nav:
     - Home: index.md
     - Downloads: 
         - Latest: downloads/latest.md
+        # - Version 1.0 Downloads: downloads/v1_0.md
         - Beta Downloads: downloads/betas.md
         - Old Beta Downloads: downloads/betas-old.md
     - Guide:
