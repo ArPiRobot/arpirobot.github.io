@@ -26,7 +26,11 @@ The Deploy Tool is built and available for download in the following formats
 
 ![](../../img/dt_thispc.png){: style="height:400px"}
 
-TODO
+The "This PC Tab" is used to view or install different tools required for ArPiRobot program development on your computer.
+
+The "ArPiRobot Libraries" section is used to install libraries used to develop ArPiRobot programs. Currently, this is just the Core Library (ArPiRobot CoreLib). The version of the currently installed version will be displayed. Next to the version, the "Install Update Package" button can be used to select a downloaded CoreLib zip file to install a new version. This will be installed over any existing version (only one version of the CoreLib can be installed at a time).
+
+Below this section, there are sections for both C++ and Python development tools. It will show the currently installed version (if any) and sometimes have download links. Additionally, for C++ development tools, there is a button to install ArPiRobot Toolchain packages. Multiple toolchains can be installed (only one per architecture).
 
 ## Connecting to the Robot (Connection Tab)
 
@@ -90,7 +94,13 @@ The more frequently used section is the "Robot Access Point" section. In this se
 
 ![](../../img/dt_camstream.png){: style="height:400px"}
 
-TODO
+The camera stream tab is used to configure and play video streams from cameras connected to the robot's computer. 
+
+The first section, "Stream", is used to configure different camera feeds. Configured camera streams will be shown in the dropdown. The three buttons below can be used to create new feed configurations, delete existing ones, or edit existing ones. The new / edit dialog has many options to configure each individual stream.
+
+The second section, "Playback", is used to play a selected stream. The stream must first be selected in the dropdown in the "Stream" section. Then, a playback tool can be chosen in the dropdown labeled "Player". Currently three tools are supported (and must be installed separately). These are [mpv](https://mpv.io/), [ffplay](https://ffmpeg.org/), and [mplayer](http://www.mplayerhq.hu/design7/news.html). Mpv is generally recommended, however ffplay may be more compatible in some circumstances.  Once a player is selected, a stream can be opened (played) using the "Play Stream" button.
+
+Finally, the "System Configuration" section is used to configure both the camera stream service and the rtsp server service. The camera stream service runs all configured streams when started. The rtsp server service starts an rtsp server (used by default to run camera streams). For each, there is a button to manually start or stop the service. Additionally, there is a checkbox to start the service on boot (it is recommended to start both on boot if using camera streams).
 
 ## About Menu
 The Deploy Tool's about menu can be accessed by clicking `File > About`. This will open an about dialog with information about the Deploy Tool's license as well as information about the licenses of third party software used by the Deploy Tool. In addition, in the title of the dialog (as in the title of the main Deploy Tool window) you will see the version number of the Deploy Tool.
