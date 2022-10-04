@@ -1,82 +1,96 @@
 # Deploy Tool Manual
 
-*NOTICE: THIS MANUAL WAS WRITTEN FOR THE OLD JAVA DEPLOY TOOL. THE NEWER DEPLOY TOOL (V0.4.0+) IS REWRITTEN IN PYTHON USING QT. SOME OF THIS INFORMATION DOES NOT APPLY!!!*
-
-The Deploy Tool is a program that runs on your computer with the primary purpose of deploying a robot program written on your computer to the robot via the robot's WiFi network. It is also used to configure the robot's Raspberry Pi.
+The Deploy Tool is a program that runs on your computer with the primary purpose of deploying a robot program written on your computer to the robot via the robot's WiFi network. It is also used to configure the robot's computer.
 
 ## Uses / Features
-- Connect via SSH<sup>&ast;</sup> to the Raspberry Pi on the robot
-- Show the CPU usage, memory usage, and writable status of the Rasbperry Pi on the robot
+- Connect via SSH<sup>&ast;</sup> to the computer on the robot
+- Show the CPU usage, memory usage, and writable status of the computer on the robot
 - Show the image version, python version, ArPiRobot-Tools version, and PythonLib version in use on the robot
 - Shutdown or reboot the robot, restart the running robot program, and switch between readonly and read/write states
 - Deploy a program from your computer to the robot (such that the robot will run the program on boot)
-- Configure the Raspberry Pi's WiFi network settings (SSID, password, channel, country) and the Raspberry Pi's hostname
+- Configure the robot's computer's WiFi network settings (SSID, password, channel, country) and the hostname
 - Send updates to and install updates on the robot
 - Pull the full robot program log
 
-<sup>&ast;</sup>This is a way of logging in to the Raspberry Pi over the network. Unlike the [Drive Station](./drive_station.md) which connects to a running robot program, the Deploy Tool connects to the Raspberry Pi itself.
+<sup>&ast;</sup>This is a way of logging in to the computer over the network. Unlike the [Drive Station](./drive_station.md) which connects to a running robot program, the Deploy Tool connects to the robot's computer itself.
 
 ## Installing and Running
-The Drive Station is written in Java (at the time of writing this it should work with Java 1.8 or newer), so you will need to make sure you have a Java runtime installed before using the Drive Station. Sometimes, a Java runtime is included in the package and sometimes it is not.
+The Deploy Tool is built and available for download in the following formats
 
-The Drive Station is built and available for download in the following formats
+- `.exe` file - This is a windows installer that will install the Deploy Tool. Supports 64-bit x86 Windows (x86_64).
+- `.app.zip` - This is a zip file containing a macOS app for the Deploy Tool After extracting the zip you can drag the `.app` file to your Mac's `Applications` folder so the Deploy Tool will show up in Launchpad. Supports 64-bit x86 macOS (x86_64).
+- `.deb` file - This is a package that can be used to install the Deploy Tool on Ubuntu Linux (it should also work on other debian based systems using `.deb` packages). It depends on the required packages. Supports any architecture where PySide6 is available.
+- `.tar.gz` file - This is a package for any linux distribution. Python3, pip, and venv must be installed from system packages. Then, extract the package and run `install.sh`. Supports any architecture where PySide6 is available. 
 
-- `.exe` file - This is a windows installer that will install the Deploy Tool along with a Java runtime. It will also setup shortcuts in the start menu and configure an uninstaller for the Deploy Tool accessible through the Windows Control Panel.
-- `.app.zip` - This is a zip file containing a macOS app for the Deploy Tool. After extracting the zip you can drag the `.app` file to your Mac's `Applications` folder so the Deploy Tool will show up in Launchpad. This app includes a java runtime used by the Deploy Tool.
-- `.deb` file - This is a package that can be used to install the Deploy Tool on Ubuntu Linux (it should also work on other debian based systems using `.deb` packages). It depends on the `default-jre` for whatever distribution you are installing it on so you should not need to do anything special to install a Java runtime.
-- `.jar` file - This is an executable Java Archive file. This can be run on any supported<sup>&ast;</sup> platform, but you must install java separately first. Usually after installing java you can run the Deploy Tool just by double clicking on the `.jar` file, however if that does not work you may need to right click it and choose to open it with "Java" or "Java Runtime". If all else fails make sure the `java` command is in your path and run the following command in a terminal or command prompt: `java -jar /path/to/jar_file.jar`. Replace the path and name of file as appropriate.
+## This PC Tab
 
-<sup>&ast;</sup>The Deploy Tool is supported on any platform where a Java SE runtime can be installed.
+![](../../img/dt_thispc.png){: style="height:400px"}
+
+TODO
 
 ## Connecting to the Robot (Connection Tab)
-Until you connect to the robot you will not be able to access the other tabs in the Deploy Tool.
 
-Before connecting to the robot make sure your computer is connected to the Robot's WiFi network (the access point generated by the Raspberry Pi). Then make sure (in the Deploy Tool) that the robot's IP address, and login credentials are correct (the default settings are listed [here](../../defaultsettings.md)). The initial settings are the default ones. If you make any changes to these settings they will be saved and reloaded the next time you run the Deploy Tool.
+![](../../img/dt_connection.png){: style="height:400px"}
 
-Once you are sure the settings are correct click the connect button. The Deploy Tool will login to the robot's Raspberry Pi and the load information about what versions of different components are in use on the robot. Once this is done the "Connecting" progress dialog will close. If the connection fails you will see an error message dialog. After a successful connection the "Connect" button will become a "Disconnect" button, which can be clicked to disconnect from the robot.
+Until you connect to the robot you will not be able to access most other tabs in the Deploy Tool.
 
-If you experience issues with the Deploy Tool getting disconnected frequently you can check the "Use Longer Timeouts" box on the connection tab, however if you have this issue with the Deploy Tool it is likely that you will run into other network related issues when controlling the robot using the [Drive Station](./drive_station.md). You may want to consider changing the Pi's WiFi network channel (described in the Network Settings section below) or following some of the [WiFi debugging steps](../../guide/other/wifidebug.md). 
+Before connecting to the robot make sure your computer is connected to the Robot's WiFi network (the access point generated by the robot). Then make sure (in the Deploy Tool) that the robot's IP address, and login credentials are correct (the default settings are listed [here](../../defaultsettings.md)). The initial settings are the default ones. If you make any changes to these settings they will be saved and reloaded the next time you run the Deploy Tool.
 
-## Robot Status Tab
-The robot status tab is divided into three sections. The section at the bottom labeled "Robot Actions" has five buttons that perform different actions on the robot's Raspberry Pi.
+Once you are sure the settings are correct click the connect button. The Deploy Tool will login to the robot's computer and the load information about what versions of different components are in use on the robot. Once this is done the "Connecting" progress dialog will close. If the connection fails you will see an error message dialog. After a successful connection the "Connect" button will become a "Disconnect" button, which can be clicked to disconnect from the robot.
 
-- Shutdown will power the Rasbperry Pi off (this is the safe way to turn the Pi off if it is read/write)
-- Reboot will restart the Rasbperry Pi
-- Restart Program will stop any running robot program then start it again.
-- Make Readonly will make the Pi's SD card readonly
-- Make Read/Write will make the Pi's SD card read/write
-
-Above the "Robot Actions" section there are two other sections. On the left is the "Robot Status" section. This section will show you the Rasbperry Pi's CPU Usage, memory (RAM) usage, and the state of it's SD card's filesystem (readonly or read/write).
-
-On the right side is a "Versions" panel. This shows four different versions
-
-- Image version - The name of the image in use on the robot
-- Python version - The full version number of the python interpreter installed on the robot (this is the version of python that will be used when running robot programs)
-- ArPiRobot Python Library Version - This is the version of the installed PythonLib (installed via updates)
-- ArPiRobot Tools Version - This is the version of the installed ArPiRobot Tools (installed via updates)
-
+If you experience issues with the Deploy Tool getting disconnected frequently you can check the "Use Longer Timeouts" box on the connection tab, however if you have this issue with the Deploy Tool it is likely that you will run into other network related issues when controlling the robot using the [Drive Station](./drive_station.md). You may want to consider changing the robot's WiFi network channel (described in the Network Settings section below) or following some of the [WiFi debugging steps](../../guide/other/wifidebug.md). 
 
 ## Robot Program Tab
-The robot program tab is used to deploy a robot program to the robot. First you must select the project folder. Everything in this folder will be copied to the robot, so it is recommended to have a folder that contains only your robot program (which can be multiple python files). After selecting the project folder you will need to select the "main script". This is the python script that will be executed when the robot program is started. Typically, this is the `robot.py` file if you are following the convention outlined in the programming models section. The main script *must* be located inside the project folder (or a subfolder in the project folder).
 
-Once the project folder and main script are selected click the "Deploy to Robot" button. This will start by making the Raspberry Pi's SD card read/write. Then it will stop the old robot program (this will cause the [Drive Station](./drive_station.md) to be disconnected if it is connected at the time). Then, the Deploy Tool will copy the *everything* from the project folder to the robot and configure it to run the main script when starting the robot program. The new robot program will then be started. Finally, if the Raspberry Pi was readonly when the Deploy Started, it will be made readonly once again.
+![](../../img/dt_robotprogram.png){: style="height:400px"}
 
-Because the SD card is read/write during deploy, you should **not** unplug the Raspberry Pi while a robot program is being deployed.
+The robot program tab is used to deploy a robot program to the robot. First you must select the project folder. The project folder contains a file called `arpirobot-proj.json`. This file determines what files are copied to the robot when deployed.
 
-## Network Settings Tab
-The network settings tab is divided into two sections. First is the "Robot Hostname" section. In this section you can view and/or change the robot's hostname. This is just the name of the Rasbperry Pi on the network. There is generally no reason to change this as the Raspberry Pi will have a known IP address (`192.168.10.1`) on its own WiFi network, however you can edit the hostname then click the "Change & Reboot" button. This will change the hostname then reboot the Pi so the change takes effect. This will cause the Deploy Tool to disconnect. After rebooting, you will also likely need to reconnect your computer to the robot's WiFi network before you can reconnect with the Deploy Tool. It may take the Pi a couple of minutes to reboot.
+Once the project folder is selected click the "Deploy to Robot" button. This will start by making the computer's SD card read/write. Then it will stop the old robot program (this will cause the [Drive Station](./drive_station.md) to be disconnected if it is connected at the time). Then, the Deploy Tool will copy the required files from the project folder to the robot along with the version of the CoreLib installed on the computer with the robot. The new robot program will then be started. Finally, if the computer was readonly when the Deploy Started, it will be made readonly once again.
 
-The more frequently used section is the "WiFi Networks" section. In this section you can adjust settings for the WiFi network generated by the Rasbperry Pi. The SSID is the network's name. The password is a WPA-2 passphrase (between 8 and 64 characters) for the WiFi network (this is the network's password). The country code is a two letter indication of which country the robot is in use in. This is important as some WiFi channels are not allowed in some countries. By default this is set to "US". You can find a list of country codes [here](https://www.arubanetworks.com/techdocs/InstantWenger_Mobile/Advanced/Content/Instant%20User%20Guide%20-%20volumes/Country_Codes_List.htm). The final setting in this section is the WiFi channel. This is one of the 2.4GHz channels (numbered 1 to 14). In the United States only 1 to 11 are allowed. In most of the rest of the world 1 to 13 are allowed. *If you set a channel that is not allowed based on the country code set you will loose access to the robot's WiFi network.* The robot will not generate a WiFi network on a channel that is disallowed based on the country code. If you do this you will probably need to reflash the SD card to recover the robot.
-
-## Updates Tab
-This tab performs one function: installing an update on the robot. Updates are distributed as `.zip` files. You should not install robot updates without trusting the source as each update determines what gets installed and what actions are performed on the robot. Official updates will install a version of the PythonLib and ArPiRobot-Tools.
-
-To install an update using the Deploy Tool select the downloaded update `.zip` file. Then click the "Update Robot" button. The Deploy Tool will then send the update to the robot, extract it and run its install file. If the install fails the Deploy Tool will display an install log file from the robot. When installing updates be patient. This process can take several minutes (especially on the Pi Zero W).
+Because the SD card is read/write during deploy, you should **not** unplug the computer while a robot program is being deployed.
 
 ## Robot Program Log Tab
-The last tab in the Deploy Tool is used to display the *full* robot program log. This will show the *entire* log since the program first started, unlike the [Drive Station](./drive_station.md) which will only show the portion of the log from after it connected. This log will also show errors that occur when *starting* the robot program. It will contain any output from the robot program and from python while running the program and is useful for debugging robot program crashes or finding errors that prevent the program from starting.
+
+![](../../img/dt_programlog.png){: style="height:400px"}
+
+This tab in the Deploy Tool is used to display the *full* robot program log. This will show the *entire* log since the program first started, unlike the [Drive Station](./drive_station.md) which will only show the portion of the log from after it connected. This log will also show errors that occur when *starting* the robot program. It will contain any output from the robot while running the program and is useful for debugging robot program crashes or finding errors that prevent the program from starting.
 
 The log is refreshed automatically once every second so you will have a hard time selecting and copying the text before the refresh happens (and unselects all text). Instead you can use the "Copy Log Contents" button to copy the text from the log.
+
+## Robot Status Tab
+
+![](../../img/dt_status.png){: style="height:400px"}
+
+The robot status tab is divided into three sections. The section at the bottom labeled "Robot Actions" has five buttons that perform different actions on the robot's computer.
+
+- Shutdown will power the robot's computer off (this is the safe way to turn the Pi off if it is read/write)
+- Reboot will restart the robot's computer
+- Restart Program will stop any running robot program then start it again.
+- Make Readonly will make the computer's SD card readonly
+- Make Read/Write will make the computer's SD card read/write
+
+Above the "Robot Actions" section there are two other sections. On the left is the "Robot Status" section. This section will show you the robot's computer's CPU Usage, memory (RAM) usage, and the state of it's SD card's filesystem (readonly or read/write).
+
+On the right side is a "Versions" panel. This shows three different versions
+
+- Image Version - The name of the image in use on the robot
+- ArPiRobot Tools Version - This is the version of the installed ArPiRobot Tools (installed via updates)
+- Python Version - The full version number of the python interpreter installed on the robot (this is the version of python that will be used when running robot programs)
+
+## Network Settings Tab
+
+![](../../img/dt_network.png){: style="height:400px"}
+
+The network settings tab is divided into two sections. First is the "Robot Hostname" section. In this section you can view and/or change the robot's hostname. This is just the name of the robot's computer on the network. There is generally no reason to change this as the computer will have a known IP address (`192.168.10.1`) on its own WiFi network, however you can edit the hostname then click the "Change & Reboot" button. This will change the hostname then reboot the computer so the change takes effect. This will cause the Deploy Tool to disconnect. After rebooting, you will also likely need to reconnect your computer to the robot's WiFi network before you can reconnect with the Deploy Tool. It may take the computer a couple of minutes to reboot.
+
+The more frequently used section is the "Robot Access Point" section. In this section you can adjust settings for the WiFi network generated by the robot's computer. The SSID is the network's name. The password is a WPA-2 passphrase (between 8 and 64 characters) for the WiFi network (this is the network's password). The country code is a two letter indication of which country the robot is in use in. This is important as some WiFi channels are not allowed in some countries. By default this is set to "US". You can find a list of country codes [here](https://www.arubanetworks.com/techdocs/InstantWenger_Mobile/Advanced/Content/Instant%20User%20Guide%20-%20volumes/Country_Codes_List.htm). The final setting in this section is the WiFi channel. This is one of the 2.4GHz channels (numbered 1 to 14). In the United States only 1 to 11 are allowed. In most of the rest of the world 1 to 13 are allowed. *If you set a channel that is not allowed based on the country code set you will loose access to the robot's WiFi network.* The robot will not generate a WiFi network on a channel that is disallowed based on the country code. If you do this you will probably need to re-flash the SD card to recover the robot.
+
+## Camera Stream Tab
+
+![](../../img/dt_camstream.png){: style="height:400px"}
+
+TODO
 
 ## About Menu
 The Deploy Tool's about menu can be accessed by clicking `File > About`. This will open an about dialog with information about the Deploy Tool's license as well as information about the licenses of third party software used by the Deploy Tool. In addition, in the title of the dialog (as in the title of the main Deploy Tool window) you will see the version number of the Deploy Tool.
