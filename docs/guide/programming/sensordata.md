@@ -39,7 +39,9 @@ Then in the Arduino IDE click `File > Open` and choose the extracted project. Op
 
 ![](../../img/select_ino.png){: style="height:250px"}
 
-After opening the project, plug in your Arduino using the USB cable. You should now have a port listed under `Tools > Ports`. Select it (the number / name will likely not be the same as in the screenshot below).
+Next install the required libraries for the firmware. These can be installed using the library manager by selecting `Tools > Manage Libraries...`. Search for and install the latest version of the `FastCRC` library.
+
+Then, plug in your Arduino using the USB cable. You should now have a port listed under `Tools > Ports`. Select it (the number / name will likely not be the same as in the screenshot below).
 
 ![](../../img/arduino_port_select.png){: style="height:200px"}
 
