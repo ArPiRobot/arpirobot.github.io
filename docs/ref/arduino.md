@@ -40,7 +40,7 @@ The ArPiRobot framework relies on the main computer to tell the Arduino coproces
 === "Python (`robot.py`)"
     ```py
     # Add with imports
-    from arpirobot.arduino.device import DeviceClass
+    from arpirobot.arduino.sensor import DeviceClass
 
     # Add in __init__
     self.device = DeviceClass(deice_arg1, device_arg2, ...)
@@ -51,7 +51,7 @@ The ArPiRobot framework relies on the main computer to tell the Arduino coproces
 === "C++ (`robot.hpp`)"
     ```
     // Add with includes
-    #include <arpirobot/arduino/device/DeviceClass.hpp>
+    #include <arpirobot/arduino/sensor/DeviceClass.hpp>
 
     // Add as a member variable
     DeviceClass device { deviceArg1, deviceArg2, ... };
@@ -77,4 +77,86 @@ Once all devices have been added, the arduino interface must be "started". When 
 
 ## Arduino Devices
 
+The following section lists information on each supported sensors for an arduino coprocessor. Each of these devices can be added to an Arduino Interface as described in the above section.
+
+
+### VoltageMonitor
+
+This sensor supports reading a voltage using an analog pin on the Arduino. Typically, a voltage divider is also used to measure higher inputs than the Arduino's board voltage. This is often used to measure the voltage of the battery powering motors.
+
+Configuring this sensor requires the following information:
+
+- `pin`: The analog pin on the Arduino that the voltage should be read on. This can either be an integer (0, 1, 2, etc) or it can be a string prefixed with "A" ("A0", "1", "A2", etc). The prefix is ignored (meaning 0 is the same as "A0", 1 is the same as "A1", etc).
+- `vboard`: The "board voltage" of the Arduino coprocessor. This is either 3.3V or 5V. This can be measured with a voltmeter to get a more exact reading, or you can just enter either 3.3 or 5.0 depending on the board.
+- `r1`: The value of the "top" resistor of the voltage divider (if any)
+- `r2`: The value of the "bottom" resistor of the voltage divider (if any)
+
+*Note that to use the `VoltageMonitor` device with no voltage divider (no `r1` or `r2`) you cannot set both to zero. `r2` cannot be zero. Instead, set `r1` to zero and `r2` to any non-zero positive number (eg one).*
+
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.arduino.sensor import VoltageMonitor
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <arpirobot/arduino/sensor/VoltageMonitor.hpp>
+    ```
+
+
+### Ultrasonic4Pin
+
 TODO
+
+
+### SingleEncoder
+
+TODO
+
+
+### IRReflectorModule
+
+TODO
+
+
+### OldAdafruit9Dof
+
+TODO
+
+
+### NxpAdafruit9Dof
+
+TODO
+
+
+### Mpu6050Imu
+
+TODO
+
+
+### QuadEncoder
+
+TODO
+
+
+## Static Devices in Arduino Firmware
+
+*Note: Most users will have no reason to use static devices. This is mostly useful for custom additions to the Arduino Firmware.*
+
+In rare cases, it may be desirable to "statically" add devices in the Arduino Firmware itself (by modifying the firmware). A "static" device is one that is created in the Arduino Firmware and always exists. Such devices are assigned predetermined id numbers and are **not** created / configured by the robot program.
+
+In such cases, it is necessary that a corresponding device is added to the `ArduinoInterface1` in the robot program with all the same configuration (arguments) as in the Arduino Firmware. However, the device must be added to the interface **without** creating a new device. Instead, the device must be given it's predetermined id number.
+
+To do this, there are two optional arguments for each Arduino Device. These options are at the end (after all configuration arguments for the sensor). The first argument is set to false to indicate that the arduino interface should not attempt to create the sensor. The second argument is the predetermine id number of the sensor.
+
+=== "Python"
+    ```py
+    # Attach to static device with id 1
+    device = DeviceClass(device_arg1, device_arg2, ..., False, 1)
+    ```
+=== "C++"
+    ```cpp
+    // Attach to static device with id 1
+    DeviceClass device { deviceArg1, deviceArg2, ..., false, 1 };
+    ```
+
+After this, the device can be added to the interface as usual with `add_device` / `addDevice`.
