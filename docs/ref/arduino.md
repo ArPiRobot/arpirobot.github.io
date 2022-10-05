@@ -82,6 +82,8 @@ The following section lists information on each supported sensors for an arduino
 
 ### VoltageMonitor
 
+![](../img/vmonitor_module.png){: style="height:75px"}
+
 This sensor supports reading a voltage using an analog pin on the Arduino. Typically, a voltage divider is also used to measure higher inputs than the Arduino's board voltage. This is often used to measure the voltage of the battery powering motors.
 
 Configuring this sensor requires the following information:
@@ -105,17 +107,58 @@ Configuring this sensor requires the following information:
 
 ### Ultrasonic4Pin
 
-TODO
+![](../img/hc-sr04.png){: style="height:90px"}
+
+This `ArduinoDevice` supports 4-pin ultrasonic rangefinder sensors. Note that 3-pin variants are not supported. The common 4-pin variants (eg HC-SR04) have a "trigger" and "echo" pin in addition to power and ground. Other devices with this type of pinout should be supported.
+
+Configuring this sensor requires the following information:
+
+- `trigger_pin`: What pin on the Arduino is connected to the sensor's trigger pin. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0.
+- `echo_pin`: What pin on the Arduino is connected to the sensor's echo pin. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0. *It is highly recommended to use an interrupt enabled pin for the echo pin. Different Arduinos have different pins that support interrupts.*
+
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.arduino.sensor import Ultrasonic4Pin
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <arpirobot/arduino/sensor/Ultrasonic4Pin.hpp>
+    ```
 
 
 ### SingleEncoder
 
-TODO
+![](../img/single_encoder_asm.png){: style="height:125px"}
+
+This sensor supports any single channel digital encoder. A single channel encoder will have only one signal line. Such encoders are typically optical encoders (beam of light is interrupted by a slotted disk). This device supports measuring distance traveled and speed (without accounting for direction).
+
+Configuring this sensor requires the following information:
+
+- `pin`: The signal pin for the encoder. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0. *It is highly recommended to use an interrupt enabled pin for SingleEncoder devices. Different Arduinos have different interrupt enabled pins.*
+- `use_internal_pullup`: Some single channel encoders require the signal line have a pullup resistor. For such devices, set this to true to use the pullup builtin to the Arduino for that pin. This must be connected to a pin supporting a pullup resistor to have any effect. On most Arduinos, all pins support pullup resistors.
+
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.arduino.sensor import SingleEncoder
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <arpirobot/arduino/sensor/SingleEncoder.hpp>
+    ```
 
 
 ### IRReflectorModule
 
-TODO
+![](../img/ir_module_1.png){: style="height:80px"}
+
+![](../img/ir_module_2.png){: style="height:80px"}
+
+Supports infrared reflection detector modules (typically used for line followers). These modules include an IR led and an IR detector (photoresistor, photodiode, or phototransistor). Typically these include a comparator and tuning potentiometer to generate a digital "detected" / "not detected" signal. Some also give direct access to an analog signal.
+
+Configuring this sensor requires the following information:
+
+- `digital_pin`: What pin the digital signal from the comparator is connected to. This is typically labeled "out" or "D0" on the modules. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0.
+- `analog_pin`: What analog pin the analog signal from the sensor is connected to. This can either be an integer (0, 1, 2, etc) or it can be a string prefixed with "A" ("A0", "1", "A2", etc). The prefix is ignored (meaning 0 is the same as "A0", 1 is the same as "A1", etc).
 
 
 ### OldAdafruit9Dof
