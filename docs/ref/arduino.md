@@ -187,7 +187,7 @@ TODO
 
 In rare cases, it may be desirable to "statically" add devices in the Arduino Firmware itself (by modifying the firmware). A "static" device is one that is created in the Arduino Firmware and always exists. Such devices are assigned predetermined id numbers and are **not** created / configured by the robot program.
 
-In such cases, it is necessary that a corresponding device is added to the `ArduinoInterface1` in the robot program with all the same configuration (arguments) as in the Arduino Firmware. However, the device must be added to the interface **without** creating a new device. Instead, the device must be given it's predetermined id number.
+In such cases, it is necessary that a corresponding device is added to the `ArduinoInterface` in the robot program with all the same configuration (arguments) as in the Arduino Firmware. However, the device must be added to the interface **without** creating a new device. Instead, the device must be given it's predetermined id number.
 
 To do this, there are two optional arguments for each Arduino Device. These options are at the end (after all configuration arguments for the sensor). The first argument is set to false to indicate that the arduino interface should not attempt to create the sensor. The second argument is the predetermine id number of the sensor.
 
