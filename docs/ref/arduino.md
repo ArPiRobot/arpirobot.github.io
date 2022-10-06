@@ -160,20 +160,74 @@ Configuring this sensor requires the following information:
 - `digital_pin`: What pin the digital signal from the comparator is connected to. This is typically labeled "out" or "D0" on the modules. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0.
 - `analog_pin`: What analog pin the analog signal from the sensor is connected to. This can either be an integer (0, 1, 2, etc) or it can be a string prefixed with "A" ("A0", "1", "A2", etc). The prefix is ignored (meaning 0 is the same as "A0", 1 is the same as "A1", etc).
 
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.arduino.sensor import IRReflectorModule
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <arpirobot/arduino/sensor/IRReflectorModule.hpp>
+    ```
+
 
 ### OldAdafruit9Dof
 
-TODO
+![](../img/oldada9dof.png){: style="height:150px"}
+
+*Image Credit: [Adafruit](https://www.adafruit.com/product/1714)*
+
+Adafruit's now-discontinued [9-DOF IMU w/ the L3DG20H & LSM303DLHC](https://www.adafruit.com/product/1714). Currently, the gyroscope and accelerometer are supported. The magnetometer is not currently supported.
+
+No configuration information is required for this sensor. However, only one sensor of this type is supported per Arduino coprocessor.
+
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.arduino.sensor import OldAdafruit9Dof
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <arpirobot/arduino/sensor/OldAdafruit9Dof.hpp>
+    ```
 
 
 ### NxpAdafruit9Dof
 
-TODO
+![](../img/nxpada9dof.png){: style="height:150px"}
+
+*Image Credit: [Adafruit](https://www.adafruit.com/product/3463)*
+
+Adafruit's [NXP 9-DOF IMU w/ the FXOS8700 & FXAS21002](https://www.adafruit.com/product/3463). Currently, the gyroscope and accelerometer are supported. The magnetometer is not currently supported.
+
+No configuration information is required for this sensor. However, only one sensor of this type is supported per Arduino coprocessor.
+
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.arduino.sensor import NxpAdafruit9Dof
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <arpirobot/arduino/sensor/NxpAdafruit9Dof.hpp>
+    ```
 
 
 ### Mpu6050Imu
 
-TODO
+![](../img/mpu6050.png){: style="height:150px"}
+
+*Image Credit: [Adafruit](https://www.adafruit.com/product/3886)*
+
+MPU-6050 based IMUs such as [Adafruit's Breakout](https://www.adafruit.com/product/3886). Both the gyroscope and accelerometer are supported. This IMU has no accelerometer.
+
+No configuration information is required for this sensor. However, only one sensor of this type is supported per Arduino coprocessor.
+
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.arduino.sensor import Mpu6050Imu
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <arpirobot/arduino/sensor/Mpu6050Imu.hpp>
+    ```
 
 
 ### QuadEncoder
