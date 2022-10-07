@@ -77,7 +77,7 @@ If the watchdog is not "fed" for 500&ast; milliseconds, all "potentially dangero
 This helps avoid scenarios where the CPU is overloaded and the robot is unable to respond to inputs in time to avoid bad scenarios. Additionally, if user code ever causes the robot program to freeze (eg infinite loops) this ensures the motors will be able to be stopped without relaunching the robot program to take control back of the motors.
 
 
-&ast;Currently this duration is not configurable, however the ability to change this will be introduced soon.
+&ast;This duration can be configured in the `RobotProfile`
 
 
 The watchdog should be fed in the `periodic` function by calling the `feed_watchdog` / `feedWatchdog` function (member of `BaseRobot`). 
@@ -102,6 +102,7 @@ The `RobotProfile` is a class containing only static members. The variables are 
 - How frequently periodic functions should run (in milliseconds). Defaults to 50.
 - How old gamepad data is allowed to be (in milliseconds). Data older than this age will be discarded (this prevents scenarios where network slowdowns prevent the robot from being controllable). Defaults to 100.
 - How frequently action's periodic functions are run (in milliseconds). Defaults to 50.
+- Duration before BaseRobot watchdog disables motors and other devices (in milliseconds). Defaults to 500.
 - Which IO provider is used when the program runs. An IO provider is an underlying library which allows using GPIO pins and communication busses. Which ones are available / used by default is platform specific. Setting this to an empty string will use the default provider for the platform.
 
 Any variables in `RobotProfile` must be modified *before* the `BaseRobot` instance is started. In a typical project, this means that variables must either be changed in the `main` source file (before it calls start on the `Robot` class instance) or they must be changed in the constructor of the `Robot` class (where `Robot` is the class derived from `BaseRobot`).
