@@ -1,6 +1,6 @@
 # Descriptions of Components
 
-#### **ArPiRobot OS Pi Images**
+#### **ArPiRobot OS Images**
 Built using scripts available on [GitHub](https://github.com/ArPiRobot/ArPiRobot-ImageScripts)
 
 These are modified versions of Operating System Images for various supported single board computers with required software for ArPiRobot robots.
