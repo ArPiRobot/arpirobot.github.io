@@ -232,7 +232,24 @@ No configuration information is required for this sensor. However, only one sens
 
 ### QuadEncoder
 
-TODO
+![](../img/quad_encoder_asm.png){: style="height:175px"}
+
+This sensor supports any quadrature encoder. A quadrature channel encoder will have two signal lines. This device supports measuring displacement traveled and velocity (and is capable of distinguishing between directions).
+
+Configuring this sensor requires the following information:
+
+- `pin_a`: The A channel pin for the encoder. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0. *It is highly recommended to use an interrupt enabled pin for QuadratureEncoder devices. Different Arduinos have different interrupt enabled pins.*
+- `pin_b`: The B channel pin for the encoder. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0. *It is highly recommended to use an interrupt enabled pin for QuadratureEncoder devices. Different Arduinos have different interrupt enabled pins.*
+- `use_internal_pullup`: Some single channel encoders require the signal line have a pullup resistor. For such devices, set this to true to use the pullup builtin to the Arduino for that pin. This must be connected to a pin supporting a pullup resistor to have any effect. On most Arduinos, all pins support pullup resistors.
+
+=== "Python (`robot.py`)"
+    ```py
+    from arpirobot.arduino.sensor import QuadEncoder
+    ```
+=== "C++ (`robot.cpp`)"
+    ```cpp
+    #include <arpirobot/arduino/sensor/QuadEncoder.hpp>
+    ```
 
 
 ## Static Devices in Arduino Firmware
