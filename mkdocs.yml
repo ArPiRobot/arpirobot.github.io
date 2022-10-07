@@ -72,7 +72,6 @@ nav:
             - Arduino Sensor Coprocessor: ref/arduino.md
             - Network Table: ref/nettable.md
             - Action System: ref/actionsystem.md
-            - Langauge Bindings: ref/langbindings.md
         - CoreLib API Docs:
             - Doxygen (C++): ../doxygen-docs/cpp/html/index.html
             - Doxygen (Python): ../doxygen-docs/python/html/index.html
