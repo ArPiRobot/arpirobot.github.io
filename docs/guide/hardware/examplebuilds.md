@@ -161,8 +161,6 @@ A four wheel differential drive robot build on a small clipboard (6" by 9"). Thi
 
         - Next, more sensors will need connections to the 3.3V pin (3V3) and GND pins than are available on the breadboard. As such, the two empty rows need to be connected to 3.3V and GND. This provides four extra GND and 3.3V pins. Note that the MPU6050 has a cable that connects to either port on the short sides of the board. This cable has four jumper wire pins on the other end that are connected to the breadboard.
 
-        TODO: Image
-
         - Then connect each sensor as follows using jumper wires
     
         | Sensor            | Sensor Pin  | Arduino Nano |

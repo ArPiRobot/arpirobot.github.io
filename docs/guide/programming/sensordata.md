@@ -54,8 +54,6 @@ Finally, to build and upload the firmware to your board click the upload button 
 
 *Specific information about how each sensor must be connected and how connections can be made is located in the "Building a Robot" section of the guide.*
 
-<!--TODO: Add a link above instead of just naming the section once that part of the guide is written-->
-
 Now that the board is programmed, it is time to disconnect it from your computer. Connect it to the Pi on the robot by USB cable.
 
 The ArPiRobot Arduino Firmware is fairly simple and does not need to be modified before use. The firmware is built with support for various sensors, but it does not know how sensors are connected to the Arduino. This information is provided to the Arduino from the Pi by your robot program. As such, it is necessary to know what sensors are connected and how they are connected when writing the code for your sensors. In this section of the guide three sensors are used: a voltage monitor, an ultrasonic sensor, and an IMU (Inertial Measurement Unit) containing both a gyroscope (measures rotation) and an accelerometer (measures acceleration). The code is written assuming the sensors are connected to the Arduino as follows
