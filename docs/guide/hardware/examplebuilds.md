@@ -23,7 +23,6 @@ A four wheel differential drive robot build on a small clipboard (6" by 9"). Thi
 
     - 1x [Raspberry Pi Zero W w/ Headers](https://www.adafruit.com/product/5291)
         - Alternate: [Raspberry Pi Zero 2 W](https://www.adafruit.com/product/3708) *no headers, must buy and solder separately*
-        - Alternate: [Raspberry Pi 3A+](https://www.adafruit.com/product/4027)
     - 1x [Arduino Nano](https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/)
         - Alternate: [Arduino Nano Every](https://www.amazon.com/Arduino-Nano-Every-Single-Board/dp/B07VX7MX27/)
         - Alternate: [Metro Mini 328](https://www.adafruit.com/product/2590)
@@ -200,3 +199,29 @@ A four wheel differential drive robot build on a small clipboard (6" by 9"). Thi
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_sensor_wires_bottom.png){: style="height:300px;"}
 
 
+## Mini Clipboard Robot (Orange Pi Lite Variant)
+
+![](../../img/4wd_mini_opi_render.png)
+
+This is a slightly modified version of the Mini Clipboard Robot using an Orange Pi Lite instead of a Raspberry Pi Zero. Typically, the original variant is recommended, but Raspberry Pis are difficult to get at the time of writing this.
+
+??? info "Parts List Modifications"
+    - 1x [Orange Pi Lite](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Lite.html) instead of Raspberry Pi Zero
+    - 1x [USB-A to Barrel Jack Cable](www.orangepi.org/html/hardWare/powerSuppliesAndCables/details/Orange-Pi-USB-Turn-DC-4.0-for-Wire.html) to power the Orange Pi
+        - [Alternate](https://www.amazon.com/Connector-Charger-Cellphone-Netbook-Electronics/dp/B07PN2B861/)
+        - [Alternate](https://www.amazon.com/TENINYU-4-0x1-7mm-Barrel-Ampere-Positive/dp/B01MR6DFAD/)
+        - [Alternate](https://www.amazon.com/4-0mm-Charger-Charging-Compatible-Recorder/dp/B08ZMS1MNJ)
+
+??? info "Assembly Instruction Modifications"
+
+    Overall, wiring and assembly should follow the same instructions as for the standard Mini Clipboard Robot build. However, the Orange Pi should be placed in the location shown below.
+
+    ![](../../img/4wdmini_opi_pos.png){: style="height:300px;"}
+
+    Other changes:
+
+    - Glue the wireless antenna to the location shown below.
+    - The Arduino's USB cable should be connected to either of the USB-A ports on the side (not the micro USB port)
+    - Orange Pi Lite cannot be powered via its micro USB port. It must be powered by the barrel jack connector.
+
+    ![](../../img/4wdmini_opi_placement.png){: style="height:300px;"}
