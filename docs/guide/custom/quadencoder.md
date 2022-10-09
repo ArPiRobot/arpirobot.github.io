@@ -1,7 +1,7 @@
 
 Custom designed optical quadrature encoder for "TT Motors" (yellow gearmotors). Designed to be a low cost way to add a quadrature encoder to low cost motors. While some of these motors are sold with an included hall effect encoder, these are hard to find and often quite expensive.
 
-This is an optical encoder using two photo interrupters. An alignment plate is used to position the encoder such that they generate out of phase signals using the custom encoder disk.
+This is an optical encoder using two photo interrupters. An alignment plate is used to position the interrupters such that they generate out of phase signals using the custom encoder disk (thus creating a quadrature encoder).
 
 
 ## Version 1
