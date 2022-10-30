@@ -205,7 +205,7 @@ This is a slightly modified version of the Mini Clipboard Robot using an Orange 
 
 ??? info "Parts List Modifications"
     - 1x [Orange Pi Lite](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Lite.html) instead of Raspberry Pi Zero
-    - 1x [USB-A to Barrel Jack Cable](www.orangepi.org/html/hardWare/powerSuppliesAndCables/details/Orange-Pi-USB-Turn-DC-4.0-for-Wire.html) to power the Orange Pi
+    - 1x [USB-A to Barrel Jack Cable](http://www.orangepi.org/html/hardWare/powerSuppliesAndCables/details/Orange-Pi-USB-Turn-DC-4.0-for-Wire.html) to power the Orange Pi
         - [Alternate](https://www.amazon.com/Connector-Charger-Cellphone-Netbook-Electronics/dp/B07PN2B861/)
         - [Alternate](https://www.amazon.com/TENINYU-4-0x1-7mm-Barrel-Ampere-Positive/dp/B01MR6DFAD/)
         - [Alternate](https://www.amazon.com/4-0mm-Charger-Charging-Compatible-Recorder/dp/B08ZMS1MNJ)
