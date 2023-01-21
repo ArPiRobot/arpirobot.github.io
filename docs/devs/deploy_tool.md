@@ -1,1 +1,0 @@
-<!--Info about building, packaging, libraries used, general code organization-->
