@@ -80,7 +80,12 @@ nav:
             - Doxygen (Python): ../doxygen-docs/python/html/index.html
         - Default Robot Settings: defaultsettings.md
     - Framework Developers: 
-        - CoreLib: devs/corelib.md
+        - Core Library (CoreLib): devs/corelib.md
         - Arduino Firmware: devs/arduinofw.md
         - Building an OS Image: devs/making_image.md
         - OS Image Configuration: devs/os_image_config.md
+        - Drive Station: devs/drive_station.md
+        - Deploy Tool: devs/deploy_tool.md
+        - VSCode Extension: devs/vsc_extension.md
+        - Building Toolchains: devs/toolchains.md
+        - Publish New Release: devs/new_release.md
