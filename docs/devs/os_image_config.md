@@ -1,0 +1,1 @@
+<!--Describe what is done by the image scripts, how things are configured, what they are configured to do, the process of launching a robot program, the process of interfacing with deploy tool, camera stream setup, etc. Also mention what the tools scripts are used by (deploy tool)-->

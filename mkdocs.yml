@@ -76,7 +76,8 @@ nav:
             - Doxygen (C++): ../doxygen-docs/cpp/html/index.html
             - Doxygen (Python): ../doxygen-docs/python/html/index.html
         - Default Robot Settings: defaultsettings.md
-    - For Developers: 
-        - ArPiRobot Components: devs/components.md
-        - CoreLib Development: devs/developing_corelib.md
-        - Technical Documentation: devs/technical.md
+    - Framework Developers: 
+        - CoreLib: devs/corelib.md
+        - Building an OS Image: devs/making_image.md
+        - OS Image Configuration: devs/os_image_config.md
+        - Arduino Firmware: devs/arduinofw.md
