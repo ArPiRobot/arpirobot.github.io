@@ -1,7 +1,6 @@
 # ArPiRobot Docs
 
-## Requirements
-
-```
-pip install markdown-fenced-code-tabs mkdocs markdown-include mkdocs-cinder
+```sh
+python3 -m pip install -r requirements.txt -U
+mkdocs serve
 ```

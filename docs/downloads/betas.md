@@ -1,6 +1,4 @@
 
-# Beta Downloads
-
 The image contains the OS pre-configured to work with ArPiRobot software. The image is a modified version of the Raspberry Pi OS (Debian based Linux distro). 
 
 The ArPiRobot core library is a C++ library providing code to facilitate robot program flow and interact with hardware.
