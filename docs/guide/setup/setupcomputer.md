@@ -63,7 +63,9 @@ For windows, the easiest method is to use download from the [ezwin32 project](ht
 
 ### Python
 
-You will need to install Python on your PC. You can download python installers for windows and macOS from [python.org](https://www.python.org/downloads/). Generally, it is recommended to use a version of python that matches the first two numbers of the version on the Pi (see the images download table for which version is in use in the newest Pi image). Alternatively, you can use the [Homebrew](https://brew.sh/) package manger on macOS or the [scoop](https://scoop.sh/) package manager on windows to install specific versions of python.
+You will need to install Python on your PC. You can download python installers for windows and macOS from [python.org](https://www.python.org/downloads/). Generally, it is recommended to use a version of python that matches the first two numbers of the minimum version on the Pi (listed on the [downloads](../../downloads/latest.md) page under the OS image section). For example, if the "minimum python version" is listed as `3.7` it is recommended to install a python `3.7.x` version (where `x` can be any number). Note that some images will have newer python versions (the specific python version on the robot depends on which main computer your robot uses).
+
+Alternatively, you can use the [Homebrew](https://brew.sh/) package manger on macOS or the [scoop](https://scoop.sh/) package manager on windows to install specific versions of python.
 
 On Linux / BSD systems you should be able to install a recent version of python from the system repositories. You can use pyenv to build and install a specific version. On Ubuntu you can use the [deadsnakes PPA](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa) to install specific versions of python.
 
