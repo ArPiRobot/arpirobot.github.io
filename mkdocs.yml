@@ -84,6 +84,4 @@ nav:
         - Core Library (CoreLib): devs/corelib.md
         - Arduino Firmware: devs/arduinofw.md
         - OS Image Description: devs/os_image_config.md
-        - VSCode Extension: devs/vsc_extension.md
-        - Building Toolchains: devs/toolchains.md
         - Publish New Release: devs/new_release.md

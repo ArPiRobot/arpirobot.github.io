@@ -1,4 +1,3 @@
-# CoreLib Development
 
 Development of the ArPiRobot-CoreLib can be done using VSCode with the same basic setup as is used for writing robot code. It is recommended to open the `cpp_library` and / or `python_bindings` folder in VSCode.
 
