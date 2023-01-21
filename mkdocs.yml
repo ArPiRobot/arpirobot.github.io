@@ -78,6 +78,6 @@ nav:
         - Default Robot Settings: defaultsettings.md
     - Framework Developers: 
         - CoreLib: devs/corelib.md
+        - Arduino Firmware: devs/arduinofw.md
         - Building an OS Image: devs/making_image.md
         - OS Image Configuration: devs/os_image_config.md
-        - Arduino Firmware: devs/arduinofw.md
