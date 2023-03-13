@@ -58,6 +58,11 @@ The ArPiRobot Framework include various components to make building a robot easy
 
     ![](./img/4wd_mini_render.png)
 
+
+## Support
+
+If you run into issues, need help, or have questions, post on the [ArPirobot Discussions Board](https://github.com/orgs/ArPiRobot/discussions).
+
 ## License
 
 All components of the ArPiRobot Framework are open source and most are released under the [GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl-3.0.html).

@@ -2,6 +2,7 @@ site_name: ArPiRobot
 site_url: https://arpirobot.gitlab.io/
 extra_css:
   - css/extra.css
+repo_url: https://github.com/orgs/ArPiRobot/
 theme:
   name: material
   logo: img/framework-logo/robot-nobg.png
