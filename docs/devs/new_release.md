@@ -1,5 +1,5 @@
 
-
+*Note that some components that are bundled with the OS Images (CameraStreaming and Tools) may not have releases on GitHub, but just tags.*
 
 ## New build of specific component (not a new major or minor version)  
 
