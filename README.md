@@ -15,7 +15,6 @@ mkdocs gh-deploy
 
 - Clone corelib repo and run the following in it
     ```sh
-    python3 generate_docs.py
+    python3 generate_docs.pygit s
     ```
-- Copy doxygen-docs folder to this repo on the gh-pages branch
-- Commit and push gh-pages branch
+- Docs are in the `doxygen-docs` folder. Copy it to `docs/` in the `arpirobot.github.io` repo.
