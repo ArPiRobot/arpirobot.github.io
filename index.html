@@ -340,13 +340,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#framework-goals" class="md-nav__link">
-    Framework Goals
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     Overview
   </a>
@@ -1346,13 +1339,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#framework-goals" class="md-nav__link">
-    Framework Goals
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     Overview
   </a>
@@ -1390,31 +1376,70 @@
 
 
 <h1 id="arpirobot-framework">ArPiRobot Framework</h1>
-<p>The ArPiRobot Framework is a collection of programs, libraries, and tools to build robots using a Single Board Computer (eg a Raspberry Pi) and a microcontroller development board (eg an Arduino). The framework includes several tools to simplify the development process and eliminate the need for familiarity with configuring and interfacing with Single Board Computers. The goal is to make building a robot easy regardless of technical background.</p>
-<h2 id="framework-goals">Framework Goals</h2>
+<p>A collection of programs, libraries, and tools to make building robots easy and accessible.</p>
 <ol>
 <li>
 <p><strong>Easy for education use</strong></p>
+<details class="info">
+<summary>Details</summary>
 <p>This means that it not only needs to be easy to code with, but easy to <strong>use</strong> without assuming lots of experience with computers. Most existing solutions require knowledge of SSH, various types or wiring, writing code to communicate with different devices, creating a from-scratch wireless control solution, setting up a development environment from scratch or writing code with a command line editor. This may work well for many experienced developers, but it does not often for new developers and people who want to just get started quickly.</p>
+</details>
 </li>
 <li>
 <p><strong>Provide a complete setup from writing code to deploying it, to controlling the robot</strong></p>
+<details class="info">
+<summary>Details</summary>
 <p>The ArPiRobot project provides an easy to use development environment, pre-configured OS images for the robot, a GUI tool to deploy code from your PC to the robot, a GUI tool to control the robot wirelessly, scripts to manage everything from WiFi to launching the program on boot, and a program libraries to interface with many devices. Everything has been designed to make it easy to use and just get started making a robot work instead of spending time on communicating with motor controllers, WiFi, gamepads, bluetooth,  etc.</p>
+</details>
 </li>
 <li>
 <p><strong>Support low-power, low-cost devices</strong></p>
+<details class="info">
+<summary>Details</summary>
 <p>Not only does this make it more accessible (in line with the education use goal), but there's no reason you couldn't use it on a more powerful device. It just means that more power is left for demanding tasks such as camera streaming, vision processing, etc. The core functionality of the framework is designed to work even on the single-core Raspberry Pi Zero W and more advanced features are all designed for and tested on the Raspberry Pi 3A+.</p>
+</details>
 </li>
 </ol>
 <h2 id="overview">Overview</h2>
-<p>The ArPiRobot Framework consists of several components (which can be obtained on the <a href="downloads/latest/">downloads</a>) page. Some of the key components are as follows</p>
-<ul>
-<li>ArPiRobot CoreLib: A C++ and Python Library for writing robot programs. Includes support for various devices (sensors, motor controllers, microcontroller interfaces, etc) as well as a general structure for robot programs.</li>
-<li>ArPiRobot Drive Station: A program to run on your computer (laptop / desktop) used to control a robot.</li>
-<li>ArPiRobot Deploy Tool: A program to run on your computer (laptop / desktop) used to configure a robot and upload a robot program to the robot.</li>
-<li>ArPiRobot-VSCodeExtension: An extension to make creating ArPiRobot programs easy using <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-<li>ArPiRobot OS Images: Pre-configured Operating System Images for supported Single Board Computers. These can be flashed to an SD card and used immediately.</li>
-</ul>
+<p>The ArPiRobot Framework include various components to make building a robot easy.</p>
+<details class="info">
+<summary>Drive Station</summary>
+<p>The drive station runs on your computer and makes it easy to communicate with a robot's program wireless to control the robot or send information to/from the robot.</p>
+<p><img alt="" src="img/ds_main_screenshot.png" /></p>
+</details>
+<details class="info">
+<summary>Deploy Tool</summary>
+<p>The deploy tool runs on your computer and makes it easy to configure the robot and deploy your programs to the robot. No command line tools required.</p>
+<p><img alt="" src="img/dt_main_screenshot.png" /></p>
+</details>
+<details class="info">
+<summary>Visual Studio Code Extension</summary>
+<p>The provided extension makes it easy to write robot programs using Visual Studio Code. Visual Studio code is a code editor / development environment which provides suggestions and error detection for Python and C++.</p>
+<p><img alt="" src="img/vscode_py_proj_screenshot.png" /></p>
+</details>
+<details class="info">
+<summary>Operating System Images</summary>
+<p>Pre-configured Operating system images are provided for supported single board computers. All you have to do is write them to an SD card.</p>
+<p><img alt="" src="img/usb_imager.png" /></p>
+</details>
+<details class="info">
+<summary>Core Library</summary>
+<p>Python and C++ library with support for many different devices to make writing robot code easy.</p>
+</details>
+<details class="info">
+<summary>Arduino Firmware</summary>
+<p>Arduino program provided to make it easy to add additional sensors to the robot.</p>
+</details>
+<details class="info">
+<summary>Other Tools</summary>
+<p>Additional tools, such as C++ cross compiler toolchains are provided to ensure ease of use.</p>
+</details>
+<details class="info">
+<summary>Guide</summary>
+<p>A detailed step-by-step guide is provided to make setting everything up easy. Additionally, this guide includes some example low cost robot builds (also with step-by-step instructions).</p>
+<p>See the Guide <a href="guide/gettingstarted/">here</a></p>
+<p><img alt="" src="img/4wd_mini_render.png" /></p>
+</details>
 <h2 id="license">License</h2>
 <p>All components of the ArPiRobot Framework are open source and most are released under the <a href="https://www.gnu.org/licenses/lgpl-3.0.html">GNU Lesser General Public License v3.0</a>.</p>
 <h2 id="where-does-the-name-come-from">Where Does the Name Come From?</h2>
