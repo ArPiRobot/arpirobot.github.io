@@ -1,33 +1,62 @@
 # ArPiRobot Framework
 
-The ArPiRobot Framework is a collection of programs, libraries, and tools to build robots using a Single Board Computer (eg a Raspberry Pi) and a microcontroller development board (eg an Arduino). The framework includes several tools to simplify the development process and eliminate the need for familiarity with configuring and interfacing with Single Board Computers. The goal is to make building a robot easy regardless of technical background.
-
-
-## Framework Goals
+A collection of programs, libraries, and tools to make building robots easy and accessible.
 
 1. **Easy for education use**
 
-    This means that it not only needs to be easy to code with, but easy to **use** without assuming lots of experience with computers. Most existing solutions require knowledge of SSH, various types or wiring, writing code to communicate with different devices, creating a from-scratch wireless control solution, setting up a development environment from scratch or writing code with a command line editor. This may work well for many experienced developers, but it does not often for new developers and people who want to just get started quickly.
+    ??? info "Details"
+        This means that it not only needs to be easy to code with, but easy to **use** without assuming lots of experience with computers. Most existing solutions require knowledge of SSH, various types or wiring, writing code to communicate with different devices, creating a from-scratch wireless control solution, setting up a development environment from scratch or writing code with a command line editor. This may work well for many experienced developers, but it does not often for new developers and people who want to just get started quickly.
 
 2. **Provide a complete setup from writing code to deploying it, to controlling the robot**
 
-    The ArPiRobot project provides an easy to use development environment, pre-configured OS images for the robot, a GUI tool to deploy code from your PC to the robot, a GUI tool to control the robot wirelessly, scripts to manage everything from WiFi to launching the program on boot, and a program libraries to interface with many devices. Everything has been designed to make it easy to use and just get started making a robot work instead of spending time on communicating with motor controllers, WiFi, gamepads, bluetooth,  etc.
+    ??? info "Details"
+        The ArPiRobot project provides an easy to use development environment, pre-configured OS images for the robot, a GUI tool to deploy code from your PC to the robot, a GUI tool to control the robot wirelessly, scripts to manage everything from WiFi to launching the program on boot, and a program libraries to interface with many devices. Everything has been designed to make it easy to use and just get started making a robot work instead of spending time on communicating with motor controllers, WiFi, gamepads, bluetooth,  etc.
 
 3. **Support low-power, low-cost devices**
 
-    Not only does this make it more accessible (in line with the education use goal), but there's no reason you couldn't use it on a more powerful device. It just means that more power is left for demanding tasks such as camera streaming, vision processing, etc. The core functionality of the framework is designed to work even on the single-core Raspberry Pi Zero W and more advanced features are all designed for and tested on the Raspberry Pi 3A+.
+    ??? info "Details"
+        Not only does this make it more accessible (in line with the education use goal), but there's no reason you couldn't use it on a more powerful device. It just means that more power is left for demanding tasks such as camera streaming, vision processing, etc. The core functionality of the framework is designed to work even on the single-core Raspberry Pi Zero W and more advanced features are all designed for and tested on the Raspberry Pi 3A+.
 
 
 ## Overview
 
-The ArPiRobot Framework consists of several components (which can be obtained on the [downloads](./downloads/latest.md)) page. Some of the key components are as follows
+The ArPiRobot Framework include various components to make building a robot easy.
 
-- ArPiRobot CoreLib: A C++ and Python Library for writing robot programs. Includes support for various devices (sensors, motor controllers, microcontroller interfaces, etc) as well as a general structure for robot programs.
-- ArPiRobot Drive Station: A program to run on your computer (laptop / desktop) used to control a robot.
-- ArPiRobot Deploy Tool: A program to run on your computer (laptop / desktop) used to configure a robot and upload a robot program to the robot.
-- ArPiRobot-VSCodeExtension: An extension to make creating ArPiRobot programs easy using [Visual Studio Code](https://code.visualstudio.com/)
-- ArPiRobot OS Images: Pre-configured Operating System Images for supported Single Board Computers. These can be flashed to an SD card and used immediately.
+??? info "Drive Station"
+    The drive station runs on your computer and makes it easy to communicate with a robot's program wireless to control the robot or send information to/from the robot.
 
+    ![](./img/ds_main_screenshot.png)
+
+??? info "Deploy Tool"
+    The deploy tool runs on your computer and makes it easy to configure the robot and deploy your programs to the robot. No command line tools required.
+
+    ![](./img/dt_main_screenshot.png)
+
+??? info "Visual Studio Code Extension"
+    The provided extension makes it easy to write robot programs using Visual Studio Code. Visual Studio code is a code editor / development environment which provides suggestions and error detection for Python and C++.
+
+    ![](./img/vscode_py_proj_screenshot.png)
+
+??? info "Operating System Images"
+    Pre-configured Operating system images are provided for supported single board computers. All you have to do is write them to an SD card.
+
+    ![](./img/usb_imager.png)
+
+??? info "Core Library"
+    Python and C++ library with support for many different devices to make writing robot code easy.
+
+??? info "Arduino Firmware"
+    Arduino program provided to make it easy to add additional sensors to the robot.
+
+??? info "Other Tools"
+    Additional tools, such as C++ cross compiler toolchains are provided to ensure ease of use.
+
+??? info "Guide"
+    A detailed step-by-step guide is provided to make setting everything up easy. Additionally, this guide includes some example low cost robot builds (also with step-by-step instructions).
+
+    See the Guide [here](./guide/gettingstarted.md)
+
+    ![](./img/4wd_mini_render.png)
 
 ## License
 
