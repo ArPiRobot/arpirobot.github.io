@@ -6,6 +6,7 @@ This portion of the guide will walk you through creating a robot project and run
 ## About this Guide
 
 This guide is written to be fairly generic in regards to the robot build used. However, the following assumptions are made.
+
 - Robot uses a differential drive system. This means that the robot has motorized wheels on both left and right sides of the robot and steers by varying the speeds of each side. Most robots use this style drive system.
 - The [Sensors & Network Table](./sensordata.md) section assumes the robot has an ultrasonic sensor facing forward and an IMU. Both are assumed to be connected to an Arduino coprocessor.
 - The [Using Sensors with Actions](./sensoractions.md) section assumes the robot has an IMU and 2 encoders (one on the left side and one on the right side). The encoders can be single channel or quadrature encoders.

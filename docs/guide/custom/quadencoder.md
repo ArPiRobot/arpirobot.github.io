@@ -38,7 +38,7 @@ Version 1 uses HY301-07A photo interrupters. These used to be easy to find cheap
     ![](../../img/qasm_v1_step3.png){: style="height:400px"}
 
 
-4. Use hot glue to attach the two photo interrupters in the slots on the mounting plate. Then, glue the leads of both 100 ohm resistors together.
+4. Use hot glue to attach the two photo interrupters in the slots on the mounting plate. Then, solder the leads of both 100 ohm resistors together.
 
     ![](../../img/qasm_v1_step4.png){: style="height:400px"}
 
