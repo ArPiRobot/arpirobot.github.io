@@ -1,0 +1,2754 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://arpirobot.gitlab.io/guide/programming/actions/">
+      
+      
+        <link rel="prev" href="../sensordata/">
+      
+      
+        <link rel="next" href="../sensoractions/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Using Actions - ArPiRobot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-actions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ArPiRobot" class="md-header__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArPiRobot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Using Actions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../downloads/v1_0/" class="md-tabs__link">
+        Downloads
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../gettingstarted/" class="md-tabs__link md-tabs__link--active">
+        Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ref/manuals/drive_station/" class="md-tabs__link">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../devs/overview/" class="md-tabs__link">
+        Framework Developers
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ArPiRobot" class="md-nav__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    ArPiRobot
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Downloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Downloads" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Downloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/v1_0/" class="md-nav__link">
+        Version 1.0 Downloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/betas/" class="md-nav__link">
+        Beta Downloads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="true">
+          Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gettingstarted/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Building a Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Building a Robot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Building a Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/requiredhardware/" class="md-nav__link">
+        Required Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/supportedhardware/" class="md-nav__link">
+        Supported Hardware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/examplebuilds/" class="md-nav__link">
+        Example Robot Builds
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" tabindex="0" aria-expanded="false">
+          Software Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Software Setup" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/setupcomputer/" class="md-nav__link">
+        Setup your Development Computer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/setuppi/" class="md-nav__link">
+        Setup the Robot's Main Computer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" tabindex="0" aria-expanded="true">
+          Programming the Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming the Robot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Programming the Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../createproject/" class="md-nav__link">
+        Creating a Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../movingmotors/" class="md-nav__link">
+        Moving Motors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drivegamepad/" class="md-nav__link">
+        Driving with Gamepad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensordata/" class="md-nav__link">
+        Sensor Data & NetworkTable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Using Actions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Using Actions
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-with-periodic-programming-model" class="md-nav__link">
+    Challenges with Periodic Programming Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-action" class="md-nav__link">
+    What is an Action
+  </a>
+  
+    <nav class="md-nav" aria-label="What is an Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#action-structure" class="md-nav__link">
+    Action Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-actions_1" class="md-nav__link">
+    Using Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-actions-sequentially" class="md-nav__link">
+    Running Actions Sequentially
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ownership-of-devices" class="md-nav__link">
+    Ownership of Devices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-drive-code-into-an-action" class="md-nav__link">
+    Making Drive Code into an Action
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-routines-using-actions" class="md-nav__link">
+    Automated Routines using Actions
+  </a>
+  
+    <nav class="md-nav" aria-label="Automated Routines using Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drive-time-action" class="md-nav__link">
+    Drive Time Action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotate-time-action" class="md-nav__link">
+    Rotate Time Action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brake-mode" class="md-nav__link">
+    Brake Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-actions" class="md-nav__link">
+    Using the Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-the-shapes" class="md-nav__link">
+    Fixing the Shapes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensoractions/" class="md-nav__link">
+        Using Sensors with Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pid/" class="md-nav__link">
+        PID Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examplesrepo/" class="md-nav__link">
+        Examples Repo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" tabindex="0" aria-expanded="false">
+          Other Tasks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other Tasks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Other Tasks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/audio/" class="md-nav__link">
+        Playing Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/camstream/" class="md-nav__link">
+        Camera Streaming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/ssh/" class="md-nav__link">
+        Connect by SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/wifidebug/" class="md-nav__link">
+        WiFi Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" tabindex="0" aria-expanded="false">
+          Custom Parts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Parts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Parts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/quadencoder/" class="md-nav__link">
+        TT Motor Quadrature Encoder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" tabindex="0" aria-expanded="false">
+          Manuals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Manuals" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Manuals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/drive_station/" class="md-nav__link">
+        Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/deploy_tool/" class="md-nav__link">
+        Deploy Tool Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/android_drive_station/" class="md-nav__link">
+        Mobile Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          Programming Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/projectstructure/" class="md-nav__link">
+        Project Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/baserobot/" class="md-nav__link">
+        BaseRobot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/arduino/" class="md-nav__link">
+        Arduino Sensor Coprocessor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/nettable/" class="md-nav__link">
+        Network Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/actionsystem/" class="md-nav__link">
+        Action System
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          CoreLib API Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CoreLib API Docs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          CoreLib API Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/cpp/html/index.html" class="md-nav__link">
+        Doxygen (C++)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/python/html/index.html" class="md-nav__link">
+        Doxygen (Python)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../defaultsettings/" class="md-nav__link">
+        Default Robot Settings
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          Framework Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Framework Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Framework Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/corelib/" class="md-nav__link">
+        Core Library (CoreLib)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/arduinofw/" class="md-nav__link">
+        Arduino Firmware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/os_image_config/" class="md-nav__link">
+        OS Image Description
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/new_release/" class="md-nav__link">
+        Publish New Release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-with-periodic-programming-model" class="md-nav__link">
+    Challenges with Periodic Programming Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-action" class="md-nav__link">
+    What is an Action
+  </a>
+  
+    <nav class="md-nav" aria-label="What is an Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#action-structure" class="md-nav__link">
+    Action Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-actions_1" class="md-nav__link">
+    Using Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-actions-sequentially" class="md-nav__link">
+    Running Actions Sequentially
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ownership-of-devices" class="md-nav__link">
+    Ownership of Devices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-drive-code-into-an-action" class="md-nav__link">
+    Making Drive Code into an Action
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-routines-using-actions" class="md-nav__link">
+    Automated Routines using Actions
+  </a>
+  
+    <nav class="md-nav" aria-label="Automated Routines using Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drive-time-action" class="md-nav__link">
+    Drive Time Action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotate-time-action" class="md-nav__link">
+    Rotate Time Action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brake-mode" class="md-nav__link">
+    Brake Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-actions" class="md-nav__link">
+    Using the Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-the-shapes" class="md-nav__link">
+    Fixing the Shapes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="using-actions">Using Actions</h1>
+<p>Up until now, this guide has used the <em>periodic</em> programming model. This is the programming model where robot functionality is implemented using the <code>enabled_periodic</code> / <code>enabledPeriodic</code> and <code>disabled_periodic</code> / <code>disabledPeriodic</code> functions in the <code>Robot</code> class. While this has worked fine so far, it becomes limiting for more complex robot programs.</p>
+<h2 id="challenges-with-periodic-programming-model">Challenges with Periodic Programming Model</h2>
+<p>The main issue with the periodic programming model is switching between tasks. Suppose you sometimes want the robot to respond to gamepad controls, at other times you want it to drive some distance on its own. How do you implement both in <code>enabled_periodic</code> / <code>enabledPeriodic</code>? You would need some variable that indicates what task you are currently performing. This could be a simple integer where zero means human drive and one means autonomous drive, however this quickly becomes difficult to work with. What happens if you want your robot to drive a triangle instead of just a straight line? Task zero is still human drive, task one drives an edge, task two rotates, task three drives the next edge and so on. Once done, it goes back to task zero. This could look something like the following</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># In enabled_periodic</span>
+<span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># Respond to gamepad controls</span>
+    <span class="c1"># Drive using drive helper</span>
+    <span class="c1"># If a button is pressed switch to task 1</span>
+    <span class="c1"># Store start time of task 1</span>
+<span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Drive straight</span>
+    <span class="c1"># if enough time has passed, move to task 2</span>
+    <span class="c1"># Store start time of task 2</span>
+<span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="c1"># Rotate</span>
+    <span class="c1"># if enough time has passed, move to task 3</span>
+    <span class="c1"># Store start time of task 3</span>
+<span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="c1"># Drive straight</span>
+    <span class="c1"># if enough time has passed, move to task 4</span>
+    <span class="c1"># Store start time of task 4</span>
+<span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="c1"># Rotate</span>
+    <span class="c1"># if enough time has passed, move to task 5</span>
+    <span class="c1"># Store start time of task 5</span>
+<span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="c1"># Drive straight</span>
+    <span class="c1"># if enough time has passed, move to task 6</span>
+    <span class="c1"># Store start time of task 6</span>
+<span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="c1"># Rotate</span>
+    <span class="c1"># if enough time has passed, move to task 0</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// In enabledPeriodic</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">task</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Respond to gamepad controls</span>
+<span class="w">    </span><span class="c1">// Drive using drive helper</span>
+<span class="w">    </span><span class="c1">// If a button is pressed switch to task 1</span>
+<span class="w">    </span><span class="c1">// Store start time of task 1</span>
+<span class="p">}}</span><span class="n">elif</span><span class="w"> </span><span class="p">(</span><span class="n">task</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Drive straight</span>
+<span class="w">    </span><span class="c1">// if enough time has passed, move to task 2</span>
+<span class="w">    </span><span class="c1">// Store start time of task 2</span>
+<span class="p">}</span><span class="n">elif</span><span class="w"> </span><span class="p">(</span><span class="n">task</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Rotate</span>
+<span class="w">    </span><span class="c1">// if enough time has passed, move to task 3</span>
+<span class="w">    </span><span class="c1">// Store start time of task 3</span>
+<span class="p">}</span><span class="n">elif</span><span class="w"> </span><span class="p">(</span><span class="n">task</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Drive straight</span>
+<span class="w">    </span><span class="c1">// if enough time has passed, move to task 4</span>
+<span class="w">    </span><span class="c1">// Store start time of task 4</span>
+<span class="p">}</span><span class="n">elif</span><span class="w"> </span><span class="p">(</span><span class="n">task</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Rotate</span>
+<span class="w">    </span><span class="c1">// if enough time has passed, move to task 5</span>
+<span class="w">    </span><span class="c1">// Store start time of task 5</span>
+<span class="p">}</span><span class="n">elif</span><span class="w"> </span><span class="p">(</span><span class="n">task</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Drive straight</span>
+<span class="w">    </span><span class="c1">// if enough time has passed, move to task 6</span>
+<span class="w">    </span><span class="c1">// Store start time of task 6</span>
+<span class="p">}</span><span class="n">elif</span><span class="w"> </span><span class="p">(</span><span class="n">task</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">6</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Rotate</span>
+<span class="w">    </span><span class="c1">// if enough time has passed, move to task 0</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Looking at the above outline, it has a few issues. First, it is hard to read what the program is supposed to be doing. Without comments looking at code structured like the above outline would be very difficult to interpret. Second, it is hard to modify the sequence of tasks. Say you wanted to introduce a delay between task 0 and 1. You now need to change many places in the code. Finally, there is a lot of duplicated code. Three different tasks drive straight. Three rotate. Reusing code in this format is very difficult. It becomes even more difficult if you wanted to the ability to drive many different shapes. The rotate code for a triangle could not be reused for a square, so you would have seven rotate task. The code is not modular and reusable and is also difficult to follow. This is clearly a non-ideal way to create complex sequences of tasks. The action system helps to address these issues.</p>
+<h2 id="what-is-an-action">What is an Action</h2>
+<p>Object oriented programming makes reusing code easy. The action system takes advantage of this. Each action is an object of a certain type. That type might be a rotate action or a drive action. If you need to rotate multiple times, the same action just has multiple instances (possibly with different parameters during construction). For example, this would allow you to define an action that rotates for some amount of time and create instances of that action to rotate for 1 second, 2 seconds, 3 seconds, etc. This allows the same code to be used for all three rotations.</p>
+<p>This approach helps solve the code reusability / organization and readability issues, but what exactly is an action? In simple terms an actions is like one of the tasks defined previously. An action is a class that defines how to perform a specific type of task. This task could be driving with the gamepad, driving straight for some amount of time, or rotating for some amount of time. Once that class is defined instances of that class are created to represent specific tasks. Those objects (instances) can be started and stopped independently of each other.</p>
+<p>In other words, an action is a class that defines how to perform a task. An instance of an action is an object that represents a specific task. Each instance can be started and stopped when needed to create complex robot programs.</p>
+<h3 id="action-structure">Action Structure</h3>
+<p>An action is a class that inherits from the builtin <code>Action</code> class (part of ArPiRobot CoreLib). Child classes must implement four functions to define the behavior of an action.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><code>begin()</code>: Run each time an action is started. Any setup for the action should occur here including locking devices (explained later).</li>
+<li><code>process()</code>: Run periodically while an action is running. Every 50ms (by default) this function is run. This is where the main functionality of the action is often implemented.</li>
+<li><code>finish(was_interrupted: bool)</code>: Called when the action is stopped / stops. There are two ways an action can stop. First, it's <code>should_continue</code> function returns false (used to allow the action to stop itself when it finishes). Second, it can be interrupted (stopped early) for a number of reasons (explained later). The <code>was_interrupted</code> argument is used to inform the action why it is stopping. Any cleanup for the action should be done here. Anything the action was doing should also be stopped here. Sometimes, what is done depends on whether the action completed (based on <code>was_interrupted</code>).</li>
+<li><code>should_continue() -&gt; bool</code>: This function is called after each time <code>process</code> is run. If this function returns false, this action will stop (<code>process</code> will not run again). If this function returns true, this action will continue running (<code>process</code> will be called again later unless this action is interrupted). The only way an action can finish without being interrupted is if this function returns false.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Setup for the action to run</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Implement the action</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">was_interrupted</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="c1"># Stop anything / do any cleanup</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">should_continue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># Return False when action is done</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>void begin()</code>: Run each time an action is started. Any setup for the action should occur here including locking devices (explained later).</li>
+<li><code>void process()</code>: Run periodically while an action is running. Every 50ms (by default) this function is run. This is where the main functionality of the action is often implemented.</li>
+<li><code>void finish(bool wasInterrupted)</code>: Called when the action is stopped / stops. There are two ways an action can stop. First, it's <code>shouldContinue</code> function returns false (used to allow the action to stop itself when it finishes). Second, it can be interrupted (stopped early) for a number of reasons (explained later). The <code>wasInterrupted</code> argument is used to inform the action why it is stopping. Any cleanup for the action should be done here. Anything the action was doing should also be stopped here. Sometimes, what is done depends on whether the action completed (based on <code>wasInterrupted</code>).</li>
+<li><code>bool shouldContinue()</code>: This function is called after each time <code>process</code> is run. If this function returns false, this action will stop (<code>process</code> will not run again). If this function returns true, this action will continue running (<code>process</code> will be called again later unless this action is interrupted). The only way an action can finish without being interrupted is if this function returns false.</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Header (.hpp)</label><label for="__tabbed_3_2">Source (.cpp)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="p">{</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">shouldContinue</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">MyAction::begin</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Setup for action to run</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">MyAction::process</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Implement the action</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">MyAction::finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Stop anything / do any cleanup</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">MyAction::shouldContinue</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Return false when action is done</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>In robot programs, actions are typically created in the <code>actions</code> files (<code>actions.py</code> or <code>actions.hpp</code> and <code>actions.cpp</code>). All action classes are defined in these files. In contrast, the <code>robot</code> files (<code>robot.py</code> or <code>robot.hpp</code> and <code>robot.cpp</code>) are used only for the <code>Robot</code> class. Instances of actions are often created in the <code>Robot</code> class. For example, the following could be added to the <code>actions</code> files to create an action (this action does nothing, it's just an example).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Python (<code>actions.py</code>)</label><label for="__tabbed_4_2">C++ (<code>actions.hpp</code>)</label><label for="__tabbed_4_3">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">was_interrupted</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">should_continue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Action</span><span class="p">{</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">shouldContinue</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">MyAction::begin</span><span class="p">(){</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">MyAction::process</span><span class="p">(){</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">MyAction::finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">){</span>
+
+<span class="p">}</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">MyAction::shouldContinue</span><span class="p">(){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then an instance of the action is created in the robot class. This instance can be used as described in later sections.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python (<code>robot.py</code>)</label><label for="__tabbed_5_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add somewhere in __init__</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">my_instance</span> <span class="o">=</span> <span class="n">MyAction</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add somewhere in Robot class declaration</span>
+<span class="n">MyAction</span><span class="w"> </span><span class="n">myInstance</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Often, you will only have one instance of an action (or multiple instances that all behave the same way), but in other cases you may have multiple instances that all work differently. Consider an action that waits a certain amount of time (why this is useful will be seen later). It is likely that you would want to wait for different amounts of time (eg 3 seconds, 5 seconds, 10 seconds). Instead of making three actions that all wait for an amount of time, the you can create an action that takes an argument in its constructor for the amount of time to wait. Then, you only need three instances of the action for 3, 5, and 10 seconds.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python (<code>actions.py</code>)</label><label for="__tabbed_6_2">C++ (<code>actions.hpp</code>)</label><label for="__tabbed_6_3">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Note: Add &quot;import time&quot; at top of file</span>
+
+<span class="k">class</span> <span class="nc">WaitAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+
+    <span class="c1"># __init__ function is constructor run when creating instance</span>
+    <span class="c1"># Add arguments after &quot;self&quot;</span>
+    <span class="c1"># In this case one argument for wait time (in seconds) is added</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wait_time_sec</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="c1"># ALWAYS CALL PARENT CLASS INIT!!!</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Store the argument&#39;s value in a member variable for use later</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_time_sec</span> <span class="o">=</span> <span class="n">wait_time_sec</span>
+
+        <span class="c1"># Another member variable to store when the action starts</span>
+        <span class="c1"># Just store some value for now. This value won&#39;t be used</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Action is started when begin() runs. Store current time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Nothing to do. Just waiting</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">was_interrupted</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="c1"># Action is done. Done waiting, so nothing needs to be done here</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">should_continue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># Should continue waiting if (now - start) &lt; wait_time</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait_time_sec</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Note: Import &quot;chrono&quot; at top of file</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WaitAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Add constructor taking argument</span>
+<span class="w">    </span><span class="c1">// Constructor is run when creating instance of action</span>
+<span class="w">    </span><span class="n">WaitAction</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">waitTimeSec</span><span class="p">);</span>
+
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">shouldContinue</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Member variables to store wait time and start time</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">waitTimeSec</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">time_point</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">&gt;</span><span class="w"> </span><span class="n">startTime</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>// Using initializer list to assign member varible waitTimeSec to argument value
+WaitAction::WaitAction(double waitTimeSec) : waitTimeSec(waitTimeSec) {
+
+}
+
+void WaitAction::begin(){
+    // Action is started when begin runs. Store start time.
+    startTime = std::chrono::steady_clock::now();
+}
+
+void WaitAction::process(){
+    // Nothing to do. Just waiting.
+}
+
+void WaitAction::finish(bool wasInterrupted){
+    // Action is done. Done waiting, so nothing needs to be done here
+}
+
+bool WaitAction::shouldContinue(){
+    // Should continue waiting if (now - start) &lt; wait_time
+    auto now = std::chrono::steady_clock::now();
+    return std::chrono::duration_cast&lt;std::chrono::seconds&gt;(now - startTime).count() &lt; waitTimeSec;
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then in the robot class, several instances are created as shown below</p>
+<p>=== "Python (<code>robot.py</code>)
+    <div class="highlight"><pre><span></span><code><span class="c1"># In __init__</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">wait3s</span> <span class="o">=</span> <span class="n">WaitAction</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">wait5s</span> <span class="o">=</span> <span class="n">WaitAction</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">wait10s</span> <span class="o">=</span> <span class="n">WaitAction</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// In class declaration</span>
+<span class="n">WaitAction</span><span class="w"> </span><span class="n">wait3s</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span>
+<span class="n">WaitAction</span><span class="w"> </span><span class="n">wait5s</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span>
+<span class="n">WaitAction</span><span class="w"> </span><span class="n">wait10s</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This method allows the same code to be used for waiting regardless of how long the robot is waiting for.</p>
+<h3 id="using-actions_1">Using Actions</h3>
+<p>The <code>ActionManager</code> provides two functions <code>start_action</code> / <code>startAction</code> and <code>stop_action</code> / <code>stopAction</code> to start and stop actions respectively. These functions can be used in your robot program when needed to manage actions. For instance, you could start an action in <code>robot_enabled</code> / <code>robotEnabled</code> and stop it in <code>robot_disabled</code> / <code>robotDisabled</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add with imports if not there</span>
+<span class="kn">from</span> <span class="nn">arpirobot.core.action</span> <span class="kn">import</span> <span class="n">ActionManager</span>
+
+<span class="c1"># Use these where needed</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">start_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_instance</span><span class="p">)</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">stop_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_instance</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add with includes if not there</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/core/action/ActionManager.hpp&gt;</span>
+
+<span class="n">ActionManager</span><span class="o">::</span><span class="n">startAction</span><span class="p">(</span><span class="n">myInstance</span><span class="p">);</span>
+<span class="n">ActionManager</span><span class="o">::</span><span class="n">stopAction</span><span class="p">(</span><span class="n">myInstance</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You can also start an action without holding a reference to the instance, but you will not be able to stop it using the <code>stop_action</code> / <code>stopAction</code> function. This is often useful in <code>robot_started</code> / <code>robotStarted</code> for actions that should always remain running.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label><label for="__tabbed_9_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># This is ok because the action manager will keep the action object in scope even if your code does not</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">start_action</span><span class="p">(</span><span class="n">MyAction</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// When passing dynamically allocated objects the C++ library uses shared_ptrs</span>
+<span class="c1">// As such it is necessary to use std::make_shared</span>
+<span class="c1">// Statically allocated objects are intended to be passed by reference (as shown previously)</span>
+<span class="c1">// Since shared_ptrs are used there is no need to handle deletion of the dynamically allocated action</span>
+<span class="c1">// The action manager holds a reference to it while it is running.</span>
+<span class="n">ActionManager</span><span class="o">::</span><span class="n">startAction</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MyAction</span><span class="o">&gt;</span><span class="p">());</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Often, it is useful to be able to determine if an action is already running. before attempting to start / stop it. This can be done using the action's <code>is_running</code> / <code>isRunning</code> function.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Python</label><label for="__tabbed_10_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">running</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_instance</span><span class="o">.</span><span class="n">is_running</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myInstance</span><span class="p">.</span><span class="n">isRunning</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This can be used to prevent restarting an action that is already running. By default if you attempt to start an action that is already running it will be restarted. This means that it will be stopped and started again. This behavior can be disabled by using the second (optional) argument of <code>start_action</code> / <code>startAction</code>. If this argument is false, the action will not be restarted if running. It will continue running, but a warning will be added to the robot program log.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Python</label><label for="__tabbed_11_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ActionManager</span><span class="o">.</span><span class="n">start_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_instance</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ActionManger</span><span class="o">::</span><span class="n">startAction</span><span class="p">(</span><span class="n">myInstance</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Note that the <code>start_action</code> / <code>startAction</code> function also returns a bool indicating if an action was started successfully. This will only return false if the action is already running and is not allowed to be restarted (or if you attempt to start an action before the robot has started which should never happen).</p>
+<p><br /></p>
+<p>Using the <code>ActionManager</code> functions is an easy way to manually start and stop actions, however there is also a way to start actions when some even occurs. The <code>ActionManager</code> can have triggers that start a specified action when something occurs. What that event is depends on the type of trigger. The most common trigger is a gamepad related trigger. There are two such triggers <code>ButtonPressedTrigger</code> and <code>ButtonReleasedTrigger</code>. These triggers are used to start an action when a button on the gamepad is pressed or released respectively. Once a trigger is added to the action manager, the action associated with it will be started (or restarted) whenever the event occurs. This will remain the case until the trigger is removed from the <code>ActionManager</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Python</label><label for="__tabbed_12_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Starts action instance my_instance when button 0 on gp0 is pressed</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">add_trigger</span><span class="p">(</span><span class="n">ButtonPressedTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_instance</span><span class="p">))</span>
+
+<span class="c1"># If you need to remove later use ActionManager.remove_trigger, but hold an instance of the trigger</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">trigger</span> <span class="o">=</span> <span class="n">ButtonPressedTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_instance</span><span class="p">)</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">add_trigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trigger</span><span class="p">)</span>
+
+<span class="c1"># And later</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">remove_trigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trigger</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>// Starts action instance myInstance when button 0 on gp0 is pressed
+ActionManager::addTrigger(std::make_shared&lt;ButtonPressedTrigger&gt;(gp0, 0, myInstance));
+
+// If you need to remove later use ActionManager::removeTrigger, but hold an instance of the trigger
+// Add &quot;trigger&quot; variable as a member in class declaration
+ButtonPressedTrigger trigger {gp0, 0, myInstance};
+
+// Then in a function somewhere
+ActionManager::addTrigger(trigger);
+
+// And later
+ActionManager::removeTrigger(trigger);
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>As with <code>start_action</code> / <code>startAction</code>, an trigger will restart an action by default. If this behavior is not desired use the optional argument after the action instance.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Python</label><label for="__tabbed_13_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">trigger</span> <span class="o">=</span> <span class="n">ButtonPressedTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_instance</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ButtonPressedTrigger</span><span class="w"> </span><span class="n">trigger</span><span class="w"> </span><span class="p">{</span><span class="n">hp0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">myInstance</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="running-actions-sequentially">Running Actions Sequentially</h3>
+<p>Any actions started will run concurrently, meaning that starting a second action will not wait for the currently running action to finish. While this parallel execution of actions is useful for developing complex routines and maximizing code sharing, it is equally useful to be able to run a set of actions sequentially (one after the other).</p>
+<p>This is achieved using an <code>ActionSeries</code>. An <code>ActionSeries</code> is itself an action that can be started and stopped with the action manager, however it's task is to manage other actions. When creating an <code>ActionSeries</code> a list of actions is used. This list of actions is run sequentially. The first action is started. When it finishes, the second, then when it finishes the third and so on. The <code>ActionSeries</code> (being an <code>Action</code> itself) remains running until all of its actions finish (or until it is interrupted).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Python</label><label for="__tabbed_14_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">ActionSeries</span><span class="p">(</span>
+    <span class="c1"># List of actions to be run as a part of the series</span>
+    <span class="p">[</span>
+        <span class="n">action1</span><span class="p">,</span>
+        <span class="n">action2</span><span class="p">,</span>
+        <span class="n">action3</span><span class="p">,</span>
+        <span class="o">...</span>
+        <span class="n">action_n</span>
+    <span class="p">],</span> 
+
+    <span class="c1"># finished_action</span>
+    <span class="c1"># An action to start when the action series is done</span>
+    <span class="c1"># This action is not part of the action series so the action series</span>
+    <span class="c1"># will not continue running while this action is running</span>
+    <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ActionSeries</span><span class="w"> </span><span class="n">series</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// List of actions to be run as a part of the series</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">action1</span><span class="p">,</span>
+<span class="w">        </span><span class="n">action2</span><span class="p">,</span>
+<span class="w">        </span><span class="n">action3</span><span class="p">,</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="n">actionN</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// finishedAction</span>
+<span class="w">    </span><span class="c1">// An action to start when the action series is done</span>
+<span class="w">    </span><span class="c1">// This action is not part of the action series so the action series</span>
+<span class="w">    </span><span class="c1">// will not continue running while this action is running</span>
+<span class="w">    </span><span class="k">nullptr</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>There is also an optional "finished action" that can be automatically started when the action series finishes. This is often useful to avoid having actions that run "forever" be a part of the action series so you can determine when an action series completes its primary task. Consider the following example. The action series is used to drive a square. By making the human drive action the "finished action" this ensures that when the square driving is done, human control will resume. However, once human control resumes the "drive square" action is no longer running, which makes sense as the square has been driven.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Python</label><label for="__tabbed_15_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">drive_square_series</span> <span class="o">=</span> <span class="n">ActionSeries</span><span class="p">(</span>
+    <span class="c1"># List of actions to be run as a part of the series</span>
+    <span class="p">[</span>
+        <span class="n">DriveDistanceAction</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+        <span class="n">RotateAngleAction</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+        <span class="n">DriveDistanceAction</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+        <span class="n">RotateAngleAction</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+        <span class="n">DriveDistanceAction</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+        <span class="n">RotateAngleAction</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+        <span class="n">DriveDistanceAction</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+        <span class="n">RotateAngleAction</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+    <span class="p">],</span> 
+
+    <span class="c1"># finished_action</span>
+    <span class="c1"># An action to start when the action series is done</span>
+    <span class="c1"># This action is not part of the action series so the action series</span>
+    <span class="c1"># will not continue running while this action is running</span>
+    <span class="n">HumanDriveAction</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ActionSeries</span><span class="w"> </span><span class="n">driveSquareSeries</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// List of actions to be run as a part of the series</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveDistanceAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateAngleAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveDistanceAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateAngleAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveDistanceAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateAngleAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveDistanceAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateAngleAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// finishedAction</span>
+<span class="w">    </span><span class="c1">// An action to start when the action series is done</span>
+<span class="w">    </span><span class="c1">// This action is not part of the action series so the action series</span>
+<span class="w">    </span><span class="c1">// will not continue running while this action is running</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">HumanDriveAction</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Since <code>ActionSeries</code> are actions, multiple can run in parallel too. This allows for complex routines to be developed using the action system.</p>
+<h3 id="ownership-of-devices">Ownership of Devices</h3>
+<p>One final important concept with actions is the ownership of devices. Devices are many of the "objects" created on the robot. More specifically, a "Device" is anything connected directly to the Raspberry Pi on the robot that has its own object in code (such as motors). Note that currently, devices attached to the arduino (such as sensors) are "ArduinoDevices" and are not able to be owned by actions.</p>
+<p>Often, multiple actions in a robot program control the same device. In many cases, this can cause unintended behaviors. Consider a scenario where one action allows a gamepad to move motors, and another uses motors to drive a square. Which action would "win"? It is likely the actions would "fight" each other causing the robot to rapidly switch between the tasks (rapidly meaning 20+ times per second).</p>
+<p>This clearly would prevent either action from working as intended. The solution is to ensure that only one action that controls the motors is ever active at a time. In general, the action that should remain active is the newer one. For example, if the robot is being driven with the gamepad using one action, and another action to drive a square is triggered by a button press, the square should be driven stopping gamepad drive control.</p>
+<p>To achieve this, it is necessary to know what devices an action uses (or equivalently which action is currently controlling a device). The action controlling a device is said to "own" or "lock" a device. If a newer action is started, it can take ownership of the device. When this happens, the previous action is automatically stopped.</p>
+<p>An <code>Action</code> can optionally have a function called <code>lockedDevices</code> / <code>locked_devices</code>. This function returns a list of devices that should be locked when the action starts (<code>LockedDeviceList</code>). When an action with this function is started, any devices in the list returned from <code>lockedDevices</code> / <code>locked_devices</code> are locked by the action. If another action is running that had previously locked any device now locked by the new action, the old action will be stopped to allow the newer action to take control.</p>
+<p>Additionally, if you have code in <code>enabled_periodic</code> / <code>enabledPeriodic</code> or <code>disabled_periodic</code> / <code>disabledPeriodic</code> that controls a device, you will need to be careful not to control it while an action has locked the device. The device has a function called <code>is_locked</code> / <code>isLocked</code> which can be used to determine if the device is locked by an action. <strong>Unlike actions, the periodic functions cannot lock a device. As such, it is highly recommended to either control a device using actions or the periodic functions, not both.</strong> However, it is not a problem to control some devices using actions and others from the <code>Robot</code>'s periodic functions.</p>
+<h2 id="making-drive-code-into-an-action">Making Drive Code into an Action</h2>
+<p>Before attempting to create complex setups with actions, it is a good idea to convert the gamepad drive code into an action. Later, actions will be implemented that are used to drive shapes. Since these actions will control the motors, it is a bad idea to also have <code>enabled_periodic</code> / <code>enabledPeriodic</code> controlling the motors with the gamepad.</p>
+<p>To start, create a new action in <code>actions.py</code> or <code>actions.hpp</code> and <code>actions.cpp</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:3"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Python (<code>actions.py</code>)</label><label for="__tabbed_16_2">C++ (<code>actions.hpp</code>)</label><label for="__tabbed_16_3">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">JSDriveAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">locked_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LockedDeviceList</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">was_interrupted</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">should_continue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">pass</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">JSDriveAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Action</span><span class="p">{</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="n">LockedDeviceList</span><span class="w"> </span><span class="n">lockedDevices</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">begin</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">shouldContinue</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">LockedDeviceList</span><span class="w"> </span><span class="nf">JSDriveAction::lockedDevices</span><span class="p">(){</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">JSDriveAction::begin</span><span class="p">(){</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">JSDriveAction::process</span><span class="p">(){</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">JSDriveAction::finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">){</span>
+
+<span class="p">}</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">JSDriveAction::shouldContinue</span><span class="p">(){</span>
+
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then, in <code>process</code> move the existing drive code from <code>enabled_periodic</code> / <code>enabledPeriodic</code>. You will have to change a few variable names. The drive helper object and gamepad object belong to the <code>Robot</code> instance, not the <code>Action</code> instance the code is now in. As such, you have to refer to them using the <code>Robot</code> instance. This is done using <code>main.robot</code> in python or <code>Main::robot</code> in C++.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Python (<code>actions.py</code>)</label><label for="__tabbed_17_2">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Get value for the speed axis</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">gp0</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">SPEED_AXIS</span><span class="p">,</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">DEADBAND</span><span class="p">)</span>
+
+    <span class="c1"># Get value for the rotation axis</span>
+    <span class="n">rotation</span> <span class="o">=</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">gp0</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">ROTATE_AXIS</span><span class="p">,</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">DEADBAND</span><span class="p">)</span>
+
+    <span class="c1"># Update speed of all motors using drive helper</span>
+    <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">drive_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">rotation</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">JSDriveAction::process</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Get value for speed axis</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">gp0</span><span class="p">.</span><span class="n">getAxis</span><span class="p">(</span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">SPEED_AXIS</span><span class="p">,</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">DEADBAND</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Get value for the rotation axis</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">gp0</span><span class="p">.</span><span class="n">getAxis</span><span class="p">(</span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">ROTATE_AXIS</span><span class="p">,</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">DEADBAND</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Update speed of all motors using drive helper</span>
+<span class="w">    </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">driveHelper</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="n">rotation</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then, in <code>locked_devices</code> / <code>lockedDevices</code>, add the following to lock the motors. All four motors are locked as this action (indirectly) controls all four using the drive helper. <em>Note: You cannot lock the drive helper. It is not a device.</em> Locking the motors is not important yet, but having this will be important later.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Python (<code>actions.py</code>)</label><label for="__tabbed_18_2">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">locked_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LockedDeviceList</span><span class="p">:</span>
+    <span class="c1"># If your robot only has two motors, only reference those motors</span>
+    <span class="k">return</span> <span class="p">[</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">flmotor</span><span class="p">,</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">frmotor</span><span class="p">,</span> 
+            <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rlmotor</span><span class="p">,</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rrmotor</span> <span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">LockedDeviceList</span><span class="w"> </span><span class="nf">JSDriveAction::lockedDevices</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// If your robot only has two motors, only reference those motors</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">flmotor</span><span class="p">,</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">frmotor</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rlmotor</span><span class="p">,</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rrmotor</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Next, in the action's <code>finish</code> function add the following line to ensure that motors stop moving if the action is ever stopped. When an action is stopped it should (almost) always make sure anything it was controlling is returned to a safe state. For motors, stopped is a safe state.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Python (<code>actions.py</code>)</label><label for="__tabbed_19_2">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">was_interrupted</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+    <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">drive_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">JSDriveAction::finish</span><span class="p">(){</span>
+<span class="w">    </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">driveHelper</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then, make <code>should_continue</code> / <code>shouldContinue</code> always return true so this action runs forever.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Python (<code>actions.py</code>)</label><label for="__tabbed_20_2">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">should_continue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">shouldContinue</span><span class="p">(){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Finally, start the action in <code>robot_started</code> / <code>robotStarted</code>. Since the action never finishes, it will run forever. The action actually remains running whether the robot is enabled or disabled, however the robot's motors are disabled when the robot is disabled so you will still be unable to drive the robot while it is disabled.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Python (<code>robot.py</code>)</label><label for="__tabbed_21_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Import action at top of file (with other imports)</span>
+<span class="kn">from</span> <span class="nn">actions</span> <span class="kn">import</span> <span class="n">JSDriveAction</span>
+
+<span class="c1"># Add at the end of robot_started</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">start_action</span><span class="p">(</span><span class="n">JSDriveAction</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// No need to include anything for C++</span>
+<span class="c1">// actions.hpp should already be included</span>
+
+<span class="c1">// Add at the end of robotStarted</span>
+<span class="n">ActionManager</span><span class="o">::</span><span class="n">startAction</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">JSDriveAction</span><span class="o">&gt;</span><span class="p">());</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>After building and deploying this program to the robot, driving with the gamepad will still work as it previously had, but since it is now implemented as an action it is easy to start and stop as needed to allow other actions to run.</p>
+<h2 id="automated-routines-using-actions">Automated Routines using Actions</h2>
+<p>Actions can be used as building blocks for complex tasks. In this section two tasks will be implemented using actions. The first task will drive a circle. The second will drive a square. When neither task is active, the robot will be able to be controlled using the gamepad (using the <code>JSDriveAction</code> implemented previously).</p>
+<p>While it would be possible to make an action to drive each shape, this is not the easiest way to do so and does not allow much code reuse. Instead, driving shapes is broken down into simpler actions that can be chained together to make shapes. This also allows the same actions to be used to drive multiple different shapes.</p>
+<p>Driving both a square and a triangle can be accomplished using two basic actions. First, the robot needs to be able to drive a straight line. Second, it needs to be able to rotate. These two actions can be repeated as many times as necessary to drive the desired shape.</p>
+<p>Ideally, driving a straight line would be done using encoders on the robot to drive some specific distance and rotation would use a gyroscope to rotate to some angle, however for the sake of simplicity, time will be used instead in this section. This means that instead of an action that drives some number of inches we will have an action that drives for some amount of time. For rotation, it will rotate for some amount of time. <em>Timed driving is not a precise way to create shapes. You may need to change some times (especially for the rotations) to drive the correct shape. The code in this section will behave differently on different robots.</em></p>
+<h3 id="drive-time-action">Drive Time Action</h3>
+<p>The first action to be implemented needs to drive a straight line for some amount of time (this will be passed as an argument in the constructor so the same action can be used for different amounts of time). This action will control motors, so they should be locked in <code>begin</code>. Additionally, the robot will drive a constant speed for the given amount of time. As such, the robot can start driving in <code>begin</code> and stop in <code>finish</code> leaving <code>process</code> empty. Finally, <code>should_continue</code> / <code>shouldContinue</code> needs to return true until enough time has passed, when it should return false stopping the action. This requires tracking when the action is started by storing some value in <code>begin</code>. This is all implemented in the code shown below.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:3"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><input id="__tabbed_22_3" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Python (<code>actions.py</code>)</label><label for="__tabbed_22_2">C++ (<code>actions.hpp</code>)</label><label for="__tabbed_22_3">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add this import at the top of the file (with other imports)</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">DriveTimeAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+    <span class="c1"># Each instance of the action can drive for a different duration</span>
+    <span class="c1"># This allows reusing the same action for various purposes</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration_sec</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Store the duration this action should run for</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">duration_sec</span> <span class="o">=</span> <span class="n">duration_sec</span> <span class="o">/</span> <span class="mi">1000</span>
+
+        <span class="c1"># Will be used to store the time when the action starts (begin called)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span> <span class="nf">locked_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LockedDeviceList</span><span class="p">:</span>
+        <span class="c1"># Lock motors as this action controls them</span>
+        <span class="c1"># This stops whatever action currently controls the motors (if any)</span>
+        <span class="k">return</span> <span class="p">[</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">flmotor</span><span class="p">,</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">frmotor</span><span class="p">,</span> 
+            <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rlmotor</span><span class="p">,</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rrmotor</span> <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Store the time this action started</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># Start moving the motors forward at 70% speed, no rotation</span>
+        <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">drive_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Nothing to do here. Just let motors keep running</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">was_interrupted</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="c1"># Stop the motors</span>
+        <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">drive_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">should_continue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration_sec</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add with other imports</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DriveTimeAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Each instance of the action can drive for a different duration</span>
+<span class="w">    </span><span class="c1">// This allows reusing the same action for various purposes</span>
+<span class="w">    </span><span class="n">DriveTimeAction</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">durationSec</span><span class="p">);</span>
+
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="n">LockedDeviceList</span><span class="w"> </span><span class="n">lockedDevices</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">begin</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">shouldContinue</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Store the duration this action should run for</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">durationSec</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Will be used to store the time when the action starts (begin called)</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">time_point</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">&gt;</span><span class="w"> </span><span class="n">startTime</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">DriveTimeAction</span><span class="o">::</span><span class="n">DriveTimeAction</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">durationSec</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">durationSec</span><span class="p">(</span><span class="n">durationSec</span><span class="p">){</span>
+
+<span class="p">}</span>
+
+<span class="n">LockedDeviceList</span><span class="w"> </span><span class="n">DriveTimeAction</span><span class="o">::</span><span class="n">lockedDevices</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Lock motors as this action controls them</span>
+<span class="w">    </span><span class="c1">// This stops whatever action currently controls the motors (if any)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">flmotor</span><span class="p">,</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">frmotor</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rlmotor</span><span class="p">,</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rrmotor</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">DriveTimeAction</span><span class="o">::</span><span class="n">begin</span><span class="p">(){</span><span class="w">        </span>
+<span class="w">    </span><span class="c1">// Store the time this action started </span>
+<span class="w">    </span><span class="n">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Start moving the motors forward at 70% speed, no rotation</span>
+<span class="w">    </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">driveHelper</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">DriveTimeAction</span><span class="o">::</span><span class="n">process</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Nothing to do here. Just let motors keep running</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">DriveTimeAction</span><span class="o">::</span><span class="n">finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Stop the motors</span>
+<span class="w">    </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">driveHelper</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">DriveTimeAction</span><span class="o">::</span><span class="n">shouldContinue</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">elapsedSec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">startTime</span><span class="p">).</span><span class="n">count</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">elapsedSec</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">durationSec</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="rotate-time-action">Rotate Time Action</h3>
+<p>The rotate time action is implemented almost the same way as the drive time action. Instead of driving forward at 70% speed though, the action rotates at 90% speed.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:3"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><input id="__tabbed_23_3" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">Python (<code>actions.py</code>)</label><label for="__tabbed_23_2">C++ (<code>actions.hpp</code>)</label><label for="__tabbed_23_3">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add this import at the top of the file (with other imports)</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">RotateTimeAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+    <span class="c1"># Each instance of the action can drive for a different duration</span>
+    <span class="c1"># This allows reusing the same action for various purposes</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration_sec</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Store the duration this action should run for</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">duration_sec</span> <span class="o">=</span> <span class="n">duration_sec</span> <span class="o">/</span> <span class="mi">1000</span>
+
+        <span class="c1"># Will be used to store the time when the action starts (begin called)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span> <span class="nf">locked_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LockedDeviceList</span><span class="p">:</span>
+        <span class="c1"># Lock motors as this action controls them</span>
+        <span class="c1"># This stops whatever action currently controls the motors (if any)</span>
+        <span class="k">return</span> <span class="p">[</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">flmotor</span><span class="p">,</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">frmotor</span><span class="p">,</span> 
+            <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rlmotor</span><span class="p">,</span> <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rrmotor</span> <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>            
+        <span class="c1"># Store the time this action started</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># Start moving the motors at 90% rotation (no forward / reverse speed)</span>
+        <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">drive_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Nothing to do here. Just let motors keep running</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">was_interrupted</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="c1"># Stop the motors</span>
+        <span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">drive_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">should_continue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration_sec</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add with other imports</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RotateTimeAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Each instance of the action can drive for a different duration</span>
+<span class="w">    </span><span class="c1">// This allows reusing the same action for various purposes</span>
+<span class="w">    </span><span class="n">RotateTimeAction</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">durationSec</span><span class="p">);</span>
+
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="n">LockedDeviceList</span><span class="w"> </span><span class="n">lockedDevices</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">begin</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">shouldContinue</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Store the duration this action should run for</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">durationSec</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Will be used to store the time when the action starts (begin called)</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">time_point</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">&gt;</span><span class="w"> </span><span class="n">startTime</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">RotateTimeAction</span><span class="o">::</span><span class="n">RotateTimeAction</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">durationSec</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">durationSec</span><span class="p">(</span><span class="n">durationSec</span><span class="p">){</span>
+
+<span class="p">}</span>
+
+<span class="n">LockedDeviceList</span><span class="w"> </span><span class="n">RotateTimeAction</span><span class="o">::</span><span class="n">lockedDevices</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Lock motors as this action controls them</span>
+<span class="w">    </span><span class="c1">// This stops whatever action currently controls the motors (if any)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">flmotor</span><span class="p">,</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">frmotor</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rlmotor</span><span class="p">,</span><span class="w"> </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rrmotor</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">RotateTimeAction</span><span class="o">::</span><span class="n">begin</span><span class="p">(){</span><span class="w">        </span>
+<span class="w">    </span><span class="c1">// Store the time this action started </span>
+<span class="w">    </span><span class="n">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Start moving the motors at 90% rotation (no forward / reverse speed)</span>
+<span class="w">    </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">driveHelper</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">RotateTimeAction</span><span class="o">::</span><span class="n">process</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Nothing to do here. Just let motors keep running</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">RotateTimeAction</span><span class="o">::</span><span class="n">finish</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">wasInterrupted</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// Stop the motors</span>
+<span class="w">    </span><span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">driveHelper</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">RotateTimeAction</span><span class="o">::</span><span class="n">shouldContinue</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">elapsedSec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">startTime</span><span class="p">).</span><span class="n">count</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">elapsedSec</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">durationSec</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="brake-mode">Brake Mode</h3>
+<p>Generally, coast mode is better when driving the robot with a gamepad. It results in more natural control of the robot and prevents sudden stops when changing directions. However, when performing automated driving, it is often better to use brake mode. This ensures the robot stops quicker when the action is finished driving and makes driving more consistent.</p>
+<p>As such, the motors should be in brake mode for the drive time and rotate time actions, but in coast mode for the joystick drive action. This can be achieved by setting the motors to brake / coast mode as needed in an action's <code>begin</code> function.</p>
+<p>Add the following lines to the end of each action's <code>begin</code> function as indicated. For robots with fewer motors, only set the brake mode for the motors the robot has (and change motor object names as needed).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">Python (<code>actions.py</code>)</label><label for="__tabbed_24_2">C++ (<code>actions.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add to DriveTimeAction&#39;s begin</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">flmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">frmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rlmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rrmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Add to RotateTimeAction&#39;s begin</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">flmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">frmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rlmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rrmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Add to JSDriveAction&#39;s begin</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">flmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">frmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rlmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">main</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">rrmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add to DriveTimeAction&#39;s begin</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">flmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">frmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rlmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rrmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+
+<span class="c1">// Add to RotateTimeAction&#39;s begin</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">flmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">frmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rlmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rrmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+
+<span class="c1">// Add to JSDriveAction&#39;s begin</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">flmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">frmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rlmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="n">Main</span><span class="o">::</span><span class="n">robot</span><span class="o">-&gt;</span><span class="n">rrmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="using-the-actions">Using the Actions</h3>
+<p>The <code>DriveTimeAction</code>, <code>RotateTimeAction</code> and <code>WaitAction</code> (shown earlier) can be used to create <code>ActionSeries</code> to drive a square and triangle. These action series will look something like the following, however <em>you will likely need to change the drive and rotate times to suit your specific robot and the surface you are driving on</em>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:3"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><input id="__tabbed_25_2" name="__tabbed_25" type="radio" /><input id="__tabbed_25_3" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">Python (<code>robot.py</code>)</label><label for="__tabbed_25_2">C++ (<code>robot.hpp</code>)</label><label for="__tabbed_25_3">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add with other imports</span>
+<span class="kn">from</span> <span class="nn">actions</span> <span class="kn">import</span> <span class="n">DriveTimeAction</span><span class="p">,</span> <span class="n">RotateTimeAction</span><span class="p">,</span> <span class="n">JSDriveAction</span><span class="p">,</span> <span class="n">WaitAction</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Add in __init__</span>
+<span class="c1">################################################################################</span>
+
+<span class="c1"># Constants for button mappings on gamepad</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">SQUARE_BTN</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">TRIANGLE_BTN</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Action and ActionSeries instances</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">js_drive_action</span> <span class="o">=</span> <span class="n">JSDriveAction</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">drive_square_series</span> <span class="o">=</span> <span class="n">ActionSeries</span><span class="p">(</span>
+    <span class="c1"># This is a list of actions to run sequentially</span>
+    <span class="p">[</span>
+        <span class="n">DriveTimeAction</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>         <span class="c1"># First edge</span>
+        <span class="n">RotateTimeAction</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span>      <span class="c1"># Rotate 90 (adjust time as needed)</span>
+
+        <span class="n">WaitAction</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>            <span class="c1"># Delay before driving next edge</span>
+
+        <span class="n">DriveTimeAction</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>         <span class="c1"># Second edge</span>
+        <span class="n">RotateTimeAction</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span>      <span class="c1"># Rotate 90 (adjust time as needed)</span>
+
+        <span class="n">WaitAction</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>            <span class="c1"># Delay before driving next edge</span>
+
+        <span class="n">DriveTimeAction</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>         <span class="c1"># Third edge</span>
+        <span class="n">RotateTimeAction</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span>      <span class="c1"># Rotate 90 (adjust time as needed)</span>
+
+        <span class="n">WaitAction</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>            <span class="c1"># Delay before driving next edge</span>
+
+        <span class="n">DriveTimeAction</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>         <span class="c1"># Fourth edge</span>
+        <span class="n">RotateTimeAction</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span>      <span class="c1"># Rotate 90 (adjust time as needed)</span>
+
+        <span class="n">WaitAction</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>             <span class="c1"># Small delay so brake mode has time to work</span>
+
+    <span class="p">],</span>
+
+    <span class="c1"># Start JSDriveAction instance when this action series finishes</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">js_drive_action</span>
+<span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">drive_triangle_series</span> <span class="o">=</span> <span class="n">ActionSeries</span><span class="p">(</span>
+    <span class="c1"># This is a list of actions to run sequentially</span>
+    <span class="p">[</span>
+        <span class="n">DriveTimeAction</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>         <span class="c1"># First edge</span>
+        <span class="n">RotateTimeAction</span><span class="p">(</span><span class="mf">4.5</span><span class="p">),</span>      <span class="c1"># Rotate 120 (adjust time as needed)</span>
+
+        <span class="n">WaitAction</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>            <span class="c1"># Delay before driving next edge</span>
+
+        <span class="n">DriveTimeAction</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>         <span class="c1"># Second edge</span>
+        <span class="n">RotateTimeAction</span><span class="p">(</span><span class="mf">4.5</span><span class="p">),</span>      <span class="c1"># Rotate 120 (adjust time as needed)</span>
+
+        <span class="n">WaitAction</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>            <span class="c1"># Delay before driving next edge</span>
+
+        <span class="n">DriveTimeAction</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>         <span class="c1"># Third edge</span>
+        <span class="n">RotateTimeAction</span><span class="p">(</span><span class="mf">4.5</span><span class="p">),</span>      <span class="c1"># Rotate 120 (adjust time as needed)</span>
+
+        <span class="n">WaitAction</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>             <span class="c1"># Small delay so brake mode has time to work</span>
+    <span class="p">],</span>
+
+    <span class="c1"># Start JSDriveAction instance when this action series finishes</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">js_drive_action</span>
+<span class="p">)</span>
+
+
+<span class="c1">################################################################################</span>
+<span class="c1"># In robot_started</span>
+<span class="c1">################################################################################</span>
+
+<span class="c1"># Remove this line</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">start_action</span><span class="p">(</span><span class="n">JSDriveAction</span><span class="p">())</span>
+
+<span class="c1"># And replace it with</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">start_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">js_drive_action</span><span class="p">())</span>
+
+<span class="c1"># Finally, add two button triggers to run the drive shape actions</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">add_trigger</span><span class="p">(</span><span class="n">ButtonPressedTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">SQUARE_BTN</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">drive_square_series</span><span class="p">))</span>
+<span class="n">ActionManager</span><span class="o">.</span><span class="n">add_trigger</span><span class="p">(</span><span class="n">ButtonPressedTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">TRIANGLE_BTN</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">drive_triangle_series</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">// Add with other member variables at the bottom of the Robot class declaration</span>
+<span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+<span class="c1">// Constants for button mappings on gamepad</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">SQUARE_BUTTON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">TRIANGLE_BUTTON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">// Action and ActionSeries instances</span>
+<span class="n">JSDriveAction</span><span class="w"> </span><span class="n">jsDriveAction</span><span class="p">;</span>
+<span class="n">ActionSeries</span><span class="w"> </span><span class="n">driveSquareSeries</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// This is a list of actions to run sequentially</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">         </span><span class="c1">// First edge</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span><span class="w">      </span><span class="c1">// Rotate 90 (adjust time as needed)</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span><span class="w">            </span><span class="c1">// Delay before driving next edge</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">         </span><span class="c1">// Second edge</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span><span class="w">      </span><span class="c1">// Rotate 90 (adjust time as needed)</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span><span class="w">            </span><span class="c1">// Delay before driving next edge</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">         </span><span class="c1">// Third edge</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span><span class="w">      </span><span class="c1">// Rotate 90 (adjust time as needed)</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span><span class="w">            </span><span class="c1">// Delay before driving next edge</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">         </span><span class="c1">// Fourth edge</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span><span class="w">      </span><span class="c1">// Rotate 90 (adjust time as needed)</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="w">             </span><span class="c1">// Small delay so brake mode has time to work</span>
+
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// Start JSDriveAction instance when this action series finishes</span>
+<span class="w">    </span><span class="n">jsDriveAction</span>
+<span class="p">};</span>
+<span class="n">ActionSeries</span><span class="w"> </span><span class="n">driveTriangleSeries</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// This is a list of actions to run sequentially</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">         </span><span class="c1">// First edge</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">4.5</span><span class="p">),</span><span class="w">      </span><span class="c1">// Rotate 120 (adjust time as needed)</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span><span class="w">            </span><span class="c1">// Delay before driving next edge</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">         </span><span class="c1">// Second edge</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">4.5</span><span class="p">),</span><span class="w">      </span><span class="c1">// Rotate 120 (adjust time as needed)</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span><span class="w">            </span><span class="c1">// Delay before driving next edge</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">DriveTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">         </span><span class="c1">// Third edge</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">RotateTimeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">4.5</span><span class="p">),</span><span class="w">      </span><span class="c1">// Rotate 120 (adjust time as needed)</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="w">             </span><span class="c1">// Small delay so brake mode has time to work</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// Start JSDriveAction instance when this action series finishes</span>
+<span class="w">    </span><span class="n">jsDriveAction</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">// In robotStarted</span>
+<span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+<span class="c1">// Remove this line</span>
+<span class="n">ActionManager</span><span class="o">::</span><span class="n">startAction</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">JSDriveAction</span><span class="o">&gt;</span><span class="p">());</span>
+
+<span class="c1">// And replace it with</span>
+<span class="n">ActionManager</span><span class="o">::</span><span class="n">startAction</span><span class="p">(</span><span class="n">jsDriveAction</span><span class="p">);</span>
+
+<span class="c1">// Finally, add two button triggers to run the drive shape actions</span>
+<span class="n">ActionManager</span><span class="p">.</span><span class="n">add_trigger</span><span class="p">(</span><span class="n">ButtonPressedTrigger</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gp0</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">SQUARE_BTN</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">drive_square_series</span><span class="p">))</span>
+<span class="n">ActionManager</span><span class="p">.</span><span class="n">add_trigger</span><span class="p">(</span><span class="n">ButtonPressedTrigger</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gp0</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">TRIANGLE_BTN</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">drive_triangle_series</span><span class="p">))</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>If built and deployed, the buttons 0 and 1 on the gamepad (see drive station to identify which button is which) will start the drive square series or drive triangle series respectively.</p>
+<p>Additionally, if one series is started while the other is running the older series will be stopped by the newer one. This behavior is caused by the device locking discussed earlier. When an <code>ActionSeries</code> starts, it locks all devices that its child actions would otherwise lock. The devices are not actually locked by the child actions, only by the action series.</p>
+<p>In the above example, the "drive square" series uses an action that locks the robot's motors. The same is true of the "drive triangle" series. As such, if the "drive square" series is started the series locks the motors (since they will be used sometime while the series is running). Then, if the "drive triangle" series is started while the "drive square" series is still running, the "drive triangle" series will lock the motors. In doing so, it will stop whatever locked them last, which in this case was the "drive square" series.</p>
+<p>This behavior can be used to ensure that <code>ActionSeries</code> can interrupt (stop) each other to allow the newest one to run, just like individual actions.</p>
+<h3 id="fixing-the-shapes">Fixing the Shapes</h3>
+<p>As previously mentioned, when using time-based motions, the shapes will likely not be correct on your robot. Each robot will have different physical characteristics and different environments that will affect how long it needs to drive or rotate to make the correct shape.</p>
+<p>The next section of this guide re-implements the shape <code>ActionSeries</code> using sensor based actions instead, however if you do want to fix the time-based shapes the recommended approach is as follows.</p>
+<ol>
+<li>Deploy the code to your robot</li>
+<li>Press button 0 (which starts driving a square)</li>
+<li>Observe how far the robot drives before it starts to rotate. A good distance would be between 2 and 5 feet (this partially depends on how much space you have). If it seems too far, reduce the time for drive actions (arguments to constructor of <code>DriveTimeAction</code>). If it seems too short, increase the time. Remember to rebuild (if applicable) and deploy before testing new values.</li>
+<li>Once you have a good drive distance, it is recommended to use that time for all <code>DriveTimeActions</code> in both <code>ActionSeries</code> instances.</li>
+<li>Next, the rotation angle needs to be adjusted for the square. This is relatively simple. Run the action, and allow it to reach the first rotation action. Ideally, it would rotate 90 degrees. It doesn't need to be perfect, just close enough. Increase / decrease the rotation time (argument in constructor of <code>RotateTimeAction</code>) until the rotation distance is generally approximately 90 degrees. Remember to rebuild (if applicable) and deploy before testing new values.</li>
+<li>Use the time determined above for all rotations in the square <code>ActionSeries</code>.</li>
+<li>The triangle rotations will need to be approximately 120 degrees. A good starting point would be to take the time used for rotation actions, multiply it by 4, then divide by 3. Start with this time (round to two decimal places).</li>
+<li>Build (if applicable) and deploy the program. Test the triangle action (start running this action by pressing button 1 on the gamepad). If the rotate seems approximately correct, leave it as is. If the rotation time seems very wrong, adjust it in the direction it needs to go. The same time should generally be used for all <code>RotateTimeAction</code>s used in the triangle <code>ActionSeries</code>.</li>
+</ol>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

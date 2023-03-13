@@ -1,0 +1,1792 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://arpirobot.gitlab.io/guide/hardware/examplebuilds/">
+      
+      
+        <link rel="prev" href="../supportedhardware/">
+      
+      
+        <link rel="next" href="../../setup/setupcomputer/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Example Robot Builds - ArPiRobot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mini-clipboard-robot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ArPiRobot" class="md-header__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArPiRobot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Example Robot Builds
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../downloads/v1_0/" class="md-tabs__link">
+        Downloads
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../gettingstarted/" class="md-tabs__link md-tabs__link--active">
+        Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ref/manuals/drive_station/" class="md-tabs__link">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../devs/overview/" class="md-tabs__link">
+        Framework Developers
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ArPiRobot" class="md-nav__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    ArPiRobot
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Downloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Downloads" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Downloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/v1_0/" class="md-nav__link">
+        Version 1.0 Downloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/betas/" class="md-nav__link">
+        Beta Downloads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="true">
+          Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gettingstarted/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="true">
+          Building a Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Building a Robot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Building a Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requiredhardware/" class="md-nav__link">
+        Required Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supportedhardware/" class="md-nav__link">
+        Supported Hardware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Example Robot Builds
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Example Robot Builds
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mini-clipboard-robot" class="md-nav__link">
+    Mini Clipboard Robot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mini-clipboard-robot-orange-pi-lite-variant" class="md-nav__link">
+    Mini Clipboard Robot (Orange Pi Lite Variant)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" tabindex="0" aria-expanded="false">
+          Software Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Software Setup" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/setupcomputer/" class="md-nav__link">
+        Setup your Development Computer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/setuppi/" class="md-nav__link">
+        Setup the Robot's Main Computer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" tabindex="0" aria-expanded="false">
+          Programming the Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming the Robot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Programming the Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/createproject/" class="md-nav__link">
+        Creating a Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/movingmotors/" class="md-nav__link">
+        Moving Motors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/drivegamepad/" class="md-nav__link">
+        Driving with Gamepad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/sensordata/" class="md-nav__link">
+        Sensor Data & NetworkTable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/actions/" class="md-nav__link">
+        Using Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/sensoractions/" class="md-nav__link">
+        Using Sensors with Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/pid/" class="md-nav__link">
+        PID Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/examplesrepo/" class="md-nav__link">
+        Examples Repo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" tabindex="0" aria-expanded="false">
+          Other Tasks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other Tasks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Other Tasks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/audio/" class="md-nav__link">
+        Playing Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/camstream/" class="md-nav__link">
+        Camera Streaming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/ssh/" class="md-nav__link">
+        Connect by SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/wifidebug/" class="md-nav__link">
+        WiFi Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" tabindex="0" aria-expanded="false">
+          Custom Parts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Parts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Parts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/quadencoder/" class="md-nav__link">
+        TT Motor Quadrature Encoder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" tabindex="0" aria-expanded="false">
+          Manuals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Manuals" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Manuals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/drive_station/" class="md-nav__link">
+        Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/deploy_tool/" class="md-nav__link">
+        Deploy Tool Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/android_drive_station/" class="md-nav__link">
+        Mobile Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          Programming Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/projectstructure/" class="md-nav__link">
+        Project Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/baserobot/" class="md-nav__link">
+        BaseRobot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/arduino/" class="md-nav__link">
+        Arduino Sensor Coprocessor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/nettable/" class="md-nav__link">
+        Network Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/actionsystem/" class="md-nav__link">
+        Action System
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          CoreLib API Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CoreLib API Docs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          CoreLib API Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/cpp/html/index.html" class="md-nav__link">
+        Doxygen (C++)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/python/html/index.html" class="md-nav__link">
+        Doxygen (Python)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../defaultsettings/" class="md-nav__link">
+        Default Robot Settings
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          Framework Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Framework Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Framework Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/corelib/" class="md-nav__link">
+        Core Library (CoreLib)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/arduinofw/" class="md-nav__link">
+        Arduino Firmware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/os_image_config/" class="md-nav__link">
+        OS Image Description
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/new_release/" class="md-nav__link">
+        Publish New Release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mini-clipboard-robot" class="md-nav__link">
+    Mini Clipboard Robot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mini-clipboard-robot-orange-pi-lite-variant" class="md-nav__link">
+    Mini Clipboard Robot (Orange Pi Lite Variant)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Example Robot Builds</h1>
+
+<h2 id="mini-clipboard-robot">Mini Clipboard Robot</h2>
+<p>A four wheel differential drive robot build on a small clipboard (6" by 9"). This robot build uses common "TT" motors with a 1:48 gear ratio and does not require any soldering or 3D printed parts to assemble. This is intended to be a low-cost easy to build reference robot design for beginners. It includes various sensors such as encoders, an IMU, an ultrasonic sensor, a voltage monitor, and IR reflector sensors for line following.</p>
+<p><em>This is the robot example code in the <a href="https://github.com/ArPiRobot/ArPiRobot-Examples/">ArPiRobot-Examples</a> repository is designed for.</em></p>
+<p><img alt="" src="../../../img/4wd_mini_render.png" /></p>
+<details class="info">
+<summary>Parts List</summary>
+<p><strong>Mechanical Parts:</strong></p>
+<ul>
+<li>1x <a href="">6"x9" Mini Clipboard with Low Profile Clip</a></li>
+<li>4x <a href="">TT Motor with Wires and Wheels</a><ul>
+<li>Alternate: <a href="">Motors with Wires</a></li>
+<li>Alternate: <a href="">Wheels</a></li>
+</ul>
+</li>
+<li>1x <a href="">Pack of Bingo Chips</a></li>
+<li>2x <a href="">TT Motor Encoder Disk</a></li>
+</ul>
+<p><strong>Electrical Parts:</strong></p>
+<ul>
+<li>1x <a href="https://www.adafruit.com/product/5291">Raspberry Pi Zero W w/ Headers</a><ul>
+<li>Alternate: <a href="https://www.adafruit.com/product/3708">Raspberry Pi Zero 2 W</a> <em>no headers, must buy and solder separately</em></li>
+</ul>
+</li>
+<li>1x <a href="https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/">Arduino Nano</a><ul>
+<li>Alternate: <a href="https://www.amazon.com/Arduino-Nano-Every-Single-Board/dp/B07VX7MX27/">Arduino Nano Every</a></li>
+<li>Alternate: <a href="https://www.adafruit.com/product/2590">Metro Mini 328</a></li>
+</ul>
+</li>
+<li>1x <a href="https://www.adafruit.com/product/3886">MPU-6050 IMU Breakout</a></li>
+<li>1x <a href="https://www.amazon.com/Youliang-Voltage-Detection-DC0-25v-Arduino/dp/B07TV3N46V/">Voltage Monitor Module</a><ul>
+<li><a href="https://www.amazon.com/HiLetgo-Voltage-Detection-Arduino-Electronic/dp/B01HTC4XKY/">Alternate</a></li>
+</ul>
+</li>
+<li>1x <a href="https://www.adafruit.com/product/3942">HC-SR04 Ultrasonic Sensor</a><ul>
+<li><a href="https://www.amazon.com/Ultrasonic-HC-SR04-Distance-Measuring-Transducer/dp/B077P72HG7/">Alternate</a></li>
+<li><a href="https://www.adafruit.com/product/4007">Alternate</a></li>
+</ul>
+</li>
+<li>2x <a href="https://www.amazon.com/HiLetgo-Infrared-Avoidance-Reflective-Photoelectric/dp/B07W97H2WS/">IR Reflector Module</a><ul>
+<li><a href="https://www.amazon.com/Infrared-Obstacle-Avoidance-Sensor-Arduino/dp/B07T91JXHW/">Alternate</a></li>
+</ul>
+</li>
+<li>2x <a href="https://www.amazon.com/Willwin-Measuring-Comparator-Optocoupler-Arduino/dp/B0776RHKB1/">Photo-Interrupter Module</a><ul>
+<li><a href="https://www.amazon.com/DAOKI-Optocoupler-Sensor-Module-Arduino/dp/B01MRELRS1">Alternate</a></li>
+</ul>
+</li>
+<li>1x <a href="https://www.adafruit.com/product/3456">5AA Holder</a><ul>
+<li><a href="https://www.amazon.com/LampVPath-Battery-Holder-Leads-Wires/dp/B07WRQ44YK/">Alternate</a> plus male <a href="https://www.adafruit.com/product/369">screw terminal to barrel jack adapter</a></li>
+</ul>
+</li>
+<li>1x <a href="https://www.adafruit.com/product/65">Mini Breadboard</a></li>
+<li>1x <a href="https://www.amazon.com/Anker-Upgraded-Candy-Bar-High-Speed-Technology/dp/B0744HYN4M/">Compact USB Battery Pack</a><ul>
+<li><a href="https://www.amazon.com/Miady-Portable-Charger-5000mAh-Lightweight/dp/B083VRD7CX/">Alternate</a></li>
+</ul>
+</li>
+<li>1x <a href="https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/">Pack of Jumper Wires</a><ul>
+<li><a href="https://www.amazon.com/Elegoo-EL-CP-004-Multicolored-Breadboard-arduino/dp/B01EV70C78/">Alternate</a></li>
+</ul>
+</li>
+<li>1x Short USB Cable for Arudino<ul>
+<li><a href="https://www.adafruit.com/product/899">A to Mini B</a> (for Arduino Nano &amp; Clones)</li>
+<li><a href="https://www.adafruit.com/product/898">A to Micro B</a> (for Arduino Nano Every &amp; Metro Mini 328)</li>
+</ul>
+</li>
+<li>1x <a href="https://www.adafruit.com/product/2910">USB OTG Adapter for Pi Zero</a><ul>
+<li><a href="https://www.adafruit.com/product/1099">Alternate</a></li>
+</ul>
+</li>
+<li>1x <a href="https://www.adafruit.com/product/368">Female Barrel Jack screw terminal adapter</a></li>
+<li>1x <a href="https://www.adafruit.com/product/4209">Cable for MPU-6050 Breakout</a></li>
+</ul>
+</details>
+<details class="info">
+<summary>Assembly Instructions</summary>
+<ol>
+<li>
+<p>Motor Assemblies</p>
+<ul>
+<li>
+<p>The motor assembly consists of the motor, wheels, bingo chip spacers, and encoder disks.</p>
+</li>
+<li>
+<p>The outside face of the motor is the face with an axel that has a "bump" on it. The front of the motor is the face opposite the actual motor.</p>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_motor_faces.png" style="height:150px;" /></p>
+<ul>
+<li>
+<p>Bingo chips are used to construct a spacer (approx 0.25 in thick) to space the motor away from the clipboard it will eventually be mounted on. This is typically between 4 and 6 bingo chips.</p>
+</li>
+<li>
+<p>Bingo chip spacers should be constructed using super glue. Glue a stack of bingo chips to each other to result in a 0.25 in tall stack. Eight of these stacks are necessary in total.</p>
+</li>
+<li>
+<p>Two motors of each of two orientations are required. The first orientation requires bingo chips on the "top" face (as shown in the image above). Two require bingo chips on the bottom face. If the motors are arranged in the layout shown below, all bingo chip stacks go on the top faces.</p>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_bingo_chip_sides.png" style="height:300px;" /></p>
+<ul>
+<li>To attach the bingo chip stacks to the motor do <strong>not</strong> use super glue. Instead use hot glue. Ideally, clean each surface using isopropyl alcohol before applying hot glue (let it dry before applying glue) to ensure best adhesion. Use a decent amount of glue to ensure the motor remains attached to the bingo chips. Hot glue is used as isopropyl alcohol can be used later to easily remove it allowing the motor to be opened or replaced easily. <em>When placing the bingo chips, be careful with alignment. They will be slightly wider than the motor's face. Make sure the inside edge is flush. The bingo chips can overhang the outside edge slightly.</em></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_chip_placmenet.png" style="height:150px;" /></p>
+<ul>
+<li>Once all assembled, the motors can be arranged as follows. The clipboard is then essentially placed on top.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_motors_with_chips.png" style="height:300px;" /></p>
+<ul>
+<li>However, it is easier to place the motors on the clipboard one at a time. Turn the clipboard clip-side up and place each motor at the distances shown below. The outside face of each motor should be flush with the edge of the clipboard to ensure proper movement. The motors should be attached to the clipboard using hot glue. It is again recommended to clean the bingo chip faces before applying hot glue. Super glue is not recommended as it is difficult to reposition if you mess up alignment.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_motor_on_board.png" style="height:300px;" /></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_motor_on_board_side.png" style="height:150px;" /></p>
+<ul>
+<li>Finally, add the wheels to all motors (outside shaft) and add an encoder disk to the inside shaft of the front two motors (front is side without the clip).</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_with_wheels.png" style="height:300px;" /></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_encoder_disks.png" style="height:300px;" /></p>
+</li>
+<li>
+<p>Electronics</p>
+<ul>
+<li>Place the motor bonnet on top of the Raspberry Pi Zero (solder header to Pi Zero if required first). When fully seated, there may be a small gap. This is ok.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_bonnet_on_pi.png" style="height:200px;" /></p>
+<ul>
+<li>This assembly (pi and bonnet) can then be attached to the clipboard. Place electrical tape on the bottom of the Raspberry Pi (to protect the PCB from hook and loop tape adhesive). Then apply hook tape. Place loop tape in the correct spot on the clipboard and attach the Raspberry Pi using the hook and loop tape.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_pi_pos.png" style="height:300px;" /></p>
+<ul>
+<li>Next, place the Arduino Nano in the mini breadboard as shown below. Notice that one side has three rows on the breadboard and the other only has two. Also notice that the "back" of the breadboard has one empty row not obstructed by the row. Matching this is important.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_arduino_asm.png" style="height:200px;" /></p>
+<ul>
+<li>The add the breadboard in the position shown below. The breadboard likely has adhesive tape on the bottom. If not, electrical tape followed by hook and loop tape can be used as was done for the Raspberry Pi.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_breadboard_pos.png" style="height:300px;" /></p>
+<ul>
+<li>Next add the top-side sensors in the indicated positions. These are attached directly to the clipboard using hot glue. Generally, the PCB is set directly onto the clipboard and hot glue is applied around the edges (not under the board). This makes it easier to remove if needed. For the ultrasonic sensor, hot glue is generally placed under the metal rings around the emitter and receiver. Note that the ultrasonic sensor's front face is flush with the front edge of the clipboard.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_top_sensors.png" style="height:300px;" /></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_flush_usonic.png" style="height:200px;" /></p>
+<ul>
+<li>Then, add the following sensors in the indicated positions on the bottom of the board. These too are attached using hot glue on the sides of the PCBs.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_bottom_sensors.png" style="height:300px;" /></p>
+<ul>
+<li>Finally, use hook and loop tape to attach both the AA battery pack and USB battery pack in the positions shown below.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_bat_pos.png" style="height:300px;" /></p>
+</li>
+<li>
+<p>Wiring (Non-Sensor Cables)</p>
+<ul>
+<li>Connect the USB OTG adapter to the Raspberry Pi Zero's USB host port (inner one; outer one is for power).</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_pi_zero_ports.png" style="height:200px;" /></p>
+<ul>
+<li>
+<p>Then connect the USB A to Mini B cable (or Micro B cable depending on the sensor coprocessor board used). The USB A (rectangle) side should be connected to the OTG adapter on the Raspberry Pi Zero and the Mini / Micro B should be connected to the Arduino Nano (or other board as applicable).</p>
+</li>
+<li>
+<p>The USB Battery pack should have come with a USB A to Micro B cable. This will be used to power the raspberry Pi. Connect the micro B end to the Raspberry Pi's power port. It is recommended to use hot glue to secure this cable on top of the clipboard and let it hang over the back. Only plug this into the battery pack when you are using the robot.</p>
+</li>
+<li>
+<p>Motor battery power should go to the motor bonnet power ports. Place the female barrel jack screw terminal adapter where shown. In each screw terminal port, two jumper wires (male to male) are needed (four wires total). One power and one ground (one each + and -) go to cooresponding places on the motor hat. The other pair goes to the voltage monitor</p>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_barrel_jack_pos.png" style="height:300px;" /></p>
+<ul>
+<li>
+<p>To connect motor battery power, bring the AA battery pack wires around the back of the clipboard and connect the barrel jack to the female one. If your AA battery pack does not have a male barrel jack connector installed, add one with screw terminal blocks (you may need to strip off some wire insulation).</p>
+</li>
+<li>
+<p>When done, the robot should look something like the following</p>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_nonmotor_power_wires.png" style="height:300px;" /></p>
+<ul>
+<li>Finally, connect the motor cables to the correct places on the motor bonnet. Motor numbers are shown below. Order of red and black wires in these ports does not matter. Swapping red and black (for the same motor) will invert its direction. You may want to use hot glue or tape to keep the wires on top of the clipboard.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Motor</th>
+<th>Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Front Left</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Rear Left</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Front Right</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Rear Right</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_motor_wires.png" style="height:300px;" /></p>
+</li>
+<li>
+<p>Wiring (Sensor Cables)</p>
+<ul>
+<li>First, you need to know how breadboards work. Each row of pins is connected internally. To connect a wire to a pin on the Arduino Nano, plug it into the same row on the breadboard.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_howbreadboard.png" style="height:200px;" /></p>
+<ul>
+<li>
+<p>Next, more sensors will need connections to the 3.3V pin (3V3) and GND pins than are available on the breadboard. As such, the two empty rows need to be connected to 3.3V and GND. This provides four extra GND and 3.3V pins. Note that the MPU6050 has a cable that connects to either port on the short sides of the board. This cable has four jumper wire pins on the other end that are connected to the breadboard.</p>
+</li>
+<li>
+<p>Then connect each sensor as follows using jumper wires</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Sensor Pin</th>
+<th>Arduino Nano</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voltage Monitor</td>
+<td>-</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>Voltage Monitor</td>
+<td>S</td>
+<td>A0</td>
+</tr>
+<tr>
+<td>Ultrasonic</td>
+<td>VCC</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>Ultrasonic</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>Ultrasonic</td>
+<td>TRIG</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Ultrasonic</td>
+<td>ECHO</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Left Encoder</td>
+<td>VCC</td>
+<td>3.3V</td>
+</tr>
+<tr>
+<td>Left Encoder</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>Left Encoder</td>
+<td>D0</td>
+<td>D2</td>
+</tr>
+<tr>
+<td>Right Encoder</td>
+<td>VCC</td>
+<td>3.3V</td>
+</tr>
+<tr>
+<td>Right Encoder</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>Right Encoder</td>
+<td>D0</td>
+<td>D3</td>
+</tr>
+<tr>
+<td>Left IR</td>
+<td>VCC</td>
+<td>3.3V</td>
+</tr>
+<tr>
+<td>Left IR</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>Left IR</td>
+<td>OUT</td>
+<td>D11</td>
+</tr>
+<tr>
+<td>Right IR</td>
+<td>VCC</td>
+<td>3.3V</td>
+</tr>
+<tr>
+<td>Right IR</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>Right IR</td>
+<td>OUT</td>
+<td>D12</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>Red Wire</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>Black Wire</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>Yellow Wire</td>
+<td>A5</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>Blue Wire</td>
+<td>A4</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>To connect the sensors on the bottom, it is recommended to bring the wires around the front of the clipboard and use hot glue or tape to keep them from hanging off the robot too much.</p>
+</li>
+<li>
+<p>Twist ties, electrical tape, and hot glue can be used for cable management. When fully wired, it should look something like the following images</p>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_sensor_wires.png" style="height:400px;" /></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../../../img/4wdmini_sensor_wires_bottom.png" style="height:300px;" /></p>
+</li>
+</ol>
+</details>
+<h2 id="mini-clipboard-robot-orange-pi-lite-variant">Mini Clipboard Robot (Orange Pi Lite Variant)</h2>
+<p><img alt="" src="../../../img/4wd_mini_opi_render.png" /></p>
+<p>This is a slightly modified version of the Mini Clipboard Robot using an Orange Pi Lite instead of a Raspberry Pi Zero. Typically, the original variant is recommended, but Raspberry Pis are difficult to get at the time of writing this.</p>
+<details class="info">
+<summary>Parts List Modifications</summary>
+<ul>
+<li>1x <a href="http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Lite.html">Orange Pi Lite</a> instead of Raspberry Pi Zero</li>
+<li>1x <a href="http://www.orangepi.org/html/hardWare/powerSuppliesAndCables/details/Orange-Pi-USB-Turn-DC-4.0-for-Wire.html">USB-A to Barrel Jack Cable</a> to power the Orange Pi<ul>
+<li><a href="https://www.amazon.com/Connector-Charger-Cellphone-Netbook-Electronics/dp/B07PN2B861/">Alternate</a></li>
+<li><a href="https://www.amazon.com/TENINYU-4-0x1-7mm-Barrel-Ampere-Positive/dp/B01MR6DFAD/">Alternate</a></li>
+<li><a href="https://www.amazon.com/4-0mm-Charger-Charging-Compatible-Recorder/dp/B08ZMS1MNJ">Alternate</a></li>
+</ul>
+</li>
+</ul>
+</details>
+<details class="info">
+<summary>Assembly Instruction Modifications</summary>
+<p>Overall, wiring and assembly should follow the same instructions as for the standard Mini Clipboard Robot build. However, the Orange Pi should be placed in the location shown below.</p>
+<p><img alt="" src="../../../img/4wdmini_opi_pos.png" style="height:300px;" /></p>
+<p>Other changes:</p>
+<ul>
+<li>Glue the wireless antenna to the location shown below.</li>
+<li>The Arduino's USB cable should be connected to either of the USB-A ports on the side (not the micro USB port)</li>
+<li>Orange Pi Lite cannot be powered via its micro USB port. It must be powered by the barrel jack connector.</li>
+</ul>
+<p><img alt="" src="../../../img/4wdmini_opi_placement.png" style="height:300px;" /></p>
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

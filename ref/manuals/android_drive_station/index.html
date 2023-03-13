@@ -1,0 +1,1686 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://arpirobot.gitlab.io/ref/manuals/android_drive_station/">
+      
+      
+        <link rel="prev" href="../deploy_tool/">
+      
+      
+        <link rel="next" href="../../projectstructure/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Mobile Drive Station Manual - ArPiRobot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mobile-drive-station-manual" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ArPiRobot" class="md-header__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArPiRobot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mobile Drive Station Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../downloads/v1_0/" class="md-tabs__link">
+        Downloads
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../guide/gettingstarted/" class="md-tabs__link">
+        Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../drive_station/" class="md-tabs__link md-tabs__link--active">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../devs/overview/" class="md-tabs__link">
+        Framework Developers
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ArPiRobot" class="md-nav__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    ArPiRobot
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Downloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Downloads" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Downloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/v1_0/" class="md-nav__link">
+        Version 1.0 Downloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/betas/" class="md-nav__link">
+        Beta Downloads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
+          Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/gettingstarted/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Building a Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Building a Robot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Building a Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/hardware/requiredhardware/" class="md-nav__link">
+        Required Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/hardware/supportedhardware/" class="md-nav__link">
+        Supported Hardware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/hardware/examplebuilds/" class="md-nav__link">
+        Example Robot Builds
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" tabindex="0" aria-expanded="false">
+          Software Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Software Setup" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/setup/setupcomputer/" class="md-nav__link">
+        Setup your Development Computer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/setup/setuppi/" class="md-nav__link">
+        Setup the Robot's Main Computer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" tabindex="0" aria-expanded="false">
+          Programming the Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming the Robot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Programming the Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/createproject/" class="md-nav__link">
+        Creating a Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/movingmotors/" class="md-nav__link">
+        Moving Motors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/drivegamepad/" class="md-nav__link">
+        Driving with Gamepad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/sensordata/" class="md-nav__link">
+        Sensor Data & NetworkTable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/actions/" class="md-nav__link">
+        Using Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/sensoractions/" class="md-nav__link">
+        Using Sensors with Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/pid/" class="md-nav__link">
+        PID Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/examplesrepo/" class="md-nav__link">
+        Examples Repo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" tabindex="0" aria-expanded="false">
+          Other Tasks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other Tasks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Other Tasks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/other/audio/" class="md-nav__link">
+        Playing Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/other/camstream/" class="md-nav__link">
+        Camera Streaming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/other/ssh/" class="md-nav__link">
+        Connect by SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/other/wifidebug/" class="md-nav__link">
+        WiFi Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" tabindex="0" aria-expanded="false">
+          Custom Parts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Parts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Parts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/custom/quadencoder/" class="md-nav__link">
+        TT Motor Quadrature Encoder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="true">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" tabindex="0" aria-expanded="true">
+          Manuals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Manuals" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Manuals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drive_station/" class="md-nav__link">
+        Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy_tool/" class="md-nav__link">
+        Deploy Tool Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Mobile Drive Station Manual
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Mobile Drive Station Manual
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uses-features" class="md-nav__link">
+    Uses / Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing" class="md-nav__link">
+    Installing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-robot" class="md-nav__link">
+    Connecting to the Robot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-and-disabling-the-robot" class="md-nav__link">
+    Enabling and Disabling the Robot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-virtual-gamepad" class="md-nav__link">
+    Using the Virtual Gamepad
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-logs" class="md-nav__link">
+    Reading Logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-battery-voltage" class="md-nav__link">
+    Main battery voltage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-table-indicators" class="md-nav__link">
+    Network Table Indicators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-menu" class="md-nav__link">
+    About Menu
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          Programming Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projectstructure/" class="md-nav__link">
+        Project Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../baserobot/" class="md-nav__link">
+        BaseRobot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arduino/" class="md-nav__link">
+        Arduino Sensor Coprocessor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nettable/" class="md-nav__link">
+        Network Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actionsystem/" class="md-nav__link">
+        Action System
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          CoreLib API Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CoreLib API Docs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          CoreLib API Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/cpp/html/index.html" class="md-nav__link">
+        Doxygen (C++)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/python/html/index.html" class="md-nav__link">
+        Doxygen (Python)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../defaultsettings/" class="md-nav__link">
+        Default Robot Settings
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          Framework Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Framework Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Framework Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/corelib/" class="md-nav__link">
+        Core Library (CoreLib)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/arduinofw/" class="md-nav__link">
+        Arduino Firmware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/os_image_config/" class="md-nav__link">
+        OS Image Description
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/new_release/" class="md-nav__link">
+        Publish New Release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uses-features" class="md-nav__link">
+    Uses / Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing" class="md-nav__link">
+    Installing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-robot" class="md-nav__link">
+    Connecting to the Robot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-and-disabling-the-robot" class="md-nav__link">
+    Enabling and Disabling the Robot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-virtual-gamepad" class="md-nav__link">
+    Using the Virtual Gamepad
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-logs" class="md-nav__link">
+    Reading Logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-battery-voltage" class="md-nav__link">
+    Main battery voltage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-table-indicators" class="md-nav__link">
+    Network Table Indicators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-menu" class="md-nav__link">
+    About Menu
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mobile-drive-station-manual">Mobile Drive Station Manual</h1>
+<p>There is currently no iOS version of the Mobile Drive Station available. An Android phone or tablet is required.</p>
+<p>The mobile version of the <a href="../drive_station/">Drive Station</a> performs the same basic function: allowing you to control the robot, however it was created to allow you to control the robot without the use of a gamepad. The Mobile Drive Station includes an on-screen virtual gamepad which is used to control the robot.</p>
+<p>Currently the Mobile Drive Station lacks some of the features present in the PC <a href="../drive_station/">Drive Station</a> such as editing key/value pairs on the network table and using multiple gamepads, however it does work for basic control of the robot.</p>
+<h2 id="uses-features">Uses / Features</h2>
+<ul>
+<li>Connect to a running robot program over the Raspberry Pi's WiFi network</li>
+<li>Enable and Disable the robot</li>
+<li>Show the status (enabled / disabled) of the robot</li>
+<li>Use the on-screen virtual gamepad to control the robot</li>
+<li>Show logs sent from the robot after connecting the Mobile Drive Station</li>
+<li>Show the value of NetworkTable key / value pairs form the robot</li>
+</ul>
+<h2 id="installing">Installing</h2>
+<p>To install the Mobile Drive Station you will need an Android Device running Android KitKat (version 4.4) or newer. You can download the APK file (see the <a href="../../../downloads/latest/">downloads page</a>) to install on your device. You will need to download this on the device you want to install it on. Then open the file. You will need to enable installing from "Unknown Sources" (meaning not the Play Store) in your settings first. Once installed you can find the app in your device's app drawer.</p>
+<h2 id="connecting-to-the-robot">Connecting to the Robot</h2>
+<p>Before attempting to connect to the robot you will need to make sure your device is connected to the WiFi network created by the robot. You will also generally need to make sure you are disconnected from other networks (including mobile data connections). Your device may notify you that there is no internet access and ask if you want to stay connected to the robot's WiFi network. If this happens choose to stay connected.</p>
+<p>The connect button is the left-most button located along the ActionBar at the top of the app. Tap it to connect to the robot. Once connected this button will become a disconnect button which can be tapped again to disconnect from the robot. If the connect button is not visible check under the three-dots menu in the top right.</p>
+<p>Only one Drive Station can be connected to the robot at a time (this includes PC Drive Stations and Mobile Drive Stations).</p>
+<p>If you are not using the robot's WiFi network or have modified the network configuration on the robot such that the robot has a non-default IP address you can change the IP address used when connecting to the robot in the Drive Station's setting. The settings options is usually under the three-dots menu. Hostnames can also be used and will be resolved using DNS.</p>
+<h2 id="enabling-and-disabling-the-robot">Enabling and Disabling the Robot</h2>
+<p>At the bottom of the screen in the center there are two buttons: one labeled "Disable" and other labeled "Enable". These disable and enable the robot respectively. If the robot is already in the matching state the robot will just ignore the command, however you will still be able to click the button in the Mobile Drive Station.</p>
+<p>Above the Enable and Disable buttons there is a label that indicates the robot's state. It may read "Enabled", "Disabled", or "Not Connected" (if the Drive Station is not connected to the robot). It could also read "Unknown" if connected to the robot, but it is unknown whether the robot is enabled or disabled (this can happen when using older versions of the PythonLib or if network table issues occur).</p>
+<h2 id="using-the-virtual-gamepad">Using the Virtual Gamepad</h2>
+<p>The on-screen virtual gamepad has two joysticks and fourteen buttons (four of which make up the D-Pad). The numbers for these joystick axes and buttons match those shown in the PC <a href="../drive_station/">Drive Station</a>'s Controllers tab, but are also listed below.</p>
+<p><strong>Axes</strong></p>
+<table>
+<thead>
+<tr>
+<th>Axis</th>
+<th>Axis Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left X Axis</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Left Y Axis</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Right X Axis</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Right Y Axis</td>
+<td>3</td>
+</tr>
+<tr>
+<td>L2 Button</td>
+<td>4</td>
+</tr>
+<tr>
+<td>R2 Button</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Just like with a controller where the triggers are digital buttons, the L2 and R2 axes will either be 0 or 1.0 when read by the robot.</p>
+<p><strong>Buttons</strong></p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Button Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1</td>
+</tr>
+<tr>
+<td>X</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Back</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Start</td>
+<td>6</td>
+</tr>
+<tr>
+<td>L1</td>
+<td>9</td>
+</tr>
+<tr>
+<td>R1</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>There is no button 5 as there is no "Guide" button on the virtual gamepad. There are no buttons 7 and 8 as the virtual gamepad's joysticks cannot be pressed as a button.</p>
+<p><strong>Dpad</strong></p>
+<p>Based on the direction buttons pressed on the virtual dpad the gamepad's D-Pad number 0 will have the following values</p>
+<table>
+<thead>
+<tr>
+<th>Direction</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None (Center)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>North</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Northeast</td>
+<td>2</td>
+</tr>
+<tr>
+<td>East</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Southeast</td>
+<td>4</td>
+</tr>
+<tr>
+<td>South</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Southwest</td>
+<td>6</td>
+</tr>
+<tr>
+<td>West</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Northwest</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>Unlike the PC <a href="../drive_station/">Drive Station</a> the virtual gamepad is always "enabled", meaning the Mobile Drive Station will send data for the virtual gamepad to the robot whenever the robot is connected. Data will be sent as gamepad number 0.</p>
+<h2 id="reading-logs">Reading Logs</h2>
+<p>There are two logs visible from the Mobile Drive Station: the robot log and the drive station log. The Mobile Drive Station log will show errors, warnings, and other messages from the Mobile Drive Station, while the robot log will show messages received from the robot (this only displays messages from the robot <em>after</em> the drive station connects).</p>
+<p>To view logs tap the log button in the ActionBar (if it is not visible look under the three-dots menu). A screen with two tabs will open. One will display the robot log. The other will display the Mobile Drive Station log.</p>
+<h2 id="main-battery-voltage">Main battery voltage</h2>
+<p>If a voltage monitor device is designated as the main voltage monitor on the robot, the Drive Station will display the voltage as determined by the sensor in a colored label above the status label. The battery voltage indicator will change color based on the percentage range of the voltage read compared to the nominal (as printed on label) battery voltage. The main battery voltage can be set in the Mobile Drive Station settings (look under the three-dot menu). This voltage should be the nominal voltage of the batteries in use. For example, with 5 AA batteries at 1.5V each the "Main Battery Voltage" should be 5 * 1.5 = 7.5. Most batteries exceed this value when fully charged or new (in the case of non-rechargeable batteries).</p>
+<p>The colors of the indicator by percentage level are as follows</p>
+<ul>
+<li>100% and above = Green</li>
+<li>85%-99% = Yellow</li>
+<li>70%-84% = Orange</li>
+<li>70% and below = Red</li>
+</ul>
+<p>Keep in mind that it is normal for the battery voltage to drop significantly when motor first start moving.</p>
+<h2 id="network-table-indicators">Network Table Indicators</h2>
+<p>An indicator shows the value of a key / value pair from the Network Table. To add an indicator you will first need to open the Network Table screen (second icon from the left in the ActionBar or check under the three-dot menu).</p>
+<p>Once open, the Network Table screen will have its own three-dot menu. Under this menu tap "Add Existing Indicator". This will show a list of Network Table keys known form the robot. Select one to add it to the network table view.</p>
+<p>Indicators will appear in a list on the Network Table screen. If you leave this screen then return you will still have the same indicators in the list. To clear the indicators tap the "Clear Indicators" option in the three-dots menu.</p>
+<p>Unlike with the PC <a href="../drive_station/">Drive Station</a> there is currently no way to view indicators and drive the robot at the same time. There is also no way to create new network table key/value pairs or edit existing ones.</p>
+<h2 id="about-menu">About Menu</h2>
+<p>The about menu can be accessed from the three-dot menu of the main screen. This will open the about screen which shows the Mobile Drive Station's license as well as the licenses of other software it makes use of.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

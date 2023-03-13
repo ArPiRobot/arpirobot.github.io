@@ -1,0 +1,1597 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://arpirobot.gitlab.io/ref/manuals/deploy_tool/">
+      
+      
+        <link rel="prev" href="../drive_station/">
+      
+      
+        <link rel="next" href="../android_drive_station/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Deploy Tool Manual - ArPiRobot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploy-tool-manual" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ArPiRobot" class="md-header__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArPiRobot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploy Tool Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../downloads/v1_0/" class="md-tabs__link">
+        Downloads
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../guide/gettingstarted/" class="md-tabs__link">
+        Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../drive_station/" class="md-tabs__link md-tabs__link--active">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../devs/overview/" class="md-tabs__link">
+        Framework Developers
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ArPiRobot" class="md-nav__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    ArPiRobot
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Downloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Downloads" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Downloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/v1_0/" class="md-nav__link">
+        Version 1.0 Downloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/betas/" class="md-nav__link">
+        Beta Downloads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
+          Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/gettingstarted/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Building a Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Building a Robot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Building a Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/hardware/requiredhardware/" class="md-nav__link">
+        Required Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/hardware/supportedhardware/" class="md-nav__link">
+        Supported Hardware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/hardware/examplebuilds/" class="md-nav__link">
+        Example Robot Builds
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" tabindex="0" aria-expanded="false">
+          Software Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Software Setup" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/setup/setupcomputer/" class="md-nav__link">
+        Setup your Development Computer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/setup/setuppi/" class="md-nav__link">
+        Setup the Robot's Main Computer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" tabindex="0" aria-expanded="false">
+          Programming the Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming the Robot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Programming the Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/createproject/" class="md-nav__link">
+        Creating a Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/movingmotors/" class="md-nav__link">
+        Moving Motors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/drivegamepad/" class="md-nav__link">
+        Driving with Gamepad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/sensordata/" class="md-nav__link">
+        Sensor Data & NetworkTable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/actions/" class="md-nav__link">
+        Using Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/sensoractions/" class="md-nav__link">
+        Using Sensors with Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/pid/" class="md-nav__link">
+        PID Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/programming/examplesrepo/" class="md-nav__link">
+        Examples Repo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" tabindex="0" aria-expanded="false">
+          Other Tasks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other Tasks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Other Tasks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/other/audio/" class="md-nav__link">
+        Playing Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/other/camstream/" class="md-nav__link">
+        Camera Streaming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/other/ssh/" class="md-nav__link">
+        Connect by SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/other/wifidebug/" class="md-nav__link">
+        WiFi Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" tabindex="0" aria-expanded="false">
+          Custom Parts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Parts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Parts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/custom/quadencoder/" class="md-nav__link">
+        TT Motor Quadrature Encoder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="true">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" tabindex="0" aria-expanded="true">
+          Manuals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Manuals" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Manuals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drive_station/" class="md-nav__link">
+        Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Deploy Tool Manual
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Deploy Tool Manual
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uses-features" class="md-nav__link">
+    Uses / Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-running" class="md-nav__link">
+    Installing and Running
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-pc-tab" class="md-nav__link">
+    This PC Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-robot-connection-tab" class="md-nav__link">
+    Connecting to the Robot (Connection Tab)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-program-tab" class="md-nav__link">
+    Robot Program Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-program-log-tab" class="md-nav__link">
+    Robot Program Log Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-status-tab" class="md-nav__link">
+    Robot Status Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-settings-tab" class="md-nav__link">
+    Network Settings Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-stream-tab" class="md-nav__link">
+    Camera Stream Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-menu" class="md-nav__link">
+    About Menu
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android_drive_station/" class="md-nav__link">
+        Mobile Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          Programming Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projectstructure/" class="md-nav__link">
+        Project Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../baserobot/" class="md-nav__link">
+        BaseRobot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arduino/" class="md-nav__link">
+        Arduino Sensor Coprocessor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nettable/" class="md-nav__link">
+        Network Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actionsystem/" class="md-nav__link">
+        Action System
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          CoreLib API Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CoreLib API Docs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          CoreLib API Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/cpp/html/index.html" class="md-nav__link">
+        Doxygen (C++)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/python/html/index.html" class="md-nav__link">
+        Doxygen (Python)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../defaultsettings/" class="md-nav__link">
+        Default Robot Settings
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          Framework Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Framework Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Framework Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/corelib/" class="md-nav__link">
+        Core Library (CoreLib)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/arduinofw/" class="md-nav__link">
+        Arduino Firmware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/os_image_config/" class="md-nav__link">
+        OS Image Description
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/new_release/" class="md-nav__link">
+        Publish New Release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uses-features" class="md-nav__link">
+    Uses / Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-running" class="md-nav__link">
+    Installing and Running
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-pc-tab" class="md-nav__link">
+    This PC Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-robot-connection-tab" class="md-nav__link">
+    Connecting to the Robot (Connection Tab)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-program-tab" class="md-nav__link">
+    Robot Program Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-program-log-tab" class="md-nav__link">
+    Robot Program Log Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-status-tab" class="md-nav__link">
+    Robot Status Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-settings-tab" class="md-nav__link">
+    Network Settings Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-stream-tab" class="md-nav__link">
+    Camera Stream Tab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-menu" class="md-nav__link">
+    About Menu
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="deploy-tool-manual">Deploy Tool Manual</h1>
+<p>The Deploy Tool is a program that runs on your computer with the primary purpose of deploying a robot program written on your computer to the robot via the robot's WiFi network. It is also used to configure the robot's computer.</p>
+<h2 id="uses-features">Uses / Features</h2>
+<ul>
+<li>Connect via SSH<sup>&ast;</sup> to the computer on the robot</li>
+<li>Show the CPU usage, memory usage, and writable status of the computer on the robot</li>
+<li>Show the image version, python version, ArPiRobot-Tools version, and PythonLib version in use on the robot</li>
+<li>Shutdown or reboot the robot, restart the running robot program, and switch between readonly and read/write states</li>
+<li>Deploy a program from your computer to the robot (such that the robot will run the program on boot)</li>
+<li>Configure the robot's computer's WiFi network settings (SSID, password, channel, country) and the hostname</li>
+<li>Send updates to and install updates on the robot</li>
+<li>Pull the full robot program log</li>
+</ul>
+<p><sup>&ast;</sup>This is a way of logging in to the computer over the network. Unlike the <a href="../drive_station/">Drive Station</a> which connects to a running robot program, the Deploy Tool connects to the robot's computer itself.</p>
+<h2 id="installing-and-running">Installing and Running</h2>
+<p>The Deploy Tool is built and available for download in the following formats</p>
+<ul>
+<li><code>.exe</code> file - This is a windows installer that will install the Deploy Tool. Supports 64-bit x86 Windows (x86_64).</li>
+<li><code>.app.zip</code> - This is a zip file containing a macOS app for the Deploy Tool After extracting the zip you can drag the <code>.app</code> file to your Mac's <code>Applications</code> folder so the Deploy Tool will show up in Launchpad. Supports 64-bit x86 macOS (x86_64).</li>
+<li><code>.deb</code> file - This is a package that can be used to install the Deploy Tool on Ubuntu Linux (it should also work on other debian based systems using <code>.deb</code> packages). It depends on the required packages. Supports any architecture where PySide6 is available.</li>
+<li><code>.tar.gz</code> file - This is a package for any linux distribution. Python3, pip, and venv must be installed from system packages. Then, extract the package and run <code>install.sh</code>. Supports any architecture where PySide6 is available. </li>
+</ul>
+<h2 id="this-pc-tab">This PC Tab</h2>
+<p><img alt="" src="../../../img/dt_thispc.png" style="height:400px" /></p>
+<p>The "This PC Tab" is used to view or install different tools required for ArPiRobot program development on your computer.</p>
+<p>The "ArPiRobot Libraries" section is used to install libraries used to develop ArPiRobot programs. Currently, this is just the Core Library (ArPiRobot CoreLib). The version of the currently installed version will be displayed. Next to the version, the "Install Update Package" button can be used to select a downloaded CoreLib zip file to install a new version. This will be installed over any existing version (only one version of the CoreLib can be installed at a time).</p>
+<p>Below this section, there are sections for both C++ and Python development tools. It will show the currently installed version (if any) and sometimes have download links. Additionally, for C++ development tools, there is a button to install ArPiRobot Toolchain packages. Multiple toolchains can be installed (only one per architecture).</p>
+<h2 id="connecting-to-the-robot-connection-tab">Connecting to the Robot (Connection Tab)</h2>
+<p><img alt="" src="../../../img/dt_connection.png" style="height:400px" /></p>
+<p>Until you connect to the robot you will not be able to access most other tabs in the Deploy Tool.</p>
+<p>Before connecting to the robot make sure your computer is connected to the Robot's WiFi network (the access point generated by the robot). Then make sure (in the Deploy Tool) that the robot's IP address, and login credentials are correct (the default settings are listed <a href="../../../defaultsettings/">here</a>). The initial settings are the default ones. If you make any changes to these settings they will be saved and reloaded the next time you run the Deploy Tool.</p>
+<p>Once you are sure the settings are correct click the connect button. The Deploy Tool will login to the robot's computer and the load information about what versions of different components are in use on the robot. Once this is done the "Connecting" progress dialog will close. If the connection fails you will see an error message dialog. After a successful connection the "Connect" button will become a "Disconnect" button, which can be clicked to disconnect from the robot.</p>
+<p>If you experience issues with the Deploy Tool getting disconnected frequently you can check the "Use Longer Timeouts" box on the connection tab, however if you have this issue with the Deploy Tool it is likely that you will run into other network related issues when controlling the robot using the <a href="../drive_station/">Drive Station</a>. You may want to consider changing the robot's WiFi network channel (described in the Network Settings section below) or following some of the <a href="../../../guide/other/wifidebug/">WiFi debugging steps</a>. </p>
+<h2 id="robot-program-tab">Robot Program Tab</h2>
+<p><img alt="" src="../../../img/dt_robotprogram.png" style="height:400px" /></p>
+<p>The robot program tab is used to deploy a robot program to the robot. First you must select the project folder. The project folder contains a file called <code>arpirobot-proj.json</code>. This file determines what files are copied to the robot when deployed.</p>
+<p>Once the project folder is selected click the "Deploy to Robot" button. This will start by making the computer's SD card read/write. Then it will stop the old robot program (this will cause the <a href="../drive_station/">Drive Station</a> to be disconnected if it is connected at the time). Then, the Deploy Tool will copy the required files from the project folder to the robot along with the version of the CoreLib installed on the computer with the robot. The new robot program will then be started. Finally, if the computer was readonly when the Deploy Started, it will be made readonly once again.</p>
+<p>Because the SD card is read/write during deploy, you should <strong>not</strong> unplug the computer while a robot program is being deployed.</p>
+<h2 id="robot-program-log-tab">Robot Program Log Tab</h2>
+<p><img alt="" src="../../../img/dt_programlog.png" style="height:400px" /></p>
+<p>This tab in the Deploy Tool is used to display the <em>full</em> robot program log. This will show the <em>entire</em> log since the program first started, unlike the <a href="../drive_station/">Drive Station</a> which will only show the portion of the log from after it connected. This log will also show errors that occur when <em>starting</em> the robot program. It will contain any output from the robot while running the program and is useful for debugging robot program crashes or finding errors that prevent the program from starting.</p>
+<p>The log is refreshed automatically once every second so you will have a hard time selecting and copying the text before the refresh happens (and unselects all text). Instead you can use the "Copy Log Contents" button to copy the text from the log.</p>
+<h2 id="robot-status-tab">Robot Status Tab</h2>
+<p><img alt="" src="../../../img/dt_status.png" style="height:400px" /></p>
+<p>The robot status tab is divided into three sections. The section at the bottom labeled "Robot Actions" has five buttons that perform different actions on the robot's computer.</p>
+<ul>
+<li>Shutdown will power the robot's computer off (this is the safe way to turn the Pi off if it is read/write)</li>
+<li>Reboot will restart the robot's computer</li>
+<li>Restart Program will stop any running robot program then start it again.</li>
+<li>Make Readonly will make the computer's SD card readonly</li>
+<li>Make Read/Write will make the computer's SD card read/write</li>
+</ul>
+<p>Above the "Robot Actions" section there are two other sections. On the left is the "Robot Status" section. This section will show you the robot's computer's CPU Usage, memory (RAM) usage, and the state of it's SD card's filesystem (readonly or read/write).</p>
+<p>On the right side is a "Versions" panel. This shows three different versions</p>
+<ul>
+<li>Image Version - The name of the image in use on the robot</li>
+<li>ArPiRobot Tools Version - This is the version of the installed ArPiRobot Tools (installed via updates)</li>
+<li>Python Version - The full version number of the python interpreter installed on the robot (this is the version of python that will be used when running robot programs)</li>
+</ul>
+<h2 id="network-settings-tab">Network Settings Tab</h2>
+<p><img alt="" src="../../../img/dt_network.png" style="height:400px" /></p>
+<p>The network settings tab is divided into two sections. First is the "Robot Hostname" section. In this section you can view and/or change the robot's hostname. This is just the name of the robot's computer on the network. There is generally no reason to change this as the computer will have a known IP address (<code>192.168.10.1</code>) on its own WiFi network, however you can edit the hostname then click the "Change &amp; Reboot" button. This will change the hostname then reboot the computer so the change takes effect. This will cause the Deploy Tool to disconnect. After rebooting, you will also likely need to reconnect your computer to the robot's WiFi network before you can reconnect with the Deploy Tool. It may take the computer a couple of minutes to reboot.</p>
+<p>The more frequently used section is the "Robot Access Point" section. In this section you can adjust settings for the WiFi network generated by the robot's computer. The SSID is the network's name. The password is a WPA-2 passphrase (between 8 and 64 characters) for the WiFi network (this is the network's password). The country code is a two letter indication of which country the robot is in use in. This is important as some WiFi channels are not allowed in some countries. By default this is set to "US". You can find a list of country codes <a href="https://www.arubanetworks.com/techdocs/InstantWenger_Mobile/Advanced/Content/Instant%20User%20Guide%20-%20volumes/Country_Codes_List.htm">here</a>. The final setting in this section is the WiFi channel. This is one of the 2.4GHz channels (numbered 1 to 14). In the United States only 1 to 11 are allowed. In most of the rest of the world 1 to 13 are allowed. <em>If you set a channel that is not allowed based on the country code set you will loose access to the robot's WiFi network.</em> The robot will not generate a WiFi network on a channel that is disallowed based on the country code. If you do this you will probably need to re-flash the SD card to recover the robot.</p>
+<h2 id="camera-stream-tab">Camera Stream Tab</h2>
+<p><img alt="" src="../../../img/dt_camstream.png" style="height:400px" /></p>
+<p>The camera stream tab is used to configure and play video streams from cameras connected to the robot's computer. </p>
+<p>The first section, "Stream", is used to configure different camera feeds. Configured camera streams will be shown in the dropdown. The three buttons below can be used to create new feed configurations, delete existing ones, or edit existing ones. The new / edit dialog has many options to configure each individual stream.</p>
+<p>The second section, "Playback", is used to play a selected stream. The stream must first be selected in the dropdown in the "Stream" section. Then, a playback tool can be chosen in the dropdown labeled "Player". Currently three tools are supported (and must be installed separately). These are <a href="https://mpv.io/">mpv</a>, <a href="https://ffmpeg.org/">ffplay</a>, and <a href="http://www.mplayerhq.hu/design7/news.html">mplayer</a>. Mpv is generally recommended, however ffplay may be more compatible in some circumstances.  Once a player is selected, a stream can be opened (played) using the "Play Stream" button.</p>
+<p>Finally, the "System Configuration" section is used to configure both the camera stream service and the rtsp server service. The camera stream service runs all configured streams when started. The rtsp server service starts an rtsp server (used by default to run camera streams). For each, there is a button to manually start or stop the service. Additionally, there is a checkbox to start the service on boot (it is recommended to start both on boot if using camera streams).</p>
+<h2 id="about-menu">About Menu</h2>
+<p>The Deploy Tool's about menu can be accessed by clicking <code>File &gt; About</code>. This will open an about dialog with information about the Deploy Tool's license as well as information about the licenses of third party software used by the Deploy Tool. In addition, in the title of the dialog (as in the title of the main Deploy Tool window) you will see the version number of the Deploy Tool.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>
