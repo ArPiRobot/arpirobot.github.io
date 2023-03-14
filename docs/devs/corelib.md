@@ -10,9 +10,9 @@ The `cpp_library` folder contains the CoreLib source. The CoreLib is implemented
 
     When ready to test you will need to be connected to a robot via its WiFi network (or have some network connection to the Robot's Pi).
 
-    On the development PC run the `dev-deploy.py` script.in the root of the ArPiRobot-CoreLib folder. This will build the CoreLib and copy the build library, development versions of the python bindings and both testrobot projects to `/home/arpirobot/CoreLib-Test` on the robot.
+    On the development PC run the `dev-deploy.py` script (in the root of the ArPiRobot-CoreLib repo). This will build the CoreLib and copy the built library, development versions of the python bindings and both testrobot projects to `/home/arpirobot/CoreLib-Test` on the robot.
 
-    To run the `testrobot` program  login to the Pi via ssh. You can use OpenSSH (Windows 10 and newer) PuTTY on Windows. Other OSes should include OpenSSH. The commands below are OpenSSH commands which will work with OpenSSH on Windows 10, macOS, Linux, etc.
+    To run the `testrobot` program  login to the Pi via ssh.
 
     ```sh
     ssh -l arpirobot 192.168.10.1
