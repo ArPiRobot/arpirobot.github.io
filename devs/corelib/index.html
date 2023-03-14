@@ -1437,8 +1437,8 @@
 <summary>Testing on a Robot</summary>
 <p>A directory called <code>testrobot</code> in the <code>cpp_library</code> directory and <code>testrobot-py</code> in the <code>python_bindings</code> is used to hold a robot program used during development. This directory will be "empty" after cloning the repository. Run <code>setup-testrobot.py</code> to setup the test projects from templates. These can then be edited and will have access to all features available in the local development version of the CoreLib and bindings respectively.</p>
 <p>When ready to test you will need to be connected to a robot via its WiFi network (or have some network connection to the Robot's Pi).</p>
-<p>On the development PC run the <code>dev-deploy.py</code> script.in the root of the ArPiRobot-CoreLib folder. This will build the CoreLib and copy the build library, development versions of the python bindings and both testrobot projects to <code>/home/arpirobot/CoreLib-Test</code> on the robot.</p>
-<p>To run the <code>testrobot</code> program  login to the Pi via ssh. You can use OpenSSH (Windows 10 and newer) PuTTY on Windows. Other OSes should include OpenSSH. The commands below are OpenSSH commands which will work with OpenSSH on Windows 10, macOS, Linux, etc.</p>
+<p>On the development PC run the <code>dev-deploy.py</code> script (in the root of the ArPiRobot-CoreLib repo). This will build the CoreLib and copy the built library, development versions of the python bindings and both testrobot projects to <code>/home/arpirobot/CoreLib-Test</code> on the robot.</p>
+<p>To run the <code>testrobot</code> program  login to the Pi via ssh.</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-l<span class="w"> </span>arpirobot<span class="w"> </span><span class="m">192</span>.168.10.1
 </code></pre></div>
 <p>Then (in the SSH session after logging in as the user <code>arpirobot</code>) run the following command to stop the deployed robot program (only one program can run at a time)</p>
