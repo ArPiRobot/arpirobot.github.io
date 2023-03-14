@@ -36,19 +36,11 @@ Depending on the programming language you plan to use you will need to install c
 
 C++ development requires you have a compiler, linker, and necessary C libraries to build code for a different system (a Raspberry Pi). This collection of software is called a toolchain. Since software is being built for a different system than you are building it on, this is called cross compilation. 
 
-Prebuilt cross compiler toolchains for the Raspberry Pi are available to be downloaded from the [ArPiRobot-Toolchain Releases](https://github.com/ArPiRobot/ArPiRobot-Toolchain/releases) page. Prebuilt toolchains are currently provided for Windows (64-bit), macOS (x86_64 = 64-bit Intel CPUs), and Linux (x86_64). For other systems, you can build a cross compiler toolchain yourself, but you might prefer to use Python to program robots instead. Building a cross compiler can be a complex task.
+Prebuilt cross compiler toolchains are available to be downloaded from the [downloads page](../../downloads/latest.md) page. Prebuilt toolchains are currently provided for Windows (x86_64), macOS (x86_64), and Linux (x86_64). *Use the revision of a toolchain linked on the downloads page.* New releases of the framework may use new revisions of a toolchain too.
 
-A toolchain is intended to be used with a specific version of the Raspberry Pi OS (ArPiRobot images are modified versions of the Raspberry Pi OS). Each release of the Raspberry Pi OS is based on a version of debian, identified by the version's codename. For example, on the downloads page, if an image's RasPiOS version is listed as `2020-05-27-raspios-buster-lite`, the image is based on Raspberry Pi OS Buster. "Buster" is the codename. As such, you need a toolchain designed to target a Raspberry Pi OS Buster system. All prebuilt ArPiRobot toolchains are listed under a specific codename. While it may be possible to use an older toolchain (for example, using a RasPiOS 10 "buster" toolchain and running the program on RasPiOS 11 "bullseye"), it is generally not recommended.
+Note that there toolchains provided for multiple target architectures (eg `armv6`, `aarch64`). Download the one matching the architecture of your main computer. Find this information where you download the OS image for your computer (again see downloads page for OS images).
 
-Alternatively, prebuilt toolchains can be downloaded from other sources. These toolchains have not been tested with the ArPiRobot project, but there is no reason they should not work. However, be aware that not all toolchains support the Pi Zero (`armv6` architecture). The ArPiRobot images are also 32-bit images, so a compiler targeting a 64-bit system will not work.
-
-- SysProgs Toolchains (Windows Machine):  [link](https://gnutoolchains.com/raspberry/)
-    - These are compatible with the Pi Zero
-- raspberry-pi-cross-compilers project (Linux Machine): [link](https://github.com/abhiTronix/raspberry-pi-cross-compilers)
-    - There are multiple builds of each toolchain. Generally, use the same version of gcc as is installed on the Pi.
-    - When you download the toolchain, you will be taken to a sourceforge page with multiple folders. If you want the version with Pi zero support, choose that folder.
-
-The ArPiRobot toolchain packages can be installed using the Deploy Tool. Other toolchains must be installed manually. The toolchain should be placed in `$HOME/.arpirobot/toolchain`. The `toolchain` directory should contain `bin`, `include`, `lib`, etc (they should not be in another subdirectory). With third party toolchains it may be necessary to run an installer or extract it elsewhere and copy the correct directories.
+The ArPiRobot toolchain packages can be installed using the Deploy Tool on the "This PC" tab.
 
 
 **CMake**
@@ -59,7 +51,7 @@ You will also need CMake installed. As usual, if using Linux or BSD you should b
 
 Make should be installed by default on macOS and Linux (if not use system packages). 
 
-For windows, the easiest method is to use download from the [ezwin32 project](https://downloads.sourceforge.net/project/ezwinports/make-4.3-without-guile-w32-bin.zip). This will download a zip file, not an installer. You need to extract the zip somewhere on your system and add the "bin" folder to your `PATH` environment variable. Alternatively, the [scoop](https://scoop.sh/) package manager for windows includes make and will automatically add it to your path.
+For windows, the easiest method is to use download from [here](https://gnuwin32.sourceforge.net/packages/make.htm) and run the installer. You must add `C:\Program Files (x86)\GnuWin32\bin` to the `PATH` environment variable. Alternatively, the [scoop](https://scoop.sh/) package manager for windows can install make and will automatically add it to your path when installed.
 
 ### Python
 
