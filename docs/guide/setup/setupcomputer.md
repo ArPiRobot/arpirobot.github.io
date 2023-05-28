@@ -74,7 +74,7 @@ Download the exe installers for both (see [downloads page](../../downloads/lates
 
 **macOS**
 
-Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app is *unsigned*, so when you first run it you will have to approve the app in System Preferences > Security.
+Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app is *unsigned*, so the first time your run it open "Applications" in Finder. Then right click the app and choose open. This is only necessary the first time you run the app.
 
 **Linux**
 
