@@ -17,7 +17,7 @@
         <link rel="next" href="../setuppi/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7a7fce14.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.402914a4.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -1508,7 +1508,8 @@
 <p><strong>macOS</strong></p>
 <p>Download the <code>.zip</code> macOS packages (see <a href="../../../downloads/latest/">downloads page</a>). Extract the zip files and move the resulting <code>.app</code> files to the <code>Applications</code> folder. Each app is <em>unsigned</em>, so the first time your run it open "Applications" in Finder. Then right click the app and choose open. This is only necessary the first time you run the app.</p>
 <p><strong>Linux</strong></p>
-<p>A <code>.deb</code> package has been provided for Ubuntu. It has generally been tested on the latest LTS release. While not guaranteed it should still work on other ubuntu releases or other distributions that use deb packages. If you have trouble with the <code>.deb</code> package or use a different distribution, a <code>.tar.gz</code> package is provided that should work on any linux distro (however, you must install python3 before using). If using the <code>.tar.gz</code> package run the <code>install.sh</code> script after extracting.</p>
+<p>You will need to install python3 with pip and venv using your distribution's package manager. For Debian, Ubuntu and Linux Mint this can be done by running <code>sudo apt install python3 python3-pip python3-venv</code>.</p>
+<p>Then, download the <code>.run</code> installer. Run it using the command <code>sudo sh filename.run</code> (change filename to the name of the file you downloaded).</p>
 <p><strong>Other</strong></p>
 <p>The drive station and deploy tool are written in python and require python 3.6 or newer. In addition, several python packages are required (most notably <code>PySide6</code> and <code>PySDL2</code>). Download the zip of the repository (source code) and extract it on your system. Then install the required python packages (optionally in a virtual environment) by running <code>pip install -r requirements.txt</code> in the directory where you extracted the program. Then run the program with <code>python src/main.py</code>. Note that often one must replace <code>python</code> in the above commands with <code>python3</code>, but this is system dependent.</p>
 <h2 id="arpirobot-corelib-update-package">ArPiRobot CoreLib Update Package</h2>
@@ -1554,7 +1555,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.407015b8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b78d2936.min.js"></script>
       
     
   </body>

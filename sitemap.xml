@@ -2,212 +2,212 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://arpirobot.github.io/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/defaultsettings/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/none/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/devs/arduinofw/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/devs/camstream/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/devs/corelib/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/devs/new_release/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/devs/os_image_config/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/devs/overview/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/devs/toolchains/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/downloads/betas-old/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/downloads/betas/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/downloads/latest/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/downloads/v1_0/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/gettingstarted/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/custom/quadencoder/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/hardware/examplebuilds/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/hardware/requiredhardware/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/hardware/supportedhardware/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/other/audio/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/other/camstream/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/other/ssh/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/other/wifidebug/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/programming/actions/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/programming/createproject/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/programming/drivegamepad/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/programming/examplesrepo/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/programming/movingmotors/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/programming/pid/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/programming/sensoractions/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/programming/sensordata/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/setup/setupcomputer/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/guide/setup/setuppi/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/actionsystem/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/arduino/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/baserobot/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/devices/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/nettable/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/projectstructure/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/manuals/android_drive_station/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/manuals/deploy_tool/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arpirobot.github.io/ref/manuals/drive_station/</loc>
-         <lastmod>2023-05-28</lastmod>
+         <lastmod>2023-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
