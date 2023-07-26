@@ -78,7 +78,9 @@ Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.
 
 **Linux**
 
-A `.deb` package has been provided for Ubuntu. It has generally been tested on the latest LTS release. While not guaranteed it should still work on other ubuntu releases or other distributions that use deb packages. If you have trouble with the `.deb` package or use a different distribution, a `.tar.gz` package is provided that should work on any linux distro (however, you must install python3 before using). If using the `.tar.gz` package run the `install.sh` script after extracting.
+You will need to install python3 with pip and venv using your distribution's package manager. For Debian, Ubuntu and Linux Mint this can be done by running `sudo apt install python3 python3-pip python3-venv`.
+
+Then, download the `.run` installer. Run it using the command `sudo sh filename.run` (change filename to the name of the file you downloaded).
 
 
 **Other**
