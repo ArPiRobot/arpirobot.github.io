@@ -78,9 +78,7 @@ Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.
 
 **Linux**
 
-You will need to install python3 with pip and venv using your distribution's package manager. For Debian, Ubuntu and Linux Mint this can be done by running `sudo apt install python3 python3-pip python3-venv`.
-
-Then, download the `.run` installer. Run it using the command `sudo sh filename.run` (change filename to the name of the file you downloaded).
+For Debian and derivatives (including Ubuntu and Linux Mint) there is a `.deb` package that can be installed. For other distributions, you will need to install python3 with pip and venv using your distribution's package manager. Then, download the `.run` installer. Run it using the command `sudo sh filename.run` (change filename to the name of the file you downloaded).
 
 
 **Other**
