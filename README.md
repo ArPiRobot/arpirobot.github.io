@@ -1,14 +1,19 @@
 # ArPiRobot Docs
 
+*Uses mkdocs with mkdocs-material theme and mike for versioning of docs.*
+
 ```sh
 python3 -m pip install -r requirements.txt -U
-mkdocs serve
+mike serve
 ```
 
 ## Deploying
 
 ```sh
-mkdocs gh-deploy
+# Eg mike deploy --push --update-aliases 1.0 latest
+# Change version as needed
+# Add latest tag to latest docs (only for new version of docs, not updating existing version's docs)
+mike deploy --push --update-aliases [version] [latest]
 ```
 
 ## Updating Doxygen

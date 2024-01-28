@@ -9,7 +9,7 @@ repo_url: https://github.com/orgs/ArPiRobot/
 theme:
   name: material
   logo: img/framework-logo/robot-nobg.png
-  custom_dir: theme_overrides
+  custom_dir: docs/theme_overrides
   features:
     - navigation.tabs
   palette: 
