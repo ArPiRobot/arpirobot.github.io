@@ -1,1 +1,0 @@
-Using pngquant to compress images before pushing to github.

@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['quadencoder_128',['QuadEncoder',['../classarpirobot_1_1QuadEncoder.html',1,'arpirobot::QuadEncoder'],['../classarpirobot_1_1QuadEncoder.html#af1493b84e23cd9d39f16fcfa6461664b',1,'arpirobot::QuadEncoder::QuadEncoder(int pinA, int pinB, bool useInternalPullup, bool createDevice=true, int deviceId=-1)'],['../classarpirobot_1_1QuadEncoder.html#acfda85c0f08c3ef59bd84d1e5a631091',1,'arpirobot::QuadEncoder::QuadEncoder(std::string pinA, int pinB, bool useInternalPullup, bool createDevice=true, int deviceId=-1)'],['../classarpirobot_1_1QuadEncoder.html#a8cd20b90e26102fa9d1498ee85da2774',1,'arpirobot::QuadEncoder::QuadEncoder(int pinA, std::string pinB, bool useInternalPullup, bool createDevice=true, int deviceId=-1)'],['../classarpirobot_1_1QuadEncoder.html#a7fc2feef47ad1e1878d88fa5a0b84b3a',1,'arpirobot::QuadEncoder::QuadEncoder(std::string pinA, std::string pinB, bool useInternalPullup, bool createDevice=true, int deviceId=-1)']]]
-];
