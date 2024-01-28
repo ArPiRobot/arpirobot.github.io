@@ -17,7 +17,7 @@ Finally, consider what your robot code will be doing. Most robot code is not per
 
 In order to write code you will need a text editor or code editor installed on your system. While you can use any text editor or code editor it is generally recommended to use Visual Studio Code (VSCode). VSCode can run on Windows, macOS, or Linux systems and has extensions to support both Python and C++ development. Additionally, an ArPiRobot extension for VSCode exists that enables creation of robot projects.
 
-Visual Studio Code can be downloaded from [https://code.visualstudio.com/](https://code.visualstudio.com/). Once installed it is recommended to install the ArPiRobot extension. Currently, this extension is not on the VSCode marketplace so you will need to download it from the [downloads](../../downloads/latest.md) page. The downloaded file will be a `.vsix` file. It can be installed by opening VSCode, navigating to the extensions panel (fourth item down on the left menu bar) and choosing `Install from VSIX...` in the menu in the top right of the extensions panel.
+Visual Studio Code can be downloaded from [https://code.visualstudio.com/](https://code.visualstudio.com/). Once installed it is recommended to install the ArPiRobot extension. Currently, this extension is not on the VSCode marketplace so you will need to download it from the [downloads](../../downloads.md) page. The downloaded file will be a `.vsix` file. It can be installed by opening VSCode, navigating to the extensions panel (fourth item down on the left menu bar) and choosing `Install from VSIX...` in the menu in the top right of the extensions panel.
 
 Finally, it is recommended to install the following extensions (depending on which programming language you plan to use). These can be installed from the VSCode marketplace by searching in the extensions panel.
 
@@ -36,7 +36,7 @@ Depending on the programming language you plan to use you will need to install c
 
 C++ development requires you have a compiler, linker, and necessary C libraries to build code for a different system (a Raspberry Pi). This collection of software is called a toolchain. Since software is being built for a different system than you are building it on, this is called cross compilation. 
 
-Prebuilt cross compiler toolchains are available to be downloaded from the [downloads page](../../downloads/latest.md) page. Prebuilt toolchains are currently provided for Windows (x86_64), macOS (x86_64), and Linux (x86_64). *Use the revision of a toolchain linked on the downloads page.* New releases of the framework may use new revisions of a toolchain too.
+Prebuilt cross compiler toolchains are available to be downloaded from the [downloads page](../../downloads.md) page. Prebuilt toolchains are currently provided for Windows (x86_64), macOS (x86_64), and Linux (x86_64). *Use the revision of a toolchain linked on the downloads page.* New releases of the framework may use new revisions of a toolchain too.
 
 Note that there toolchains provided for multiple target architectures (eg `armv6`, `aarch64`). Download the one matching the architecture of your main computer. Find this information where you download the OS image for your computer (again see downloads page for OS images).
 
@@ -55,7 +55,7 @@ For windows, the easiest method is to use download from [here](https://gnuwin32.
 
 ### Python
 
-You will need to install Python on your PC. You can download python installers for windows and macOS from [python.org](https://www.python.org/downloads/). Generally, it is recommended to use a version of python that matches the first two numbers of the minimum version on the Pi (listed on the [downloads](../../downloads/latest.md) page under the OS image section). For example, if the "minimum python version" is listed as `3.7` it is recommended to install a python `3.7.x` version (where `x` can be any number). Note that some images will have newer python versions (the specific python version on the robot depends on which main computer your robot uses).
+You will need to install Python on your PC. You can download python installers for windows and macOS from [python.org](https://www.python.org/downloads/). Generally, it is recommended to use a version of python that matches the first two numbers of the minimum version on the Pi (listed on the [downloads](../../downloads.md) page under the OS image section). For example, if the "minimum python version" is listed as `3.7` it is recommended to install a python `3.7.x` version (where `x` can be any number). Note that some images will have newer python versions (the specific python version on the robot depends on which main computer your robot uses).
 
 Alternatively, you can use the [Homebrew](https://brew.sh/) package manger on macOS or the [scoop](https://scoop.sh/) package manager on windows to install specific versions of python.
 
@@ -70,11 +70,11 @@ The Deploy Tool connects to the Raspberry Pi on the robot. The Deploy Tool is us
 
 **Windows**
 
-Download the exe installers for both (see [downloads page](../../downloads/latest.md)). Run the installer. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.
+Download the exe installers for both (see [downloads page](../../downloads.md)). Run the installer. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.
 
 **macOS**
 
-Download the `.zip` macOS packages (see [downloads page](../../downloads/latest.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app is *unsigned*, so the first time your run it open "Applications" in Finder. Then right click the app and choose open. This is only necessary the first time you run the app.
+Download the `.zip` macOS packages (see [downloads page](../../downloads.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app is *unsigned*, so the first time your run it open "Applications" in Finder. Then right click the app and choose open. This is only necessary the first time you run the app.
 
 **Linux**
 
@@ -88,6 +88,6 @@ The drive station and deploy tool are written in python and require python 3.6 o
 
 ## ArPiRobot CoreLib Update Package
 
-Finally, it is necessary to download a CoreLib update package (see [downloads page](../../downloads/latest.md)). The CoreLib update package contains a build of the ArPiRobot core library that can run on the robot along with other files needed when writing programs for the robot (in both C++ and Python). The same CoreLib update package is used for Python and C++. A CoreLib update package must be installed on your PC before deploying a program to the robot.
+Finally, it is necessary to download a CoreLib update package (see [downloads page](../../downloads.md)). The CoreLib update package contains a build of the ArPiRobot core library that can run on the robot along with other files needed when writing programs for the robot (in both C++ and Python). The same CoreLib update package is used for Python and C++. A CoreLib update package must be installed on your PC before deploying a program to the robot.
 
 To install the downloaded update package open the Deploy Tool (installed perviously) and select the "This PC" tab. Click the "Install Update Package" button and select the CoreLib update package that was downloaded.

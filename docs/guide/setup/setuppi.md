@@ -1,7 +1,7 @@
 
 Before using the robot, you need to setup the Main Computer (often a Raspberry Pi) with the custom ArPiRobot OS image. 
 
-For most supported devices this just entails downloading an OS image and flashing it to an SD card. OS images for supported boards can be found on the [downloads page](../../downloads/latest.md).
+For most supported devices this just entails downloading an OS image and flashing it to an SD card. OS images for supported boards can be found on the [downloads page](../../downloads.md).
 
 The ArPiRobot OS images are modified versions of operating system images for the board that include required software and proper configuration for use on an ArPiRobot robot.
 
@@ -14,7 +14,7 @@ Before starting you will need a computer (laptop or desktop used for development
 
 ## Choosing an Image
 
-It is always recommended to use the latest ArPiRobot image, available on the [downloads page](../../downloads/latest.md). Make sure to download the correct image for your main computer board. Also note that some images are distributed as multiple files (all parts must be downloaded).
+It is always recommended to use the latest ArPiRobot image, available on the [downloads page](../../downloads.md). Make sure to download the correct image for your main computer board. Also note that some images are distributed as multiple files (all parts must be downloaded).
 
 
 ## Flash the Image

@@ -3,7 +3,7 @@ A "main computer" on the robot (a single board computer running a Linux based op
 
 On ArPiRobot robots, an Arduino acts as a "coprocessor" that connects to and gets data from various sensors. It may also perform some calculations using the data. It then provides information from the sensors to the main computer of the robot.
 
-This is done by using the ArPiRobot Arduino Firmware (see [downloads page](../downloads/latest.md)). The firmware supports several Arduino compatible development boards (see the repository on [GitHub](https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware#arpirobot-arduinofirmware) for a list).
+This is done by using the ArPiRobot Arduino Firmware (see [downloads page](../downloads.md)). The firmware supports several Arduino compatible development boards (see the repository on [GitHub](https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware#arpirobot-arduinofirmware) for a list).
 
 ## ArduinoInterface
 

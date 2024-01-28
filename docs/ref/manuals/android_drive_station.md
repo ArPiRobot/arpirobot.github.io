@@ -14,7 +14,7 @@ Currently the Mobile Drive Station lacks some of the features present in the PC 
 - Show the value of NetworkTable key / value pairs form the robot
 
 ## Installing
-To install the Mobile Drive Station you will need an Android Device running Android KitKat (version 4.4) or newer. You can download the APK file (see the [downloads page](../../downloads/latest.md)) to install on your device. You will need to download this on the device you want to install it on. Then open the file. You will need to enable installing from "Unknown Sources" (meaning not the Play Store) in your settings first. Once installed you can find the app in your device's app drawer.
+To install the Mobile Drive Station you will need an Android Device running Android KitKat (version 4.4) or newer. You can download the APK file (see the [downloads page](../../downloads.md)) to install on your device. You will need to download this on the device you want to install it on. Then open the file. You will need to enable installing from "Unknown Sources" (meaning not the Play Store) in your settings first. Once installed you can find the app in your device's app drawer.
 
 ## Connecting to the Robot
 Before attempting to connect to the robot you will need to make sure your device is connected to the WiFi network created by the robot. You will also generally need to make sure you are disconnected from other networks (including mobile data connections). Your device may notify you that there is no internet access and ask if you want to stay connected to the robot's WiFi network. If this happens choose to stay connected.

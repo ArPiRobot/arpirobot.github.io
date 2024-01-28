@@ -8,7 +8,7 @@ Many sensors do not work well with the Raspberry Pi directly. In some cases the 
 
 ### ArPiRobot Arduino Firmware
 
-The ArPiRobot Arduino Firmware is a program written using the Arduino framework. This allows the firmware itself to support many different Arduino boards (and other microcontroller development boards too) using the same program. The source code for the firmware can be downloaded on the [downloads page](../../downloads/latest.md). To build the firmware and upload it to your board, you need to have the board and a USB cable to connect it to your computer. You also need to have the [Arduino IDE](https://www.arduino.cc/en/software) installed. Once installed, open the program.
+The ArPiRobot Arduino Firmware is a program written using the Arduino framework. This allows the firmware itself to support many different Arduino boards (and other microcontroller development boards too) using the same program. The source code for the firmware can be downloaded on the [downloads page](../../downloads.md). To build the firmware and upload it to your board, you need to have the board and a USB cable to connect it to your computer. You also need to have the [Arduino IDE](https://www.arduino.cc/en/software) installed. Once installed, open the program.
 
 Depending on your board you may also need to install a boards package to support your board in the Arduino IDE. Follow the instructions below for the board you are using. *Note: This may not include instructions for every supported board. Check the README on the [ArPiRobot Arduino Firmware GitHub](https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware) repo for more information about supported boards.*
 

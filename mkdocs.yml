@@ -36,14 +36,9 @@ markdown_extensions:
   - pymdownx.details
 plugins:
   - search
-  - redirects:
-      redirect_maps:
-        'downloads/latest.md': 'downloads/v1_0.md'
 nav:
     - Home: index.md
-    - Downloads: 
-        - Version 1.0 Downloads: downloads/v1_0.md
-        - Beta Downloads: downloads/betas.md
+    - Downloads: downloads.md
     - Guide:
         - Getting Started: guide/gettingstarted.md
         - Building a Robot:

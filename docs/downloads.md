@@ -1,6 +1,4 @@
-# Version 1.0 Downloads
-
-This page contains download links for Version 1.0 of the ArPiRobot Framework. All components will be `1.0.x` versions. The `x` is a revision number and may change as components are updated. Generally, such updates will only be bugfixes. New features will typically not be introduced until a new version of the framework (eg `1.1`).
+# Downloads
 
 ## Development PC Downloads
 

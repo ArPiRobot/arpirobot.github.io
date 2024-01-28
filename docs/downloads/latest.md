@@ -1,1 +1,0 @@
-<!--Empty file used to make links work properly. Redirect defined in mkdocs.yml-->

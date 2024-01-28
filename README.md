@@ -4,7 +4,9 @@
 
 ```sh
 python3 -m pip install -r requirements.txt -U
-mike serve
+
+# Note: mike serve doesn't show live edited stuff. It locally hosts deployed stuff.
+mkdocs serve
 ```
 
 ## Deploying
