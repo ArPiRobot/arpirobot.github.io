@@ -1,0 +1,1998 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://arpirobot.github.io/1.0/guide/programming/drivegamepad/">
+      
+      
+        <link rel="prev" href="../movingmotors/">
+      
+      
+        <link rel="next" href="../sensordata/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
+    
+    
+      
+        <title>Driving with Gamepad - ArPiRobot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.402914a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#driving-with-gamepad" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ArPiRobot" class="md-header__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArPiRobot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Driving with Gamepad
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/orgs/ArPiRobot/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../downloads/v1_0/" class="md-tabs__link">
+        Downloads
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../gettingstarted/" class="md-tabs__link md-tabs__link--active">
+        Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ref/manuals/drive_station/" class="md-tabs__link">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../devs/overview/" class="md-tabs__link">
+        Framework Developers
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ArPiRobot" class="md-nav__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    ArPiRobot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/orgs/ArPiRobot/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Downloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Downloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/v1_0/" class="md-nav__link">
+        Version 1.0 Downloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/betas/" class="md-nav__link">
+        Beta Downloads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gettingstarted/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Building a Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Building a Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/requiredhardware/" class="md-nav__link">
+        Required Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/supportedhardware/" class="md-nav__link">
+        Supported Hardware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/examplebuilds/" class="md-nav__link">
+        Example Robot Builds
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          Software Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/setupcomputer/" class="md-nav__link">
+        Setup your Development Computer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/setuppi/" class="md-nav__link">
+        Setup the Robot's Main Computer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          Programming the Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Programming the Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../createproject/" class="md-nav__link">
+        Creating a Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../movingmotors/" class="md-nav__link">
+        Moving Motors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Driving with Gamepad
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Driving with Gamepad
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motor-positions-and-directions" class="md-nav__link">
+    Motor Positions and Directions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drive-helpers" class="md-nav__link">
+    Drive Helpers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-gamepad" class="md-nav__link">
+    Using a Gamepad
+  </a>
+  
+    <nav class="md-nav" aria-label="Using a Gamepad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gamepads-in-the-drive-station" class="md-nav__link">
+    Gamepads in the Drive Station
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-gamepad-to-code" class="md-nav__link">
+    Adding a Gamepad to Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driving-the-robot" class="md-nav__link">
+    Driving the Robot
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#axis-transforms-advanced-topic" class="md-nav__link">
+    Axis Transforms (Advanced Topic)
+  </a>
+  
+    <nav class="md-nav" aria-label="Axis Transforms (Advanced Topic)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-axis-transform" class="md-nav__link">
+    What is an Axis Transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#square-root-axis-transform" class="md-nav__link">
+    Square Root Axis Transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cubic-axis-transform" class="md-nav__link">
+    Cubic Axis Transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deadbands-with-axis-transforms" class="md-nav__link">
+    Deadbands with Axis Transforms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-axis-transforms-in-code" class="md-nav__link">
+    Using Axis Transforms in Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensordata/" class="md-nav__link">
+        Sensor Data & NetworkTable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actions/" class="md-nav__link">
+        Using Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensoractions/" class="md-nav__link">
+        Using Sensors with Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pid/" class="md-nav__link">
+        PID Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examplesrepo/" class="md-nav__link">
+        Examples Repo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          Other Tasks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Other Tasks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/audio/" class="md-nav__link">
+        Playing Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/camstream/" class="md-nav__link">
+        Camera Streaming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/ssh/" class="md-nav__link">
+        Connect by SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/wifidebug/" class="md-nav__link">
+        WiFi Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+          Custom Parts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Parts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/quadencoder/" class="md-nav__link">
+        TT Motor Quadrature Encoder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          Manuals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Manuals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/drive_station/" class="md-nav__link">
+        Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/deploy_tool/" class="md-nav__link">
+        Deploy Tool Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/android_drive_station/" class="md-nav__link">
+        Mobile Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          Programming Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/projectstructure/" class="md-nav__link">
+        Project Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/baserobot/" class="md-nav__link">
+        BaseRobot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/arduino/" class="md-nav__link">
+        Arduino Sensor Coprocessor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/nettable/" class="md-nav__link">
+        Network Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/actionsystem/" class="md-nav__link">
+        Action System
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          CoreLib API Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          CoreLib API Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/cpp/html/index.html" class="md-nav__link">
+        Doxygen (C++)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/python/html/index.html" class="md-nav__link">
+        Doxygen (Python)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../defaultsettings/" class="md-nav__link">
+        Default Robot Settings
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Framework Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Framework Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/corelib/" class="md-nav__link">
+        Core Library (CoreLib)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/arduinofw/" class="md-nav__link">
+        Arduino Firmware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/os_image_config/" class="md-nav__link">
+        OS Image Description
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/new_release/" class="md-nav__link">
+        Publish New Release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motor-positions-and-directions" class="md-nav__link">
+    Motor Positions and Directions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drive-helpers" class="md-nav__link">
+    Drive Helpers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-gamepad" class="md-nav__link">
+    Using a Gamepad
+  </a>
+  
+    <nav class="md-nav" aria-label="Using a Gamepad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gamepads-in-the-drive-station" class="md-nav__link">
+    Gamepads in the Drive Station
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-gamepad-to-code" class="md-nav__link">
+    Adding a Gamepad to Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driving-the-robot" class="md-nav__link">
+    Driving the Robot
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#axis-transforms-advanced-topic" class="md-nav__link">
+    Axis Transforms (Advanced Topic)
+  </a>
+  
+    <nav class="md-nav" aria-label="Axis Transforms (Advanced Topic)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-axis-transform" class="md-nav__link">
+    What is an Axis Transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#square-root-axis-transform" class="md-nav__link">
+    Square Root Axis Transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cubic-axis-transform" class="md-nav__link">
+    Cubic Axis Transform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deadbands-with-axis-transforms" class="md-nav__link">
+    Deadbands with Axis Transforms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-axis-transforms-in-code" class="md-nav__link">
+    Using Axis Transforms in Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="driving-with-gamepad">Driving with Gamepad</h1>
+<p>Now that motor objects are setup and you know the basics of moving motors, it is time to begin driving the robot.</p>
+<h2 id="motor-positions-and-directions">Motor Positions and Directions</h2>
+<p>Before starting to drive the robot, it is important to know which motor object in code cooresponds to which physical motor. For example, on a two wheel drive robot, you need to know if motor A is left or right (and the same for motor B). For a four wheel drive robot, you needs to know which motor is front left, front right, rear left, and rear right. This is easily determined by examining the wiring on your robot (follow the wires from a specific motor to the motor controller to determine which motor it is). Once you've done this, it is a good idea to change the name of your motor variables to be something more relevant. For example on a two wheel drive robot instead of <code>motor_a</code> and <code>motor_b</code> you could use <code>lmotor</code> and <code>rmotor</code> (left and right motor). On a four wheel drive robot you could use <code>flmotor</code>, <code>frmotor</code>, <code>rlmotor</code>, and <code>rrmotor</code> (front left, front right, rear left, rear right). You can rename the motor objects using something like what is shown below</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python (<code>robot.py</code>)</label><label for="__tabbed_1_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Somewhere in __init__</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">motor1</span> <span class="o">=</span> <span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">motor2</span> <span class="o">=</span> <span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">motor3</span> <span class="o">=</span> <span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">motor4</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Change to something like the following</span>
+<span class="c1"># Make sure to use the correct numbers for each motor</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">flmotor</span> <span class="o">=</span> <span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">frmotor</span> <span class="o">=</span> <span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">rlmotor</span> <span class="o">=</span> <span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">rrmotor</span> <span class="o">=</span> <span class="o">...</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// At the bottom of the Robot class declaration</span>
+<span class="n">MotorType</span><span class="w"> </span><span class="n">motor1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="n">MotorType</span><span class="w"> </span><span class="n">motor2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="n">MotorType</span><span class="w"> </span><span class="n">motor3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="n">MotorType</span><span class="w"> </span><span class="n">motor4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+
+<span class="c1">// Change to something like the following</span>
+<span class="c1">// Make sure to use the correct numbers for each motor</span>
+<span class="c1">// This may also be in the initializer list of a constructor </span>
+<span class="c1">// depending on which motor controller you use</span>
+<span class="n">MotorType</span><span class="w"> </span><span class="n">flmotor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="n">MotorType</span><span class="w"> </span><span class="n">frmotor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="n">MotorType</span><span class="w"> </span><span class="n">rlmotor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="n">MotorType</span><span class="w"> </span><span class="n">rrmotor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>To check if you have each motor correct add a line like the following to <code>robot_enabled</code> / <code>robotEnabled</code> for the front left motor (or just the left motor on a two-wheel drive robot). Build (if required) and deploy the robot code. When enabled, the front left (or left) wheel should spin. Repeat this for all motors and make changes as needed.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python (<code>robot.py</code>)</label><label for="__tabbed_2_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">robot_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">flmotor</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">robotEnabled</span><span class="p">(){</span>
+<span class="w">    </span><span class="n">flmotor</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Now that it is easy to identify which motor is which from your code, it should be easy to make sure all motors spin the "correct" direction. In this case "correct" means that all motors spin the same direction when given a positive value. Often it is best to choose positive to be forward, therefore for this section "correct" will mean that a motor spins such that the robot would move forward when given a positive speed.</p>
+<p>To determine which motors need to be inverted, replace <code>robot_enabled</code> / <code>robotEnabled</code> with the following. If you have a two wheel drive robot, change the motor names and only keep two lines.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python (<code>robot.py</code>)</label><label for="__tabbed_3_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">robot_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">flmotor</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">frmotor</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rlmotor</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rrmotor</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">robotEnabled</span><span class="p">(){</span>
+<span class="w">    </span><span class="n">flmotor</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">frmotor</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rlmotor</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rrmotor</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Build and deploy the program to the robot. When enabled all motors should begin spinning. If any are spinning the incorrect direction (incorrect meaning they would make the robot move in reverse) add a line like the following in <code>robot_started</code> / <code>robotStarted</code> to invert its direction.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Python (<code>robot.py</code>)</label><label for="__tabbed_4_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># If front left motor is incorrect add the following</span>
+<span class="c1"># Change motor name as needed</span>
+<span class="c1"># Add for multiple motors if needed</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">flmotor</span><span class="o">.</span><span class="n">set_inverted</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// If front left motor is incorrect add the following</span>
+<span class="c1">// Change motor name as needed</span>
+<span class="c1">// Add for multiple motors if needed</span>
+<span class="n">flmotor</span><span class="p">.</span><span class="n">setInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>After adding these lines, rebuild and deploy. Enable the robot again and all motors should move the robot forward.</p>
+<h2 id="drive-helpers">Drive Helpers</h2>
+<p>Now that you know which motor is which and all spin the correct direction, the problem becomes how to choose a speed for the motors. The plan is to use a gamepad to drive the robot, but what specifically should control the motor movement? One method would be to drive the robot at a fixed speed when a button is held, but that is relatively limited. Another option would be to use a joystick to control a specific motor, or a set of motors, however this may require multiple lines of code to do the same thing to multiple motors or it may require calculations to determine a motor's speed. Two common control schemes are described below</p>
+<p><strong>Tank Drive</strong> is a method where you use the vertical axes on a controller to control the robot. The left stick is moved up / down to control the speed of the left motors. The right stick is moved up / down to control the speed of the right motors. This method requires no special calculations as the motor's speeds come directly from axis values, but you may have to set the same speed to many motors at a time, making it easy to miss one and have an issue in your code. Additionally, this method of control is not very "easy" to use.</p>
+<p><strong>Arcade Drive</strong> is a method where a vertical axis controls the robot's speed and a horizontal axis controls the robot's rotation. These could be two axes on the same stick or on different sticks. Often, the left stick would be moved up / down to control the robot's forward speed and the right stick would be moved left / right to rotate the robot. This is a more intuitive method of controlling the robot, however it requires that some calculations be performed using the joystick values to determine how fast each motor should spin.</p>
+<p>As explained above, using joystick axes to control the robot is sometimes difficult, however the ArPiRobot core library (corelib) provides "drive helpers" to enable these control schemes to work easily. The following code will focus on the Arcade drive scheme as it is easier to use and often preferred. The corelib provides a <code>ArcadeDriveHelper</code> object which manages motor speeds. The drive helper is given a "speed" and "rotation". It calculates how fast each motor should be moving based off this and controls the motor speeds. To use <code>ArcadeDriveHelper</code> add the following to the top of <code>robot.py</code> or <code>robot.hpp</code> with the other imports / includes.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python (<code>robot.py</code>)</label><label for="__tabbed_5_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">arpirobot.core.drive</span> <span class="kn">import</span> <span class="n">ArcadeDriveHelper</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/core/drive/ArcadeDriveHelper.hpp&gt;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then add the following at the indicated location</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python (<code>robot.py</code>)</label><label for="__tabbed_6_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add in __init__ with other devices (after motors)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">drive_helper</span> <span class="o">=</span> <span class="n">ArcadeDriveHelper</span><span class="p">(</span>
+    <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">flmotor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rlmotor</span><span class="p">],</span>           <span class="c1"># Left motors</span>
+    <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">frmotor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rrmotor</span><span class="p">]</span>            <span class="c1"># Right motors</span>
+<span class="p">)</span>
+
+<span class="c1"># For a 2-wheel robot use this instead</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">drive_helper</span> <span class="o">=</span> <span class="n">ArcadeDriveHelper</span><span class="p">(</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lmotor</span><span class="p">,</span>                            <span class="c1"># Left motor</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rmotor</span>                             <span class="c1"># Right motor</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add with device declarations (after motors)</span>
+<span class="n">ArcadeDriveHelper</span><span class="w"> </span><span class="n">driveHelper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="n">flmotor</span><span class="p">,</span><span class="w"> </span><span class="n">rlmotor</span><span class="p">},</span><span class="w">                     </span><span class="c1">// Left motors</span>
+<span class="w">    </span><span class="p">{</span><span class="n">frmotor</span><span class="p">,</span><span class="w"> </span><span class="n">rrmotor</span><span class="p">}</span><span class="w">                      </span><span class="c1">// Right motors</span>
+<span class="p">};</span>
+
+<span class="c1">// For a 2-wheel robot use this instead</span>
+<span class="n">ArcadeDriveHelper</span><span class="w"> </span><span class="n">driveHelper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lmotor</span><span class="p">,</span><span class="w">                                 </span><span class="c1">// Left motor</span>
+<span class="w">    </span><span class="n">rmotor</span><span class="w">                                  </span><span class="c1">// Right motor</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Finally, replace <code>robot_enabled</code> / <code>robotEnabled</code> with the following to test the drive helper</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python (<code>robot.py</code>)</label><label for="__tabbed_7_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">robot_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">rotation</span> <span class="o">=</span> <span class="mf">0.25</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">drive_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">rotation</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">robotEnabled</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.25</span><span class="p">;</span>
+<span class="w">    </span><span class="n">driveHelper</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="n">rotation</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>When the robot is enabled (build and deploy the code first) the robot will drive forward with a slight ark due to the rotation. This <code>update</code> function will be used later with gamepad data to drive the robot. In addition, if you ever want to change the speed value without affecting rotation you can use <code>update_speed</code> / <code>updateSpeed</code>. Likewise the rotation can be changed without affecting the speed using <code>update_rotation</code> / <code>updateRotation</code>.</p>
+<p>The <code>TankDriveHelper</code> is also included in the corelib and provides support for the tank drive scheme described above. It works similarly to <code>ArcadeDriveHelp</code>, but instead of speed and rotation you provide a left speed and right speed to <code>update(left_speed, right_speed)</code>. This drive helper will not be used in this guide as the arcade drive scheme is more intuitive.</p>
+<h2 id="using-a-gamepad">Using a Gamepad</h2>
+<p>Now that your code contains a drive helper, all that remains to drive the robot is to get gamepad data from your computer to the robot. The Drive Station is used to accomplish this. </p>
+<h3 id="gamepads-in-the-drive-station">Gamepads in the Drive Station</h3>
+<p>Before modifying the robot code, open the Drive Station on your computer and connect your gamepad. You should see it listed in the bottom left of the drive station.</p>
+<p><img alt="" src="../../../img/ds_gamepad.png" style="height:400px" /></p>
+<p>Each gamepad in the drive station is assigned a number based on its order in this list. The top gamepad is number zero. You will often only have one gamepad, but if you have multiple you can drag them to reorder them in the list and assign different numbers. For now, we will only be using one gamepad, number zero, so make sure the gamepad you plan to use is at the top of the list if you have multiple.</p>
+<p>Additionally, each gamepad has a checkbox  by its name. By default, all gamepads are unchecked. When this is the case, the Drive Station will not send data from these gamepads to the robot. <em>You must check the box beside any gamepad you plan to use.</em> You will have to check this box by your gamepad each time you start the Drive Station.</p>
+<p>If you click on the name of the gamepad in the list you will be able to see a response to pressing buttons or moving the sticks to the right of the gamepad list in the Drive Station. Each axis and button also has a number assigned to it. These numbers are shown in the drive station. If you are unsure what number a certain button is, press the button and look for which indicator lights up. The number will be listed on the lit indicator. Likewise, you can move an axis and see which indicator changes to determine axis numbers.</p>
+<p><img alt="" src="../../../img/ds_gamepad_actions.png" style="height:400px" /></p>
+<h3 id="adding-a-gamepad-to-code">Adding a Gamepad to Code</h3>
+<p>To get gamepad data in your code you need to add a <code>Gamepad</code> object. First add the import / include with the others at the top of <code>robot.py</code> or <code>robot.hpp</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python (<code>robot.py</code>)</label><label for="__tabbed_8_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">arpirobot.devices.gamepad</span> <span class="kn">import</span> <span class="n">Gamepad</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/devices/gamepad/Gamepad.hpp&gt;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The add a new device to your <code>Robot</code> class</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python (<code>robot.py</code>)</label><label for="__tabbed_9_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add below drive_helper in __init__</span>
+<span class="c1"># Using gamepad number 0</span>
+<span class="c1"># Change number in constructor to use other gamepad number</span>
+<span class="c1"># You can create multiple gamepad objects to use multiple gamepads</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">gp0</span> <span class="o">=</span> <span class="n">Gamepad</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add below driveHelper in class declaration</span>
+<span class="c1">// Using gamepad number 0</span>
+<span class="c1">// Change number in constructor to use other gamepad number</span>
+<span class="c1">// You can create multiple gamepad objects to use multiple gamepads</span>
+<span class="n">Gamepad</span><span class="w"> </span><span class="n">gp0</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This <code>Gamepad</code> object has several functions to get data from the gamepad (note that the drive station must have the corresponding number gamepad checked).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Python</label><label for="__tabbed_10_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><code>get_axis(axis_num, deadband)</code>: Get the value of the given axis (between -1 and 1). A deadband is optional. A deadband is a "minimum magnitude" of axis values. Any axis value who's absolute value is smaller than the deadband is treated as zero. For example, if the deadband is 0.1 and the axis reads 0.05 or -0.05 the get_axis function will return 0 not 0.05 or -0.05. Only once the axis reads 0.1 will the value returned by get_axis increase above zero. A deadband is useful as a stick is rarely (if ever) going to read exactly zero when not pressed.</li>
+<li><code>get_button(button_num</code>): Determine if the given button is pressed (True = pressed, False = not pressed).</li>
+<li><code>get_dpad(dpad_num</code>): Get the value of the current dpad. Note that currently only one dpad is supported so calling this with any dpad_num other than 0 will always return 0. The direction is given as a number between 0 and 8 (see Drive Station for what these numbers mean).</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>getAxis(axisNum, deadband)</code>: Get the value of the given axis (between -1 and 1). A deadband is optional. A deadband is a "minimum magnitude" of axis values. Any axis value who's absolute value is smaller than the deadband is treated as zero. For example, if the deadband is 0.1 and the axis reads 0.05 or -0.05 the getAxis function will return 0 not 0.05 or -0.05. Only once the axis reads 0.1 will the value returned by getAxis increase above zero. A deadband is useful as a stick is rarely (if ever) going to read exactly zero when not pressed.</li>
+<li><code>getButton(buttonNum</code>): Determine if the given button is pressed (true = pressed, false = not pressed).</li>
+<li><code>getDpad(dpadNum</code>): Get the value of the current dpad. Note that currently only one dpad is supported so calling this with any dapdNum other than 0 will always return 0. The direction is given as a number between 0 and 8 (see Drive Station for what these numbers mean).</li>
+</ul>
+</div>
+</div>
+</div>
+<p>The above functions can be used to get gamepad data and use it to move the robot.</p>
+<h3 id="driving-the-robot">Driving the Robot</h3>
+<p>Up until now, the <code>enabled_periodic</code> / <code>enabledPeriodic</code> function has not been used. However, to drive the robot with a gamepad it must repeatedly check the current gamepad data and adjust motor speeds based on it. Since motors can only be moved while the robot is enabled, <code>enabled_periodic</code> / <code>enabledPeriodic</code> is the place for this code to go. To drive the robot the following set of tasks will be performed in <code>enabled_periodic</code> / <code>enabledPeriodic</code></p>
+<ul>
+<li>Get the value for the speed axis</li>
+<li>Get the value for the rotation axis</li>
+<li>Update the speed of all motors using the drive helper</li>
+</ul>
+<p>Before this code can be added, however, it is necessary to choose a speed axis and a rotation axis. The speed axis will be the left y (vertical) axis or axis number 1. The rotation axis will be the right x (horizontal) axis or axis number 2. To make the code more readable and easier to change later if desired, instead of using the numbers directly constants are created for the axis numbers in <code>robot.py</code> or <code>robot.hpp</code>. Additionally, a deadband of 0.1 will be used as this should be sufficient for most controllers. If a deadband were not used the motors would still try to move slightly even when the joysticks were not pressed.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Python (<code>robot.py</code>)</label><label for="__tabbed_11_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add in __init__ after device variables</span>
+<span class="c1"># Note that python does not support actual constants</span>
+<span class="c1"># We will treat any variable in all caps as a constant</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">SPEED_AXIS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">ROTATE_AXIS</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">DEADBAND</span> <span class="o">=</span> <span class="mf">0.1</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add in the Robot class declaration after device variables</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">SPEED_AXIS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ROTATE_AXIS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">DEADBAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then the <code>enabled_periodic</code> / <code>enabledPeriodic</code> function can be implemented as follows. Also, remove anything in <code>robot_enabled</code> / <code>robotEnabled</code> that may be left from testing drive helpers (<code>robot_enabled</code> / <code>robotEnabled</code> should be an empty function now; in python use "pass").</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Python (<code>robot.py</code>)</label><label for="__tabbed_12_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">enabled_periodic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Get value for the speed axis</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SPEED_AXIS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEADBAND</span><span class="p">)</span>
+
+    <span class="c1"># Get value for the rotation axis</span>
+    <span class="n">rotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ROTATE_AXIS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEADBAND</span><span class="p">)</span>
+
+    <span class="c1"># Update speed of all motors using drive helper</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">drive_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">rotation</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">enabledPeriodic</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// Get value for speed axis</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gp0</span><span class="p">.</span><span class="n">getAxis</span><span class="p">(</span><span class="n">SPEED_AXIS</span><span class="p">,</span><span class="w"> </span><span class="n">DEADBAND</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Get value for the rotation axis</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gp0</span><span class="p">.</span><span class="n">getAxis</span><span class="p">(</span><span class="n">ROTATE_AXIS</span><span class="p">,</span><span class="w"> </span><span class="n">DEADBAND</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Update speed of all motors using drive helper</span>
+<span class="w">    </span><span class="n">driveHelper</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="n">rotation</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Build and deploy this program to the robot. Open the Drive Station, connect your gamepad and enable it in the drive station (check the box by the gamepad). Also make sure it is gamepad number 0. Then, enable the robot. You should now be able to drive the robot using the gamepad, however directions are probably incorrect.</p>
+<p>Most likely, your robot drives forward when you press the left stick down. Recall that the motors were configured such that positive was forward. However, most gamepads "up" on the stick is negative = reverse. To fix this, multiply the speed by negative 1.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Python (<code>robot.py</code>)</label><label for="__tabbed_13_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SPEED_AXIS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEADBAND</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gp0</span><span class="p">.</span><span class="n">getAxis</span><span class="p">(</span><span class="n">SPEED_AXIS</span><span class="p">,</span><span class="w"> </span><span class="n">DEADBAND</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>If your rotation is also the incorrect direction this can also be fixed the same way (multiply the rotation variable by negative 1). If you are unable to fix directions with multiplications by negative 1, you have motors numbered incorrectly (motor numbers for left and right motors are mixed up).</p>
+<h2 id="axis-transforms-advanced-topic">Axis Transforms (Advanced Topic)</h2>
+<p><strong><em>Note: This section describes in detail what an axis transform is, how they work mathematically, and why certain transforms are selected for rotation and speed. If you don't care about that, skip to the bottom of this section. Code is shown for how to use the transforms. You can implement this code and just experiment with them to see if you like the results.</em></strong></p>
+<h3 id="what-is-an-axis-transform">What is an Axis Transform</h3>
+<p>An Axis Transform is an object that alters how an axis's value changes as the joystick is moved. It can be considered a mathematical function that takes joystick position (-1 to 1) as an input and returns an altered output to change the "shape" of the joystick graph. Unaltered, the value returned by <code>get_axis</code> / <code>getAxis</code> (referred to as the output value) is the same as the value obtained from the drive station (referred to as the input value) provided no deadband is used. This can be considered a simple linear function.</p>
+<p><img alt="" src="../../../img/linear.png" style="height:300px" /></p>
+<p>An axis transform alters this linear relation to have a different shape. Two axis transforms are currently implemented: a cubic transform and a square root transform.</p>
+<h3 id="square-root-axis-transform">Square Root Axis Transform</h3>
+<p>The square root transform is very simple. The output is the square root of the input (note that for negative inputs, the output is the negative of the square root of the absolute value of the input). The original intention behind this transform is for use with rotating the robot. In practice, it is often the case that when rotating the robot "slow" speeds of rotation are used little if at all. Often rotating the robot even a slow speed requires a significant amount of rotation power. As such, it is desirable that when the joystick is moved a little distance from center (zero) the rotation power (output of <code>get_axis</code> / <code>getAxis</code>) should increase rapidly. However, once the rotation power reaches a certain point small changes in power can quickly alter rotation speed. As such, as the joystick is further from center it is desired to slow the rate of change of output power to increase controllability. This describes a square root graph. Effectively, this means that the joystick must only be pressed a small distance to begin rotating and once rotation starts a large range of the joystick is dedicated to fine tuning of rotation speed making it easy to achieve a constant rotation speed.</p>
+<p><img alt="" src="../../../img/sqrt.png" style="height:300px" /></p>
+<p>Consider the example where 30% power is necessary to begin rotating the robot. It is desirable to quickly reach this level once the joystick begins to move. With a linear relation (no transform) this is acheived once the stick is pressed 30% of its range of motion, leaving 70% of the range of motion to "fine tune" rotation speed. In contrast, with the square root relation 30% output is reached when the stick has moved to only 9% of its range of motion. This leaves 91% of the range of motion to fine tune rotation. As such, the joystick can be held "less accurately" in the same spot while still maintaining the "same" rotation rate. While an increase of 21% may seem fairly small, the joysticks on gamepads often have a small range of motion. </p>
+<p><img alt="" src="../../../img/linear_rot_demo.png" style="height:300px" /></p>
+<p><img alt="" src="../../../img/sqrt_rot_demo.png" style="height:300px" /></p>
+<p>As is seen in the above graphs, when used for the rotation axis, a square root transform reduces the distance over which there is no effect and increases the "fine tune" region making it easier to both start rotation and to maintain a "fixed" rotation speed.</p>
+<h3 id="cubic-axis-transform">Cubic Axis Transform</h3>
+<p>In addition to the square root transform, a cubic transform is implemented. The cubic transform is designed for use with a drive speed axis and is more complex than the square root transform. The idea behind the square root transform is that most often when driving the robot two speeds are used: full speed and a "medium" speed that is sufficient to keep the robot moving, but allow maneuvering the robot to be simpler. Rarely are speeds between these used (other than of course stopped). Attaining full speed is easy, simply press the joystick to the limit. However, attaining and maintaining a "medium" controllable speed is more difficult as there is a very limited range of stick motion that is allowable. The goal of the cubic transform is to extend the area of the stick that results in the "medium" speed. This speed will be referred to as the "mid power" or "midPower". Additionally, it is sometimes the case that a minimum speed exist when driving the robot (generally desirable if the robot does not start moving until a fairly high amount of power is applied). This will be referred to as the "min power" or "minPower".</p>
+<p>Since the goal of the cubic transform is to dedicate a large area of the joystick to the mid power, it follows that going from zero output to mid power must happen fairly rapidly. The curve then flattens out around mid power before rising fairly rapidly to full power. This is achieved by fitting a cubic curve to the following set of points</p>
+<table>
+<thead>
+<tr>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>minPower</td>
+</tr>
+<tr>
+<td>0.45</td>
+<td>midPower</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>midPower</td>
+</tr>
+<tr>
+<td>0.55</td>
+<td>midPower</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Note that when the input is zero the output is minPower. As such using a cubic axis transform with a non-zero minPower requires use of a deadband (otherwise the robot will always move). Additionally, the cubic transform is constructed only for positive inputs. When inputs are negative the transform operates on their absolute value. The output of the transform matches the sign of the input (in other words, the cubic function is rotated about the origin into the third quadrant to yield the correct response for negative inputs). This results in a curve looking something like the following (in the below example minPower = 0.2 and minPower = 0.6)</p>
+<p><img alt="" src="../../../img/cubic.png" style="height:300px" /></p>
+<p>Analyzing this curve it is seen that approximately a third of the joystick's range of motion will achieve the "controllable" speed discussed before.</p>
+<p><img alt="" src="../../../img/cubic_demo.png" style="height:300px" /></p>
+<h3 id="deadbands-with-axis-transforms">Deadbands with Axis Transforms</h3>
+<p>As mentioned previously, using the cubic transform with a non-zero minPower requires use of a deadband. Additionally, it is rarely desirable to use any transform without a deadband (for the same reasons as it is not desirable to use a linear relation without a deadband). However, this brings up the question of how the deadband is applied and how that affects the transforms. In the <code>Gamepad</code>'s <code>get_axis</code> / <code>getAxis</code> function, the deadband is applied before the transform. If the value is within the deadband (too small) the function returns zero and never applies the transform. Once the deadband is crossed the input value is actually altered. A deadband alters the input value from a controller to make it smooth. If it was unaltered there would be a jump as the deadband is crossed (see picture below). The deadband alters the input by adjusting it to fit a line from (deadband, 0) to (1, 1) as shown in the second picture (or those equivalent points in the third quadrant). In the pictures below the deadband is 0.1</p>
+<p><img alt="" src="../../../img/baddeadband.png" style="height:300px" /></p>
+<p><img alt="" src="../../../img/gooddeadband.png" style="height:300px" /></p>
+<p>The second graph is how the deadband works in the ArPiRobot CoreLib. The values on this adjusted line are then passed to the transforms. In effect, this compresses any transform slightly horizontally just as the deadband does for a line. Some examples of this are shown below for both the square root and cubic transforms seen earlier. Note that the "jump" in the cubic with deadbad graph is due to the minPower of the cubic. If a minPower of zero were used there would be no jump.</p>
+<p><img alt="" src="../../../img/deadbandcubic.png" style="height:300px" /></p>
+<p><img alt="" src="../../../img/deadbandsqrt.png" style="height:300px" /></p>
+<h3 id="using-axis-transforms-in-code">Using Axis Transforms in Code</h3>
+<p>Implementing either of the two axis transforms described above is simple as they are builtin to the core library. The following shows how to add a Cubic transform (minPower = 0, midPower = 0.5) to the speed axis and a square root transform to the rotate axis.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Python (<code>robot.py</code>)</label><label for="__tabbed_14_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add with imports at top</span>
+<span class="kn">from</span> <span class="nn">arpirobot.core.drive</span> <span class="kn">import</span> <span class="n">CubicAxisTransform</span><span class="p">,</span> <span class="n">SquareRootAxisTransform</span>
+
+<span class="c1"># Add in robot_started</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="o">.</span><span class="n">set_axis_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SPEED_AXIS</span><span class="p">,</span> <span class="n">CubicAxisTransform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">gp0</span><span class="o">.</span><span class="n">set_axis_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ROTATE_AXIS</span><span class="p">,</span> <span class="n">SquareRootAxisTransform</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add with includes at top</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/core/drive/CubicAxisTransform.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/core/drive/SquareRootAxisTransform.hpp&gt;</span>
+
+<span class="c1">// Add in robotStarted</span>
+<span class="n">gp0</span><span class="p">.</span><span class="n">setAxisTransform</span><span class="p">(</span><span class="n">SPEED_AXIS</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">CubicAxisTransform</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">));</span>
+<span class="n">gp0</span><span class="p">.</span><span class="n">setAxisTransform</span><span class="p">(</span><span class="n">ROTATE_AXIS</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SquareRootAxisTransform</span><span class="o">&gt;</span><span class="p">());</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b78d2936.min.js"></script>
+      
+    
+  </body>
+</html>

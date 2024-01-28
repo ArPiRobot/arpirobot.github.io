@@ -1,0 +1,1902 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://arpirobot.github.io/1.0/guide/programming/sensordata/">
+      
+      
+        <link rel="prev" href="../drivegamepad/">
+      
+      
+        <link rel="next" href="../actions/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
+    
+    
+      
+        <title>Sensor Data & NetworkTable - ArPiRobot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.402914a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sensor-data-networktable" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ArPiRobot" class="md-header__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArPiRobot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sensor Data & NetworkTable
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/orgs/ArPiRobot/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../downloads/v1_0/" class="md-tabs__link">
+        Downloads
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../gettingstarted/" class="md-tabs__link md-tabs__link--active">
+        Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ref/manuals/drive_station/" class="md-tabs__link">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../devs/overview/" class="md-tabs__link">
+        Framework Developers
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ArPiRobot" class="md-nav__button md-logo" aria-label="ArPiRobot" data-md-component="logo">
+      
+  <img src="../../../img/framework-logo/robot-nobg.png" alt="logo">
+
+    </a>
+    ArPiRobot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/orgs/ArPiRobot/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Downloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Downloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/v1_0/" class="md-nav__link">
+        Version 1.0 Downloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../downloads/betas/" class="md-nav__link">
+        Beta Downloads
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gettingstarted/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Building a Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Building a Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/requiredhardware/" class="md-nav__link">
+        Required Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/supportedhardware/" class="md-nav__link">
+        Supported Hardware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/examplebuilds/" class="md-nav__link">
+        Example Robot Builds
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          Software Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/setupcomputer/" class="md-nav__link">
+        Setup your Development Computer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/setuppi/" class="md-nav__link">
+        Setup the Robot's Main Computer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          Programming the Robot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Programming the Robot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../createproject/" class="md-nav__link">
+        Creating a Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../movingmotors/" class="md-nav__link">
+        Moving Motors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drivegamepad/" class="md-nav__link">
+        Driving with Gamepad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Sensor Data & NetworkTable
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Sensor Data & NetworkTable
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-interface-sensors" class="md-nav__link">
+    Arduino Interface &amp; Sensors
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino Interface &amp; Sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arpirobot-arduino-firmware" class="md-nav__link">
+    ArPiRobot Arduino Firmware
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-sensors" class="md-nav__link">
+    Connecting Sensors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-robot-code" class="md-nav__link">
+    The Robot Code
+  </a>
+  
+    <nav class="md-nav" aria-label="The Robot Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-arduino-interface" class="md-nav__link">
+    Creating Arduino Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-sensors" class="md-nav__link">
+    Creating the Sensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-sensor-values" class="md-nav__link">
+    Getting sensor values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-table" class="md-nav__link">
+    Network Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doing-something-useful" class="md-nav__link">
+    Doing something Useful
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actions/" class="md-nav__link">
+        Using Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensoractions/" class="md-nav__link">
+        Using Sensors with Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pid/" class="md-nav__link">
+        PID Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examplesrepo/" class="md-nav__link">
+        Examples Repo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          Other Tasks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Other Tasks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/audio/" class="md-nav__link">
+        Playing Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/camstream/" class="md-nav__link">
+        Camera Streaming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/ssh/" class="md-nav__link">
+        Connect by SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/wifidebug/" class="md-nav__link">
+        WiFi Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+          Custom Parts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Parts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/quadencoder/" class="md-nav__link">
+        TT Motor Quadrature Encoder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          Manuals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Manuals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/drive_station/" class="md-nav__link">
+        Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/deploy_tool/" class="md-nav__link">
+        Deploy Tool Manual
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/manuals/android_drive_station/" class="md-nav__link">
+        Mobile Drive Station Manual
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          Programming Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/projectstructure/" class="md-nav__link">
+        Project Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/baserobot/" class="md-nav__link">
+        BaseRobot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/arduino/" class="md-nav__link">
+        Arduino Sensor Coprocessor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/nettable/" class="md-nav__link">
+        Network Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ref/actionsystem/" class="md-nav__link">
+        Action System
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          CoreLib API Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          CoreLib API Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/cpp/html/index.html" class="md-nav__link">
+        Doxygen (C++)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../doxygen-docs/python/html/index.html" class="md-nav__link">
+        Doxygen (Python)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../defaultsettings/" class="md-nav__link">
+        Default Robot Settings
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Framework Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Framework Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/corelib/" class="md-nav__link">
+        Core Library (CoreLib)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/arduinofw/" class="md-nav__link">
+        Arduino Firmware
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/os_image_config/" class="md-nav__link">
+        OS Image Description
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devs/new_release/" class="md-nav__link">
+        Publish New Release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-interface-sensors" class="md-nav__link">
+    Arduino Interface &amp; Sensors
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino Interface &amp; Sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arpirobot-arduino-firmware" class="md-nav__link">
+    ArPiRobot Arduino Firmware
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-sensors" class="md-nav__link">
+    Connecting Sensors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-robot-code" class="md-nav__link">
+    The Robot Code
+  </a>
+  
+    <nav class="md-nav" aria-label="The Robot Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-arduino-interface" class="md-nav__link">
+    Creating Arduino Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-sensors" class="md-nav__link">
+    Creating the Sensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-sensor-values" class="md-nav__link">
+    Getting sensor values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-table" class="md-nav__link">
+    Network Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doing-something-useful" class="md-nav__link">
+    Doing something Useful
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sensor-data-networktable">Sensor Data &amp; NetworkTable</h1>
+<p>Now that your robot can move around, it's time to add support for sensors. Sensors enable the robot to determine information about itself or the world around it. In this section, we will add support for measuring motor battery voltage, measuring distance to an object with an ultrasonic sensor, and measuring robot rotation using an IMU (gyroscope + accelerometer).</p>
+<h2 id="arduino-interface-sensors">Arduino Interface &amp; Sensors</h2>
+<p>Many sensors do not work well with the Raspberry Pi directly. In some cases the Pi may lack support for certain functions (such as analog readings) or in other cases a Pi may not provide fine enough control over timing (a big issue for something like a gyroscope). Often, a microcontroller is better suited to working with sensors. Arduinos are microcontroller development boards. Being a development board, it contains extra circuitry needed to program the device and make it easy to interface with. This makes an Arduino an ideal device to use on the robot as a sensor <em>coprocessor</em>. The Arduino manages the sensors and collects the required data and sends it back to the Raspberry Pi where it can be used in the robot program. The Arduino communicates with the Pi using a UART (a Serial port) over USB. This allows the Arduino to be connected to the Pi and powered from the Pi by a USB cable.</p>
+<h3 id="arpirobot-arduino-firmware">ArPiRobot Arduino Firmware</h3>
+<p>The ArPiRobot Arduino Firmware is a program written using the Arduino framework. This allows the firmware itself to support many different Arduino boards (and other microcontroller development boards too) using the same program. The source code for the firmware can be downloaded on the <a href="../../../downloads/latest/">downloads page</a>. To build the firmware and upload it to your board, you need to have the board and a USB cable to connect it to your computer. You also need to have the <a href="https://www.arduino.cc/en/software">Arduino IDE</a> installed. Once installed, open the program.</p>
+<p>Depending on your board you may also need to install a boards package to support your board in the Arduino IDE. Follow the instructions below for the board you are using. <em>Note: This may not include instructions for every supported board. Check the README on the <a href="https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware">ArPiRobot Arduino Firmware GitHub</a> repo for more information about supported boards.</em></p>
+<details>
+<summary>Arduino Nano &amp; Clones</summary>
+<p>The Arduino Nano (and clones of the Arduino Nano) have support builtin to the Arduino IDE. Under the <code>Tools</code> menu change the board to "Arduino Nano" (under a category called <code>Arduino AVR Boards</code>). If you are using a clone (or an older nano) you probably need to change the <code>Processor</code> to <code>ATmega328P (Old Bootloader)</code>.</p>
+<p><img alt="" src="../../../img/arduino_nano.png" style="height:250px" /></p>
+</details>
+<details>
+<summary>Arduino Nano Every</summary>
+<p>The Arduino Nano Every is officially supported, but the <code>megaAVR</code> boards package must be installed first. Under <code>Tools &gt; Board</code> open <code>Board Manger...</code>. Search <code>megaAVR</code> and install the <code>Arduino megaAVR Boards</code> package (latest version). </p>
+<p><img alt="" src="../../../img/megaavr_install.png" style="height:250px" /></p>
+<p>Then, close the boards manager and select <code>Arduino Nano Every</code> under <code>Tools &gt; Board</code> (under the <code>Arduino megaAVR Boards</code> category).</p>
+<p><img alt="" src="../../../img/arduino_nanoevery.png" style="height:250px" /></p>
+</details>
+<details>
+<summary>Raspberry Pi Pico</summary>
+<p>The Raspberry Pi Pico is supported by the ArPiRobot Arduino Firmware <em>using the <a href="https://github.com/earlephilhower/arduino-pico">arduino-pico</a> core, </em><em>not</em><em> the official Mbed OS core</em>. Follow the <a href="https://arduino-pico.readthedocs.io/en/latest/install.html#installing-via-arduino-boards-manager">install instructions</a> for <code>arduino-pico</code>. Then choose <code>Raspberry Pi Pico</code> under <code>Tools &gt; Board</code> in the Arduino IDE. This will be under a category called <code>Raspberry Pi RP2040 Boards</code> <strong>not</strong> <code>Arduino Mbed OS RP2040 Boards</code>.</p>
+<p><img alt="" src="../../../img/pi_pico.png" style="height:250px" /></p>
+</details>
+<p>Once you've configured the correct board extract the source code you downloaded earlier to the <code>Arduino</code> folder that has been created in your <code>Documents</code> folder.</p>
+<p><img alt="" src="../../../img/arduino_proj_location.png" style="height:300px" /></p>
+<p>Then in the Arduino IDE click <code>File &gt; Open</code> and choose the extracted project. Open the <code>ArPiRobot-ArduinoFirmware.ino</code> file.</p>
+<p><img alt="" src="../../../img/select_ino.png" style="height:250px" /></p>
+<p>Next install the required libraries for the firmware. These can be installed using the library manager by selecting <code>Tools &gt; Manage Libraries...</code>. Search for and install the latest version of the <code>FastCRC</code> library.</p>
+<p>Then, plug in your Arduino using the USB cable. You should now have a port listed under <code>Tools &gt; Ports</code>. Select it (the number / name will likely not be the same as in the screenshot below).</p>
+<p><img alt="" src="../../../img/arduino_port_select.png" style="height:200px" /></p>
+<p>Finally, to build and upload the firmware to your board click the upload button (the arrow) along the top bar.</p>
+<p><img alt="" src="../../../img/arduino_ide_upload.png" style="height:300px" /></p>
+<h3 id="connecting-sensors">Connecting Sensors</h3>
+<p><em>Specific information about how each sensor must be connected and how connections can be made is located in the "Building a Robot" section of the guide.</em></p>
+<p>Now that the board is programmed, it is time to disconnect it from your computer. Connect it to the Pi on the robot by USB cable.</p>
+<p>The ArPiRobot Arduino Firmware is fairly simple and does not need to be modified before use. The firmware is built with support for various sensors, but it does not know how sensors are connected to the Arduino. This information is provided to the Arduino from the Pi by your robot program. As such, it is necessary to know what sensors are connected and how they are connected when writing the code for your sensors. In this section of the guide three sensors are used: a voltage monitor, an ultrasonic sensor, and an IMU (Inertial Measurement Unit) containing both a gyroscope (measures rotation) and an accelerometer (measures acceleration). The code is written assuming the sensors are connected to the Arduino as follows</p>
+<p><strong>Voltage Monitor (Voltage Divider Module)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Voltage Monitor Pin</th>
+<th>Arduino Pin</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>A0</td>
+<td>Voltage reading (S = signal; A0 = analog input 0). Any analog input could be used instead of A0.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ultrasonic Sensor (HC-SR04)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ultrasonic Sensor Pin</th>
+<th>Arduino Pin</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRIG</td>
+<td>7</td>
+<td>TRIG = trigger pin. Arduino writes a pulse to this pin to start a distance measurement. Any digital input / output pin can be used.</td>
+</tr>
+<tr>
+<td>ECHO</td>
+<td>8</td>
+<td>ECHO = echo pin. Arduino reads a pulse back in response to the triggered pulse to measure distance. Any digital input / output pin can be used.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>IMU (Mpu6050)</strong></p>
+<table>
+<thead>
+<tr>
+<th>IMU PIN</th>
+<th>Arduino Pin</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCL</td>
+<td>SCL</td>
+<td>I2C clock. SCL pin on Arduino may be shared with another pin depending on your board. Search for your board's pinout to determine which pin.</td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>SDA</td>
+<td>I2C data. SDA pin on Arduino may be shared with another pin depending on your board. Search for your board's pinout to determine which pin.</td>
+</tr>
+</tbody>
+</table>
+<p>The above information is provided to make clear the assumptions that were used when writing the code in the next section. You can change connections as desired, just make sure the connection is valid for the sensor and change the code appropriately.</p>
+<p>Likewise, if you are using a different supported IMU, you may need to change connections (tough at the time of writing this all supported IMUs are I2C devices and connected the same way) and you will need to change the code to use the correct device. </p>
+<p>For more information on each supported sensor see the <a href="http://localhost:8000/ref/arduino/">Arduino Interface and Sensors</a> section of the programming reference.</p>
+<h2 id="the-robot-code">The Robot Code</h2>
+<h3 id="creating-arduino-interface">Creating Arduino Interface</h3>
+<p>An Arduino Interface is an object used in robot code to represent a board running the ArPiRobot Arduino Firmware connected to the Pi on the robot. Currently, only UART is supported as a connection method, therefore the <code>ArduinoUartInterface</code> class will be used.</p>
+<p>In order to setup UART communication with the Arduino two pieces of information are required: the name of the serial / UART of the device and the baud rate for UART communication. The baud rate must be the same on both the Arduino and the Pi. The ArPiRobot ArduinoFirmware uses a baud rate of <code>57600</code> (unless you modify it) so use this on the Pi as well. Determining which UART port is a little more difficult. In Windows serial ports are named <code>COM</code> followed by some number. On linux systems they are <code>/dev/tty[TYPE][NUMBER]</code>. For most Arduinos type will be <code>USB</code> (although it is <code>ACM</code> for some). Generally, since only one USB serial device will be connected to the Pi, the number will be <code>0</code> making the device <code>/dev/ttyUSB0</code>. This name will be used when creating the Arduino interface object as shown in the code below.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python (<code>robot.py</code>)</label><label for="__tabbed_1_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add with the other imports at the top of the file</span>
+<span class="kn">from</span> <span class="nn">arpirobot.arduino.iface</span> <span class="kn">import</span> <span class="n">ArduinoUartInterface</span>
+
+<span class="c1"># Add in __init__ under the other devices</span>
+<span class="c1"># (below motors, drive helper, etc)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">arduino</span> <span class="o">=</span> <span class="n">ArduinoUartInterface</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">,</span> <span class="mi">57600</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add with the other includes at the top of the file</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/arduino/iface/ArduinoUartInterface.hpp&gt;</span>
+
+<span class="c1">// Add below the other devices at the bottom of the class declaration</span>
+<span class="c1">// (below motors, drive helper, etc)</span>
+<span class="n">ArduinoUartInterface</span><span class="w"> </span><span class="n">arduino</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;/dev/ttyUSB0&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">57600</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then, in <code>robot_started</code> / <code>robotStarted</code> add the following so the Pi begins communicating with the Arduino when your robot program starts.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python (<code>robot.py</code>)</label><label for="__tabbed_2_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add at the end of robot_started</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">arduino</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add at the end of robotStarted</span>
+<span class="n">arduino</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Build and deploy the code to your robot. Look for some lines similar to the following in the robot program log (in Deploy Tool). This line will appear after the robot started message is logged.</p>
+<div class="highlight"><pre><span></span><code>[DEBUG]: ArduinoUartInterface(/dev/ttyUSB0, 57600) - Opened interface.
+[DEBUG]: ArduinoUartInterface(/dev/ttyUSB0, 57600) - Arduino is ready. Creating devices.
+[DEBUG]: ArduinoUartInterface(/dev/ttyUSB0, 57600) - Done creating devices. Starting sensor processing.
+[DEBUG]: ArduinoUartInterface(/dev/ttyUSB0, 57600) - Sensor processing started successfully.
+</code></pre></div>
+<p>If you instead see a message similar to the following, the uart port name is probably wrong. Try <code>/dev/ttyACM0</code>.</p>
+<div class="highlight"><pre><span></span><code>[ERROR]: ArduinoUartInterface(/dev/ttyUCB0, 57600) - Unable to open arduino interface.
+</code></pre></div>
+<h3 id="creating-the-sensors">Creating the Sensors</h3>
+<p>Now that your program has an Arudino Interface object, sensors can be added to it. Start by creating an object for each sensor as shown below</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python (<code>robot.py</code>)</label><label for="__tabbed_3_2">C++ (<code>robot.hpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add with other device imports at the top of file</span>
+<span class="kn">from</span> <span class="nn">arpirobot.arduino.sensor</span> <span class="kn">import</span> <span class="n">VoltageMonitor</span><span class="p">,</span> <span class="n">Ultrasonic4Pin</span><span class="p">,</span> <span class="n">Mpu6050Imu</span>
+
+<span class="c1"># Add in __init__ below arduino interface creation</span>
+
+<span class="c1"># A0 is what pin signal (&quot;S&quot;) is connected to</span>
+<span class="c1"># 30000, 7500 are resistor values used in the voltage divider module</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">vmon</span> <span class="o">=</span> <span class="n">VoltageMonitor</span><span class="p">(</span><span class="s2">&quot;A0&quot;</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">7500</span><span class="p">)</span>
+
+<span class="c1"># Arguments are trigger pin, echo pin</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">usonic</span> <span class="o">=</span> <span class="n">Ultrasonic4Pin</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># No arguments for IMU</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">imu</span> <span class="o">=</span> <span class="n">Mpu6050Imu</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add with other device includes at top of file</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/arduino/sensor/VoltageMonitor.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/arduino/sensor/Ultrasonic4Pin.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;arpirobot/arduino/sensor/Mpu6050Imu.hpp&gt;</span>
+
+<span class="c1">// Add in Robot class declaration below arduino interface creation</span>
+
+<span class="c1">// A0 is what pin signal (&quot;S&quot;) is connected to</span>
+<span class="c1">// 30000, 7500 are resistor values used in the voltage divider module</span>
+<span class="n">VoltageMonitor</span><span class="w"> </span><span class="n">vmon</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;A0&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w"> </span><span class="mi">7500</span><span class="p">};</span>
+
+<span class="c1">// Arguments are trigger pin, echo pin</span>
+<span class="n">Ultrasonic4Pin</span><span class="w"> </span><span class="n">usonic</span><span class="w"> </span><span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">};</span>
+
+<span class="c1">// No arguments for IMU</span>
+<span class="n">Mpu6050Imu</span><span class="w"> </span><span class="n">imu</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then, in <code>robot_started</code> / <code>robotStarted</code> add each device to the arduino interface object <strong>before calling <code>arduino.begin</code>.</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Python (<code>robot.py</code>)</label><label for="__tabbed_4_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add BEFORE self.arduino.begin() in robot_started</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">arduino</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vmon</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">arduino</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usonic</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">arduino</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imu</span><span class="p">)</span>
+
+<span class="c1"># self.arduino.begin() is HERE</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add BEFORE arduino.begin() in robotStarted</span>
+<span class="n">arduino</span><span class="p">.</span><span class="n">addDevice</span><span class="p">(</span><span class="n">vmon</span><span class="p">);</span>
+<span class="n">arduino</span><span class="p">.</span><span class="n">addDevice</span><span class="p">(</span><span class="n">usonic</span><span class="p">);</span>
+<span class="n">arduino</span><span class="p">.</span><span class="n">addDevice</span><span class="p">(</span><span class="n">imu</span><span class="p">);</span>
+
+<span class="c1">// arduino.begin() is HERE</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>If you build and deploy this code now, you should see messages indicating the devices are being created in the robot program log in the Deploy Tool (don't worry about the ID numbers).</p>
+<div class="highlight"><pre><span></span><code>[DEBUG]: VoltageMonitor(A0) - Created device with ID 0
+[DEBUG]: Ultrasonic4Pin(7, 8) - Created device with ID 1
+[DEBUG]: Mpu6050Imu - Created device with ID 2
+</code></pre></div>
+<p>If you don't see the output above you probably added the devices after running <code>begin</code>.</p>
+<h3 id="getting-sensor-values">Getting sensor values</h3>
+<p>Now your robot program has objects that can be used to get sensor data and the arduino has been setup and told what sensors are connected to it. As such, you can not get values from your sensors.</p>
+<p>The easiest sensor to start with is the voltage monitor. The voltage monitor should be wired into the motor batteries (usually AA batteries). In the Drive Station there is a battery indicator. This indicator is used to show the "main" battery voltage (in this case the voltage of the motor batteries). To make this show up, the voltage monitor object must be made the "main" voltage monitor. This can be done by adding the following line of code.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python (<code>robot.py</code>)</label><label for="__tabbed_5_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add in robot_started AFTER self.arduino.begin</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">vmon</span><span class="o">.</span><span class="n">make_main_vmon</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add in robotStarted AFTER arduino.begin()</span>
+<span class="n">vmon</span><span class="p">.</span><span class="n">makeMainVmon</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Only one voltage monitor can be the "main" voltage monitor. The "main" voltage monitor's voltage reading will be displayed in the drive station. If you build and deploy the program now, you should see the motor battery voltage when you open the drive station (after it connects to the robot program).</p>
+<p><img alt="" src="../../../img/ds_main_vmon.png" style="height:300px" /></p>
+<p>The battery indicator in the drive station will change colors based on the current battery voltage (red = dead, orange = low, yellow = medium, green = full). Don't worry if the voltage drops while quickly changing motor direction (this is expected). If the robot is still and the indicator is orange or red you probably want to replace the batteries.</p>
+<p>The ultrasonic sensor and IMU do not have any dedicated place in the drive station to show their values. So for now, they will be printed to the log. Add the following in <code>periodic</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python (<code>robot.py</code>)</label><label for="__tabbed_6_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">Logger</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s2">&quot;Gyro: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imu</span><span class="o">.</span><span class="n">get_gyro_z</span><span class="p">()))</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s2">&quot;Distance: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usonic</span><span class="o">.</span><span class="n">get_distance</span><span class="p">()))</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">Logger</span><span class="o">::</span><span class="n">logInfo</span><span class="p">(</span><span class="s">&quot;Gyro: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">imu</span><span class="p">.</span><span class="n">getGyroZ</span><span class="p">()));</span>
+<span class="n">Logger</span><span class="o">::</span><span class="n">logInfo</span><span class="p">(</span><span class="s">&quot;Distance: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">usonic</span><span class="p">.</span><span class="n">getDistance</span><span class="p">()));</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>If you build and deploy this code now you should see rapid log messages appearing in the Deploy Tool and Drive Station with sensor readings. While this does let you see the sensor values, it is often not useful because it adds so much information to the log.</p>
+<p>Generally, if you want to see a sensor value you only care about the current value. It is not necessary to save all old values by logging them. It is also inconvenient to read a rapidly scrolling log to determine sensors values. This is where the Network Table can help.</p>
+<h3 id="network-table">Network Table</h3>
+<p>The Network Table is a simple way of sharing data between the drive station and the robot. The network table holds a set of values. Each value is "named" with a unique "key". The key generally indicates what the value is showing. The value itself is often just a number. You can think of the network table as a set of "variables" shared between the drive station and the robot program. The "key" is the variable's name and special functions are used to set or get the variable's value.</p>
+<p>In our example above we could use two network table keys:
+- "Gyro" would be used to hold the current angle of the robot
+- "Distance" would be used to hold the current reading from the ultrasonic sensor</p>
+<p>To implement this, replace the log messages in <code>periodic</code> with the following</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python (<code>robot.py</code>)</label><label for="__tabbed_7_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Replace the log messages with the following</span>
+<span class="c1"># Set function takes two arguments key, value</span>
+<span class="c1"># Keys and values are always strings</span>
+<span class="n">NetworkTable</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;Gyro&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imu</span><span class="o">.</span><span class="n">get_gyro_z</span><span class="p">()))</span>
+<span class="n">NetworkTable</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;Distance&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usonic</span><span class="o">.</span><span class="n">get_distance</span><span class="p">()))</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Replace the log messages with the following</span>
+<span class="c1">// Set function takes two arguments key, value</span>
+<span class="c1">// Keys and values are always strings</span>
+<span class="n">NetworkTable</span><span class="o">::</span><span class="n">set</span><span class="p">(</span><span class="s">&quot;Gyro&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">imu</span><span class="p">.</span><span class="n">get_gyro_z</span><span class="p">()));</span>
+<span class="n">NetworkTable</span><span class="o">::</span><span class="n">set</span><span class="p">(</span><span class="s">&quot;Distance&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">usonic</span><span class="p">.</span><span class="n">get_distance</span><span class="p">()));</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>If you build and deploy this code, you won't notice anything at first. The drive station will not automatically show network table values when connecting. Instead indicators must be added to show certain "variables". After the drive station connects to the robot, you can add an indicator using the <code>Network Table</code> &gt; <code>Add From Robot</code> menu. You should see both the <code>Gyro</code> and <code>Distance</code> keys there. Click one of them to add it. It will be added to the center of the Network Table section. You can drag it by its name to move it to a different location. It can also be resized by dragging corners with your mouse. Add both the <code>Gyro</code> and <code>Distance</code> indicators. Move them so you can see both at the same time.</p>
+<p><img alt="" src="../../../img/ds_net_table_indicators.png" style="height:400" /></p>
+<p>As you move the robot you should see the gyro angle and ultrasonic distance changing in the indicators. Whenever your robot program runs the <code>NetworkTable</code>'s <code>set</code> function the value shown in the drive station will change. This makes it easy to determine current measurements and keeps your log from being filled up with sensor data messages.</p>
+<h3 id="doing-something-useful">Doing something Useful</h3>
+<p>While the above shows how to display sensor values, they have not really been used in the robot program to do anything useful yet. However, one simple task using sensors would be to prevent the robot from driving into an object (while moving forward). Since the ultrasonic sensor faces the front of the robot, it measures the distance to the nearest object in the front of the robot. If aimed straight ahead, this can be used to detect if the robot is about to run into something. When we detect this, we want to only allow the robot to rotate or drive backwards (negative speed), but prevent it from driving forward (positive speed). Additionally, when an object is detected too close, brake mode should be activated to stop the robot quickly enough to prevent it from running into the object, however when far enough away brake mode should be disabled. It should also be disabled if the robot is no longer moving toward the object.</p>
+<p>This might sound a little complicated, but it is not too bad. Breaking it down into simple steps that can be placed in <code>enabled_periodic</code> / <code>enabledPeriodic</code>
+- Get the speed and rotation amounts from the gamepad
+- If the robot sees an object "too close" and trying to drive forward (positive speed)
+    - Set speed to zero
+    - Enable brake mode
+- Else
+    - Enable coast mode and don't change speed
+- Use drive helper to update speed / rotation</p>
+<p>If we let 30 cm be the threshold for "too close" the code looks like the following</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python (<code>robot.py</code>)</label><label for="__tabbed_8_2">C++ (<code>robot.cpp</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Add to enabled_periodic between getting axis values and drive_helper.update</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">usonic</span><span class="o">.</span><span class="n">get_distance</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">30</span> <span class="ow">and</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">flmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">frmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rlmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rrmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">flmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">frmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rlmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rrmotor</span><span class="o">.</span><span class="n">set_brake_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Add to enabledPeriodic between getting axis values and driveHelper.update</span>
+<span class="k">if</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">usonic</span><span class="p">.</span><span class="n">getDistance</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">    </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">flmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">frmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rlmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rrmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="w">    </span><span class="n">flmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">frmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rlmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rrmotor</span><span class="p">.</span><span class="n">setBrakeMode</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Test this code by slowly driving towards an object. Make sure the ultrasonic sensor is working by checking the Network Table indicator in the drive station. Once the distance is 30 or less, the robot should stop and no longer let you drive forward, but you sill still be able to rotate or drive in reverse. Once you are no longer within 30 cm of an object, you can drive forward again.</p>
+<p>The number 30 is arbitrarily chosen. You can (carefully) try driving your robot more quickly toward an object and see if it stops in time. If not, you may need to increase the distance higher than 30.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b78d2936.min.js"></script>
+      
+    
+  </body>
+</html>
