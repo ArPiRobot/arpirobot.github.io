@@ -1,10 +1,5 @@
 # Downloads
 
-## Version Information
-
-- TODO: OS Versions (eg Buster or newer)
-- TODO: Python version used on OS
-
 ## Development PC Downloads
 
 ??? info "ArPiRobot Drive Station"
@@ -18,30 +13,22 @@
 ??? info "ArPiRobot VSCode Extension"
     <a href="https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v1.0.0" target="_blank">**Download**</a>
 
-??? info "ArPiRobot C++ Toolchains"
-    *Note: A toolchain matching the architecture of the OS image on the robot is required. Multiple toolchains can be installed using the Deploy Tool.*
-
-    <a href="https://github.com/ArPiRobot/ArPiRobot-Toolchain/releases/tag/armv6_rev1" target="_blank">**armv6 Toolchain for Windows, macOS, and Linux**</a>
-
-    <a href="https://github.com/ArPiRobot/ArPiRobot-Toolchain/releases/tag/aarch64_rev1" target="_blank">**aarch64 Toolchain for Windows, macOS, and Linux**</a>
-
 
 ## Robot Downloads
 
 ??? info "ArPiRobot Operating System Images"
-    *Note: Images for all supported systems are on the page linked below. Download the correct one for your robot's SBC (single board computer). Also, make note of the architecture if you plan to download a C++ toolchain.*
 
-    *Minimum Python Version: `3.7`*
+    Python Version: `3.11`
 
     <a href="https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/v1.0", target="_blank">**Downloads for All SBCs**</a>
-
-??? info "ArPiRobot Arduino Firmware"
-    <a href="https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware/archive/refs/tags/v1.0.0.zip" target="_blank">**Source Code**</a>
 
 ??? info "ArPiRobot CoreLib Package"
     *The downloaded zip file can be installed using the deploy tool and will be deployed to the robot when a program is deployed. Only one version of the CoreLib can be installed on your computer at a time.*
 
     <a href="https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v1.0.0/" target="_blank">**Download**</a>
+
+??? info "ArPiRobot Arduino Firmware"
+    <a href="https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware/archive/refs/tags/v1.0.0.zip" target="_blank">**Source Code**</a>
 
 ## Other Downloads
 
