@@ -15,7 +15,7 @@ Finally, consider what your robot code will be doing. Most robot code is not per
 
 ## Editor / Development Environment
 
-In order to write code you will need a text editor or code editor installed on your system. While you can use any text editor or code editor it is generally recommended to use Visual Studio Code (VSCode). VSCode can run on Windows, macOS, or Linux systems and has extensions to support both Python and C++ development. Additionally, an ArPiRobot extension for VSCode exists that enables creation of robot projects.
+In order to write code you will need a text editor or code editor installed on your system. While you can use any text editor or code editor, it is generally recommended to use Visual Studio Code (VSCode). VSCode can run on Windows, macOS, or Linux systems and has extensions to support both Python and C++ development. Additionally, an ArPiRobot extension for VSCode exists that enables creation of robot projects.
 
 Visual Studio Code can be downloaded from [https://code.visualstudio.com/](https://code.visualstudio.com/). Once installed it is recommended to install the ArPiRobot extension. Currently, this extension is not on the VSCode marketplace so you will need to download it from the [downloads](../../downloads.md) page. The downloaded file will be a `.vsix` file. It can be installed by opening VSCode, navigating to the extensions panel (fourth item down on the left menu bar) and choosing `Install from VSIX...` in the menu in the top right of the extensions panel.
 
@@ -32,26 +32,38 @@ Depending on the programming language you plan to use you will need to install c
 
 ### C++
 
-**Cross Compiler Toolchain:**
+As of version 1.1.0 of the framework, the following tools are required. *Note: Version 1.0.x had different tool requirements.*
 
-C++ development requires you have a compiler, linker, and necessary C libraries to build code for a different system (a Raspberry Pi). This collection of software is called a toolchain. Since software is being built for a different system than you are building it on, this is called cross compilation. 
+- LLVM Clang & LLD Linker
+- Ninja Build
+- CMake
 
-Prebuilt cross compiler toolchains are available to be downloaded from the [downloads page](../../downloads.md) page. Prebuilt toolchains are currently provided for Windows (x86_64), macOS (x86_64), and Linux (x86_64). *Use the revision of a toolchain linked on the downloads page.* New releases of the framework may use new revisions of a toolchain too.
+On Windows, these can be installed from the websites linked above.
 
-Note that there toolchains provided for multiple target architectures (eg `armv6`, `aarch64`). Download the one matching the architecture of your main computer. Find this information where you download the OS image for your computer (again see downloads page for OS images).
+On Linux systems, these should all be available via the system package manager (eg on Ubuntu `sudo apt install cmake ninja-build clang lld`)
 
-The ArPiRobot toolchain packages can be installed using the Deploy Tool on the "This PC" tab.
+??? info "Before v1.1.x"
+
+    **Cross Compiler Toolchain:**
+
+    C++ development requires you have a compiler, linker, and necessary C libraries to build code for a different system (a Raspberry Pi). This collection of software is called a toolchain. Since software is being built for a different system than you are building it on, this is called cross compilation. 
+
+    Prebuilt cross compiler toolchains are available to be downloaded from the [downloads page](../../downloads/latest.md) page. Prebuilt toolchains are currently provided for Windows (x86_64), macOS (x86_64), and Linux (x86_64). *Use the revision of a toolchain linked on the downloads page.* New releases of the framework may use new revisions of a toolchain too.
+
+    Note that there toolchains provided for multiple target architectures (eg `armv6`, `aarch64`). Download the one matching the architecture of your main computer. Find this information where you download the OS image for your computer (again see downloads page for OS images).
+
+    The ArPiRobot toolchain packages can be installed using the Deploy Tool on the "This PC" tab.
 
 
-**CMake**
+    **CMake**
 
-You will also need CMake installed. As usual, if using Linux or BSD you should be able to install this from the system repos. If using Windows or macOS, you can download an installer from [cmake.org](https://cmake.org/). Alternatively, the [Homebrew](https://brew.sh/) package manager for macOS includes cmake and the [scoop](https://scoop.sh/) package manager for windows include cmake.
+    You will also need CMake installed. As usual, if using Linux or BSD you should be able to install this from the system repos. If using Windows or macOS, you can download an installer from [cmake.org](https://cmake.org/). Alternatively, the [Homebrew](https://brew.sh/) package manager for macOS includes cmake and the [scoop](https://scoop.sh/) package manager for windows include cmake.
 
-**GNU Make**
+    **GNU Make**
 
-Make should be installed by default on macOS and Linux (if not use system packages). 
+    Make should be installed by default on macOS and Linux (if not use system packages). 
 
-For windows, the easiest method is to use download from [here](https://gnuwin32.sourceforge.net/packages/make.htm) and run the installer. You must add `C:\Program Files (x86)\GnuWin32\bin` to the `PATH` environment variable. Alternatively, the [scoop](https://scoop.sh/) package manager for windows can install make and will automatically add it to your path when installed.
+    For windows, the easiest method is to use download from [here](https://gnuwin32.sourceforge.net/packages/make.htm) and run the installer. You must add `C:\Program Files (x86)\GnuWin32\bin` to the `PATH` environment variable. Alternatively, the [scoop](https://scoop.sh/) package manager for windows can install make and will automatically add it to your path when installed.
 
 ### Python
 
