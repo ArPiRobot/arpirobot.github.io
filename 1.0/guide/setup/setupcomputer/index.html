@@ -217,15 +217,11 @@
   
 
 
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../downloads/v1_0/" class="md-tabs__link">
-        Downloads
-      </a>
-    </li>
-  
+  <li class="md-tabs__item">
+    <a href="../../../downloads/" class="md-tabs__link">
+      Downloads
+    </a>
+  </li>
 
       
         
@@ -350,58 +346,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-          Downloads
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          Downloads
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../../downloads/v1_0/" class="md-nav__link">
-        Version 1.0 Downloads
+      <a href="../../../downloads/" class="md-nav__link">
+        Downloads
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../downloads/betas/" class="md-nav__link">
-        Beta Downloads
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -1483,7 +1431,7 @@
 <p>Finally, consider what your robot code will be doing. Most robot code is not performing computationally demanding tasks in user code. Generally, computationally demanding tasks are performed by the core library. In this case, there is minimal difference in performance between Python and C++. However, if computationally demanding code is needed in user code C++ will often perform better than Python due to Python's <a href="https://wiki.python.org/moin/GlobalInterpreterLock">GIL</a>.</p>
 <h2 id="editor-development-environment">Editor / Development Environment</h2>
 <p>In order to write code you will need a text editor or code editor installed on your system. While you can use any text editor or code editor it is generally recommended to use Visual Studio Code (VSCode). VSCode can run on Windows, macOS, or Linux systems and has extensions to support both Python and C++ development. Additionally, an ArPiRobot extension for VSCode exists that enables creation of robot projects.</p>
-<p>Visual Studio Code can be downloaded from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>. Once installed it is recommended to install the ArPiRobot extension. Currently, this extension is not on the VSCode marketplace so you will need to download it from the <a href="../../../downloads/latest/">downloads</a> page. The downloaded file will be a <code>.vsix</code> file. It can be installed by opening VSCode, navigating to the extensions panel (fourth item down on the left menu bar) and choosing <code>Install from VSIX...</code> in the menu in the top right of the extensions panel.</p>
+<p>Visual Studio Code can be downloaded from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>. Once installed it is recommended to install the ArPiRobot extension. Currently, this extension is not on the VSCode marketplace so you will need to download it from the <a href="../../../downloads/">downloads</a> page. The downloaded file will be a <code>.vsix</code> file. It can be installed by opening VSCode, navigating to the extensions panel (fourth item down on the left menu bar) and choosing <code>Install from VSIX...</code> in the menu in the top right of the extensions panel.</p>
 <p>Finally, it is recommended to install the following extensions (depending on which programming language you plan to use). These can be installed from the VSCode marketplace by searching in the extensions panel.</p>
 <p><strong>C++ Programming:</strong> C/C++ Extension Pack (By Microsoft)</p>
 <p><strong>Python Programming:</strong> Python Extension (By Microsoft)</p>
@@ -1492,7 +1440,7 @@
 <h3 id="c">C++</h3>
 <p><strong>Cross Compiler Toolchain:</strong></p>
 <p>C++ development requires you have a compiler, linker, and necessary C libraries to build code for a different system (a Raspberry Pi). This collection of software is called a toolchain. Since software is being built for a different system than you are building it on, this is called cross compilation. </p>
-<p>Prebuilt cross compiler toolchains are available to be downloaded from the <a href="../../../downloads/latest/">downloads page</a> page. Prebuilt toolchains are currently provided for Windows (x86_64), macOS (x86_64), and Linux (x86_64). <em>Use the revision of a toolchain linked on the downloads page.</em> New releases of the framework may use new revisions of a toolchain too.</p>
+<p>Prebuilt cross compiler toolchains are available to be downloaded from the <a href="../../../downloads/">downloads page</a> page. Prebuilt toolchains are currently provided for Windows (x86_64), macOS (x86_64), and Linux (x86_64). <em>Use the revision of a toolchain linked on the downloads page.</em> New releases of the framework may use new revisions of a toolchain too.</p>
 <p>Note that there toolchains provided for multiple target architectures (eg <code>armv6</code>, <code>aarch64</code>). Download the one matching the architecture of your main computer. Find this information where you download the OS image for your computer (again see downloads page for OS images).</p>
 <p>The ArPiRobot toolchain packages can be installed using the Deploy Tool on the "This PC" tab.</p>
 <p><strong>CMake</strong></p>
@@ -1501,22 +1449,22 @@
 <p>Make should be installed by default on macOS and Linux (if not use system packages). </p>
 <p>For windows, the easiest method is to use download from <a href="https://gnuwin32.sourceforge.net/packages/make.htm">here</a> and run the installer. You must add <code>C:\Program Files (x86)\GnuWin32\bin</code> to the <code>PATH</code> environment variable. Alternatively, the <a href="https://scoop.sh/">scoop</a> package manager for windows can install make and will automatically add it to your path when installed.</p>
 <h3 id="python">Python</h3>
-<p>You will need to install Python on your PC. You can download python installers for windows and macOS from <a href="https://www.python.org/downloads/">python.org</a>. Generally, it is recommended to use a version of python that matches the first two numbers of the minimum version on the Pi (listed on the <a href="../../../downloads/latest/">downloads</a> page under the OS image section). For example, if the "minimum python version" is listed as <code>3.7</code> it is recommended to install a python <code>3.7.x</code> version (where <code>x</code> can be any number). Note that some images will have newer python versions (the specific python version on the robot depends on which main computer your robot uses).</p>
+<p>You will need to install Python on your PC. You can download python installers for windows and macOS from <a href="https://www.python.org/downloads/">python.org</a>. Generally, it is recommended to use a version of python that matches the first two numbers of the minimum version on the Pi (listed on the <a href="../../../downloads/">downloads</a> page under the OS image section). For example, if the "minimum python version" is listed as <code>3.7</code> it is recommended to install a python <code>3.7.x</code> version (where <code>x</code> can be any number). Note that some images will have newer python versions (the specific python version on the robot depends on which main computer your robot uses).</p>
 <p>Alternatively, you can use the <a href="https://brew.sh/">Homebrew</a> package manger on macOS or the <a href="https://scoop.sh/">scoop</a> package manager on windows to install specific versions of python.</p>
 <p>On Linux / BSD systems you should be able to install a recent version of python from the system repositories. You can use pyenv to build and install a specific version. On Ubuntu you can use the <a href="https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa">deadsnakes PPA</a> to install specific versions of python.</p>
 <h2 id="drive-station-and-deploy-tool">Drive Station and Deploy Tool</h2>
 <p>Finally, there are two ArPiRobot specific tools that need to be installed. The Drive Station is used to connect to a program running on the robot and control the robot using a game controller. If you do not have a game controller that can be connected to your PC there is also a Mobile Drive station app for Android phones and tablets with a virtual gamepad.</p>
 <p>The Deploy Tool connects to the Raspberry Pi on the robot. The Deploy Tool is used to configure things such as WiFi networks and camera streaming, but most importantly it is used to deploy code from your computer to the robot with the click of a button.</p>
 <p><strong>Windows</strong></p>
-<p>Download the exe installers for both (see <a href="../../../downloads/latest/">downloads page</a>). Run the installer. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.</p>
+<p>Download the exe installers for both (see <a href="../../../downloads/">downloads page</a>). Run the installer. The installer will create a start menu shortcut (and optionally a Desktop shortcut) as well.</p>
 <p><strong>macOS</strong></p>
-<p>Download the <code>.zip</code> macOS packages (see <a href="../../../downloads/latest/">downloads page</a>). Extract the zip files and move the resulting <code>.app</code> files to the <code>Applications</code> folder. Each app is <em>unsigned</em>, so the first time your run it open "Applications" in Finder. Then right click the app and choose open. This is only necessary the first time you run the app.</p>
+<p>Download the <code>.zip</code> macOS packages (see <a href="../../../downloads/">downloads page</a>). Extract the zip files and move the resulting <code>.app</code> files to the <code>Applications</code> folder. Each app is <em>unsigned</em>, so the first time your run it open "Applications" in Finder. Then right click the app and choose open. This is only necessary the first time you run the app.</p>
 <p><strong>Linux</strong></p>
 <p>For Debian and derivatives (including Ubuntu and Linux Mint) there is a <code>.deb</code> package that can be installed. For other distributions, you will need to install python3 with pip and venv using your distribution's package manager. Then, download the <code>.run</code> installer. Run it using the command <code>sudo sh filename.run</code> (change filename to the name of the file you downloaded).</p>
 <p><strong>Other</strong></p>
 <p>The drive station and deploy tool are written in python and require python 3.6 or newer. In addition, several python packages are required (most notably <code>PySide6</code> and <code>PySDL2</code>). Download the zip of the repository (source code) and extract it on your system. Then install the required python packages (optionally in a virtual environment) by running <code>pip install -r requirements.txt</code> in the directory where you extracted the program. Then run the program with <code>python src/main.py</code>. Note that often one must replace <code>python</code> in the above commands with <code>python3</code>, but this is system dependent.</p>
 <h2 id="arpirobot-corelib-update-package">ArPiRobot CoreLib Update Package</h2>
-<p>Finally, it is necessary to download a CoreLib update package (see <a href="../../../downloads/latest/">downloads page</a>). The CoreLib update package contains a build of the ArPiRobot core library that can run on the robot along with other files needed when writing programs for the robot (in both C++ and Python). The same CoreLib update package is used for Python and C++. A CoreLib update package must be installed on your PC before deploying a program to the robot.</p>
+<p>Finally, it is necessary to download a CoreLib update package (see <a href="../../../downloads/">downloads page</a>). The CoreLib update package contains a build of the ArPiRobot core library that can run on the robot along with other files needed when writing programs for the robot (in both C++ and Python). The same CoreLib update package is used for Python and C++. A CoreLib update package must be installed on your PC before deploying a program to the robot.</p>
 <p>To install the downloaded update package open the Deploy Tool (installed perviously) and select the "This PC" tab. Click the "Install Update Package" button and select the CoreLib update package that was downloaded.</p>
 
 

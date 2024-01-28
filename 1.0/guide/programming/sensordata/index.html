@@ -217,15 +217,11 @@
   
 
 
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../downloads/v1_0/" class="md-tabs__link">
-        Downloads
-      </a>
-    </li>
-  
+  <li class="md-tabs__item">
+    <a href="../../../downloads/" class="md-tabs__link">
+      Downloads
+    </a>
+  </li>
 
       
         
@@ -350,58 +346,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-          Downloads
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          Downloads
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../../downloads/v1_0/" class="md-nav__link">
-        Version 1.0 Downloads
+      <a href="../../../downloads/" class="md-nav__link">
+        Downloads
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../downloads/betas/" class="md-nav__link">
-        Beta Downloads
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -1524,7 +1472,7 @@
 <h2 id="arduino-interface-sensors">Arduino Interface &amp; Sensors</h2>
 <p>Many sensors do not work well with the Raspberry Pi directly. In some cases the Pi may lack support for certain functions (such as analog readings) or in other cases a Pi may not provide fine enough control over timing (a big issue for something like a gyroscope). Often, a microcontroller is better suited to working with sensors. Arduinos are microcontroller development boards. Being a development board, it contains extra circuitry needed to program the device and make it easy to interface with. This makes an Arduino an ideal device to use on the robot as a sensor <em>coprocessor</em>. The Arduino manages the sensors and collects the required data and sends it back to the Raspberry Pi where it can be used in the robot program. The Arduino communicates with the Pi using a UART (a Serial port) over USB. This allows the Arduino to be connected to the Pi and powered from the Pi by a USB cable.</p>
 <h3 id="arpirobot-arduino-firmware">ArPiRobot Arduino Firmware</h3>
-<p>The ArPiRobot Arduino Firmware is a program written using the Arduino framework. This allows the firmware itself to support many different Arduino boards (and other microcontroller development boards too) using the same program. The source code for the firmware can be downloaded on the <a href="../../../downloads/latest/">downloads page</a>. To build the firmware and upload it to your board, you need to have the board and a USB cable to connect it to your computer. You also need to have the <a href="https://www.arduino.cc/en/software">Arduino IDE</a> installed. Once installed, open the program.</p>
+<p>The ArPiRobot Arduino Firmware is a program written using the Arduino framework. This allows the firmware itself to support many different Arduino boards (and other microcontroller development boards too) using the same program. The source code for the firmware can be downloaded on the <a href="../../../downloads/">downloads page</a>. To build the firmware and upload it to your board, you need to have the board and a USB cable to connect it to your computer. You also need to have the <a href="https://www.arduino.cc/en/software">Arduino IDE</a> installed. Once installed, open the program.</p>
 <p>Depending on your board you may also need to install a boards package to support your board in the Arduino IDE. Follow the instructions below for the board you are using. <em>Note: This may not include instructions for every supported board. Check the README on the <a href="https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware">ArPiRobot Arduino Firmware GitHub</a> repo for more information about supported boards.</em></p>
 <details>
 <summary>Arduino Nano &amp; Clones</summary>
