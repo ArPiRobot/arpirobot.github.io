@@ -1,5 +1,10 @@
 # Downloads
 
+## Version Information
+
+- TODO: OS Versions (eg Buster or newer)
+- TODO: Python version used on OS
+
 ## Development PC Downloads
 
 ??? info "ArPiRobot Drive Station"
