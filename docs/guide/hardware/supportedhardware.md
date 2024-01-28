@@ -83,7 +83,7 @@ When selecting a SBC to use as the main computer consider not only the specs of 
 *Note that a board with a WiFi adapter is required for full functionality. Most supported boards have builtin wifi adapters, however if they do not a USB wifi adapter will be needed.*
 
 
-??? info "Raspberry Pi Boards"
+??? info "Raspberry Pi Boards (**Recommended**)"
     There are thee main types of Raspberry Pi boards
 
     - Model B boards: "Full size" Raspberry Pis. Small, but larger than the other options.
