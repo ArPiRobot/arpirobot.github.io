@@ -8,14 +8,16 @@ PID controllers are a common way of using sensor data to make a robot perform so
 
 
 A PID controller uses three parameters (or gains).
+
 - Proportional Gain (kP): The proportional gain is typically used to drive the behavior of the controller. The kP value is multiplied by the error, meaning the output is larger when the error is large, and becomes smaller as the error shrinks. Generally too large of a kP term will cause the robot to oscillate about the setpoint (and never settle at the setpoint) and too small of a kP may result in a significant "steady state error" (which is when the robot stops moving, but is not at the setpoint).
 - Integral Gain (kI): An integral gain is used to reduce steady state error. It is multiplied by error over time. Note that the kI value will often be very small and should generally be much smaller than the kP value. Increasing KI also increases oscillation before the robot settles at the setpoint. Generally, too large of a kI will cause oscillation that never settles at the setpoint and too small of a kI will result in steady state error taking "too long" to eliminate.
 - Derivative Gain (kD): This term is used to reduce how quickly the error changes (and thus has the effect of reducing oscillation). Increasing kD is commonly a way of reducing oscillation due to kP and / or kI. However, too high of a kD will cause unpredictable results. Generally, kD is much smaller than kP.
 
 
 Generally speaking, the following combinations of parameters may be used
+
 - P alone is sometimes sufficient (typically if steady state error is not really an issue)
-- PI is good enough in some cases (typically if small amounts of oscillation before reaching the setpoint)
+- PI is good enough in some cases (typically if small amounts of oscillation before reaching the setpoint are acceptable)
 - PD is rarely used, but has some uses (typically if there is just a little too much oscillation). However, it is often better to reduce kP (allowing some steady state error) and increase kI (to correct the error) before adding a kD term.
 
 
