@@ -70,9 +70,13 @@ Before deploying a project it is sometimes necessary to "build" the project. In 
     Python projects do not need to be "built". The source code is deployed directly.
 
 === "C++"
-    C++ projects must be built before they can be deployed. Before building, select the Raspberry Pi Toolchain "kit" for CMake in VSCode. If you do not see this option, the project is not "configured". Press `Ctrl+Shift+P` (`Cmd+Shift+P` on macOS) and type "CMake: Configure" and run that command. The pictured options should then be on the bottom toolbar.
+    C++ projects must be built before they can be deployed.
 
-    ![VSCode Screenshot](../../img/vscode_kit.png){: style="height:300px"}
+    First, you need to choose a preset. The preset determines which architecture your program will be built for. This needs to match the architecture of the computer on your robot.
+
+    Under the cmake panel on the left side, you can choose a "Configure Preset". Choose either `armv6` or `aarch64` (whichever matches your board - see the OS image downloads to check what your board is).
+
+    ![VSCode Screenshot](../../img/vscode_preset.png){: style="height:300px"}
 
     Then click the build button to build the project.
 
@@ -102,6 +106,7 @@ The core of the robot program lies either in the `robot.py` or `robot.cpp` (and 
 
 === "Python"
     - `robot_started`: This function runs one time when the robot program starts running. This function is used to configure things that only need to happen once at the start of the robot program.
+    - `robot_stopped`: This function runs one time when the robot program has stopped running. This function is usually not used, but if you setup anything that needs to be cleanly close, you can do that here.
     - `robot_enabled`: There are two states the robot can be in. When enabled, motors and other devices that could be considered "potentially harmful" are allowed to function. This function is run each time the robot becomes enabled (switches from disabled to enabled). This function is used to "prepare" for the enabled state.
     - `robot_disabled`: This function is run when the robot becomes disabled. When disabled "potentially harmful" devices (such as motors) are disabled automatically. The robot automatically becomes disabled if the Drive Station becomes disconnected (or under some other scenarios). This function is often used to stop anything that should not happen while the robot is disabled. Note that stopping motors manually is not necessary as they are automatically stopped when the robot becomes disabled.
     - `periodic`: This function runs over and over while the robot program is running. By default this function runs once every 50ms. This function runs if the robot is enabled or if it is disabled. It is used to do things that should happen repeatedly always.
@@ -110,6 +115,7 @@ The core of the robot program lies either in the `robot.py` or `robot.cpp` (and 
 
 === "C++"
     - `robotStarted`: This function runs one time when the robot program starts running. This function is used to configure things that only need to happen once at the start of the robot program.
+    - `robotStopped`: This function runs one time when the robot program has stopped running. This function is usually not used, but if you setup anything that needs to be cleanly close, you can do that here.
     - `robotEnabled`: There are two states the robot can be in. When enabled, motors and other devices that could be considered "potentially harmful" are allowed to function. This function is run each time the robot becomes enabled (switches from disabled to enabled). This function is used to "prepare" for the enabled state.
     - `robotDisabled`: This function is run when the robot becomes disabled. When disabled "potentially harmful" devices (such as motors) are disabled automatically. The robot automatically becomes disabled if the Drive Station becomes disconnected (or under some other scenarios). This function is often used to stop anything that should not happen while the robot is disabled. Note that stopping motors manually is not necessary as they are automatically stopped when the robot becomes disabled.
     - `periodic`: This function runs over and over while the robot program is running. By default this function runs once every 50ms. This function runs if the robot is enabled or if it is disabled. It is used to do things that should happen repeatedly always.
@@ -144,6 +150,9 @@ By putting code in these functions, a robot program can be made to perform a wid
             # Run once when the robot starts
             # Configure devices here
             Logger.log_info("robot_started() run!")
+        
+        def robot_stopped(self):
+            pass
 
         def robot_enabled(self):
             # Runs once each time the robot becomes enabled
@@ -182,6 +191,10 @@ By putting code in these functions, a robot program can be made to perform a wid
 
     void Robot::robotStarted(){
         Logger::logInfo("robotStarted() run!");
+    }
+
+    void Robot::robotStopped(){
+        
     }
 
     void Robot::robotEnabled(){
