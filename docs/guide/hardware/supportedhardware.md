@@ -74,14 +74,14 @@ The list below includes commonly used motors. Any motor should be usable, provid
 Typically, a Single Board Computer (SBC) is used as the robot's main computer. Often, Raspberry Pi boards are used as they are low cost and well supported. However, other SBCs are supported too (see lists below).
 
 When selecting a SBC to use as the main computer consider not only the specs of the computer, but the following items as well
+
 - Size
 - Power requirements (current required and how power is connected)
 - Interface Options (USB ports, builtin wifi, types of headers)
 - Compatibility with Raspberry Pi Hats
     - Many SBCs have a 40-pin header matching the raspberry pi for hat compatibility (pin numbers may differ though). Some SBCs also have a 26-pin header which matches part of the raspberry pi pinout and can be used with some, but not all hats.
 
-*Note that a board with a WiFi adapter is required for full functionality. Most supported boards have builtin wifi adapters, however if they do not a USB wifi adapter will be needed.*
-
+**Detailed information on supported boards can be found on the [hardware documentation](../../ref/hardware.md#board-information) page.**
 
 ??? info "Raspberry Pi Boards (**Recommended**)"
     There are thee main types of Raspberry Pi boards
@@ -108,12 +108,10 @@ When selecting a SBC to use as the main computer consider not only the specs of 
 
     | Board                   | Number of Cores    | RAM         | 64-bit | WiFi | Power Supply | Link           |
     | ----------------------- | ------------------ | ----------- | ------ | ---- | ------------ | -------------- |
-    | Orange Pi Lite          | 4                  | 1GB         | No     | Yes  | 5V@2.1A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Lite.html) |
-    | Orange Pi 3 LTS         | 4                  | 2GB         | Yes    | Yes  | 5V@2.4A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html) |
+    | Orange Pi 3B            | 4                  | 2GB - 8GB   | Yes    | Yes  | 5V@2.4A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) |
+    | Orange Pi Zero 2W       | 4                  | 1GB / 2GB / 4GB | Yes    | Yes  | 5V@2.0A  | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2W.html) |
 
-    *Note that the Orange Pi Lite is compatible with Raspberry Pi hats (40-pin header). This header is however oriented "backwards" compared to a Raspberry Pi, meaning hats do not sit over the SBC, but hang off the SBC.*
-
-    *Note that the Orange Pi 3 LTS is compatible with some Raspberry Pi hats (26-pin header). Most I2C and SPI hats should work (including Adafruit Motor Hat), but check pinouts to be sure.*
+    **The Orange PI Zero 2W has a 1.5GB version, which is NOT SUPPORTED by the ArPiRobot framework.**
 
 
 
@@ -156,7 +154,7 @@ Finally, also make sure you have a way to connect power to your main computer. M
 
 Motor drivers are connected directly to the SBC. There are multiple types of motor drivers listed below.
 
-??? "PWM Motor Drivers"
+??? info "PWM Motor Drivers"
     When used with the ArPiRobot Core Library, the PWM signals will be software generated. As such, it is recommended to use other motor drivers if you have many motors (more than 4-6) or if exact speeds are critical.
 
     | Motor Driver              | Number of Motors | Motor Voltage        | Max Current per Motor | Links |
@@ -167,7 +165,7 @@ Motor drivers are connected directly to the SBC. There are multiple types of mot
 
     *Note: The L298N has a voltage drop of about 1V from input power to motor outputs at full speed. As such, it is generally better to use other drivers.*
 
-??? "I2C Motor Drivers"
+??? info "I2C Motor Drivers"
     These I2C motor drivers connect to the SBC via I2C and have onboard PWM generators (avoiding the software PWM problem).
     
     | Motor Driver              | Number of Motors | Motor Voltage        | Max Current per Motor | Links |

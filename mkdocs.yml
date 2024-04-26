@@ -65,6 +65,7 @@ nav:
         - Custom Parts:
             - TT Motor Quadrature Encoder: guide/custom/quadencoder.md
     - Documentation:
+        - Hardware: ref/hardware.md
         - Manuals:
             - Drive Station Manual: ref/manuals/drive_station.md
             - Deploy Tool Manual: ref/manuals/deploy_tool.md
@@ -80,6 +81,7 @@ nav:
             - Doxygen (C++): ../doxygen-docs/cpp/html/index.html
             - Doxygen (Python): ../doxygen-docs/python/html/index.html
         - Default Robot Settings: defaultsettings.md
+    - Changelog: changelog.md
     - Framework Developers: 
         - Overview: devs/overview.md
         - Core Library (CoreLib): devs/corelib.md
