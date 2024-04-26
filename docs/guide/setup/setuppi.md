@@ -1,20 +1,19 @@
 
 Before using the robot, you need to setup the Main Computer (often a Raspberry Pi) with the custom ArPiRobot OS image. 
 
-For most supported devices this just entails downloading an OS image and flashing it to an SD card. OS images for supported boards can be found on the [downloads page](../../downloads.md).
+For supported devices this just entails downloading an OS image and flashing it to an SD card. OS images for supported boards can be found on the [downloads page](../../downloads.md).
 
 The ArPiRobot OS images are modified versions of operating system images for the board that include required software and proper configuration for use on an ArPiRobot robot.
 
 
 ## Requirements
 
-Before starting you will need a computer (laptop or desktop used for development)<sup>&ast;</sup>, a [supported Main Computer](../hardware/supportedhardware.md), a power supply for the main computer (this can be the battery pack used to power the computer on the robot).
+Before starting you will need a computer (such as the laptop or desktop you will for development), a [supported Main Computer](../hardware/supportedhardware.md), a power supply for the main computer (this can be the battery pack used to power the computer on the robot).
 
-<sup>&ast;</sup>The software used in this section (balenaEtcher) is available for Windows, macOS, and Linux computers. If using another OS you will need to find another program to write the image file to the SD Card.
 
 ## Choosing an Image
 
-It is always recommended to use the latest ArPiRobot image, available on the [downloads page](../../downloads.md). Make sure to download the correct image for your main computer board. Also note that some images are distributed as multiple files (all parts must be downloaded).
+It is always recommended to use the latest ArPiRobot image, available on the [downloads page](../../downloads.md). Make sure to download the correct image for your main computer board.
 
 
 ## Flash the Image

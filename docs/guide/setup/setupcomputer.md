@@ -18,7 +18,7 @@ Finally, consider what your robot code will be doing. If computationally demandi
 You can write robot code with any text editor / code editor. However, using Visual Studio Code (VSCode) is recommended as an extension is provided to generate ArPiRobot projects.
 
 - [VSCode Download for Windows, macOS, Linux](https://code.visualstudio.com/)
-- ArPiRobot extension: Currently, this extension is not on the VSCode marketplace so you will need to download it from the [downloads](../../downloads.md) page. The downloaded file will be a `.vsix` file. It can be installed by opening VSCode, navigating to the extensions panel (fourth item down on the left menu bar) and choosing `Install from VSIX...` in the menu in the top right of the extensions panel.
+- ArPiRobot extension: Download from the [downloads](../../downloads.md) page. The downloaded file will be a `.vsix` file. It can be installed by opening VSCode, navigating to the extensions panel (fourth item down on the left menu bar) and choosing `Install from VSIX...` in the menu in the top right of the extensions panel.
 
 - Finally, it is recommended to install the following extensions (depending on which programming language you plan to use). These can be installed from the VSCode marketplace by searching in the extensions panel.
     - **C++**: C/C++ Extension Pack (By Microsoft)
@@ -33,25 +33,37 @@ Depending on the programming language you plan to use you will need to install c
 
 To build robot programs written in C++ the following tools are needed
 
-- [LLVM Clang & LLD Linker](https://llvm.org/)
-- [Ninja Build](https://ninja-build.org/)
-- [CMake](https://cmake.org/)
+- LLVM Clang & LLD Linker (*Note: Apple clang will not work, you need llvm clang with the lld linker*)
+- Ninja Build
+- CMake
+- pkg-config
 
 ??? info "Windows Install Instructions"
-    It is recommended to install these tools using the [scoop package manager](https://scoop.sh/) (follow the quickstart instructions on the linked page to install scoop). A package manager (such as scoop) allows installing programs using a single command. Scoop also installs the required tools such that the commands are in the user's PATH. This makes several of these tools easier to install.
-
-    After installing scoop, run the following command (open powershell, copy paste and press enter)
-
+    Install [scoop](https://scoop.sh/) by opening "powershell" pasting the following (by right clicking in the powershell window) and pressing enter
+    
     ```sh
-    scoop install llvm ninja cmake
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
     ```
 
-    If you don't want to use scoop, these tools can be installed manually too from the links above. However, you will need to make sure that `cmake.exe`, `ninja.exe`, `clang.exe`, `clang++.exe`, `lld.exe` are in the user's or system's PATH (environment variable).
+    Scoop is a package manager which lets you install programs by running a single command. It also makes sure they are setup so that they are easily found.
+    
+    After installing scoop, run the following commands (open powershell, copy paste and press enter) to install the required tools
+
+    ```sh
+    scoop install llvm ninja cmake pkg-config
+    ```
+
+    Other package managers can be used, or these tools can all be manually installed, but several do not have installers and you will need to make sure their binaries are all in your `PATH`.
 
 ??? info "macOS Install Instructions"
-    **Note: macOS includes Apple clang, however LLVM clang is needed to be able to use the lld linker. This should be installed using brew!**
+    Install [brew package manager](https://brew.sh/) by opening "Terminal.app" and pasting the following (CMD+V) and pressing enter
 
-    It is recommended to install these tools using the [brew package manager](https://brew.sh/) (follow the installation instructions on the linked page to install brew). A package manager (such as brew) allows installing programs using a single command. Brew also installs the required tools such that the commands are in the system PATH. This makes several of these tools easier to install.
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+    Brew is a package manager which lets you instal programs by running a single command. It also makes sure they are setup so that they are easily found.
 
     After installing brew, run the following command (open terminal, copy paste and press enter)
 
@@ -59,7 +71,7 @@ To build robot programs written in C++ the following tools are needed
     brew install llvm ninja cmake
     ```
 
-    If you don't want to use brew, these tools can be installed manually too from the links above. However, you will need to make sure that `cmake`, `ninja` are in the user's or system's PATH (environment variable). When building ArPiRobot programs, you will also need to make sure LLVM `clang`, `clang++`, and `lld` are in the PATH environment variable before Apple Clang's executables (this is not needed if using brew to install because the toolchain files check where brew installs these by default).
+    While you can install these tools without using brew, you will need to make sure all binaries are in your `PATH`, including `clang`, `clang++`, and `lld` which must be in your PATH before the default apple clang binaries. This is STRONGLY discouraged as this may cause issues when building other things. If you do this, you should modify PATH only while building ArPiRobot programs. Alternatively, just use brew! The ArPiRobot build system knows where to look for llvm clang installed by brew.
 
 ??? info "Linux Install Instructions"
     Most Linux distributions should include these tools via the system package manager.
@@ -76,9 +88,16 @@ You will need to install python on your development computer. ArPiRobot robots c
 
 
 ??? info "Windows Install Instructions"
-    It is recommended to install this using the [scoop package manager](https://scoop.sh/) (follow the quickstart instructions on the linked page to install scoop). A package manager (such as scoop) allows installing programs using a single command. Scoop also installs the required tools such that the commands are in the user's PATH. This makes several of these tools easier to install.
+    Install [scoop](https://scoop.sh/) by opening "powershell" pasting the following (by right clicking in the powershell window) and pressing enter
+    
+    ```sh
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+    ```
 
-    After installing scoop, run the following commands (open powershell, copy paste and press enter). 
+    Scoop is a package manager which lets you install programs by running a single command. It also makes sure they are setup so that they are easily found.
+    
+    After installing scoop, run the following commands (open powershell, copy paste and press enter) to install the required tools
 
     ```sh
     scoop bucket add versions
@@ -88,7 +107,13 @@ You will need to install python on your development computer. ArPiRobot robots c
     If you don't want to use scoop, you can download python from [python](https://www.python.org/).
 
 ??? info "macOS Install Instructions"
-    It is recommended to install this using the [brew package manager](https://brew.sh/) (follow the installation instructions on the linked page to install brew). A package manager (such as brew) allows installing programs using a single command. Brew also installs the required tools such that the commands are in the system PATH. This makes several of these tools easier to install.
+    Install [brew package manager](https://brew.sh/) by opening "Terminal.app" and pasting the following (CMD+V) and pressing enter
+
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+    Brew is a package manager which lets you instal programs by running a single command. It also makes sure they are setup so that they are easily found.
 
     After installing brew, run the following command (open terminal, copy paste and press enter)
 
@@ -108,7 +133,7 @@ You will need to install python on your development computer. ArPiRobot robots c
 
 ## Drive Station and Deploy Tool
 
-Finally, there are two ArPiRobot specific tools that need to be installed (regardless of which programming language you will use).
+Next, there are two ArPiRobot specific tools that need to be installed (regardless of which programming language you will use).
 
 The Drive Station is used to connect to a program running on the robot and control the robot using a game controller. If you do not have a game controller that can be connected to your PC there is also a Mobile Drive station app for Android phones and tablets with a virtual gamepad.
 
