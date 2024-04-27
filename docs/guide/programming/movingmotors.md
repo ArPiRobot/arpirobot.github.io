@@ -27,7 +27,7 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
     &ast; This only needs to be connected on one motor controller if multiple are used on the robot. This ensures that motor battery GND (usually AA batteries) and robot power GND (usually a USB battery pack) are connected. This is important for some sensors.
 
-    Each control pin (all but GND) must use a different GPIO. As such, 5 GPIO pins are needed per DRV8833 module. In the robot code, an object is constructed for the DRV8833 module. This object for the module constructs objects for both motors (A and B). This object is constructed using the pin numbers (broadcom pin numbering). Pinout and pin numbers can be found at [pinout.xyz](https://pinout.xyz/). You can choose any 5 GPIO pins. This pinout also shows which pins on the Pi are GND pins.
+    Each control pin (all but GND) must use a different GPIO. As such, 5 GPIO pins are needed per DRV8833 module. In the robot code, an object is constructed for the DRV8833 module. This object for the module constructs objects for both motors (A and B). This object is constructed using the pin numbers (broadcom pin numbering). Pinouts for supported boards can be found on [hardware docs](../../ref/hardware.md) page.
 
     An object for the DRV8833 module and both of its motors can be used in robot code as shown below
 
@@ -67,6 +67,10 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
             def robot_started(self):
                 # Run once when the robot starts
                 # Configure devices here
+                pass
+            
+            def robot_stopped(self):
+                # Run once when the robot is stopped
                 pass
 
             def robot_enabled(self):
@@ -119,6 +123,9 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
             // Runs once each time the robot becomes enabled
             void robotEnabled();
 
+            // Runs once when the robot is stopped
+            void robotStopped();
+
             // Runs once each time the robot becomes disabled
             void robotDisabled();
 
@@ -165,7 +172,7 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
     &ast; This only needs to be connected on one motor controller if multiple are used on the robot. This ensures that motor battery GND (usually AA batteries) and robot power GND (usually a USB battery pack) are connected. This is important for some sensors.
 
-    Each control pin (all but GND) must use a different GPIO. As such, 6 GPIO pins are needed per TB6612 module. In the robot code, an object is constructed for the TB6612 module. This object for the module constructs objects for both motors (A and B). This object is constructed using the pin numbers (broadcom pin numbering). Pinout and pin numbers can be found at [pinout.xyz](https://pinout.xyz/). You can choose any 6 GPIO pins. This pinout also shows which pins on the Pi are GND pins.
+    Each control pin (all but GND) must use a different GPIO. As such, 6 GPIO pins are needed per TB6612 module. In the robot code, an object is constructed for the TB6612 module. This object for the module constructs objects for both motors (A and B). This object is constructed using the pin numbers (broadcom pin numbering). Pinouts for supported boards can be found on [hardware docs](../../ref/hardware.md) page.
 
     An object for the TB6612 module and both of its motors can be used in robot code as shown below
 
@@ -205,6 +212,10 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
             def robot_started(self):
                 # Run once when the robot starts
                 # Configure devices here
+                pass
+
+            def robot_stopped(self):
+                # Run once when the robot is stopped
                 pass
 
             def robot_enabled(self):
@@ -254,6 +265,9 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
             // Run when the robot starts
             void robotStarted();
 
+            // Runs once when the robot is stopped
+            void robotStopped();
+
             // Runs once each time the robot becomes enabled
             void robotEnabled();
 
@@ -301,7 +315,7 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
     &ast; This only needs to be connected on one motor controller if multiple are used on the robot. This ensures that motor battery GND (usually AA batteries) and robot power GND (usually a USB battery pack) are connected. This is important for some sensors.
 
-    Each control pin (all but GND) must use a different GPIO. As such, 6 GPIO pins are needed per L298N module. In the robot code, an object is constructed for the L298N module. This object for the module constructs objects for both motors (A and B). This object is constructed using the pin numbers (broadcom pin numbering). Pinout and pin numbers can be found at [pinout.xyz](https://pinout.xyz/). You can choose any 6 GPIO pins. This pinout also shows which pins on the Pi are GND pins.
+    Each control pin (all but GND) must use a different GPIO. As such, 6 GPIO pins are needed per L298N module. In the robot code, an object is constructed for the L298N module. This object for the module constructs objects for both motors (A and B). This object is constructed using the pin numbers (broadcom pin numbering). Pinouts for supported boards can be found on [hardware docs](../../ref/hardware.md) page.
 
     An object for the L298N module and both of its motors can be used in robot code as shown below
 
@@ -341,6 +355,10 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
             def robot_started(self):
                 # Run once when the robot starts
                 # Configure devices here
+                pass
+
+            def robot_stopped(self):
+                # Run once when the robot is stopped
                 pass
 
             def robot_enabled(self):
@@ -389,6 +407,9 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
             // Run when the robot starts
             void robotStarted();
+
+            // Runs once when the robot is stopped
+            void robotStopped();
 
             // Runs once each time the robot becomes enabled
             void robotEnabled();
@@ -479,6 +500,10 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
                 # Run once when the robot starts
                 # Configure devices here
                 pass
+            
+            def robot_stopped(self):
+                # Run once when the robot is stopped
+                pass
 
             def robot_enabled(self):
                 # Runs once each time the robot becomes enabled
@@ -525,6 +550,9 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
             // Run when the robot starts
             void robotStarted();
+
+            // Runs once when the robot is stopped
+            void robotStopped();
 
             // Runs once each time the robot becomes enabled
             void robotEnabled();
