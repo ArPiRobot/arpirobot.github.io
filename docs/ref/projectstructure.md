@@ -14,7 +14,7 @@ The other files present in the project depend on the language used by the projec
 === "C++"
     A C++ project includes more than just source files. 
     
-    In addition to the code of the project, files for the cmake build system are included. This is mainly just `CMakeLists.txt` which defines how to compile the robot program. Additionally, there is a file named `arpirobot-cross.cmake` which is used to help cmake fine the cross compiler for the raspberry pi. Neither of these files should generally be edited.
+    In addition to the code of the project, files for the cmake build system are included. This is mainly just `CMakeLists.txt` which defines how to compile the robot program. Additionally, there are some files named `arpirobot-toolchain-....cmake` which are used to help cmake fine the cross compiler for the board on the rboot. None of these files should generally be edited.
 
     Aside from the build system there are two folders: `include` and `src`. The `include` folder contains header files and `src` contains source files. Headers are `.hpp` files and sources are `.cpp` files. There is a source and header file for each of `main`, `robot` and `actions`. Their uses are detail in more detail below.
 
@@ -27,8 +27,6 @@ If you are not using VSCode you can still create a project. It is recommended to
 ## Use of Each Source File
 
 By default, a project has three source files (and also three corresponding headers in a C++ project).
-
-### Main
 
 The `main` source file is used to start the robot program defined by the other source files when the program is run. This file should generally not be edited.
 
