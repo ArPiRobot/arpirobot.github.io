@@ -84,7 +84,4 @@ nav:
     - Changelog: changelog.md
     - Framework Developers: 
         - Overview: devs/overview.md
-        - Core Library (CoreLib): devs/corelib.md
-        - Arduino Firmware: devs/arduinofw.md
-        - OS Image Description: devs/os_image_config.md
         - Publish New Release: devs/new_release.md
