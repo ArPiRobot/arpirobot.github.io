@@ -54,6 +54,10 @@ If you generated a C++ project you will be prompted to "configure" the project w
 
     ![VSCode Screenshot](../../img/python_proj_files.png){: style="height:300px"}
 
+    When you open one of these files, make sure to choose which Python interpreter (version of python) you want to use. This will not actually be used to run the program (since it runs on the robot not your computer), but it is used to help detect errors in your code. You should select the version you installed in the "Setup your PC" section of the guide (it will match what is used on the robot so error detection is most accurate).
+
+    ![VSCode Screenshot](../../img/vscode_select_python.png){: style="height:280px"}
+
 === "C++ Project Files"
     A C++ project is generated with several source (`.cpp`) files in a folder named `src` and headers (`.hpp`) in a folder named `include`. The other files generated are used on the robot to start the program, used by the deploy tool to deploy the project, or are part of the build system.
 
@@ -86,6 +90,7 @@ Before deploying a project it is sometimes necessary to "build" the project. In 
 
     ![VSCode Screenshot](../../img/vscode_buildout.png){: style="height:300px"}
 
+<hr />
 
 After building, deploying to the robot is done using the Deploy Tool. First, connect your computer to the robot's WiFi network (the robot will of course need to be powered on). After this is done open the Deploy Tool and click the "Connect" button.
 
