@@ -29,52 +29,92 @@ You can write robot code with any text editor / code editor. However, using Visu
 
 Depending on the programming language you plan to use you will need to install certain tools on your computer.
 
-### C++
+### Setting up a Package Manger
 
-To build robot programs written in C++ the following tools are needed
+This section requires installing development tools on your computer. While this can be done manually, it is often a complex process to locate, install everything, and ensure it is in the system `PATH` so it can be located properly. As such, package managers will be used to simplify the installation process.
 
-- LLVM Clang & LLD Linker (*Note: Apple clang will not work, you need llvm clang with the lld linker*)
-- Ninja Build
-- CMake
-- pkg-config
+A package manager lets you install various programs by running a single command and it will take care of setting everything up so that it can be found easily. Linux distributions will include a system package manager (eg `apt` on Debian/Ubuntu and `dnf` on Fedora). However, we will need to install one on Windows or macOS.
 
-??? info "Windows Install Instructions"
-    Install [scoop](https://scoop.sh/) by opening "powershell" pasting the following (by right clicking in the powershell window) and pressing enter
-    
+??? info "Install scoop package manager on Windows"
+    1. Open the start menu and search for "Powershell". Open "Windows Powershell"
+
+    2. Copy the following command (comes from [scoop.sh](https://scoop.sh/))
+
     ```sh
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    ```
+
+    3. Right click in the powershell window to paste the copied text
+
+    4. Press enter to run command
+
+    5. Copy the following command (comes from [scoop.sh](https://scoop.sh/))
+
+    ```sh
     Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
     ```
 
-    Scoop is a package manager which lets you install programs by running a single command. It also makes sure they are setup so that they are easily found.
+    6. Right click in the powershell window again to paste it
+
+    7. Press enter to run it
+
+    8. Wait for scoop to finish installing
+
+??? info "Install brew package manager on macOS"
+    1. Open Terminal (search for it in launchpad or open finder and go to `Applications > Utilities > Terminal`)
+
+    2. Copy the following command (comes from [brew.sh](https://brew.sh/))
+
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
     
-    After installing scoop, run the following commands (open powershell, copy paste and press enter) to install the required tools
+    3. Paste it in the terminal window (CMD+V or right click > paste)
+
+    4. Press enter to run the command
+
+    5. Wait for brew to finish installing
+
+Installing and using the above package managers is highly recommended. You can install the required tools in a different way, but this guide assumes you are using the package managers listed above.
+
+### C++
+
+To build robot programs written in C++ you need to install LLVM, CMake, Ninja, and pkg-config.
+
+??? info "Windows Install Instructions"
+    1. Search for "Powershell" in the start menu and open "Windows Powershell"
+
+    2. Copy the following command
 
     ```sh
     scoop install llvm ninja cmake pkg-config
     ```
 
-    Other package managers can be used, or these tools can all be manually installed, but several do not have installers and you will need to make sure their binaries are all in your `PATH`.
+    3. Right click in the powershell windows to paste it
+
+    4. Press enter to run the command
+
+    5. Wait for scoop to finish installing the requested packages
 
 ??? info "macOS Install Instructions"
-    Install [brew package manager](https://brew.sh/) by opening "Terminal.app" and pasting the following (CMD+V) and pressing enter
+    1. Open Terminal (search for it in launchpad or open finder and go to `Applications > Utilities > Terminal`)
 
-    ```sh
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
-
-    Brew is a package manager which lets you instal programs by running a single command. It also makes sure they are setup so that they are easily found.
-
-    After installing brew, run the following command (open terminal, copy paste and press enter)
+    2. Copy the following command
 
     ```sh
     brew install llvm ninja cmake
     ```
+    
+    3. Paste it in the terminal window (CMD+V or right click > paste)
 
-    While you can install these tools without using brew, you will need to make sure all binaries are in your `PATH`, including `clang`, `clang++`, and `lld` which must be in your PATH before the default apple clang binaries. This is STRONGLY discouraged as this may cause issues when building other things. If you do this, you should modify PATH only while building ArPiRobot programs. Alternatively, just use brew! The ArPiRobot build system knows where to look for llvm clang installed by brew.
+    4. Press enter to run the command
+
+    5. Wait for brew to finish installing the requested packages
 
 ??? info "Linux Install Instructions"
     Most Linux distributions should include these tools via the system package manager.
+
+    Open a terminal and paste the following command. Then press enter.
 
     **Debian / Ubuntu:** `sudo apt install clang lld ninja-build cmake`
 
@@ -88,47 +128,69 @@ You will need to install python on your development computer. ArPiRobot robots c
 
 
 ??? info "Windows Install Instructions"
-    Install [scoop](https://scoop.sh/) by opening "powershell" pasting the following (by right clicking in the powershell window) and pressing enter
-    
-    ```sh
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-    ```
+    1. Search for "Powershell" in the start menu and open "Windows Powershell"
 
-    Scoop is a package manager which lets you install programs by running a single command. It also makes sure they are setup so that they are easily found.
-    
-    After installing scoop, run the following commands (open powershell, copy paste and press enter) to install the required tools
+    2. Copy the following command
 
     ```sh
     scoop bucket add versions
+    ```
+
+    3. Right click in the powershell windows to paste it
+
+    4. Press enter to run the command
+
+    5. Wait for the command to finish
+
+    6. Copy the following command
+
+    ```sh
     scoop install python311
     ```
 
-    If you don't want to use scoop, you can download python from [python](https://www.python.org/).
+    7. Right click in the powershell windows to paste it
+
+    8. Press enter to run the command
+
+    5. Wait for scoop to finish installing the requested packages
 
 ??? info "macOS Install Instructions"
-    Install [brew package manager](https://brew.sh/) by opening "Terminal.app" and pasting the following (CMD+V) and pressing enter
+    1. Open Terminal (search for it in launchpad or open finder and go to `Applications > Utilities > Terminal`)
 
-    ```sh
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
-
-    Brew is a package manager which lets you instal programs by running a single command. It also makes sure they are setup so that they are easily found.
-
-    After installing brew, run the following command (open terminal, copy paste and press enter)
+    2. Copy the following command
 
     ```sh
     brew install python@3.11
     ```
+    
+    3. Paste it in the terminal window (CMD+V or right click > paste)
 
-    If you don't want to use brew, you can download python from [python](https://www.python.org/).
+    4. Press enter to run the command
+
+    5. Wait for brew to finish installing the requested packages
 
 ??? info "Linux Install Instructions"
-    Your Linux distribution may provide packages for the required version of python. If so, they are likely named `python3.11` or `python311`. You can check the version of python3 included with your distribution by running `python3 --version` (if it is `3.11.x`, where `x` is any number, you already have the required python version).
+    Linux distributions usually include python, but it may not be version `3.11`. You can check the python version by running `python3 --version` in a terminal. If the version is `3.11.x` (x can be any number), you have python `3.11`.
 
-    If your distribution doesn't provide the required version, you may be able to find a third party build (eg [deadsnakes ppa for Ubuntu](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa)).
+    If you do not have python `3.11`, ideally you should install it (you can use a different version of python on your development computer, but error detection may not work properly if you do).
 
-    If you can't find the required version any other way, you may have to build from source (extract the python source package from python.org the run `./configure; make; sudo make install`)
+    How you install specific versions of python depends on your Linux distribution
+
+    **Ubuntu:** The [deadsnakes ppa](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa) may have the version of python you need. Python 3.11 packages are currently provided for Ubuntu 20.04 and 22.04. Add the ppa and run `apt install python3.11`
+
+    **Fedora:** Fedora often includes many python versions. Try installing 3.11 using `dnf install python3.11`
+
+    **Arch:** The aur will likely include any python version you'd ever need. If the system python is not 3.11, you should be able to install the `python311` aur package.
+
+    If you can't find the required version any other way, you may have to build from source
+    ```
+    wget https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tar.xz
+    tar -xf Python-3.11.9.tar.xz
+    cd Python-3.11.9
+    ./configure --prefix=/usr/local
+    make -j$(nproc)
+    sudo make install
+    ```
 
 
 ## Drive Station and Deploy Tool
