@@ -149,35 +149,42 @@ $(function() {
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">virtual</span> std::vector&lt;uint8_t&gt; readAll() = 0;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> write(<span class="keyword">const</span> uint8_t &amp;b) = 0;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">virtual</span> std::string getDeviceName() = 0;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> msgStartsWith(<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;msg, <span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;prefix);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> msgEquals(<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;msg1, <span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;msg2);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        std::vector&lt;uint8_t&gt; workingBuffer;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        std::vector&lt;uint8_t&gt; readDataset;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">bool</span> parseStarted = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordtype">bool</span> parseEscaped = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        std::thread *processThread = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        std::vector&lt;std::shared_ptr&lt;ArduinoDevice&gt;&gt; devices;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordtype">bool</span> initialized = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordtype">bool</span> arduinoReady = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> uint8_t START_BYTE;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> uint8_t END_BYTE;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> uint8_t ESCAPE_BYTE;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; MSG_START;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; MSG_ADD;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; MSG_ADDSUCCESS;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; CMD_RESET;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; CMD_END;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="comment">// Child class destructor must stop thread because thread calls</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">// pure virtual methods. Thus, it must stop before child (implementing these functions)</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">// is destructed.</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordtype">void</span> stopFromChildDestructor();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> msgStartsWith(<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;msg, <span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;prefix);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> msgEquals(<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;msg1, <span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;msg2);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        std::vector&lt;uint8_t&gt; workingBuffer;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        std::vector&lt;uint8_t&gt; readDataset;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordtype">bool</span> parseStarted = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordtype">bool</span> parseEscaped = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        std::thread *processThread = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        std::vector&lt;std::shared_ptr&lt;ArduinoDevice&gt;&gt; devices;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordtype">bool</span> initialized = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordtype">bool</span> arduinoReady = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordtype">bool</span> stopRun = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> uint8_t START_BYTE;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> uint8_t END_BYTE;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> uint8_t ESCAPE_BYTE;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classarpirobot_1_1ArduinoDevice.html">ArduinoDevice</a>;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    };</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; MSG_START;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; MSG_ADD;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; MSG_ADDSUCCESS;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; CMD_RESET;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> std::vector&lt;uint8_t&gt; CMD_END;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classarpirobot_1_1ArduinoDevice.html">ArduinoDevice</a>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    };</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
 <div class="ttc" id="aclassarpirobot_1_1ArduinoDevice_html"><div class="ttname"><a href="classarpirobot_1_1ArduinoDevice.html">arpirobot::ArduinoDevice</a></div><div class="ttdef"><b>Definition:</b> ArduinoDevice.hpp:35</div></div>
 <div class="ttc" id="aclassarpirobot_1_1BaseArduinoInterface_html"><div class="ttname"><a href="classarpirobot_1_1BaseArduinoInterface.html">arpirobot::BaseArduinoInterface</a></div><div class="ttdef"><b>Definition:</b> BaseArduinoInterface.hpp:41</div></div>
 <div class="ttc" id="aclassarpirobot_1_1BaseArduinoInterface_html_a08d183e72e6076c586b39df5bef1b440"><div class="ttname"><a href="classarpirobot_1_1BaseArduinoInterface.html#a08d183e72e6076c586b39df5bef1b440">arpirobot::BaseArduinoInterface::readData</a></div><div class="ttdeci">bool readData()</div></div>

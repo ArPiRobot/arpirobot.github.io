@@ -74,6 +74,9 @@ $(function() {
 , <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1Ultrasonic4Pin.html#a8bc667e57e0b1379bd96f04bc32ca138">arpirobot.arduino.sensor.Ultrasonic4Pin</a>
 , <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1VoltageMonitor.html#ad1be211df2d9eee701150a79623b0a9d">arpirobot.arduino.sensor.VoltageMonitor</a>
 , <a class="el" href="classarpirobot_1_1core_1_1action_1_1ActionSeries.html#ab3990f21462c520551fb8aae84c1e305">arpirobot.core.action.ActionSeries</a>
+, <a class="el" href="classarpirobot_1_1core_1_1camera_1_1LibcameraCamera.html#a0a86cc48227ffc1ff2bf66bf99a3130e">arpirobot.core.camera.LibcameraCamera</a>
+, <a class="el" href="classarpirobot_1_1core_1_1camera_1_1RpicamCamera.html#aa9c33b4b61e59d3902274a6d9ec38247">arpirobot.core.camera.RpicamCamera</a>
+, <a class="el" href="classarpirobot_1_1core_1_1camera_1_1V4l2Camera.html#a3ee19a05c027d00ab034aa3ef42a704c">arpirobot.core.camera.V4l2Camera</a>
 , <a class="el" href="classarpirobot_1_1core_1_1control_1_1PID.html#a7975bdb34fa1355036119e82405dfd2d">arpirobot.core.control.PID</a>
 , <a class="el" href="classarpirobot_1_1core_1_1drive_1_1ArcadeDriveHelper.html#a4bd3869e3fa498ae9b041d490cb53f0b">arpirobot.core.drive.ArcadeDriveHelper</a>
 , <a class="el" href="classarpirobot_1_1core_1_1drive_1_1CubicAxisTransform.html#a1126f27c558aeca0b9abecadfa93206c">arpirobot.core.drive.CubicAxisTransform</a>
@@ -122,6 +125,9 @@ $(function() {
 </li>
 <li>clear_axis_transform()
 : <a class="el" href="classarpirobot_1_1devices_1_1gamepad_1_1Gamepad.html#a9294aa702627ea379b456e98ce065f8f">arpirobot.devices.gamepad.Gamepad</a>
+</li>
+<li>clear_extra_options()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#a9e3da63eaf613fc86bcd0c4feaf50453">arpirobot.core.camera.BaseCamera</a>
 </li>
 </ul>
 
@@ -172,6 +178,9 @@ $(function() {
 <li>get_axis()
 : <a class="el" href="classarpirobot_1_1devices_1_1gamepad_1_1Gamepad.html#ab673772172ad783ed7a92481ece3c557">arpirobot.devices.gamepad.Gamepad</a>
 </li>
+<li>get_backend()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#a733210aa05f53fcd39e4124910ac81dc">arpirobot.core.camera.BaseCamera</a>
+</li>
 <li>get_button()
 : <a class="el" href="classarpirobot_1_1devices_1_1gamepad_1_1Gamepad.html#a110df20904bbf2eb2eccaca789e2fe56">arpirobot.devices.gamepad.Gamepad</a>
 </li>
@@ -208,6 +217,9 @@ $(function() {
 : <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1Mpu6050Imu.html#ab6c2621a0e48eff0daa727881d5f0e0c">arpirobot.arduino.sensor.Mpu6050Imu</a>
 , <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1NxpAdafruit9Dof.html#ab5895d3bc7e18bf89318cb4d059ef2a7">arpirobot.arduino.sensor.NxpAdafruit9Dof</a>
 , <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1OldAdafruit9Dof.html#aeff53c372556eb84204f89bc24766d5a">arpirobot.arduino.sensor.OldAdafruit9Dof</a>
+</li>
+<li>get_id()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#a0472c7fa6e45f058600687adde23451a">arpirobot.core.camera.BaseCamera</a>
 </li>
 <li>get_kd()
 : <a class="el" href="classarpirobot_1_1core_1_1control_1_1PID.html#a38ac87ab90deae9e9ed1dde7fa43ee0f">arpirobot.core.control.PID</a>
@@ -345,6 +357,9 @@ $(function() {
 <li>robot_started()
 : <a class="el" href="classarpirobot_1_1core_1_1robot_1_1BaseRobot.html#aa1c0cf6ce6ba0c9bf0d35f9eb397bc0f">arpirobot.core.robot.BaseRobot</a>
 </li>
+<li>robot_stopped()
+: <a class="el" href="classarpirobot_1_1core_1_1robot_1_1BaseRobot.html#aea66a52f698a2812afa0d8472ba84a09">arpirobot.core.robot.BaseRobot</a>
+</li>
 </ul>
 
 
@@ -357,6 +372,15 @@ $(function() {
 </li>
 <li>set_brake_mode()
 : <a class="el" href="classarpirobot_1_1core_1_1device_1_1MotorController.html#a5e175099093ac1eeda11f9e11c948132">arpirobot.core.device.MotorController</a>
+</li>
+<li>set_capture_mode()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#a998aa910e29ff349236a184ceab4b781">arpirobot.core.camera.BaseCamera</a>
+</li>
+<li>set_extra_option()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#af7047f1f84a38cb08c0fa0a127b69304">arpirobot.core.camera.BaseCamera</a>
+</li>
+<li>set_frame_callback()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#a30dfb5450cd7fc773a2e79cb957f9eba">arpirobot.core.camera.BaseCamera</a>
 </li>
 <li>set_gyro_x()
 : <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1Mpu6050Imu.html#a8aca11b74350aa5a89c420c29d52b585">arpirobot.arduino.sensor.Mpu6050Imu</a>
@@ -372,6 +396,9 @@ $(function() {
 : <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1Mpu6050Imu.html#abc4d02f2b931eb381d91677dbf3de435">arpirobot.arduino.sensor.Mpu6050Imu</a>
 , <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1NxpAdafruit9Dof.html#adee0ff51f00e03b6781fa612a6e4732a">arpirobot.arduino.sensor.NxpAdafruit9Dof</a>
 , <a class="el" href="classarpirobot_1_1arduino_1_1sensor_1_1OldAdafruit9Dof.html#a10595fa13deeb8363f16fefe0024864e">arpirobot.arduino.sensor.OldAdafruit9Dof</a>
+</li>
+<li>set_hw_accel()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#a43dad1d7e28dec05d3835e33e0be4fb5">arpirobot.core.camera.BaseCamera</a>
 </li>
 <li>set_inverted()
 : <a class="el" href="classarpirobot_1_1core_1_1device_1_1MotorController.html#a82b1e99537ef183d83aa103add67b395">arpirobot.core.device.MotorController</a>
@@ -413,8 +440,17 @@ $(function() {
 <li>start_action()
 : <a class="el" href="classarpirobot_1_1core_1_1action_1_1ActionManager.html#ad1df67f3ebc09f6edf5d0cb073a7caa6">arpirobot.core.action.ActionManager</a>
 </li>
+<li>start_stream_h264()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#af9013dbb4cd8dabce43025769dd75ed5">arpirobot.core.camera.BaseCamera</a>
+</li>
+<li>start_stream_jpeg()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#a4e270497e6622f2b1bcba9cf7c97e53e">arpirobot.core.camera.BaseCamera</a>
+</li>
 <li>stop_action()
 : <a class="el" href="classarpirobot_1_1core_1_1action_1_1ActionManager.html#a46da6775908adb179bd465523b5e32fb">arpirobot.core.action.ActionManager</a>
+</li>
+<li>stop_stream()
+: <a class="el" href="classarpirobot_1_1core_1_1camera_1_1BaseCamera.html#ab866156d721d384840ff18a7455144dd">arpirobot.core.camera.BaseCamera</a>
 </li>
 </ul>
 

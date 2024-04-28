@@ -92,6 +92,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a05065db30f1f2d3d89d7d7bd31e1c567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3536dfd7a0109d17308f858ee7de11b9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#a3536dfd7a0109d17308f858ee7de11b9">robotStarted</a> ()=0</td></tr>
 <tr class="separator:a3536dfd7a0109d17308f858ee7de11b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7034474703b13ee8ce7f99caa811a4b6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#a7034474703b13ee8ce7f99caa811a4b6">robotStopped</a> ()=0</td></tr>
+<tr class="separator:a7034474703b13ee8ce7f99caa811a4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a323f2aaf1ec8b414973bcbd39d90f217"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#a323f2aaf1ec8b414973bcbd39d90f217">robotEnabled</a> ()=0</td></tr>
 <tr class="separator:a323f2aaf1ec8b414973bcbd39d90f217"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dfddbe2f2c7d49fe4eff3cba2bd289d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#a0dfddbe2f2c7d49fe4eff3cba2bd289d">robotDisabled</a> ()=0</td></tr>
@@ -107,8 +109,8 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af69bd62ab4c8045e041e5ef906eda157"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classarpirobot_1_1Task.html">Task</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#af69bd62ab4c8045e041e5ef906eda157">scheduleRepeatedFunction</a> (const std::function&lt; void()&gt; &amp;&amp;func, sched_clk::duration rate)</td></tr>
 <tr class="separator:af69bd62ab4c8045e041e5ef906eda157"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12e5c5854f5675abaf4492d2179241a2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#a12e5c5854f5675abaf4492d2179241a2">runOnceSoon</a> (const std::function&lt; void()&gt; &amp;&amp;func)</td></tr>
-<tr class="separator:a12e5c5854f5675abaf4492d2179241a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf370e1d1ec8bb93ea714a769b111c6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#a2bf370e1d1ec8bb93ea714a769b111c6">scheduleOneshotFunction</a> (const std::function&lt; void()&gt; &amp;&amp;func)</td></tr>
+<tr class="separator:a2bf370e1d1ec8bb93ea714a769b111c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadd998c928a4018362b7cced3a678d54"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#aadd998c928a4018362b7cced3a678d54">removeTaskFromScheduler</a> (std::shared_ptr&lt; <a class="el" href="classarpirobot_1_1Task.html">Task</a> &gt; task)</td></tr>
 <tr class="separator:aadd998c928a4018362b7cced3a678d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2699d9099260f443ce76ecc5b243cec"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classarpirobot_1_1BaseRobot.html#ac2699d9099260f443ce76ecc5b243cec">beginWhenReady</a> (<a class="el" href="classarpirobot_1_1BaseDevice.html">BaseDevice</a> *device)</td></tr>
@@ -390,8 +392,8 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>exists</b></td
 
 </div>
 </div>
-<a id="a12e5c5854f5675abaf4492d2179241a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12e5c5854f5675abaf4492d2179241a2">&#9670;&nbsp;</a></span>runOnceSoon()</h2>
+<a id="a7034474703b13ee8ce7f99caa811a4b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7034474703b13ee8ce7f99caa811a4b6">&#9670;&nbsp;</a></span>robotStopped()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -400,7 +402,33 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>exists</b></td
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void arpirobot::BaseRobot::runOnceSoon </td>
+          <td class="memname">virtual void arpirobot::BaseRobot::robotStopped </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Run once when the robot is stopped </p>
+
+</div>
+</div>
+<a id="a2bf370e1d1ec8bb93ea714a769b111c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf370e1d1ec8bb93ea714a769b111c6">&#9670;&nbsp;</a></span>scheduleOneshotFunction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void arpirobot::BaseRobot::scheduleOneshotFunction </td>
           <td>(</td>
           <td class="paramtype">const std::function&lt; void()&gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>func</em></td><td>)</td>
