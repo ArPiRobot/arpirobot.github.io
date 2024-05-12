@@ -46,7 +46,44 @@ Each project has its own folder which will be created in the location selected. 
 
 Once the project has been created it will be opened in VSCode. If you want to open the same project later open VSCode and use the `File > Open Folder` option (or just `File > Open...` on macOS) to open the project's folder. The project will be created with several files, described below.
 
-If you generated a C++ project you will be prompted to "configure" the project when you open it. Click yes to configure the project. If prompted to select a kit choose "Raspberry Pi Toolchain"
+Once the project opens, follow the steps below based on the type of project you created.
+
+=== "Python Project Steps"
+    
+    The first time you open a python project, a virtual environment will automatically be created. You will be prompted to choose a python interpreter. Choose the one with the version you installed in the "Setup Development Computer" section of the guide.
+
+    ![](../../img/vscode_python_choose_interpreter.png){: style="height:400px"}
+
+    Then, check the box next to `requirements.txt` and click ok.
+
+    ![](../../img/vscode_python_requirements.png){: style="height:400px"}
+
+    Wait for the environment to be created.
+
+    ![](../../img/vscode_python_create_venv.png){: style="height:400px"}
+
+    You won't have to do this again for the same project. If you want to re-create the environment, choose the "Create python environment" option under the "ArPiRobot" menu item on the bottom toolbar.
+
+=== "C++ Project Steps"
+    
+    When you open the project, you may be prompted to configure the project. Click "Yes"
+
+    ![](../../img/vscode_cpp_configure.png){: style="height:400px"}
+
+    Choose the preset matching your robot's main computer architecture
+
+    ![](../../img/vscode_cpp_preset.png){: style="height:400px"}
+
+    Wait for configuration to finish "Build files written" message
+
+    ![](../../img/vscode_cpp_generation.png){: style="height:400px"}
+
+    If you need to re-configure, configure later, or change the preset, see the instructions on building the C++ project in the "Deploying to Robot" section below.
+
+<hr />
+
+
+## Files Overview
 
 
 === "Python Project Files"
@@ -77,6 +114,8 @@ Before deploying a project it is sometimes necessary to "build" the project. In 
     C++ projects must be built before they can be deployed.
 
     First, you need to choose a preset. The preset determines which architecture your program will be built for. This needs to match the architecture of the computer on your robot.
+
+    *Note: you only need to choose the configure preset once. If you selected one earlier, it will likely already be selected as described below.*
 
     Under the cmake panel on the left side, you can choose a "Configure Preset". Choose either `armv6` or `aarch64` (whichever matches your board - see the OS image downloads to check what your board is).
 

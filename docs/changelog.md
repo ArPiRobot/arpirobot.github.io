@@ -20,6 +20,9 @@
 4. Python Robot programs development changes
     
     - Projects include a `pyrightconfig.json` specifying python version to be used in error checking. This makes it easier to use a newer version of python on the development computer than is used on the robot.
+    - Projects include a `requirements.txt` file used to create a virtual environment with the arpirobot core lib package installed
+    - Projects are developed using a virtual environment (the vscode extension will automatically prompt you to create it)
+    - The VSCode extension now has a command to (Re)Create the python environment
 
 4. Supported Boards Changed
 
