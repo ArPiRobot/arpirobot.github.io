@@ -169,19 +169,15 @@ You will need to install python on your development computer. ArPiRobot robots c
     5. Wait for brew to finish installing the requested packages
 
 ??? info "Linux Install Instructions"
-    Linux distributions usually include python, but it may not be version `3.11`. You can check the python version by running `python3 --version` in a terminal. If the version is `3.11.x` (x can be any number), you have python `3.11`.
-
-    If you do not have python `3.11`, ideally you should install it (you can use a different version of python on your development computer, but error detection may not work properly if you do).
-
-    How you install specific versions of python depends on your Linux distribution
+    Linux distributions usually include python, but it may be older than `3.11`. If it is, you can try the methods below to install python `3.11` or newer.
 
     **Ubuntu:** The [deadsnakes ppa](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa) may have the version of python you need. Python 3.11 packages are currently provided for Ubuntu 20.04 and 22.04. Add the ppa and run `apt install python3.11`
 
-    **Fedora:** Fedora often includes many python versions. Try installing 3.11 using `dnf install python3.11`
+    **Fedora:** Fedora often includes many python versions. Try installing 3.11 using `dnf install python3.11` (or a newer version `python3.12`, etc if available)
 
     **Arch:** The aur will likely include any python version you'd ever need. If the system python is not 3.11, you should be able to install the `python311` aur package.
 
-    If you can't find the required version any other way, you may have to build from source
+    If all else fails, you can build from source
     ```
     wget https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tar.xz
     tar -xf Python-3.11.9.tar.xz
