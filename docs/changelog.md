@@ -17,6 +17,10 @@
 
     - You will need to update existing C++ robot projects to use these new build system components. The easiest way to do this is likely to generate a new project and copy your source code to that new project.
 
+4. Python Robot programs development changes
+    
+    - Projects include a `pyrightconfig.json` specifying python version to be used in error checking. This makes it easier to use a newer version of python on the development computer than is used on the robot.
+
 4. Supported Boards Changed
 
     - There are no changes to supported Raspberry Pi Boards
