@@ -124,65 +124,13 @@ To build robot programs written in C++ you need to install LLVM, CMake, Ninja, a
 
 ### Python
 
-You will need to install python on your development computer. ArPiRobot robots currently use Python `3.11`, thus it is recommended to install this version of python on your development computer (note: you can have multiple versions of python installed).
+You will need to install python on your development computer. ArPiRobot robots currently use Python `3.11`. It is recommended to install the same python version, or a newer version, on your development computer.
 
+For Windows and macOS, you can download and install python from [python.org](https://www.python.org/). Alternatively, you can use scoop (on Windows) or brew (on macOS) if you already set them up to install C++ tools.
 
-??? info "Windows Install Instructions"
-    1. Search for "Powershell" in the start menu and open "Windows Powershell"
+For Linux, your distribution will likely include `python3`, however it may be an older version (check with `python3 --version` in a terminal). If it is, some distributions provide packages for multiple python versions, sometimes third parties provide newer versions (eg [deadsnakes ppa for Ubuntu](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa)), and if all else fails, you may need to build python from source.
 
-    2. Copy the following command
-
-    ```sh
-    scoop bucket add versions
-    ```
-
-    3. Right click in the powershell windows to paste it
-
-    4. Press enter to run the command
-
-    5. Wait for the command to finish
-
-    6. Copy the following command
-
-    ```sh
-    scoop install python311
-    ```
-
-    7. Right click in the powershell windows to paste it
-
-    8. Press enter to run the command
-
-    5. Wait for scoop to finish installing the requested packages
-
-??? info "macOS Install Instructions"
-    1. Open Terminal (search for it in launchpad or open finder and go to `Applications > Utilities > Terminal`)
-
-    2. Copy the following command
-
-    ```sh
-    brew install python@3.11
-    ```
-    
-    3. Paste it in the terminal window (CMD+V or right click > paste)
-
-    4. Press enter to run the command
-
-    5. Wait for brew to finish installing the requested packages
-
-??? info "Linux Install Instructions"
-    Linux distributions usually include python, but it may not be version `3.11`. You can check the python version by running `python3 --version` in a terminal. If the version is `3.11.x` (x can be any number), you have python `3.11`.
-
-    If you do not have python `3.11`, ideally you should install it (you can use a different version of python on your development computer, but error detection may not work properly if you do).
-
-    How you install specific versions of python depends on your Linux distribution
-
-    **Ubuntu:** The [deadsnakes ppa](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa) may have the version of python you need. Python 3.11 packages are currently provided for Ubuntu 20.04 and 22.04. Add the ppa and run `apt install python3.11`
-
-    **Fedora:** Fedora often includes many python versions. Try installing 3.11 using `dnf install python3.11`
-
-    **Arch:** The aur will likely include any python version you'd ever need. If the system python is not 3.11, you should be able to install the `python311` aur package.
-
-    If you can't find the required version any other way, you may have to build from source
+??? info "Linux Building from Source"
     ```
     wget https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tar.xz
     tar -xf Python-3.11.9.tar.xz
