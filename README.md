@@ -22,6 +22,6 @@ mike deploy --push --update-aliases [version] [latest]
 
 - Clone corelib repo and run the following in it
     ```sh
-    python3 generate_docs.pygit s
+    python3 generate_docs.py
     ```
 - Docs are in the `doxygen-docs` folder. Copy it to `docs/` in the `arpirobot.github.io` repo.
