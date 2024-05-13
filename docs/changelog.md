@@ -63,7 +63,7 @@
     - "This PC" tab now allows installation of sysroot packages instead of toolchain packages
     - Supports newer WiFi configuration scripts (added by ImageScripts) allowing control over WiFi band
     - WiFi configuration UI improved and populated valid options given the current configuration (eg regulatory domain)
-    - Fixed a bug that prevented remote connection loss from being detected on Linux
+    - Fixed a bug that prevented remote connection loss from being detected on Linux and macOS
     - Download links for various tools removed from UI
     - Camera Stream tab redone to only handle stream playback (as stream configuration now occurs in robot code)
 
@@ -90,3 +90,5 @@
     - Added Pinouts for all supported boards on docs site
 
     - Updated existing pages on docs sites with correct install instructions and guides for the changes in v1.1
+
+    - Drive Station: Fixed a bug that prevented remote connection loss from being detected on Linux and macOS
