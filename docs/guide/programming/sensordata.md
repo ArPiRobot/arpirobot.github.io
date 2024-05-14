@@ -12,12 +12,12 @@ The ArPiRobot Arduino Firmware is a program written using the Arduino framework.
 
 Depending on your board you may also need to install a boards package to support your board in the Arduino IDE. Follow the instructions below for the board you are using. *Note: This may not include instructions for every supported board. Check the README on the [ArPiRobot Arduino Firmware GitHub](https://github.com/ArPiRobot/ArPiRobot-ArduinoFirmware) repo for more information about supported boards.*
 
-??? "Arduino Nano & Clones"
+??? info "Arduino Nano & Clones"
     The Arduino Nano (and clones of the Arduino Nano) have support builtin to the Arduino IDE. Under the `Tools` menu change the board to "Arduino Nano" (under a category called `Arduino AVR Boards`). If you are using a clone (or an older nano) you probably need to change the `Processor` to `ATmega328P (Old Bootloader)`.
 
     ![](../../img/arduino_nano.png){: style="height:250px"}
 
-??? "Arduino Nano Every"
+??? info "Arduino Nano Every"
     The Arduino Nano Every is officially supported, but the `megaAVR` boards package must be installed first. Under `Tools > Board` open `Board Manger...`. Search `megaAVR` and install the `Arduino megaAVR Boards` package (latest version). 
     
     ![](../../img/megaavr_install.png){: style="height:250px"}
@@ -26,7 +26,7 @@ Depending on your board you may also need to install a boards package to support
 
     ![](../../img/arduino_nanoevery.png){: style="height:250px"}
 
-??? "Raspberry Pi Pico"
+??? info "Raspberry Pi Pico"
     The Raspberry Pi Pico is supported by the ArPiRobot Arduino Firmware *using the [arduino-pico](https://github.com/earlephilhower/arduino-pico) core, **not** the official Mbed OS core*. Follow the [install instructions](https://arduino-pico.readthedocs.io/en/latest/install.html#installing-via-arduino-boards-manager) for `arduino-pico`. Then choose `Raspberry Pi Pico` under `Tools > Board` in the Arduino IDE. This will be under a category called `Raspberry Pi RP2040 Boards` **not** `Arduino Mbed OS RP2040 Boards`.
 
     ![](../../img/pi_pico.png){: style="height:250px"}

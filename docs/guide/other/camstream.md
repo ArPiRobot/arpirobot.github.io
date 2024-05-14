@@ -1,4 +1,13 @@
 
+TODO: Update this to demonstrate CoreLib API in v1.1
+
+TODO: Demonstrate frame processing using OpenCV (and modifications to project files to link to / install dependencies)
+
+
+
+
+
+
 The [ArPiRobot-CameraStreaming](https://github.com/ArPiRobot/ArPiRobot-CameraStreaming) component is pre-installed on all ArPiRobot OS images. This component includes scripts to generate and invoke gstreamer pipelines for realtime camera streaming. An RTSP server is also installed ([rtsp-simple-server](https://github.com/aler9/rtsp-simple-server)). The combination of these two components allows for multiple low-latency camera streams over the robot's wifi network.
 
 ## Configuring Camera Streams

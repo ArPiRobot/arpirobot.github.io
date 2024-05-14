@@ -5,7 +5,7 @@ A collection of programs, libraries, and tools to make building robots easy and 
 1. **Easy for education use**
 
     ??? info "Details"
-        This means that it not only needs to be easy to code with, but easy to **use** without assuming lots of experience with computers. Most existing solutions require knowledge of SSH, various types or wiring, writing code to communicate with different devices, creating a from-scratch wireless control solution, setting up a development environment from scratch or writing code with a command line editor. This may work well for many experienced developers, but it does not often for new developers and people who want to just get started quickly.
+        This means that it not only needs to be easy to code with, but easy to **use** with minimal computer programming experience. Most existing solutions require knowledge of SSH, various types or wiring, writing code to communicate with different devices, creating a from-scratch wireless control solution, setting up a development environment from scratch or writing code with a command line editor. This may work well for many experienced developers, but it does not often for new developers and people who want to just get started quickly.
 
 2. **Provide a complete setup from writing code to deploying it, to controlling the robot**
 
@@ -47,9 +47,6 @@ The ArPiRobot Framework include various components to make building a robot easy
 
 ??? info "Arduino Firmware"
     Arduino program provided to make it easy to add additional sensors to the robot.
-
-??? info "Other Tools"
-    Additional tools, such as C++ cross compiler toolchains are provided to ensure ease of use.
 
 ??? info "Guide"
     A detailed step-by-step guide is provided to make setting everything up easy. Additionally, this guide includes some example low cost robot builds (also with step-by-step instructions).

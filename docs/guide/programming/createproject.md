@@ -193,6 +193,8 @@ By putting code in these functions, a robot program can be made to perform a wid
         def robot_started(self):
             # Run once when the robot starts
             # Configure devices here
+
+            # ADD THIS LINE
             Logger.log_info("robot_started() run!")
         
         def robot_stopped(self):
@@ -200,10 +202,14 @@ By putting code in these functions, a robot program can be made to perform a wid
 
         def robot_enabled(self):
             # Runs once each time the robot becomes enabled
+
+            # ADD THIS LINE
             Logger.log_info("robot_enabled() run!")
 
         def robot_disabled(self):
             # Runs once each time the robot becomes disabled
+
+            # ADD THIS LINE
             Logger.log_info("robot_disabled() run!")
 
         def enabled_periodic(self):
@@ -234,6 +240,7 @@ By putting code in these functions, a robot program can be made to perform a wid
 
 
     void Robot::robotStarted(){
+        // ADD THIS LINE
         Logger::logInfo("robotStarted() run!");
     }
 
@@ -242,10 +249,12 @@ By putting code in these functions, a robot program can be made to perform a wid
     }
 
     void Robot::robotEnabled(){
+        // ADD THIS LINE
         Logger::logInfo("robotEnabled() run!");
     }
 
     void Robot::robotDisabled(){
+        // ADD THIS LINE
         Logger::logInfo("robotDisabled() run!");
     }
 

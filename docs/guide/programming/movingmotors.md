@@ -8,7 +8,7 @@ One of the most important devices on a robot are the motors. Controlling the mot
 Many different motor controllers are supported by the ArPiRobot framework. Each one requires slightly different code to use. The ArPiRobot framework is object oriented, meaning your program will have one object for each motor on your robot, and sometimes one for the motor controller itself. The objects for the motors all have the same set of functions, but must be created differently based on the motor controller in use. This section covers creating the objects for the motors depending on which motor controller you use on your robot. The following section shows how to use the motor objects. Use of the motor objects is the same regardless of which motor type. In this section, you need only add the code for the motor controller you use on your robot.
 
 
-??? "DRV8833 Motor Controller"
+??? info "DRV8833 Motor Controller"
 
     ![](../../img/drv8833.png){: style="height: 300px"}
     
@@ -152,7 +152,7 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
         };
         ```
         
-??? "TB6612 Motor Controller"
+??? info "TB6612 Motor Controller"
 
     ![](../../img/tb6612.png){: style="height: 300px"}
 
@@ -297,7 +297,7 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
         };
         ```
 
-??? "L298N Motor Controller"
+??? info "L298N Motor Controller"
 
     ![](../../img/l298n_labeled.png){: style="height: 300px"}
 
@@ -440,7 +440,7 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
         };
         ```  
 
-??? "Adafruit Motor Hat / Bonnet"
+??? info "Adafruit Motor Hat / Bonnet"
 
     *Note: The Geekworm motor hat uses the same code as the Adafruit Motor Hat.*
 

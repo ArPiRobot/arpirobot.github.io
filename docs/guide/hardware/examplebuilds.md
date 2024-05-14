@@ -101,7 +101,7 @@ A four wheel differential drive robot build on a small clipboard (6" by 9"). Thi
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_pi_pos.png){: style="height:300px;"}
 
-        - Next, place the Arduino Nano in the mini breadboard as shown below. Notice that one side has three rows on the breadboard and the other only has two. Also notice that the "back" of the breadboard has one empty row not obstructed by the row. Matching this is important.
+        - Next, place the Arduino Nano in the mini breadboard as shown below. Notice that one side has three rows on the breadboard and the other only has two. Also notice that the "back" of the breadboard has one empty row not obstructed by the Arduino. Matching this is important.
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](../../img/4wdmini_arduino_asm.png){: style="height:200px;"}
 
