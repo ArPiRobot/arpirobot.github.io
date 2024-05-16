@@ -126,6 +126,8 @@ To build robot programs written in C++ you need to install LLVM, CMake, Ninja, a
 
 You will need to install python on your development computer. ArPiRobot robots currently use Python `3.11`. It is recommended to install the same python version, or a newer version, on your development computer.
 
+Why does the python version matter? The version of python on your computer will be used by error checking tools (specifically `pyright`) to detect errors in your code. These tools are configured to detect errors for python `3.11`. However, this may not work reliably if your python is older than `3.11` and error checking may not work properly.
+
 ??? info "Windows Install Instructions"
     1. Search for "Powershell" in the start menu and open "Windows Powershell"
 
@@ -171,11 +173,11 @@ You will need to install python on your development computer. ArPiRobot robots c
 ??? info "Linux Install Instructions"
     Linux distributions usually include python, but it may be older than `3.11`. If it is, you can try the methods below to install python `3.11` or newer.
 
-    **Ubuntu:** The [deadsnakes ppa](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa) may have the version of python you need. Python 3.11 packages are currently provided for Ubuntu 20.04 and 22.04. Add the ppa and run `apt install python3.11`
+    **Ubuntu LTS & Linux Mint:** The [deadsnakes ppa](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa) may have the version of python you need. Python 3.11 packages are currently provided for Ubuntu 20.04 and 22.04. Add the ppa and run `apt install python3.11`
 
     **Fedora:** Fedora often includes many python versions. Try installing 3.11 using `dnf install python3.11` (or a newer version `python3.12`, etc if available)
 
-    **Arch:** The aur will likely include any python version you'd ever need. If the system python is not 3.11, you should be able to install the `python311` aur package.
+    **Arch:** The AUR will likely include any python version you'd ever need. If the system python is not 3.11, you should be able to install the `python311` AUR package.
 
     If all else fails, you can build from source
     ```
@@ -184,7 +186,7 @@ You will need to install python on your development computer. ArPiRobot robots c
     cd Python-3.11.9
     ./configure --prefix=/usr/local
     make -j$(nproc)
-    sudo make install
+    sudo make altinstall
     ```
 
 
