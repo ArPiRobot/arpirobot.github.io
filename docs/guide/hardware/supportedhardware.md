@@ -106,10 +106,12 @@ When selecting a SBC to use as the main computer consider not only the specs of 
 ??? info "Orange Pi Boards"
     The following Orange Pi boards are supported. Other boards are not officially supported (and would require a custom OS image).
 
-    | Board                   | Number of Cores    | RAM         | 64-bit | WiFi | Power Supply | Link           |
-    | ----------------------- | ------------------ | ----------- | ------ | ---- | ------------ | -------------- |
-    | Orange Pi 3B            | 4                  | 2GB - 8GB   | Yes    | Yes  | 5V@2.4A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) |
-    | Orange Pi Zero 2W       | 4                  | 1GB / 2GB / 4GB | Yes    | Yes  | 5V@2.0A  | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2W.html) |
+    **Note: OrangePi sometimes changes their board versions (eg Orange Pi 3B v1.1.1 vs OrangePi 3B v2.1) and makes breaking changes. Only the versions listed below are tested. Other versions may work or may not work.**
+
+    | Board                   | Board Version(s) | Number of Cores    | RAM         | 64-bit | WiFi | Power Supply | Link           |
+    | ----------------------- | ------------------- | ------------------ | ----------- | ------ | ---- | ------------ | -------------- |
+    | Orange Pi 3B      | v1.1.1 (tested) | 4                  | 2GB - 8GB   | Yes    | Yes  | 5V@2.4A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) |
+    | Orange Pi Zero 2W       | v1.1.1 (tested) <br /> v1.1 (probably works)  |  4                  | 1GB / 2GB / 4GB | Yes    | Yes  | 5V@2.0A  | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2W.html) |
 
     **The Orange PI Zero 2W has a 1.5GB version, which is NOT SUPPORTED by the ArPiRobot framework.**
 
