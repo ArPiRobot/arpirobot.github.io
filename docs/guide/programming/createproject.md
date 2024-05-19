@@ -113,11 +113,11 @@ Before deploying a project it is sometimes necessary to "build" the project. In 
 === "C++"
     C++ projects must be built before they can be deployed.
 
-    First, you need to choose a preset. The preset determines which architecture your program will be built for. This needs to match the architecture of the computer on your robot.
+    First, you need to choose a preset. The preset determines which architecture your program will be built for. This needs to match the architecture of the computer on your robot. You can also choose between "Debug" and "Release" builds for each supported architecture.
 
-    *Note: you only need to choose the configure preset once. If you selected one earlier, it will likely already be selected as described below.*
+    *Note: you only need to choose the configure preset once, unless you need to change it to a different preset. You don't have to choose the same preset each time you build.*
 
-    Under the cmake panel on the left side, you can choose a "Configure Preset". Choose either `armv6` or `aarch64` (whichever matches your board - see the OS image downloads to check what your board is).
+    Under the cmake panel on the left side, you can choose a "Configure Preset". Choose either `armv6-Debug` or `aarch64-Debug` (whichever matches your board - see the OS image downloads to check what your board is).
 
     ![VSCode Screenshot](../../img/vscode_preset.png){: style="height:300px"}
 
