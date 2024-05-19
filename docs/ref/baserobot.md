@@ -19,6 +19,9 @@ The following functions must be overridden in the child class. These are run at 
     def robot_started(self):
         pass
     
+    def robot_stopped(self):
+        pass
+    
     def robot_enabled(self):
         pass
 
@@ -38,6 +41,8 @@ The following functions must be overridden in the child class. These are run at 
 === "C++"
     ```cpp
     void robotStarted();
+
+    void robotStopped();
 
     void robotEnabled();
 
@@ -60,6 +65,7 @@ While disabled some devices will become disabled. For example, motor controllers
 
 In addition to controlling the state of "potentially dangerous" devices, the state of the robot is useful for defining core robot functionality. Some of the functions listed above run only if the robot is in a specific state. Others run regardless of state.
 - `robot_started` / `robotStarted` runs when the robot program is started. This will always occur while the robot is disabled. This function will only ever run once.
+- `robot_stopped` / `robotStopped` runs when the robot program is being stopped. This will only occur once and may occur when the robot is in the enabled or disabled state. This function is typically unused, but if anything (not part of the corelib) is opened by user code that needs to be cleanly closed, it can be done here.
 - `robot_enabled` / `robotEnabled` runs when the robot switches from the disabled state to the enabled state.
 - `robot_disabled` / `robotDisabled` runs when the robot switches from the enabled state to the disabled state. It also runs after `robot_started` / `robotStarted` runs when the program first starts (as the robot first becomes disabled on startup).
 - There are also three periodic functions. The generic `periodic` function will run regardless of state. The `enabled_periodic` / `enabledPeriodic` and `disabled_periodic` / `disabledPeriodic` functions run only in the corresponding state.
@@ -103,6 +109,6 @@ The `RobotProfile` is a class containing only static members. The variables are 
 - How old gamepad data is allowed to be (in milliseconds). Data older than this age will be discarded (this prevents scenarios where network slowdowns prevent the robot from being controllable). Defaults to 100.
 - How frequently action's periodic functions are run (in milliseconds). Defaults to 50.
 - Duration before BaseRobot watchdog disables motors and other devices (in milliseconds). Defaults to 500.
-- Which IO provider is used when the program runs. An IO provider is an underlying library which allows using GPIO pins and communication busses. Which ones are available / used by default is platform specific. Setting this to an empty string will use the default provider for the platform.
+- Which IO provider is used when the program runs. An IO provider is an underlying library which allows using GPIO pins and communication busses. Which ones are available / used by default is board specific. Setting this to an empty string will use the default provider for the board.
 
 Any variables in `RobotProfile` must be modified *before* the `BaseRobot` instance is started. In a typical project, this means that variables must either be changed in the `main` source file (before it calls start on the `Robot` class instance) or they must be changed in the constructor of the `Robot` class (where `Robot` is the class derived from `BaseRobot`).
