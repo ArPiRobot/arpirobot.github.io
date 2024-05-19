@@ -5,7 +5,7 @@ A list of all default settings for the ArPiRobot OS Images
 **Default WiFi Network Settings**
 
 - Channel 6 (2.4G)
-- Country: US<sup>&ast;</sup>
+- Country: Unset
 - SSID: `ArPiRobot-Robot`
 - Password: `arpirobot123`
 - IP Address: `192.168.10.1`
@@ -13,7 +13,7 @@ A list of all default settings for the ArPiRobot OS Images
 
 **Default Ethernet Settings**
 
-- DHCP Server: No
+- DHCP Server: Yes
 - IP Address: `192.168.11.1`
 - Hostname: `ArPiRobot-Robot`
 
@@ -22,8 +22,3 @@ A list of all default settings for the ArPiRobot OS Images
 
 - Username: `arpirobot`
 - Password: `arpirobot`
-
-<br />
-
-- Username: `root`
-- Password: `notdefault`
