@@ -21,8 +21,7 @@ The Drive Station is built and available for download in the following formats
 
 - `.exe` file - This is a windows installer that will install the Drive Station. Supports 64-bit x86 Windows (x86_64).
 - `.app.zip` - This is a zip file containing a macOS app for the Drive Station. After extracting the zip you can drag the `.app` file to your Mac's `Applications` folder so the Drive Station will show up in Launchpad. Supports 64-bit x86 macOS (x86_64).
-- `.deb` file - This is a package that can be used to install the Drive Station on Ubuntu Linux (it should also work on other debian based systems using `.deb` packages). It depends on the required packages. Supports any architecture where PySide6 is available.
-- `.tar.gz` file - This is a package for any linux distribution. Python3, pip, and venv must be installed from system packages. Then, extract the package and run `install.sh`. Supports any architecture where PySide6 is available. 
+- `.AppImage` file - Deploy Tool on Linux. Supports 64-bit x86.
 
 
 ## Connecting to the Robot

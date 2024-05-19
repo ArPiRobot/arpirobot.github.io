@@ -19,8 +19,7 @@ The Deploy Tool is built and available for download in the following formats
 
 - `.exe` file - This is a windows installer that will install the Deploy Tool. Supports 64-bit x86 Windows (x86_64).
 - `.app.zip` - This is a zip file containing a macOS app for the Deploy Tool After extracting the zip you can drag the `.app` file to your Mac's `Applications` folder so the Deploy Tool will show up in Launchpad. Supports 64-bit x86 macOS (x86_64).
-- `.deb` file - This is a package that can be used to install the Deploy Tool on Ubuntu Linux (it should also work on other debian based systems using `.deb` packages). It depends on the required packages. Supports any architecture where PySide6 is available.
-- `.tar.gz` file - This is a package for any linux distribution. Python3, pip, and venv must be installed from system packages. Then, extract the package and run `install.sh`. Supports any architecture where PySide6 is available. 
+- `.AppImage` file - Deploy Tool on Linux. Supports 64-bit x86.
 
 ## This PC Tab
 
@@ -30,7 +29,7 @@ The "This PC Tab" is used to view or install different tools required for ArPiRo
 
 The "ArPiRobot Libraries" section is used to install libraries used to develop ArPiRobot programs. Currently, this is just the Core Library (ArPiRobot CoreLib). The version of the currently installed version will be displayed. Next to the version, the "Install Update Package" button can be used to select a downloaded CoreLib zip file to install a new version. This will be installed over any existing version (only one version of the CoreLib can be installed at a time).
 
-Below this section, there are sections for both C++ and Python development tools. It will show the currently installed version (if any) and sometimes have download links. Additionally, for C++ development tools, there is a button to install ArPiRobot Toolchain packages. Multiple toolchains can be installed (only one per architecture).
+Below this section, there are sections for both C++ and Python development tools. It will show the currently installed version (if any) and sometimes have download links. Additionally, for C++ development tools, there is a button to install ArPiRobot Sysroot packages. sysroots toolchains can be installed (only one per architecture).
 
 ## Connecting to the Robot (Connection Tab)
 
@@ -66,20 +65,20 @@ The log is refreshed automatically once every second so you will have a hard tim
 
 ![](../../img/dt_status.png){: style="height:400px"}
 
-The robot status tab is divided into three sections. The section at the bottom labeled "Robot Actions" has five buttons that perform different actions on the robot's computer.
+The robot status tab is divided into three sections. The section at the bottom labeled "Robot Actions" has six buttons that perform different actions on the robot's computer.
 
 - Shutdown will power the robot's computer off (this is the safe way to turn the Pi off if it is read/write)
 - Reboot will restart the robot's computer
-- Restart Program will stop any running robot program then start it again.
 - Make Readonly will make the computer's SD card readonly
 - Make Read/Write will make the computer's SD card read/write
+- Restart Robot Program will stop any running robot program then start it again.
+- Debug Robot Program will restart the robot program, but run it under a debug server.
 
 Above the "Robot Actions" section there are two other sections. On the left is the "Robot Status" section. This section will show you the robot's computer's CPU Usage, memory (RAM) usage, and the state of it's SD card's filesystem (readonly or read/write).
 
 On the right side is a "Versions" panel. This shows three different versions
 
 - Image Version - The name of the image in use on the robot
-- ArPiRobot Tools Version - This is the version of the installed ArPiRobot Tools (installed via updates)
 - Python Version - The full version number of the python interpreter installed on the robot (this is the version of python that will be used when running robot programs)
 
 ## Network Settings Tab
@@ -88,19 +87,20 @@ On the right side is a "Versions" panel. This shows three different versions
 
 The network settings tab is divided into two sections. First is the "Robot Hostname" section. In this section you can view and/or change the robot's hostname. This is just the name of the robot's computer on the network. There is generally no reason to change this as the computer will have a known IP address (`192.168.10.1`) on its own WiFi network, however you can edit the hostname then click the "Change & Reboot" button. This will change the hostname then reboot the computer so the change takes effect. This will cause the Deploy Tool to disconnect. After rebooting, you will also likely need to reconnect your computer to the robot's WiFi network before you can reconnect with the Deploy Tool. It may take the computer a couple of minutes to reboot.
 
-The more frequently used section is the "Robot Access Point" section. In this section you can adjust settings for the WiFi network generated by the robot's computer. The SSID is the network's name. The password is a WPA-2 passphrase (between 8 and 64 characters) for the WiFi network (this is the network's password). The country code is a two letter indication of which country the robot is in use in. This is important as some WiFi channels are not allowed in some countries. By default this is set to "US". You can find a list of country codes [here](https://www.arubanetworks.com/techdocs/InstantWenger_Mobile/Advanced/Content/Instant%20User%20Guide%20-%20volumes/Country_Codes_List.htm). The final setting in this section is the WiFi channel. This is one of the 2.4GHz channels (numbered 1 to 14). In the United States only 1 to 11 are allowed. In most of the rest of the world 1 to 13 are allowed. *If you set a channel that is not allowed based on the country code set you will loose access to the robot's WiFi network.* The robot will not generate a WiFi network on a channel that is disallowed based on the country code. If you do this you will probably need to re-flash the SD card to recover the robot.
+Next is the WiFi adapter section. This allows you to set a wireless country code / regulatory domain.
+
+The most frequently used section is the "Robot Access Point" section. In this section you can adjust settings for the WiFi network generated by the robot's computer. The SSID is the network's name. The password is a WPA-2 passphrase (between 8 and 64 characters) for the WiFi network (this is the network's password). You can also configure the channel and WiFi band. Choosing different channels may result in less wireless interference. Regarding WiFi bands, 2.4GHz will be longer range and slower (it is also often congested in apartment buildings or neighborhoods). 5.0GHz will likely be faster, but shorter range and some old devices (and USB wifi adapters) may not support it.
 
 ## Camera Stream Tab
 
 ![](../../img/dt_camstream.png){: style="height:400px"}
 
-The camera stream tab is used to configure and play video streams from cameras connected to the robot's computer. 
+The camera stream tab is used to play video streams from cameras connected to the robot's computer. 
 
-The first section, "Stream", is used to configure different camera feeds. Configured camera streams will be shown in the dropdown. The three buttons below can be used to create new feed configurations, delete existing ones, or edit existing ones. The new / edit dialog has many options to configure each individual stream.
+You can choose from a list of supported video players. The player you choose must be installed and in the system path.
 
-The second section, "Playback", is used to play a selected stream. The stream must first be selected in the dropdown in the "Stream" section. Then, a playback tool can be chosen in the dropdown labeled "Player". Currently three tools are supported (and must be installed separately). These are [mpv](https://mpv.io/), [ffplay](https://ffmpeg.org/), and [mplayer](http://www.mplayerhq.hu/design7/news.html). Mpv is generally recommended, however ffplay may be more compatible in some circumstances.  Once a player is selected, a stream can be opened (played) using the "Play Stream" button.
-
-Finally, the "System Configuration" section is used to configure both the camera stream service and the rtsp server service. The camera stream service runs all configured streams when started. The rtsp server service starts an rtsp server (used by default to run camera streams). For each, there is a button to manually start or stop the service. Additionally, there is a checkbox to start the service on boot (it is recommended to start both on boot if using camera streams).
+Next, enter the stream's key (as configured in the robot program) and click launch to open the stream.
 
 ## About Menu
+
 The Deploy Tool's about menu can be accessed by clicking `File > About`. This will open an about dialog with information about the Deploy Tool's license as well as information about the licenses of third party software used by the Deploy Tool. In addition, in the title of the dialog (as in the title of the main Deploy Tool window) you will see the version number of the Deploy Tool.
