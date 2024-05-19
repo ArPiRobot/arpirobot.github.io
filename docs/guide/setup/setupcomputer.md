@@ -213,3 +213,17 @@ The Deploy Tool connects to the robot's main computer. It is used to configure t
 Finally, it is necessary to download a CoreLib update package (see [downloads page](../../downloads.md)). The CoreLib update package contains a build of the ArPiRobot core library that can run on the robot along with other files needed when writing programs for the robot (regardless of programming language). The same CoreLib update package is used for all programming languages. A CoreLib update package must be installed on your PC before deploying a program to the robot.
 
 To install the downloaded update package open the Deploy Tool (installed perviously) and select the "This PC" tab. Click the "Install Update Package" button and select the CoreLib update package that was downloaded.
+
+## ArPiRobot Sysroot Package
+
+**Note: This is only needed for C++ robot programs. If you are only using python, you can skip this step.**
+
+When cross compiling C++ code (meaning building on one type of machine, such as a x86 Windows laptop, and running on a different type of machine, such as an arm Linux board) you need a set of libraries and headers for the system you are targeting (eg the arm Linux board). This sysroot needs to include any dependencies for your program.
+
+Since setting up such a sysroot is not trivial (especially on non-Linux platforms), prebuilt sysroots are generated along with OS images and are available for download (see [Downloads Page](../../downloads.md)). Sysroots matching architectures of all supported boards (eg `armv6` and `aarch64`) are provided. These sysroots contain all required libraries.
+
+You will need to install one or more sysroots depending on which boards you use on your robot(s). You need a sysroot matching the OS image's architecture (`armv6` or `aarch64`). Download the tar.xz file for these sysroots.
+
+Then, to install the downloaded files, run the Deploy Tool (note: run as administrator for this step on Windows), go to the "This PC" tab and click "Install Sysroot Package". Then choose the file you downloaded. Repeat this for multiple sysroots (of different architectures) as needed.
+
+Once this is done, the CMake build system setup for C++ robot projects will automatically find the installed sysroots.
