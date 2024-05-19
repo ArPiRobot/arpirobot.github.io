@@ -79,7 +79,7 @@ Installing and using the above package managers is highly recommended. You can i
 
 ### C++
 
-To build robot programs written in C++ you need to install LLVM, CMake, Ninja, and pkg-config.
+To build robot programs written in C++ you need to install LLVM, CMake, Ninja, and pkg-config. If you want to debug programs running on the robot, you also need LLDB (often installed with LLVM).
 
 ??? info "Windows Install Instructions"
     1. Search for "Powershell" in the start menu and open "Windows Powershell"
@@ -116,11 +116,11 @@ To build robot programs written in C++ you need to install LLVM, CMake, Ninja, a
 
     Open a terminal and paste the following command. Then press enter.
 
-    **Debian / Ubuntu:** `sudo apt install clang lld ninja-build cmake`
+    **Debian / Ubuntu:** `sudo apt install clang lld ninja-build cmake lldb`
 
-    **Fedora / RHEL:** `sudo dnf install clang lld ninja-build cmake`
+    **Fedora / RHEL:** `sudo dnf install clang lld ninja-build cmake lldb`
 
-    **Arch:** `sudo pacman -S clang lld ninja cmake`
+    **Arch:** `sudo pacman -S clang lld ninja cmake lldb`
 
 ### Python
 
