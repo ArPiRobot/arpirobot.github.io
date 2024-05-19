@@ -1,7 +1,5 @@
 # Downloads
 
-## Development PC Downloads
-
 ??? info "ArPiRobot Drive Station"
     <a href="https://github.com/ArPiRobot/ArPiRobot-DriveStation/releases/tag/v1.1.0" target="_blank">**Download for Windows, macOS, and Linux**</a>
 
@@ -13,11 +11,8 @@
 ??? info "ArPiRobot VSCode Extension"
     <a href="https://github.com/ArPiRobot/ArPiRobot-VSCodeExtension/releases/tag/v1.1.0" target="_blank">**Download**</a>
 
-
-## Robot Downloads
-
-??? info "ArPiRobot Operating System Images"
-    <a href="https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/v1.1", target="_blank">**Downloads for All Supported SBCs**</a>
+??? info "ArPiRobot Operating System Images & sysroots"
+    <a href="https://github.com/ArPiRobot/ArPiRobot-ImageScripts/releases/tag/v1.1", target="_blank">**Download**</a>
 
 ??? info "ArPiRobot CoreLib Package"
     <a href="https://github.com/ArPiRobot/ArPiRobot-CoreLib/releases/tag/v1.1.0/" target="_blank">**Download**</a>
