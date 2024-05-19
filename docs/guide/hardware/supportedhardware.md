@@ -81,7 +81,9 @@ When selecting a SBC to use as the main computer consider not only the specs of 
 - Compatibility with Raspberry Pi Hats
     - Many SBCs have a 40-pin header matching the raspberry pi for hat compatibility (pin numbers may differ though). Some SBCs also have a 26-pin header which matches part of the raspberry pi pinout and can be used with some, but not all hats.
 
-**Detailed information on supported boards can be found on the [hardware documentation](../../ref/hardware.md#board-information) page.**
+*Detailed information on supported boards can be found on the [hardware documentation](../../ref/hardware.md#board-information) page.*
+
+**It is strongly recommended to use Raspberry Pi boards if possible. Chinese vendor's SBCs (such as OrangePi) often have questionable software support, incomplete features, and less documentation. Compatibility with Orange Pi boards is available in the ArPiRobot framework to provide an alternative if obtaining Raspberry Pi boards is not possible.**
 
 ??? info "Raspberry Pi Boards (**Recommended**)"
     There are thee main types of Raspberry Pi boards
