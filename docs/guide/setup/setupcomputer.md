@@ -205,7 +205,7 @@ The Deploy Tool connects to the robot's main computer. It is used to configure t
     Download the `.zip` macOS packages for both the Drive Station and Deploy Tool (see [downloads page](../../downloads.md)). Extract the zip files and move the resulting `.app` files to the `Applications` folder. Each app is *unsigned*, so the first time your run it open "Applications" in Finder. Then right click the app and choose open. This is only necessary the first time you run the app.
 
 ??? info "Linux Install Instructions"
-    For Debian and derivatives (including Ubuntu and Linux Mint) there is a `.deb` package that can be installed. For other distributions, you will need to install python3 with pip and venv using your distribution's package manager. Then, download the `.run` installer. Run it using the command `sudo sh filename.run` (change filename to the name of the file you downloaded). If using the `.run` installer, it can be uninstalled by using `uninstall.sh` in `/opt/ArPiRobot-DriveStation` or `/opt/ArPiRobot-DeployTool`.
+    Download the `.AppImage` file. You can  download this, make it executable, and run it directly. However, it is recommended to install [AppImage Launcher](https://github.com/TheAssassin/AppImageLauncher) first. Then download and open the AppImage file. It will be automatically integrated into your system.
 
 
 ## ArPiRobot CoreLib Update Package
