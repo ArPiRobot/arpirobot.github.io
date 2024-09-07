@@ -52,13 +52,20 @@
 6. Camera streaming completely redone 
 
     - The old CameraStreaming component, service, and scripts are no longer used. Instead camera streams are started by the robot program (using the CoreLib)
-    - The CoreLib now has objects for cameras using the V4L2, libcamera, and rpicam backends. Note: The rpicam backend uses the rpicam-vid tool (libcamera stack) not the old rpicam stack.
+    - The CoreLib now has objects for cameras using the V4L2, libcamera, and rpicam backends. Note: The rpicam backend uses the rpicam-vid tool (libcamera stack) not the old raspicam stack.
     - Because streams are now managed through the CoreLib, it is now possible for robot programs to receive images from the camera while it is simultaneously being streamed. This potentially allows use of OpenCV (now available on all OS images and a dependency of the CoreLib) to use camera frames in robot code
     - Camera streams only support RTSP (no more TCP or UDP support)
 
-7. Deploy Tool Changes
+7. Debugging Robot Programs
+    
+    - Added debug support to project launch scripts (`main.sh`) using `--debug` flag. Debugging occurs with lldb-server (for C++) or debugpy (for Python)
+    - Template projects include vscode `launch.json` to attach debugger to program
+    - Deploy tool adds button to restart robot program under debugger to "Robot Status" tab
+    - CoreLib testrobot program also setup to allow debugging (most users won't care about this - used during CoreLib development)
 
-    - "This PC" tab now shows LLVM, Ninja, and pkg-config versions instead of Make versoin
+8. Deploy Tool Changes
+
+    - "This PC" tab now shows LLVM, Ninja, and pkg-config versions instead of Make version
     - "This PC" tab now shows installed sysroots instead of toolchains
     - "This PC" tab now allows installation of sysroot packages instead of toolchain packages
     - Supports newer WiFi configuration scripts (added by ImageScripts) allowing control over WiFi band
@@ -67,7 +74,7 @@
     - Download links for various tools removed from UI
     - Camera Stream tab redone to only handle stream playback (as stream configuration now occurs in robot code)
 
-7. Misc changes
+9. Misc changes
 
     - Added a robotStopped function to the CoreLib's BaseRobot class. This method is called when the robot program is about to stop allowing the user to cleanly close any resources they have manually opened.
 
@@ -81,11 +88,11 @@
 
     - Robot projects generated using the VSCode extension use an updated `main.sh` to preserve environment when running the robot program. If you need this, update your `main.sh` with the new one (this applies to both C++ and Python, but most users will not care about this).
 
-    - (PLANNED) Bug fixed where drive station failed to detect remote disconnects on Linux
+    - Bug fixed where drive station failed to detect remote disconnects on Linux
 
     - Removed OPi Lite variant of Mini Clipboard Example build from docs and CAD models
 
-    - (PLANNED) Updated all examples in ArPiRobot-Examples to use new build systems (C++)
+    - (PLANNED) Updated all examples in ArPiRobot-Examples to use new project templates (includes build system changes)
 
     - Added Pinouts for all supported boards on docs site
 

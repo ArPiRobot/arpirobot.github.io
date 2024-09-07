@@ -3,7 +3,9 @@
 *Uses mkdocs with mkdocs-material theme and mike for versioning of docs.*
 
 ```sh
-python3 -m pip install -r requirements.txt -U
+python3 -m venv env
+source env/bin/activate # On windows, .\env\Scripts\activate
+python pip install -r requirements.txt -U
 
 # Note: mike serve doesn't show live edited stuff. It locally hosts deployed stuff.
 mkdocs serve
