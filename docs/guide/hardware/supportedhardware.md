@@ -113,7 +113,7 @@ When selecting a SBC to use as the main computer consider not only the specs of 
     | Board                   | Board Version(s) | Number of Cores    | RAM         | 64-bit | WiFi | Power Supply | Link           |
     | ----------------------- | ------------------- | ------------------ | ----------- | ------ | ---- | ------------ | -------------- |
     | Orange Pi 3B      | v1.1.1 (tested) <br /><br /> v2.1 (should work, untested) | 4                  | 2GB - 8GB   | Yes    | Yes  | 5V@2.4A      | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) |
-    | Orange Pi Zero 2W       | v1.1.1 (tested) <br /><br /> v1.1 (probably same as v1.1.1)  |  4                  | 1GB / 2GB / 4GB <br /> <br /> 1.5GB NOT SUPPORTED | Yes    | Yes  | 5V@2.0A  | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2W.html) |
+    | Orange Pi Zero 2W       | v1.1.1 (tested) <br /><br /> v1.1 (probably same as v1.1.1)  |  4                  | 1GB - 4GB | Yes    | Yes  | 5V@2.0A  | [Link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2W.html) |
 
 
 
