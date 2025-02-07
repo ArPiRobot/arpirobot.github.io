@@ -21,7 +21,7 @@ You can write robot code with any text editor / code editor. However, using Visu
 - ArPiRobot extension: Download from the [downloads](../../downloads.md) page. The downloaded file will be a `.vsix` file. It can be installed by opening VSCode, navigating to the extensions panel (fourth item down on the left menu bar) and choosing `Install from VSIX...` in the menu in the top right of the extensions panel.
 
 - Finally, it is recommended to install the following extensions (depending on which programming language you plan to use). These can be installed from the VSCode marketplace by searching in the extensions panel.
-    - **C++**: C/C++ Extension Pack (By Microsoft) and CodeLLDB (By Vadim Chugunov)
+    - **C++**: C/C++ Extension Pack (By Microsoft) and LLDB DAP (By LLVM)
     - **Python**: Python Extension (By Microsoft)
 
 
@@ -116,11 +116,11 @@ To build robot programs written in C++ you need to install LLVM, CMake, Ninja, a
 
     Open a terminal and paste the following command. Then press enter.
 
-    **Debian / Ubuntu:** `sudo apt install clang lld ninja-build cmake`
+    **Debian / Ubuntu:** `sudo apt install clang lld lldb ninja-build cmake`
 
-    **Fedora / RHEL:** `sudo dnf install clang lld ninja-build cmake`
+    **Fedora / RHEL:** `sudo dnf install clang lld lldb ninja-build cmake`
 
-    **Arch:** `sudo pacman -S clang lld ninja cmake`
+    **Arch:** `sudo pacman -S clang lld lldb ninja cmake`
 
 ### Python
 
