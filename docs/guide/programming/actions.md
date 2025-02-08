@@ -48,7 +48,7 @@ The main issue with the periodic programming model is switching between tasks. S
         // Drive using drive helper
         // If a button is pressed switch to task 1
         // Store start time of task 1
-    }}elif (task == 1){
+    }elif (task == 1){
         // Drive straight
         // if enough time has passed, move to task 2
         // Store start time of task 2
@@ -122,40 +122,38 @@ An action is a class that inherits from the builtin `Action` class (part of ArPi
     - `void finish(bool wasInterrupted)`: Called when the action is stopped / stops. There are two ways an action can stop. First, it's `shouldContinue` function returns false (used to allow the action to stop itself when it finishes). Second, it can be interrupted (stopped early) for a number of reasons (explained later). The `wasInterrupted` argument is used to inform the action why it is stopping. Any cleanup for the action should be done here. Anything the action was doing should also be stopped here. Sometimes, what is done depends on whether the action completed (based on `wasInterrupted`).
     - `bool shouldContinue()`: This function is called after each time `process` is run. If this function returns false, this action will stop (`process` will not run again). If this function returns true, this action will continue running (`process` will be called again later unless this action is interrupted). The only way an action can finish without being interrupted is if this function returns false.
 
-    === "Header (.hpp)" 
-        ```cpp
-        class MyAction : public Action {
-        protected:
-            void begin() override;
-            void process() override;
-            void finish(bool wasInterrupted) override;
-            bool shouldContinue() override;
-        };
-        ```
-    === "Source (.cpp)"
-        ```cpp
-        void MyAction::begin(){
-            // Setup for action to run
-        }
+    ```cpp title="Header (.hpp)"
+    class MyAction : public Action {
+    protected:
+        void begin() override;
+        void process() override;
+        void finish(bool wasInterrupted) override;
+        bool shouldContinue() override;
+    };
+    ```
+    ```cpp title="Source (.cpp)"
+    void MyAction::begin(){
+        // Setup for action to run
+    }
 
-        void MyAction::process(){
-            // Implement the action
-        }
+    void MyAction::process(){
+        // Implement the action
+    }
 
-        void MyAction::finish(bool wasInterrupted){
-            // Stop anything / do any cleanup
-        }
+    void MyAction::finish(bool wasInterrupted){
+        // Stop anything / do any cleanup
+    }
 
-        bool MyAction::shouldContinue(){
-            // Return false when action is done
-            return true;
-        }
-        ```
+    bool MyAction::shouldContinue(){
+        // Return false when action is done
+        return true;
+    }
+    ```
 
 In robot programs, actions are typically created in the `actions` files (`actions.py` or `actions.hpp` and `actions.cpp`). All action classes are defined in these files. In contrast, the `robot` files (`robot.py` or `robot.hpp` and `robot.cpp`) are used only for the `Robot` class. Instances of actions are often created in the `Robot` class. For example, the following could be added to the `actions` files to create an action (this action does nothing, it's just an example).
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     class MyAction(Action):
         def begin(self):
             pass
@@ -170,8 +168,8 @@ In robot programs, actions are typically created in the `actions` files (`action
             return False
     ```
 
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     class MyAction : public Action{
     protected:
         void begin() override;
@@ -180,9 +178,7 @@ In robot programs, actions are typically created in the `actions` files (`action
         bool shouldContinue() override;
     };
     ```
-
-=== "C++ (`actions.cpp`)"
-    ```cpp
+    ```cpp title="actions.cpp"
     void MyAction::begin(){
 
     }
@@ -202,22 +198,22 @@ In robot programs, actions are typically created in the `actions` files (`action
 
 Then an instance of the action is created in the robot class. This instance can be used as described in later sections.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add somewhere in __init__
     self.my_instance = MyAction()
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add somewhere in Robot class declaration
     MyAction myInstance;
     ```
 
 Often, you will only have one instance of an action (or multiple instances that all behave the same way), but in other cases you may have multiple instances that all work differently. Consider an action that waits a certain amount of time (why this is useful will be seen later). It is likely that you would want to wait for different amounts of time (eg 3 seconds, 5 seconds, 10 seconds). Instead of making three actions that all wait for an amount of time, the you can create an action that takes an argument in its constructor for the amount of time to wait. Then, you only need three instances of the action for 3, 5, and 10 seconds.
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     # Note: Add "import time" at top of file
 
     class WaitAction(Action):
@@ -253,8 +249,8 @@ Often, you will only have one instance of an action (or multiple instances that 
             return (time.time() - self.start_time) < self.wait_time_sec
     ```
 
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     // Note: Import "chrono" at top of file
 
     class WaitAction : public Action {
@@ -275,9 +271,7 @@ Often, you will only have one instance of an action (or multiple instances that 
         std::chrono::time_point<std::chrono::steady_clock> startTime;
     }
     ```
-
-=== "C++ (`actions.cpp`)"
-    ```
+    ```cpp title="actions.cpp"
     // Using initializer list to assign member varible waitTimeSec to argument value
     WaitAction::WaitAction(double waitTimeSec) : waitTimeSec(waitTimeSec) {
         
@@ -305,16 +299,16 @@ Often, you will only have one instance of an action (or multiple instances that 
 
 Then in the robot class, several instances are created as shown below
 
-=== "Python (`robot.py`)
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # In __init__
     self.wait3s = WaitAction(3)
     self.wait5s = WaitAction(5)
     self.wait10s = WaitAction(10)
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // In class declaration
     WaitAction wait3s {3};
     WaitAction wait5s {5};
@@ -555,8 +549,8 @@ Before attempting to create complex setups with actions, it is a good idea to co
 
 To start, create a new action in `actions.py` or `actions.hpp` and `actions.cpp`
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     class JSDriveAction(Action):
         def locked_devices(self) -> LockedDeviceList:
             pass
@@ -574,8 +568,8 @@ To start, create a new action in `actions.py` or `actions.hpp` and `actions.cpp`
             pass
     ```
 
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     class JSDriveAction : public Action{
     protected:
         LockedDeviceList lockedDevices() override;
@@ -585,9 +579,7 @@ To start, create a new action in `actions.py` or `actions.hpp` and `actions.cpp`
         bool shouldContinue() override;
     };
     ```
-
-=== "C++ (`actions.cpp`)"
-    ```cpp
+    ```cpp title="actions.cpp"
     LockedDeviceList JSDriveAction::lockedDevices(){
 
     }
@@ -611,8 +603,8 @@ To start, create a new action in `actions.py` or `actions.hpp` and `actions.cpp`
 
 Then, in `process` move the existing drive code from `enabled_periodic` / `enabledPeriodic`. You will have to change a few variable names. The drive helper object and gamepad object belong to the `Robot` instance, not the `Action` instance the code is now in. As such, you have to refer to them using the `Robot` instance. This is done using `main.robot` in python or `Main::robot` in C++.
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     def process(self):
         # Get value for the speed axis
         speed = main.robot.gp0.get_axis(main.robot.SPEED_AXIS, main.robot.DEADBAND)
@@ -624,8 +616,8 @@ Then, in `process` move the existing drive code from `enabled_periodic` / `enabl
         main.robot.drive_helper.update(speed, rotation)
     ```
 
-=== "C++ (`actions.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.cpp"
     void JSDriveAction::process(){
         // Get value for speed axis
         double speed = Main::robot->gp0.getAxis(Main::robot->SPEED_AXIS, Main::robot->DEADBAND);
@@ -640,16 +632,16 @@ Then, in `process` move the existing drive code from `enabled_periodic` / `enabl
 
 Then, in `locked_devices` / `lockedDevices`, add the following to lock the motors. All four motors are locked as this action (indirectly) controls all four using the drive helper. *Note: You cannot lock the drive helper. It is not a device.* Locking the motors is not important yet, but having this will be important later.
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     def locked_devices(self) -> LockedDeviceList:
         # If your robot only has two motors, only reference those motors
         return [ main.robot.flmotor, main.robot.frmotor, 
                 main.robot.rlmotor, main.robot.rrmotor ]
     ```
 
-=== "C++ (`actions.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.cpp"
     LockedDeviceList JSDriveAction::lockedDevices(){
         // If your robot only has two motors, only reference those motors
         return { Main::robot->flmotor, Main::robot->frmotor, 
@@ -659,14 +651,14 @@ Then, in `locked_devices` / `lockedDevices`, add the following to lock the motor
 
 Next, in the action's `finish` function add the following line to ensure that motors stop moving if the action is ever stopped. When an action is stopped it should (almost) always make sure anything it was controlling is returned to a safe state. For motors, stopped is a safe state.
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     def finish(self, was_interrupted: bool):
         main.robot.drive_helper.update(0, 0)
     ```
 
-=== "C++ (`actions.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.cpp"
     void JSDriveAction::finish(){
         Main::robot->driveHelper.update(0, 0);
     }
@@ -674,14 +666,14 @@ Next, in the action's `finish` function add the following line to ensure that mo
 
 Then, make `should_continue` / `shouldContinue` always return true so this action runs forever.
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     def should_continue(self) -> bool:
         return True
     ```
 
-=== "C++ (`actions.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.cpp"
     bool shouldContinue(){
         return true;
     }
@@ -689,8 +681,8 @@ Then, make `should_continue` / `shouldContinue` always return true so this actio
 
 Finally, start the action in `robot_started` / `robotStarted`. Since the action never finishes, it will run forever. The action actually remains running whether the robot is enabled or disabled, however the robot's motors are disabled when the robot is disabled so you will still be unable to drive the robot while it is disabled.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Import action at top of file (with other imports)
     from actions import JSDriveAction
 
@@ -698,8 +690,8 @@ Finally, start the action in `robot_started` / `robotStarted`. Since the action 
     ActionManager.start_action(JSDriveAction())
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     // No need to include anything for C++
     // actions.hpp should already be included
 
@@ -724,8 +716,8 @@ Ideally, driving a straight line would be done using encoders on the robot to dr
 
 The first action to be implemented needs to drive a straight line for some amount of time (this will be passed as an argument in the constructor so the same action can be used for different amounts of time). This action will control motors, so they should be locked in `begin`. Additionally, the robot will drive a constant speed for the given amount of time. As such, the robot can start driving in `begin` and stop in `finish` leaving `process` empty. Finally, `should_continue` / `shouldContinue` needs to return true until enough time has passed, when it should return false stopping the action. This requires tracking when the action is started by storing some value in `begin`. This is all implemented in the code shown below.
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     # Add this import at the top of the file (with other imports)
     import time
 
@@ -769,8 +761,8 @@ The first action to be implemented needs to drive a straight line for some amoun
             return True
     ```
 
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     // Add with other imports
     #include <chrono>
 
@@ -795,9 +787,7 @@ The first action to be implemented needs to drive a straight line for some amoun
         std::chrono::time_point<std::chrono::steady_clock> startTime;
     };
     ```
-
-=== "C++ (`actions.cpp`)"
-    ```cpp
+    ```cpp title="actions.cpp"
     DriveTimeAction::DriveTimeAction(double durationSec) : durationSec(durationSec){
 
     }
@@ -840,8 +830,8 @@ The first action to be implemented needs to drive a straight line for some amoun
 
 The rotate time action is implemented almost the same way as the drive time action. Instead of driving forward at 70% speed though, the action rotates at 90% speed.
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     # Add this import at the top of the file (with other imports)
     import time
 
@@ -885,8 +875,8 @@ The rotate time action is implemented almost the same way as the drive time acti
             return True
     ```
 
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     // Add with other imports
     #include <chrono>
 
@@ -911,9 +901,7 @@ The rotate time action is implemented almost the same way as the drive time acti
         std::chrono::time_point<std::chrono::steady_clock> startTime;
     };
     ```
-
-=== "C++ (`actions.cpp`)"
-    ```cpp
+    ```cpp title="actions.cpp"
     RotateTimeAction::RotateTimeAction(double durationSec) : durationSec(durationSec){
 
     }
@@ -959,8 +947,8 @@ As such, the motors should be in brake mode for the drive time and rotate time a
 
 Add the following lines to the end of each action's `begin` function as indicated. For robots with fewer motors, only set the brake mode for the motors the robot has (and change motor object names as needed).
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     # Add to DriveTimeAction's begin
     main.robot.flmotor.set_brake_mode(True)
     main.robot.frmotor.set_brake_mode(True)
@@ -980,8 +968,8 @@ Add the following lines to the end of each action's `begin` function as indicate
     main.robot.rrmotor.set_brake_mode(False)
     ```
 
-=== "C++ (`actions.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.cpp"
     // Add to DriveTimeAction's begin
     Main::robot->flmotor.setBrakeMode(true);
     Main::robot->frmotor.setBrakeMode(true);
@@ -1006,8 +994,8 @@ Add the following lines to the end of each action's `begin` function as indicate
 
 The `DriveTimeAction`, `RotateTimeAction` and `WaitAction` (shown earlier) can be used to create `ActionSeries` to drive a square and triangle. These action series will look something like the following, however *you will likely need to change the drive and rotate times to suit your specific robot and the surface you are driving on*.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add with other imports
     from actions import DriveTimeAction, RotateTimeAction, JSDriveAction, WaitAction
 
@@ -1088,8 +1076,8 @@ The `DriveTimeAction`, `RotateTimeAction` and `WaitAction` (shown earlier) can b
     ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, self.TRIANGLE_BTN, self.drive_triangle_series))
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     ////////////////////////////////////////////////////////////////////////////////
     // Add with other member variables at the bottom of the Robot class declaration
     ////////////////////////////////////////////////////////////////////////////////
@@ -1151,8 +1139,7 @@ The `DriveTimeAction`, `RotateTimeAction` and `WaitAction` (shown earlier) can b
         jsDriveAction
     };
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+    ```cpp title="robot.cpp"
     ////////////////////////////////////////////////////////////////////////////////
     // In robotStarted
     ////////////////////////////////////////////////////////////////////////////////

@@ -54,8 +54,8 @@ The `NetworkTable` class includes the following functions
 
 ## Example Robot Program
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.core.robot import BaseRobot
     from arpirobot.core.network import NetworkTable
     from arpirobot.core.log import Logger
@@ -86,8 +86,8 @@ The `NetworkTable` class includes the following functions
                 Logger.log_info("DS changed test2 to '{}'".format(NetworkTable.get("test2")))
             self.feed_watchdog()
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <robot.hpp>
 
     #include <arpirobot/core/log/Logger.hpp>

@@ -12,9 +12,9 @@ When logged in via SSH there is no graphical environment (no desktop, start menu
 
 ### Installing a SSH Client on your Computer
 
-Most modern operating systems include the OpenSSH client by default. Linux distributions and macOS have included it for a long time. More recently Windows 10 began including OpenSSH's client by default. The OpenSSH client is a command line program that connects to another device by ssh. The other device must be running an SSH server (which the Pi on the robot is). 
+Most modern operating systems include the OpenSSH client by default. Linux distributions and macOS have included it for a long time. Windows 10 and newer should it as well.. The OpenSSH client is a command line program that connects to another device by ssh. The other device must be running an SSH server (which the computer on the robot is). 
 
-The OpenSSH client is invoked by running the `ssh` command in a terminal (or command prompt on Windows). Run the following command to list the OpenSSH version
+The OpenSSH client is invoked by running the `ssh` command in a terminal. Run the following command to list the OpenSSH version
 
 ```sh
 ssh -V

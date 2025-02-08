@@ -12,6 +12,8 @@ theme:
   custom_dir: docs/theme_overrides
   features:
     - navigation.tabs
+    - content.tabs.link
+    - content.code.copy
   palette: 
     - scheme: default
       primary: teal

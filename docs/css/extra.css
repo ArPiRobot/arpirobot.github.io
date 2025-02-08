@@ -30,3 +30,12 @@
         transform: none;   
     }
 } */
+
+/* Box tabbed contents */
+/*.md-typeset .tabbed-set {
+  border: 0.5px solid var(--md-typeset-table-color);
+}
+.md-typeset .tabbed-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}*/

@@ -31,8 +31,8 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
     An object for the DRV8833 module and both of its motors can be used in robot code as shown below
 
-    === "Python (`robot.py`)"
-        ```py
+    === "Python"
+        ```py title="robot.py"
         from arpirobot.core.robot import BaseRobot
         from arpirobot.core.log import Logger
         from arpirobot.core.action import ActionManager
@@ -96,8 +96,8 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
                 self.feed_watchdog()
         ```
 
-    === "C++ (`robot.hpp`)"
-        ```cpp
+    === "C++"
+        ```cpp title="robot.hpp"
         #pragma once
 
         #include <arpirobot/core/robot/BaseRobot.hpp>
@@ -176,8 +176,8 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
     An object for the TB6612 module and both of its motors can be used in robot code as shown below
 
-    === "Python (`robot.py`)"
-        ```py
+    === "Python"
+        ```py title="robot.py"
         from arpirobot.core.robot import BaseRobot
         from arpirobot.core.log import Logger
         from arpirobot.core.action import ActionManager
@@ -241,8 +241,8 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
                 self.feed_watchdog()
         ```
 
-    === "C++ (`robot.hpp`)"
-        ```cpp
+    === "C++"
+        ```cpp title="robot.hpp"
         #pragma once
 
         #include <arpirobot/core/robot/BaseRobot.hpp>
@@ -319,8 +319,8 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
     An object for the L298N module and both of its motors can be used in robot code as shown below
 
-    === "Python (`robot.py`)"
-        ```py
+    === "Python"
+        ```py title="robot.py"
         from arpirobot.core.robot import BaseRobot
         from arpirobot.core.log import Logger
         from arpirobot.core.action import ActionManager
@@ -384,8 +384,8 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
                 self.feed_watchdog()
         ```
 
-    === "C++ (`robot.hpp`)"
-        ```cpp
+    === "C++"
+        ```cpp title="robot.hpp"
         #pragma once
 
         #include <arpirobot/core/robot/BaseRobot.hpp>
@@ -456,8 +456,8 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
 
     Once connected, the following code can be used to access each motor on the hat
 
-    === "Python (`robot.py`)"
-        ```py
+    === "Python"
+        ```py title="robot.py"
         from arpirobot.core.robot import BaseRobot
         from arpirobot.core.log import Logger
         from arpirobot.core.action import ActionManager
@@ -528,8 +528,8 @@ Many different motor controllers are supported by the ArPiRobot framework. Each 
                 self.feed_watchdog()
         ```
 
-    === "C++ (`robot.hpp`)"
-        ```cpp
+    === "C++"
+        ```cpp title="robot.hpp"
         #pragma once
 
         #include <arpirobot/core/robot/BaseRobot.hpp>
@@ -602,8 +602,8 @@ Motor speeds are represented as values between -1 and 1. The sign controls direc
 
 The following code show how to use a motor's `set_speed` (or `setSpeed` in C++) function to control a motor's speed. Replace the `robot_enabled` and `robot_disabled` functions in your progam with the following.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     def robot_enabled(self):
         self.motor1.set_speed(0.75)
     
@@ -611,8 +611,8 @@ The following code show how to use a motor's `set_speed` (or `setSpeed` in C++) 
         self.motor1.set_speed(0)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     void robotEnabled(){
         motor1.setSpeed(0.75);
     }
@@ -626,15 +626,15 @@ The above code will set the motor called `motor1` to a speed of 75% when the rob
 
 In the above example, a speed of positive 75% was used. Often it is desired to make positive forward for all motors. If your motor spins in reverse when you run the above code you have a few options. First, you could switch how the motor is connected. A motor has two wires (often a red and a black). Switching the order of the wires connected to the motor controller will reverse the motor direction. However, the motor direction can also be inverted in software. To invert the direction of `motor` add the following to `robot_started`
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     def robot_started(self):
         # Add this line to robot_started
         self.motor1.set_inverted(True)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     void robotStarted(){
         // Add this line to robotStarted
         motor1.setInverted(true);
@@ -646,15 +646,15 @@ In the above example, a speed of positive 75% was used. Often it is desired to m
 
 In addition to setting speed and direction, motor controllers have one other common setting handling what happens when a motor is stopped (speed 0). When a motor is not moving it can either spin freely or it can attempt to resist motion. The latter is referred to as "brake mode". To enable brake mode for a motor add a line like the following to `robot_started`. Brake mode can be disabled later by using the same function, but replacing `True` with `False` (or `true` with `false`).
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     def robot_started(self):
         # Add this line to robot_started
         self.motor1.set_brake_mode(True)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     void robotStarted(){
         // Add this line to robotStarted
         motor1.setBrakeMode(true);

@@ -94,8 +94,8 @@ An Arduino Interface is an object used in robot code to represent a board runnin
 
 In order to setup UART communication with the Arduino two pieces of information are required: the name of the serial / UART of the device and the baud rate for UART communication. The baud rate must be the same on both the Arduino and the Pi. The ArPiRobot ArduinoFirmware uses a baud rate of `57600` (unless you modify it) so use this on the Pi as well. Determining which UART port is a little more difficult. In Windows serial ports are named `COM` followed by some number. On linux systems they are `/dev/tty[TYPE][NUMBER]`. For most Arduinos type will be `USB` (although it is `ACM` for some). Generally, since only one USB serial device will be connected to the Pi, the number will be `0` making the device `/dev/ttyUSB0`. This name will be used when creating the Arduino interface object as shown in the code below.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add with the other imports at the top of the file
     from arpirobot.arduino.iface import ArduinoUartInterface
 
@@ -104,8 +104,8 @@ In order to setup UART communication with the Arduino two pieces of information 
     self.arduino = ArduinoUartInterface("/dev/ttyUSB0", 57600)
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add with the other includes at the top of the file
     #include <arpirobot/arduino/iface/ArduinoUartInterface.hpp>
 
@@ -116,14 +116,14 @@ In order to setup UART communication with the Arduino two pieces of information 
 
 Then, in `robot_started` / `robotStarted` add the following so the Pi begins communicating with the Arduino when your robot program starts.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add at the end of robot_started
     self.arduino.begin()
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     // Add at the end of robotStarted
     arduino.begin();
     ```
@@ -148,8 +148,8 @@ If you instead see a message similar to the following, the uart port name is pro
 
 Now that your program has an Arudino Interface object, sensors can be added to it. Start by creating an object for each sensor as shown below
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add with other device imports at the top of file
     from arpirobot.arduino.sensor import VoltageMonitor, Ultrasonic4Pin, Mpu6050Imu
 
@@ -166,8 +166,8 @@ Now that your program has an Arudino Interface object, sensors can be added to i
     self.imu = Mpu6050Imu()
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add with other device includes at top of file
     #include <arpirobot/arduino/sensor/VoltageMonitor.hpp>
     #include <arpirobot/arduino/sensor/Ultrasonic4Pin.hpp>
@@ -188,8 +188,8 @@ Now that your program has an Arudino Interface object, sensors can be added to i
 
 Then, in `robot_started` / `robotStarted` add each device to the arduino interface object **before calling `arduino.begin`.**
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add BEFORE self.arduino.begin() in robot_started
     self.arduino.add_device(self.vmon)
     self.arduino.add_device(self.usonic)
@@ -198,8 +198,8 @@ Then, in `robot_started` / `robotStarted` add each device to the arduino interfa
     # self.arduino.begin() is HERE
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     // Add BEFORE arduino.begin() in robotStarted
     arduino.addDevice(vmon);
     arduino.addDevice(usonic);
@@ -225,14 +225,14 @@ Now your robot program has objects that can be used to get sensor data and the a
 
 The easiest sensor to start with is the voltage monitor. The voltage monitor should be wired into the motor batteries (usually AA batteries). In the Drive Station there is a battery indicator. This indicator is used to show the "main" battery voltage (in this case the voltage of the motor batteries). To make this show up, the voltage monitor object must be made the "main" voltage monitor. This can be done by adding the following line of code.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add in robot_started AFTER self.arduino.begin
     self.vmon.make_main_vmon()
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     // Add in robotStarted AFTER arduino.begin()
     vmon.makeMainVmon()
     ```
@@ -245,14 +245,14 @@ The battery indicator in the drive station will change colors based on the curre
 
 The ultrasonic sensor and IMU do not have any dedicated place in the drive station to show their values. So for now, they will be printed to the log. Add the following in `periodic`
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     Logger.log_info("Gyro: " + str(self.imu.get_gyro_z()))
     Logger.log_info("Distance: " + str(self.usonic.get_distance()))
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     Logger::logInfo("Gyro: " + std::to_string(imu.getGyroZ()));
     Logger::logInfo("Distance: " + std::to_string(usonic.getDistance()));
     ```
@@ -272,8 +272,8 @@ In our example above we could use two network table keys:
 
 To implement this, replace the log messages in `periodic` with the following
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Replace the log messages with the following
     # Set function takes two arguments key, value
     # Keys and values are always strings
@@ -281,8 +281,8 @@ To implement this, replace the log messages in `periodic` with the following
     NetworkTable.set("Distance", str(self.usonic.get_distance()))
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     // Replace the log messages with the following
     // Set function takes two arguments key, value
     // Keys and values are always strings
@@ -312,8 +312,8 @@ This might sound a little complicated, but it is not too bad. Breaking it down i
 
 If we let 30 cm be the threshold for "too close" the code looks like the following
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add to enabled_periodic between getting axis values and drive_helper.update
     if self.usonic.get_distance() <= 30 and speed > 0:
         speed = 0
@@ -328,8 +328,8 @@ If we let 30 cm be the threshold for "too close" the code looks like the followi
         self.rrmotor.set_brake_mode(False)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     // Add to enabledPeriodic between getting axis values and driveHelper.update
     if(self.usonic.getDistance() <= 30 && speed > 0){
         speed = 0;

@@ -6,8 +6,8 @@ To improve this, sensor data will be used instead. Two types of sensors will be 
 
 Code to use an `Mpu6050` sensor's IMU via an Arduino coprocessor was shown in the [Sensor Data & NetworkTable](./sensordata.md) section of this guide. The following code can be added to use encoders (assumed to be single channel encoders, not quadrature encoders)
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add with other imports
     from arpirobot.arduino.sensor import SingleEncoder
 
@@ -22,8 +22,8 @@ Code to use an `Mpu6050` sensor's IMU via an Arduino coprocessor was shown in th
     self.arduino.add_device(self.renc)
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add with other includes
     #include <arpirobot/arduino/sensor/SingleEncoder.hpp>
 
@@ -33,9 +33,7 @@ Code to use an `Mpu6050` sensor's IMU via an Arduino coprocessor was shown in th
     SingleEncoder lenc {2};
     SingleEncoder renc {3};
     ```
-
-=== "C++ (`robot.cpp`)"
-    ```cpp
+    ```cpp title="robot.cpp"
     // In robotStarted, before arduino.begin()
     arduino.addDevice(lenc);
     arduino.addDevice(renc);
@@ -46,8 +44,8 @@ Code to use an `Mpu6050` sensor's IMU via an Arduino coprocessor was shown in th
 
 The following code implements an action that rotates a certain number of degrees from where it starts. This is done using the Z-Axis gyroscope on the robot.
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     class RotateAngleAction(Action):
         def __init__(self, degrees: float):
             super().__init__()
@@ -104,8 +102,8 @@ The following code implements an action that rotates a certain number of degrees
                 return main.robot.imu.get_gyro_z() > self.target_angle
     ```
 
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     class RotateAngleAction : public Action{
     public:
         RotateAngleAction(double degrees);
@@ -122,9 +120,7 @@ The following code implements an action that rotates a certain number of degrees
         double targetAngle = 0;     // Will be set in begin()
     };
     ```
-
-=== "C++ (`actions.cpp`)"
-    ```cpp
+    ```cpp title="actions.cpp"
     RotateAngleAction::RotateAngleAction(double degrees) : degrees(degrees){
 
     }
@@ -191,8 +187,8 @@ When the action starts, it calculates the target angle (the angle it should go t
 
 A drive distance action can be implemented similarly. Since `SingleEncoders` are used, it is not possible to determine the direction the robot is moving using encoders, only how far it has moved (the encoder count will always be positive). In other words, rotating the wheel one revolution forward increases the encoder count and rotating the wheel one revolution backward increases the encoder count (no rotation decreases the encoder count). As such, to move in the negative direction, the motors move in reverse (negative speed), but the encoder count still grows. The action below is implemented to handle this. Note that if your robot has Quadrature encoders, this action will not work without modifications. You could either adapt this action to handle directions (similar to `RotateAngleAction` above), or use `SingleEncoder` objects in code instead of `QuadEncoder` objects (just pick one signal wire per encoder).
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     class DriveDistanceAction(Action):
         def __init__(self, distance_ticks: int):
             super().__init__()
@@ -244,8 +240,8 @@ A drive distance action can be implemented similarly. Since `SingleEncoders` are
             return distance_traveled < self.distance_ticks
     ```
 
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     class DriveDistanceAction : pubic Action{
     public:
         DriveDistanceAction(int distanceTicks);
@@ -268,9 +264,7 @@ A drive distance action can be implemented similarly. Since `SingleEncoders` are
         bool forward;
     };
     ```
-
-=== "C++ (`actions.cpp`)"
-    ```cpp
+    ```cpp title="actions.cpp"
     DriveDistanceAction::DriveDistanceAction(int distanceTicks) :
             distanceTicks(std::abs(distanceTicks)), forward(distanceTicks >= 0){
         
@@ -344,8 +338,8 @@ This number is used in the code below to implement the "drive square" and "drive
 
 The following code can replace the same `ActionSeries` from the previous section to use the sensor-based actions instead of the time-based ones.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     self.drive_square_series = ActionSeries(
         # This is a list of actions to run sequentially
         [
@@ -398,8 +392,8 @@ The following code can replace the same `ActionSeries` from the previous section
     )
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     ActionSeries driveSquareSeries{
         // This is a list of actions to run sequentially
         {

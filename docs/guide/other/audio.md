@@ -39,8 +39,8 @@ The `AudioManager` includes three functions of interest:
 - `stop_job()` / `stopJob()`: Stops the job with the given identifier (integer returned from `play_sound()` / `playSound()`). This is used to stop a sound "early". If the file has already finished playing, this function has no effect.
 
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.core.audio import AudioManager, AudioDeviceInfo
 
     def __init__(self):
@@ -74,8 +74,8 @@ The `AudioManager` includes three functions of interest:
         AudioManager.stop_job(self.job)
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add at top with includes
     #include <arpirobot/core/audio/AudioDeviceInfo.hpp>
 
@@ -84,9 +84,7 @@ The `AudioManager` includes three functions of interest:
     bool hasDev = false;
     int job = -1;
     ```
-
-=== "C++ (`robot.cpp`)"
-    ```cpp
+    ```cpp title="robot.cpp"
     void robotStarted(){
         // Searching for a specific audio device
         // This is an I2S interface's name on a raspberry pi
@@ -126,8 +124,8 @@ Finally, the project's json file needs to be modified to make the deploy tool co
 
 The file should look something like the following
 
-=== "Python Project"
-    ```json
+=== "Python"
+    ```json title="arpirobot-proj.json"
     {
         "version": 2,
         "deployFiles": [
@@ -142,8 +140,8 @@ The file should look something like the following
     }
     ```
 
-=== "C++ Project"
-    ```json
+=== "C++"
+    ```json title="arpirobot-proj.json"
     {
         "version": 2,
         "deployFiles": [

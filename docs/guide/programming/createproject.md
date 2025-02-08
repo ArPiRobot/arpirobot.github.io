@@ -48,7 +48,7 @@ Once the project has been created it will be opened in VSCode. If you want to op
 
 Once the project opens, follow the steps below based on the type of project you created.
 
-=== "Python Project Steps"
+=== "Python"
     
     The first time you open a python project, a virtual environment will automatically be created. You will be prompted to choose a python interpreter. Choose the one with the version you installed in the "Setup Development Computer" section of the guide.
 
@@ -64,7 +64,7 @@ Once the project opens, follow the steps below based on the type of project you 
 
     You won't have to do this again for the same project. If you want to re-create the environment, choose the "Create python environment" option under the "ArPiRobot" menu item on the bottom toolbar.
 
-=== "C++ Project Steps"
+=== "C++"
     
     When you open the project, you may be prompted to configure the project. Click "Yes"
 
@@ -80,13 +80,11 @@ Once the project opens, follow the steps below based on the type of project you 
 
     If you need to re-configure, configure later, or change the preset, see the instructions on building the C++ project in the "Deploying to Robot" section below.
 
-<hr />
-
 
 ## Files Overview
 
 
-=== "Python Project Files"
+=== "Python"
     A Python project is generated with several source (`.py`) files in a folder named `src`. The other files generated are either used on the robot to start the program or used by the deploy tool to deploy the project.
 
     ![VSCode Screenshot](../../img/python_proj_files.png){: style="height:300px"}
@@ -95,7 +93,7 @@ Once the project opens, follow the steps below based on the type of project you 
 
     ![VSCode Screenshot](../../img/vscode_select_python.png){: style="height:280px"}
 
-=== "C++ Project Files"
+=== "C++"
     A C++ project is generated with several source (`.cpp`) files in a folder named `src` and headers (`.hpp`) in a folder named `include`. The other files generated are used on the robot to start the program, used by the deploy tool to deploy the project, or are part of the build system.
 
     ![VSCode Screenshot](../../img/cpp_proj_files.png){: style="height:300px"}
@@ -128,8 +126,6 @@ Before deploying a project it is sometimes necessary to "build" the project. In 
     A window will open with build output. It should build with no errors.
 
     ![VSCode Screenshot](../../img/vscode_buildout.png){: style="height:300px"}
-
-<hr />
 
 After building, deploying to the robot is done using the Deploy Tool. First, connect your computer to the robot's WiFi network (the robot will of course need to be powered on). After this is done open the Deploy Tool and click the "Connect" button.
 
@@ -168,8 +164,8 @@ The core of the robot program lies either in the `robot.py` or `robot.cpp` (and 
 
 By putting code in these functions, a robot program can be made to perform a wide variety of tasks. For now, to get a better feel for when these functions run, the following modifications can be made to the program to add some custom log messages. When the function containing a log message is run, the message is printed to the log. The added lines are indicated in the code below.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.core.robot import BaseRobot
     from arpirobot.core.log import Logger
     from arpirobot.core.action import ActionManager
@@ -228,8 +224,8 @@ By putting code in these functions, a robot program can be made to perform a wid
 
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <robot.hpp>
 
     #include <arpirobot/core/log/Logger.hpp>

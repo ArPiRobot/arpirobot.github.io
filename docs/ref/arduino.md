@@ -13,8 +13,8 @@ An `ArduinoInterface` object is used to connect to an Arduino coprocessor from a
 
 An `ArduinoUartInterface` object can be created as shown below. The device requires two pieces of information: a port name and a baud rate. The name of the port is in the form `/dev/tty[TYPE][NUM]`. `[TYPE]` is typically either `USB` or `ACM` depending on which arduino is used. `NUM` will typically be `0`, being the first UART device of that type. The baud rate is a "speed" that must be the same on both devices. Unless you modified the ArPiRobot Arduino Firmware running on the coprocessor, this will be `57600`.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add with other imports
     from arpirobot.arduino.iface import ArduinoUartInterface
 
@@ -22,8 +22,8 @@ An `ArduinoUartInterface` object can be created as shown below. The device requi
     self.arduino = ArduinoUartInterface("/dev/ttyUSB0", 57600)
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add with other includes
     #include <arpirobot/arduino/iface/ArduinoUartInterface.hpp>
 
@@ -37,8 +37,8 @@ Before the interface can be started, devices must be added to the interface. Var
 
 The ArPiRobot framework relies on the main computer to tell the Arduino coprocessor what is connected to it. This means the Arduino firmware will not need to be modified, only a robot program. However, it is necessary to tell an arduino what is connected to it (by adding devices) before "starting" the arduino. The process shown below can be repeated for multiple devices on the same arduino interface. In the example below `DeviceClass` is a placeholder and should be replaced with the name of an actual device (described in "Arduino Devices" section).
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add with imports
     from arpirobot.arduino.sensor import DeviceClass
 
@@ -48,16 +48,16 @@ The ArPiRobot framework relies on the main computer to tell the Arduino coproces
     # Add in robot_started
     self.arduino.add_device(self.device)
     ```
-=== "C++ (`robot.hpp`)"
-    ```
+
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add with includes
     #include <arpirobot/arduino/sensor/DeviceClass.hpp>
 
     // Add as a member variable
     DeviceClass device { deviceArg1, deviceArg2, ... };
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+    ```cpp title="robot.cpp"
     // Add in robotStarted
     arduino.addDevice(device);
     ```
@@ -66,12 +66,12 @@ The ArPiRobot framework relies on the main computer to tell the Arduino coproces
 
 Once all devices have been added, the arduino interface must be "started". When "started" the Arduino coprocessor will begin acquiring sensor data and performing required calculations. Once started, the Arduino coprocessor no longer accept new devices (`add_device` / `addDevice` on the interface) will have no effect. As such, the following line should be added in `robot_started` / `robotStarted` **after** all devices are added.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     self.arduino.begin()
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     arduino.begin();
     ```
 
@@ -95,12 +95,12 @@ Configuring this sensor requires the following information:
 
 *Note that to use the `VoltageMonitor` device with no voltage divider (no `r1` or `r2`) you cannot set both to zero. `r2` cannot be zero. Instead, set `r1` to zero and `r2` to any non-zero positive number (eg one).*
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.arduino.sensor import VoltageMonitor
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <arpirobot/arduino/sensor/VoltageMonitor.hpp>
     ```
 
@@ -116,12 +116,12 @@ Configuring this sensor requires the following information:
 - `trigger_pin`: What pin on the Arduino is connected to the sensor's trigger pin. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0.
 - `echo_pin`: What pin on the Arduino is connected to the sensor's echo pin. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0. *It is highly recommended to use an interrupt enabled pin for the echo pin. Different Arduinos have different pins that support interrupts.*
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.arduino.sensor import Ultrasonic4Pin
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <arpirobot/arduino/sensor/Ultrasonic4Pin.hpp>
     ```
 
@@ -137,12 +137,12 @@ Configuring this sensor requires the following information:
 - `pin`: The signal pin for the encoder. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0. *It is highly recommended to use an interrupt enabled pin for SingleEncoder devices. Different Arduinos have different interrupt enabled pins.*
 - `use_internal_pullup`: Some single channel encoders require the signal line have a pullup resistor. For such devices, set this to true to use the pullup builtin to the Arduino for that pin. This must be connected to a pin supporting a pullup resistor to have any effect. On most Arduinos, all pins support pullup resistors.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.arduino.sensor import SingleEncoder
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <arpirobot/arduino/sensor/SingleEncoder.hpp>
     ```
 
@@ -160,12 +160,12 @@ Configuring this sensor requires the following information:
 - `digital_pin`: What pin the digital signal from the comparator is connected to. This is typically labeled "out" or "D0" on the modules. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0.
 - `analog_pin`: What analog pin the analog signal from the sensor is connected to. This can either be an integer (0, 1, 2, etc) or it can be a string prefixed with "A" ("A0", "1", "A2", etc). The prefix is ignored (meaning 0 is the same as "A0", 1 is the same as "A1", etc).
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.arduino.sensor import IRReflectorModule
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <arpirobot/arduino/sensor/IRReflectorModule.hpp>
     ```
 
@@ -180,12 +180,12 @@ Adafruit's now-discontinued [9-DOF IMU w/ the L3DG20H & LSM303DLHC](https://www.
 
 No configuration information is required for this sensor. However, only one sensor of this type is supported per Arduino coprocessor.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.arduino.sensor import OldAdafruit9Dof
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <arpirobot/arduino/sensor/OldAdafruit9Dof.hpp>
     ```
 
@@ -200,12 +200,12 @@ Adafruit's [NXP 9-DOF IMU w/ the FXOS8700 & FXAS21002](https://www.adafruit.com/
 
 No configuration information is required for this sensor. However, only one sensor of this type is supported per Arduino coprocessor.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.arduino.sensor import NxpAdafruit9Dof
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <arpirobot/arduino/sensor/NxpAdafruit9Dof.hpp>
     ```
 
@@ -220,12 +220,12 @@ MPU-6050 based IMUs such as [Adafruit's Breakout](https://www.adafruit.com/produ
 
 No configuration information is required for this sensor. However, only one sensor of this type is supported per Arduino coprocessor.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.arduino.sensor import Mpu6050Imu
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <arpirobot/arduino/sensor/Mpu6050Imu.hpp>
     ```
 
@@ -242,12 +242,12 @@ Configuring this sensor requires the following information:
 - `pin_b`: The B channel pin for the encoder. This can either be a number (0, 1, 2, etc) for a digital pin or a string prefixed with "A" if connected to one of the analog input pins ("A0", "A1", etc). Note that the analog pin will be used in digital mode thus "A0" is not the same as 0. *It is highly recommended to use an interrupt enabled pin for QuadratureEncoder devices. Different Arduinos have different interrupt enabled pins.*
 - `use_internal_pullup`: Some single channel encoders require the signal line have a pullup resistor. For such devices, set this to true to use the pullup builtin to the Arduino for that pin. This must be connected to a pin supporting a pullup resistor to have any effect. On most Arduinos, all pins support pullup resistors.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.arduino.sensor import QuadEncoder
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     #include <arpirobot/arduino/sensor/QuadEncoder.hpp>
     ```
 

@@ -6,8 +6,8 @@ Now that motor objects are setup and you know the basics of moving motors, it is
 
 Before starting to drive the robot, it is important to know which motor object in code cooresponds to which physical motor. For example, on a two wheel drive robot, you need to know if motor A is left or right (and the same for motor B). For a four wheel drive robot, you needs to know which motor is front left, front right, rear left, and rear right. This is easily determined by examining the wiring on your robot (follow the wires from a specific motor to the motor controller to determine which motor it is). Once you've done this, it is a good idea to change the name of your motor variables to be something more relevant. For example on a two wheel drive robot instead of `motor_a` and `motor_b` you could use `lmotor` and `rmotor` (left and right motor). On a four wheel drive robot you could use `flmotor`, `frmotor`, `rlmotor`, and `rrmotor` (front left, front right, rear left, rear right). You can rename the motor objects using something like what is shown below
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Somewhere in __init__
     self.motor1 = ...
     self.motor2 = ...
@@ -22,8 +22,8 @@ Before starting to drive the robot, it is important to know which motor object i
     self.rrmotor = ...
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // At the bottom of the Robot class declaration
     MotorType motor1 = ...;
     MotorType motor2 = ...;
@@ -42,14 +42,14 @@ Before starting to drive the robot, it is important to know which motor object i
 
 To check if you have each motor correct add a line like the following to `robot_enabled` / `robotEnabled` for the front left motor (or just the left motor on a two-wheel drive robot). Build (if required) and deploy the robot code. When enabled, the front left (or left) wheel should spin. Repeat this for all motors and make changes as needed.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     def robot_enabled(self):
         self.flmotor.set_speed(1)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     void robotEnabled(){
         flmotor.setSpeed(1);
     }
@@ -59,8 +59,8 @@ Now that it is easy to identify which motor is which from your code, it should b
 
 To determine which motors need to be inverted, replace `robot_enabled` / `robotEnabled` with the following. If you have a two wheel drive robot, change the motor names and only keep two lines.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     def robot_enabled(self):
         self.flmotor.set_speed(1)
         self.frmotor.set_speed(1)
@@ -68,8 +68,8 @@ To determine which motors need to be inverted, replace `robot_enabled` / `robotE
         self.rrmotor.set_speed(1)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     void robotEnabled(){
         flmotor.setSpeed(1);
         frmotor.setSpeed(1);
@@ -80,16 +80,16 @@ To determine which motors need to be inverted, replace `robot_enabled` / `robotE
 
 Build and deploy the program to the robot. When enabled all motors should begin spinning. If any are spinning the incorrect direction (incorrect meaning they would make the robot move in reverse) add a line like the following in `robot_started` / `robotStarted` to invert its direction.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # If front left motor is incorrect add the following
     # Change motor name as needed
     # Add for multiple motors if needed
     self.flmotor.set_inverted(True)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     // If front left motor is incorrect add the following
     // Change motor name as needed
     // Add for multiple motors if needed
@@ -109,20 +109,20 @@ Now that you know which motor is which and all spin the correct direction, the p
 
 As explained above, using joystick axes to control the robot is sometimes difficult, however the ArPiRobot core library (corelib) provides "drive helpers" to enable these control schemes to work easily. The following code will focus on the Arcade drive scheme as it is easier to use and often preferred. The corelib provides a `ArcadeDriveHelper` object which manages motor speeds. The drive helper is given a "speed" and "rotation". It calculates how fast each motor should be moving based off this and controls the motor speeds. To use `ArcadeDriveHelper` add the following to the top of `robot.py` or `robot.hpp` with the other imports / includes.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.core.drive import ArcadeDriveHelper
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     #include <arpirobot/core/drive/ArcadeDriveHelper.hpp>
     ```
 
 Then add the following at the indicated location
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add in __init__ with other devices (after motors)
     self.drive_helper = ArcadeDriveHelper(
         [self.flmotor, self.rlmotor],           # Left motors
@@ -136,8 +136,8 @@ Then add the following at the indicated location
     )
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add with device declarations (after motors)
     ArcadeDriveHelper driveHelper {
         {flmotor, rlmotor},                     // Left motors
@@ -153,16 +153,16 @@ Then add the following at the indicated location
 
 Finally, replace `robot_enabled` / `robotEnabled` with the following to test the drive helper
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     def robot_enabled(self):
         speed = 1.0
         rotation = 0.25
         self.drive_helper.update(speed, rotation)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     void robotEnabled(){
         double speed = 1.0;
         double rotation = 0.25;
@@ -199,20 +199,20 @@ If you click on the name of the gamepad in the list you will be able to see a re
 
 To get gamepad data in your code you need to add a `Gamepad` object. First add the import / include with the others at the top of `robot.py` or `robot.hpp`.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     from arpirobot.devices.gamepad import Gamepad
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     #include <arpirobot/devices/gamepad/Gamepad.hpp>
     ```
 
 The add a new device to your `Robot` class
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add below drive_helper in __init__
     # Using gamepad number 0
     # Change number in constructor to use other gamepad number
@@ -220,8 +220,8 @@ The add a new device to your `Robot` class
     self.gp0 = Gamepad(0)
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add below driveHelper in class declaration
     // Using gamepad number 0
     // Change number in constructor to use other gamepad number
@@ -253,8 +253,8 @@ Up until now, the `enabled_periodic` / `enabledPeriodic` function has not been u
 
 Before this code can be added, however, it is necessary to choose a speed axis and a rotation axis. The speed axis will be the left y (vertical) axis or axis number 1. The rotation axis will be the right x (horizontal) axis or axis number 2. To make the code more readable and easier to change later if desired, instead of using the numbers directly constants are created for the axis numbers in `robot.py` or `robot.hpp`. Additionally, a deadband of 0.1 will be used as this should be sufficient for most controllers. If a deadband were not used the motors would still try to move slightly even when the joysticks were not pressed.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add in __init__ after device variables
     # Note that python does not support actual constants
     # We will treat any variable in all caps as a constant
@@ -263,8 +263,8 @@ Before this code can be added, however, it is necessary to choose a speed axis a
     self.DEADBAND = 0.1
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add in the Robot class declaration after device variables
     const int SPEED_AXIS = 1;
     const int ROTATE_AXIS = 2;
@@ -273,8 +273,8 @@ Before this code can be added, however, it is necessary to choose a speed axis a
 
 Then the `enabled_periodic` / `enabledPeriodic` function can be implemented as follows. Also, remove anything in `robot_enabled` / `robotEnabled` that may be left from testing drive helpers (`robot_enabled` / `robotEnabled` should be an empty function now; in python use "pass").
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     def enabled_periodic(self):
         # Get value for the speed axis
         speed = self.gp0.get_axis(self.SPEED_AXIS, self.DEADBAND)
@@ -286,8 +286,8 @@ Then the `enabled_periodic` / `enabledPeriodic` function can be implemented as f
         self.drive_helper.update(speed, rotation)
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     void enabledPeriodic(){
         // Get value for speed axis
         double speed = gp0.getAxis(SPEED_AXIS, DEADBAND);
@@ -304,13 +304,13 @@ Build and deploy this program to the robot. Open the Drive Station, connect your
 
 Most likely, your robot drives forward when you press the left stick down. Recall that the motors were configured such that positive was forward. However, most gamepads "up" on the stick is negative = reverse. To fix this, multiply the speed by negative 1.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     speed = -1 * self.gp0.get_axis(self.SPEED_AXIS, self.DEADBAND)
     ```
 
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     double speed = -1 * gp0.getAxis(SPEED_AXIS, DEADBAND);
     ```
 
@@ -387,8 +387,8 @@ The second graph is how the deadband works in the ArPiRobot CoreLib. The values 
 
 Implementing either of the two axis transforms described above is simple as they are builtin to the core library. The following shows how to add a Cubic transform (minPower = 0, midPower = 0.5) to the speed axis and a square root transform to the rotate axis.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add with imports at top
     from arpirobot.core.drive import CubicAxisTransform, SquareRootAxisTransform
 
@@ -397,8 +397,8 @@ Implementing either of the two axis transforms described above is simple as they
     self.gp0.set_axis_transform(self.ROTATE_AXIS, SquareRootAxisTransform())
     ```
 
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     // Add with includes at top
     #include <arpirobot/core/drive/CubicAxisTransform.hpp>
     #include <arpirobot/core/drive/SquareRootAxisTransform.hpp>

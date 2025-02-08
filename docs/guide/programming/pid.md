@@ -30,8 +30,8 @@ The ArPiRobot Core Library includes a `PID` object. This object supports setting
 
 The `set_setpoint` / `setSetpoint` function is used to assign a setpoint for the PID controller. The `get_output` / `getOutput` function is used to calculate the current output. This function is passed the current sensor value as an argument and returns the output. For mathematical reasons, this function should be called at fairly regular intervals. As such, this makes `Action`s a good candidate to use PID objects. However, it is generally recommended to keep all PID object instances in the `Robot` class. This makes it easier to use the network table to help with tuning and allows multiple actions to reuse the same PID (without having to use the same gains in multiple places in the code).
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     class PIDAction(Action):
         # Assumes my_pid is defined as a member of Robot class
         # Assumes tuning is somewhere in robot_started or elsewhere in Robot class
@@ -70,8 +70,8 @@ The `set_setpoint` / `setSetpoint` function is used to assign a setpoint for the
             
     ```
 
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     // Assumes myPid is defined as a member of Robot class
     // Assumes tuning is somewhere in robot_started or elsewhere in Robot class
     // For example, it could be hard coded during instantiation
@@ -85,9 +85,7 @@ The `set_setpoint` / `setSetpoint` function is used to assign a setpoint for the
         bool shouldContinue() override;
     };
     ```
-
-=== "C++ (`actions.cpp`)"
-    ```cpp
+    ```cpp title="actions.cpp"
     void PIDAction::begin(){
         // Reset before each use (clears previous state info)
         Main::robot->myPid.reset();
@@ -129,8 +127,8 @@ To improve the `RotateAngleAction` from the previous section, a PID can be used.
 
 Before implementing the action, a rotation PID controller needs to be added to the `Robot` class.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # Add with other imports
     from arpirobot.core.control import PID
 
@@ -141,8 +139,8 @@ Before implementing the action, a rotation PID controller needs to be added to t
     # -1.0 to 1.0 is used as this is the range of rotation speeds accepted by a drive helper
     self.rotate_pid = PID(1.0, 0.0, 0.0, 0.0, -1.0, 1.0)
     ```
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add with other includes
     #include <arpirobot/core/control/PID.hpp>
 
@@ -158,8 +156,8 @@ The initial gains and output range for the PID controller are passed as argument
 
 An action to rotate using the PID controller can be implemented as shown below
 
-=== "Python (`actions.py`)"
-    ```py
+=== "Python"
+    ```py title="actions.py"
     class RotatePIDAction(Action):
         def __init__(self, degrees: float):
             super().__init__()
@@ -221,8 +219,8 @@ An action to rotate using the PID controller can be implemented as shown below
             return self.correct_counter < 10
 
     ```
-=== "C++ (`actions.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="actions.hpp"
     class RotatePIDAction : public Action {
     public:
         RotatePIDAction(double degrees);
@@ -241,8 +239,7 @@ An action to rotate using the PID controller can be implemented as shown below
         int correctCounter = 0;
     };
     ```
-=== "C++ (actions.cpp`)"
-    ```cpp
+    ```cpp title="actions.cpp"
     RotatePIDAction::RotatePIDAction(double degrees) : degrees(degrees){
 
     }
@@ -304,21 +301,20 @@ An action to rotate using the PID controller can be implemented as shown below
 
 To make tuning the PID easier, it is recommended to create an instance of the action that rotates 90 degrees and add a trigger to run this action when a button is pressed. This will allow testing just this one action while tuning.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     # In Robot class's __init__ method
     TEST_BTN = 2
 
     # In robot_started method
     ActionManager.add_trigger(ButtonPressedTrigger(self.gp0, TEST_BTN, RotatePIDAction(90)))
     ```
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     // Add with other constants (member variables)
     const int ROTATE_TEST_BTN = 2;
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+    ```cpp title="robot.cpp"
     // In robotStarted method
     ActionManager::addTrigger(std::make_shared<ButtonPressedTrigger>(gp0, ROTATE_TEST_BTN, std::make_shared<RotatePIDAction>(90)))
     ```
@@ -356,8 +352,8 @@ The following example shows how to add controls for kp, ki, and kd, and kf for a
 
 Add the following function to your `Robot` class
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     def pid_network_table(self, name: str, pid: PID):
         # Create net table keys for the given name of the PID
         KP_KEY = "{0} kP".format(name)
@@ -399,12 +395,11 @@ Add the following function to your `Robot` class
             except:
                 NetworkTable.set(KF_KEY, str(pid.get_kf()))
     ```
-=== "C++ (`robot.hpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.hpp"
     void pidNetworkTable(std::string name, PID &pid);
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+    ```cpp title="robot.cpp"
     void Robot::pidNetworkTable(std::string name, PID &pid){
         // Create net table keys for the given name of the pid
         auto KP_KEY = name + " kP";
@@ -455,12 +450,12 @@ Add the following function to your `Robot` class
 
 Then, for each PID you want on the NetworkTable, add a line like the following to the `Robot`'s `process` function. Make sure to use a unique name for each PID controller you add.
 
-=== "Python (`robot.py`)"
-    ```py
+=== "Python"
+    ```py title="robot.py"
     self.pid_network_table("Rotate PID", self.rotate_pid)
     ```
-=== "C++ (`robot.cpp`)"
-    ```cpp
+=== "C++"
+    ```cpp title="robot.cpp"
     pidNetworkTable("Rotate PID", rotatePid);
     ```
 
