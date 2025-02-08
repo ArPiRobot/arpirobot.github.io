@@ -64,6 +64,7 @@ A robot has two basic states. The state is tracked by the underlying `BaseRobot`
 While disabled some devices will become disabled. For example, motor controllers will become disabled when the robot is disabled and become enabled when the robot is enabled. While a motor controller is disabled, it can be configured but is unable to move its motor. Once the robot is enabled (and the motor controller becomes enabled) the motor controller is able to move its motor.
 
 In addition to controlling the state of "potentially dangerous" devices, the state of the robot is useful for defining core robot functionality. Some of the functions listed above run only if the robot is in a specific state. Others run regardless of state.
+
 - `robot_started` / `robotStarted` runs when the robot program is started. This will always occur while the robot is disabled. This function will only ever run once.
 - `robot_stopped` / `robotStopped` runs when the robot program is being stopped. This will only occur once and may occur when the robot is in the enabled or disabled state. This function is typically unused, but if anything (not part of the corelib) is opened by user code that needs to be cleanly closed, it can be done here.
 - `robot_enabled` / `robotEnabled` runs when the robot switches from the disabled state to the enabled state.
