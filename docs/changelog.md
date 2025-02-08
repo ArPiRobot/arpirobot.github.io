@@ -74,7 +74,15 @@
     - Download links for various tools removed from UI
     - Camera Stream tab redone to only handle stream playback (as stream configuration now occurs in robot code)
 
-9. Misc changes
+9. Package Changes
+
+    - Removed "core" folder for CoreLib C++ include paths
+    - Removed "core" package from Python packages
+    - Combined "arpirobot/core/device" and "arpirobot/devices" directories / packages
+    - Updated VSCode Extension templates to use new import / include paths
+    - (Planned) Updated all examples to use new import / include paths
+
+10. Misc changes
 
     - Added a robotStopped function to the CoreLib's BaseRobot class. This method is called when the robot program is about to stop allowing the user to cleanly close any resources they have manually opened.
 
