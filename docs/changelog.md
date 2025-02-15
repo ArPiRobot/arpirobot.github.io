@@ -100,6 +100,8 @@
 
     - Removed OPi Lite variant of Mini Clipboard Example build from docs and CAD models
 
+    - Updated CAD models to use FreeCAD 1.0 with builtin assemblies (no third party addon required now)
+
     - (PLANNED) Updated all examples in ArPiRobot-Examples to use new project templates (includes build system changes)
 
     - Added Pinouts for all supported boards on docs site
