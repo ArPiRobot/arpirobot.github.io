@@ -80,7 +80,7 @@
     - Removed "core" package from Python packages
     - Combined "arpirobot/core/device" and "arpirobot/devices" directories / packages
     - Updated VSCode Extension templates to use new import / include paths
-    - (Planned) Updated all examples to use new import / include paths
+    - Updated all examples to use new import / include paths
 
 10. Misc changes
 
@@ -102,10 +102,12 @@
 
     - Updated CAD models to use FreeCAD 1.0 with builtin assemblies (no third party addon required now)
 
-    - (PLANNED) Updated all examples in ArPiRobot-Examples to use new project templates (includes build system changes)
+    - Updated all examples in ArPiRobot-Examples to use new project templates (includes build system changes)
 
     - Added Pinouts for all supported boards on docs site
 
     - Updated existing pages on docs sites with correct install instructions and guides for the changes in v1.1
 
     - Drive Station: Fixed a bug that prevented remote connection loss from being detected on Linux and macOS
+
+    - Added an aarch64 image for Raspberry Pi boards
