@@ -25,9 +25,7 @@
 ??? info "ArPiRobot CAD Models"
     3D Models of some robots or components designed in [FreeCAD](https://www.freecadweb.org/).
 
-    *Note that some addons are needed for FreeCAD to open some of these parts. See the README in the downloaded zip for more info.*
-
-    <a href="https://github.com/ArPiRobot/ArPiRobot-CADModels/archive/refs/heads/main.zip" target="_blank">**Download**</a>
+    <a href="https://github.com/ArPiRobot/ArPiRobot-CADModels/" target="_blank">**Download**</a>
 
 ??? info "ArPiRobot Example Programs"
     Example robot programs in both C++ and Python. Most are designed for the Mini clipboard example robot build.
