@@ -73,6 +73,7 @@
     - Fixed a bug that prevented remote connection loss from being detected on Linux and macOS
     - Download links for various tools removed from UI
     - Camera Stream tab redone to only handle stream playback (as stream configuration now occurs in robot code)
+    - Fixed a bug that could cause the deploy tool to crash when using the "This PC" tab.
 
 9. Package Changes
 
